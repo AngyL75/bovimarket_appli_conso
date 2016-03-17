@@ -10,6 +10,9 @@ if($morceauId) {
     $morceauId=$morceau->id;
 }
 
+
+saveMorceau($morceauId);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
