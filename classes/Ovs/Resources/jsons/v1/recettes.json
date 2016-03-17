@@ -1,0 +1,34 @@
+[
+  {
+    "id" : 1, 
+    "titre" : "Bavette poêlée, sauce Chavignol",
+    "descriptif_introduction" : "blabla",
+    "type_viande" : "boeuf", 
+    "photo" : "recette_boeufBourgignon.jpg", 
+    "ingredients" : ["1 morceau épais de bavette, d'environ.", "2 crotins de Chavignol"],
+    "portion" : "Pour 4 personnes",
+    "temps_preparation" : "1h30",
+    "temps_cuisson" : "2h00",
+    "difficulte" : 3.8, 
+    "instructions_preparation" : "Préparer les chips d'échalotes : éplucher...",
+    "instructions_dressage" : "Sortez le service en procélaine de mère grand...",
+    "morceaux" : [1,2],
+    "cuisson" : 1 
+  },
+  {
+    "id" : 2,
+    "titre" : "Bavette poêlée, sauce Chavignol 2",
+    "descriptif_introduction" : "blabla",
+    "type_viande" : "boeuf",
+    "photo" : "recette_boeufBourgignon.jpg",
+    "ingredients" : ["1 morceau épais de bavette, d'environ.", "2 crotins de Chavignol"],
+    "portion" : "Pour 4 personnes",
+    "temps_preparation" : "1h30",
+    "temps_cuisson" : "2h00",
+    "difficulte" : 3.2,
+    "instructions_preparation" : "Préparer les chips d'échalotes : éplucher...",
+    "instructions_dressage" : "Sortez le service en procélaine de mère grand...",
+    "morceaux" : [1],
+    "cuisson" : 2
+  }
+]

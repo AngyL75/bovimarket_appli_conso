@@ -1,3 +1,12 @@
+<?php
+
+require_once __DIR__."/classes/Ovs/custom_loader.php";
+
+$morceauId=getIdMorceaux(1);
+
+$cuissons=\Ovs\Entities\Cuisson::findAllFor(array("morceaux"=>$morceauId));
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

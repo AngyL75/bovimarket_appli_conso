@@ -1,0 +1,15 @@
+{
+    "name": "ovs/bovimarket",
+    "authors": [
+        {
+            "name": "David Rimbault",
+            "email": "rimbault.david@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Ovs":"classes/"
+        }
+    },
+    "require": {}
+}
