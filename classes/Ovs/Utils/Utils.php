@@ -95,6 +95,19 @@ class Utils
         session_destroy();
     }
 
+    public static function getUrlDetailForObject($object)
+    {
+        switch($object->activite){
+            case "RESTAURANT":
+                return "/resto.php?id=".$object->id;
+                break;
+            default:
+                return "/boucher.php?id=".$object->id;
+                break;
+
+        }
+    }
+
     public static function createMapMarker($object)
     {
         $latLng = \Ovs\Entities\Entite::getLatLng($object);
@@ -102,7 +115,7 @@ class Utils
             return "";
         }
 
-        $url = "/boucher.php?id=" . $object->id;
+        $url = static::getUrlDetailForObject($object);
         $icon = static::getIconForActivite($object->activite);
 
         $marker = <<<MARKER

@@ -40,7 +40,14 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
           </div>
         </div>
           <div class="row">
+              <div class="col-xs-10 col-xs-offset-1">
+                  <?php echo $boucher->description; ?>
+              </div>
+          </div>
+          <?php if(\Ovs\Entities\Entite::hasValidCertifs($boucher)): ?>
+          <div class="row">
               <div class="col-xs-4 col-xs-offset-4">
+                  <h1>Labels</h1>
                       <?php foreach($boucher->certifications as $certif): ?>
                           <?php
 
@@ -52,11 +59,7 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
                           <div class="col-xs-4">
                               <div class="thumbnail">
                                 <a href="label.php?id=<?php echo $respCertif->id; ?>" data-color="#381b26">
-                                    <?php if($respCertif && $respCertif->logo): ?>
-                                        <img src="<?php echo \Ovs\Entities\Entite::getImage($respCertif->logo);?>" class="img-circle">
-                                    <?php  else:  ?>
-                                        <img src="images/nophoto.png" class="img-circle">
-                                    <?php endif; ?>
+                                    <img src="<?php echo \Ovs\Entities\Entite::getimage($respCertif->logo);?>" class="img-circle">
                                 </a>
                               </div>
                               <div class="caption">
@@ -70,6 +73,8 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
                       <?php endforeach; ?>
               </div>
           </div>
+          <?php endif; ?>
+          <?php if(isset($boucher->abonnement) && isset($boucher->abonnement->options) && isset($boucher->abonnement->options->venteDirecte)): ?>
         <div class="row" style="padding:20px 0">
           <div class="col-xs-6 col-xs-offset-3">
             <form action="commande.php">
@@ -77,6 +82,7 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
             </form>
           </div>
         </div>
+          <?php endif; ?>
         <div class="row">
           <div class="col-xs-12">
             <h3 style="text-align:center;padding:20px 0">Ils recommandent</h3>

@@ -11,6 +11,7 @@ namespace Ovs\Entities;
 
 use Ovs\Api\Api;
 use Ovs\Entities\Interfaces\Searchable;
+use Ovs\Utils\Utils;
 
 class Entite extends Searchable
 {
@@ -27,6 +28,9 @@ class Entite extends Searchable
 
     public static function getImage($photo)
     {
+        if(empty($photo)){
+            return Utils::getWebPathOfDir(__DIR__."/../../../images/nophoto.png");
+        }
         $url=Api::getBaseUrl()."resources";
         $photo=str_replace("\\","/",$photo);
         return $url."/".$photo;
@@ -54,6 +58,25 @@ class Entite extends Searchable
             $adresseStr .= " - " . $adresse->codePostal . " " . ucwords($adresse->ville);
         }
         return $adresseStr;
+    }
+
+    public static function findOneEleveurRandom()
+    {
+        $eleveurs=static::findAllFor(array("activite"=>"ELEVEUR"));
+        if(is_array($eleveurs)) {
+            $nbMax = count($eleveurs) - 1;
+            return $eleveurs[rand(0, $nbMax)];
+        }
+        return null;
+    }
+
+
+    public static function hasValidCertifs($object)
+    {
+        foreach($object->certifications as $certif):
+            if($certif->valide){return true;}
+        endforeach;
+        return false;
     }
 
 
