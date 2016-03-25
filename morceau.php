@@ -2,10 +2,10 @@
 
   require_once __DIR__."/classes/Ovs/custom_loader.php";
 
-  $idMorceau=getIdMorceaux();
+  $idMorceau=\Ovs\Utils\Utils::getIdMorceaux();
   $morceau=\Ovs\Entities\Morceaux::find($idMorceau);
 
-saveMorceau($idMorceau);
+\Ovs\Utils\Utils::saveMorceau($idMorceau);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +55,21 @@ saveMorceau($idMorceau);
         <p><?php echo nl2br($morceau->description); ?>
         </p>
       </div>
+      <div class="col-xs-12">
+        <h3 class="text-center" style="padding:20px 0">Conseil Achat</h3>
+        <p><?php echo nl2br($morceau->conseils_achat); ?>
+        </p>
+      </div>
+      <div class="col-xs-12">
+        <h3 class="text-center" style="padding:20px 0">Conseil Conservation</h3>
+        <p><?php echo nl2br($morceau->conseils_conservation); ?>
+        </p>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <h3 class="text-center" style="padding:20px 0">Conseil cuisson</h3>
+      <p><?php echo nl2br($morceau->conseils_cuisson); ?>
+      </p>
     </div>
     <div class="row" id="IconeQRcode">
       <div class="col-xs-10 col-xs-offset-1">

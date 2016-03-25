@@ -13,7 +13,7 @@ class Recettes extends Searchable
 {
     public static function getUrl()
     {
-        return "json://recettes.json";
+        return "json://v2/recettes_agneau.json";
     }
 
 }

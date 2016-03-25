@@ -2,7 +2,7 @@
 
 require_once __DIR__."/classes/Ovs/custom_loader.php";
 
-$idMorceaux=getIdMorceaux(1);
+$idMorceaux=\Ovs\Utils\Utils::getIdMorceaux(1);
 $recettes=\Ovs\Entities\Recettes::findAllFor(array("morceaux"=>$idMorceaux));
 
 ?>
@@ -30,15 +30,21 @@ $recettes=\Ovs\Entities\Recettes::findAllFor(array("morceaux"=>$idMorceaux));
     ?>
     <div class="row ListeStyle2">
       <div class="col-xs-12">
-        <a class="link" href="carre-agneau-thym.php" data-color="#ffffff">
-          <div class="Tof2"><img src="images/nophoto.png" alt="..." /></div>
-          <div class="Description" style="padding:40px 20px">
+        <a class="link" href="detail_recette.php?idRecette=<?php echo $recette->id; ?>" data-color="#ffffff">
+          <div class="Tof2"><img src="<?php echo \Ovs\Utils\Utils::getImage($recette->photo);?>" alt="..." /></div>
+          <div class="Description" style="padding:40px 20px;width: 80% !important;">
             <div class="Nom col-xs-12"><?php echo $recette->titre; ?></div>
-            <div class="col-xs-6 sablier">
+            <div class="col-xs-4 sablier">
               <?php echo $recette->temps_preparation; ?>
             </div>
-            <div class="col-xs-6 difficulte moyen">
-              <?php echo $recette->difficulte; ?>
+            <div class="col-xs-4 sablier">
+              <?php echo $recette->temps_cuisson; ?>
+            </div>
+            <div class="col-xs-4 difficulte">
+              <?php for($i=0;$i<$recette->difficulte;$i++):?>
+                <span><img src="/images/IconeRecette.png" alt="" style="width: 40px"></span>
+              <?php endfor; ?>
+              <b style="font-size: 18px"><?php echo $recette->difficulte; ?></b>
             </div>
           </div>
         </a>

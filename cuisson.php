@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/classes/Ovs/custom_loader.php";
 
-$morceauId = getIdMorceaux(false);
+$morceauId = \Ovs\Utils\Utils::getIdMorceaux(false);
 
 $morceau = \Ovs\Entities\Morceaux::find($morceauId);
 $cuissons = \Ovs\Entities\Cuisson::findAllFor(array("morceaux" => $morceauId));

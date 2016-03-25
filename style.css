@@ -80,7 +80,7 @@ nav:not(.mm-menu) {display:none;}
 .Description .Nom {font-weight: 500;float: none;padding:0;font-size: 20px;}
 .ListeStyle2 {border-bottom: 1px solid #553341;}
 .ListeStyle2 a {color:#fff;}
-.ListeStyle2 .Tof2 {width: 150px;height:150px;padding: 0;overflow: hidden;border-radius: 50%;float:left; background:url(images/nophoto-thmb2.png) center no-repeat; background-size: 100%;margin:4px;}
+.ListeStyle2 .Tof2 {width: 150px;height:150px;padding: 0;overflow: hidden;border-radius: 50%;float:left; background-size: 100%;margin:4px;}
 .ListeStyle2 .Tof2 a {width: 150px;height:150px; display:block;}
 .Intitule {font-size:15px;}
 .favoris h3 {

@@ -66,14 +66,13 @@
     "conseils_cuisson":"Le filet d'agneau est un morceau à griller, à poêler ou à rôtir.\nla selle anglaise, vendue désossée ou non, est toujours ficelée pour éviterqu'elle ne se défasse à la cuisson. C'est un très beau morceau à rôtir, telquel ou farci, pour 4 à 7 personnes.\nle lamb chop et le mutton chop sont des morceaux à griller ou à poêler. Ilfaut compter une pièce de 150 à 160 g par personne.\nLa côte filet, dont la noix de viande n'est pas très grosse, se grille ou sepoêle. Elle pèse environ 80 g : il faut en compter 2 par personne. Un trainde côtes filet fait un excellent petit rôti pour 3 personnes.",
     "conseils_achat":"Dans les filets levés de la selle anglaise, le boucher découpe les noisettes,petits pavés de 1 à 1,5 cm d'épaisseur entourés de leur peau dégraissée oud'une fine barde de lard. Bardées, les noisettes doivent être ficelées. Unenoisette d'agneau pèse de 50 à 60 g : il faut en prévoir, selon les appétits,de 2 à 3 par personne. Les filets mignon peuvent être émincés finement etrapidement poêlés. Quant aux bavettes, entrelardées, elles font un excellentragoût.",
     "conseils_conservation":"La viande d'agneau se conserve de 3 à 4 jours au réfrigérateur, dans sa partiela plus froide. Il ne faut jamais l'enfermer dans des boîtes hermétiques, ellerisque de prendre une odeur forte : prévoir des couvercles ajourés ou du filmtransparent pour laisser circuler l'air. L'envelopper dans du papier d'aluminiumest fortement déconseillé, mieux vaut la laisser dans le papier du boucher.\nUn bon conseil : affleurer la viande, au pinceau, d'une bonne huile d'olivepremière pression et la remettre dans son papier d'origine.",
-    "cuissons":[
-      1,
-      2
-    ],
-    "recettes":[
-      2,
-      3
-    ]
+    "cuissons": {
+
+    },
+    "recettes": {
+      "agneau":[1,2],
+      "boeuf":[1,2]
+    }
   },
   {
     "id":7,

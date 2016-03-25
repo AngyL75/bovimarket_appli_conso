@@ -8,11 +8,11 @@
     "description":"saisir la viande à feu vif puis la cuire à plus ou moins haute température dans de la matière grasse.",
     "conseils_astuces":"la poêle ou le gril mais aussi la grille du four ou du barbecue doivent toujours être bien chauds pour que la viande soit saisie et qu’une croûte protectrice seforme : les sucs restent ainsi « enfermés » et la viande, bien irriguée, restetendre et juteuse.\n\n<b>Quelques conseils et astuces :<\b>\n- Choisir une poêle aux dimensions des pièces de viande, surtout pas trop grandepour éviter que les corps gras brûlent sur les surfaces inutilisées.\n- Pour les grillades, huiler le gril à l’aide d’un pinceau ou masser légèrementla pièce de viande avec un filet d’huile.\n- Pour être parfaitement saisie, la viande doit grésiller au contact de la chaleur.\n- Saler et poivrer en fin de cuisson.\n- Pour retourner une pièce de viande, utiliser une pince à viande ou une spatuleplutôt qu’une fourchette : piquer une viande lui fait perdre ses sucs et nuit àsa tendreté.\nSelon les espèces, les temps et degrés de cuisson sont différents.",
     "morceaux":[
-      11,
-      12,
+      1,
+      2,
       21,
       22,
-      31,
+      5,
       32,
       41,
       42
@@ -36,26 +36,14 @@
     "cuisson_logo":"logo_grill.png",
     "description":"saisir rapidement la viande à feu très vif sur un gril ou dans une poêle sans matière grasse.",
     "conseils_astuces":"la poêle ou le gril mais aussi la grille du four ou du barbecue doivent toujours être bien chauds pour que la viande soit saisie et qu’une croûte protectrice seforme : les sucs restent ainsi « enfermés » et la viande, bien irriguée, restetendre et juteuse.\n\n<b>Quelques conseils et astuces :<\b>\n- Choisir une poêle aux dimensions des pièces de viande, surtout pas trop grandepour éviter que les corps gras brûlent sur les surfaces inutilisées.\n- Pour les grillades, huiler le gril à l’aide d’un pinceau ou masser légèrementla pièce de viande avec un filet d’huile.\n- Pour être parfaitement saisie, la viande doit grésiller au contact de la chaleur.\n- Saler et poivrer en fin de cuisson.\n- Pour retourner une pièce de viande, utiliser une pince à viande ou une spatuleplutôt qu’une fourchette : piquer une viande lui fait perdre ses sucs et nuit àsa tendreté.\nSelon les espèces, les temps et degrés de cuisson sont différents.",
-    "morceaux":[
-      11,
-      12,
-      21,
-      22,
-      31,
-      32,
-      41,
-      42
-    ],
-    "recettes":[
-      11,
-      12,
-      21,
-      22,
-      31,
-      32,
-      41,
-      42
-    ]
+    "morceaux":{
+      "agneau":[1,2],
+      "boeuf":[1,2]
+    },
+    "recettes":{
+      "agneau":[1,2],
+      "boeuf":[1,2]
+    }
   },
   {
     "id":3,
@@ -70,7 +58,7 @@
       12,
       21,
       22,
-      31,
+      5,
       32,
       41,
       42
@@ -296,7 +284,7 @@
     "cuisson_photo":"cuisson_autocuisseur.jpg",
     "cuisson_logo":"logo_autocuisseur.png",
     "description":"L’autocuiseur offre de nombreuses possibilités de cuisson des viandes à la vapeur ou dans du liquide, bouillies ou mijotées. Principal avantage : diviser par deux ou trois les temps decuisson du pot-au-feu, de la blanquette et de dizaines d’autres recettes. Une aubaine, àcondition de respecter quelques règles simples d’utilisation.",
-    "conseils_astuces":"<b>Cuisiner avec un autocuiseur pour une cuisson express et des saveurs préservées<\b>\nL’autocuiseur est un outil de cuisine multifonctions permettant de cuire rapidement desaliments à la vapeur ou dans du liquide tout en préservant leurs saveurs et qualitésnutritionnelles. Accélérée par l’augmentation de la pression, la cuisson est deux àtrois fois plus rapide dans un autocuiseur que dans une cocotte ou un cuit-vapeurtraditionnel. Un pot au feu n’aura besoin que d’une heure de cuisson au lieu de trois !\nMais pour réussir sa recette, encore faut-il respecter quelques règles simples. Les tempsde cuisson peuvent en effet différer d’un modèle à l’autre. Il est donc indispensable dese référer au manuel d’utilisation. Quel que soit le modèle, le temps de cuisson sedécompte à partir du moment où la soupape chuchote.\nIl existe ensuite deux grands types de cuisson possibles avec un autocuiseur : à la vapeurou dans un liquide. Si l’on choisit de cuire dans un liquide (l’option la plus courantepour des viandes), les aliments sont plongés dans le liquide, avec ou sans le panier.À la vapeur, le fond du panier reste au-dessus du niveau d’eau. Dans tous les cas, il estimpératif de verser un minimum de 250 ml de liquide dans l’autocuiseur (eau, vin ou bouillon)sans jamais dépasser les deux tiers de la cuve.\nUne fois l’autocuiseur hermétiquement refermé, la cuisson doit démarrer à feu vif jusqu’à lamise en route de la soupape. Il faut ensuite baisser l’intensité de la source de chaleur demoitié. Lorsque la cuisson est terminée, on place la cocotte sous un filet d'eau froide de façon à la refroidir. Lorsqu'il n'y a plus de vapeur il est temps de retirer la soupape etd’ouvrir l’autocuiseur.\n<b>Quels morceaux de viande cuisiner à l’autocuiseur ?<\b>\nL’autocuiseur permet de cuire de multiples morceaux, de toutes les espèces de viande, que cesoit à la vapeur, braisées ou bouillies.\nLa cuisson à la vapeur permet de cuire sans ajout de matière grasse. On peut alors utiliser,une fois détaillés, des morceaux habituellement cuits à la poêle ou rôtis : filet de bœuf,carré de veau, noisettes d’agneau, filet mignon de porc, filet de cheval ou foie de veau.\nOn peut également bouillir les viandes, en reproduisant à l’identique, mais avec des tempsde cuisson raccourcis, les recettes du pot-au-feu, du bœuf gros sel ou encore de la têteet de la langue de veau. La cuisson bouillie à l’autocuiseur est également adaptée à lacuisson de certaines pièces de porc un peu grasses qui apprécient le bouillon : le jarret,la palette, la poitrine, voire le carré de côtes.\nDe la même manière, l’autocuiseur permet de préparer, également avec des temps de cuissonraccourcis, tous les plats braisés ou mijotés : bourguignon, ragoût ou daube de bœuf, sautéet jarret de veau, navarin d’agneau, joue et cœur de bœuf, bourguignon de cheval, et enfinrôti, poitrine, palette de porc, etc. Comme à la cocotte traditionnelle, il est bien sûrnécessaire de faire dorer préalablement viandes et légumes avant de les couvrir de liquidepuis de cuire l’ensemble.\n<b>Les temps de cuisson à l’autocuiseur (minutage indicatif)<\b>\n- Bœuf :\n+ Bourguignon 40 à 50 mn\n+ Pot-au-feu 50 mn à 1 h\n+ Rôti (1kg) 15 mn\n- Agneau/Mouton :\n+ Blanquette 25 mn\n+ Pieds 25 mn\n+ Ragoût 25 mn\n- Porc :\n+ Potée 40 mn\n+ Rôti (1 kg) 30 mn\n- Veau :\n+ Blanquette 20 mn\n+ Marengo 20 mn\n+ Rôti (1 kg) 25 mn\n- Produits tripiers :\n+ Gras double 35 mn\n<b>Les astuces du chef pour cuisiner à l’autocuiseur<\b>\nÀ l’autocuiseur, l’eau de cuisson des viandes braisées ne s’évapore pas. Il ne se produitdonc pas le phénomène de concentration des saveurs que l’on constate à la cocottetraditionnelle. C’est la raison pour laquelle il vaut mieux aromatiser généreusementle liquide utilisé pour cuire les viandes : bouillon, aromates, vin blanc ou rouge,épices, etc.\nA la fin de la cuisson, lorsque toute la vapeur s’est échappée, le couvercle peut êtremaintenu en place plusieurs minutes. Ce temps d’attente rend la viande encore plus moelleuse.",
+    "conseils_astuces":"<b>Cuisiner avec un autocuiseur pour une cuisson express et des saveurs préservées</b>\nL’autocuiseur est un outil de cuisine multifonctions permettant de cuire rapidement desaliments à la vapeur ou dans du liquide tout en préservant leurs saveurs et qualitésnutritionnelles. Accélérée par l’augmentation de la pression, la cuisson est deux àtrois fois plus rapide dans un autocuiseur que dans une cocotte ou un cuit-vapeurtraditionnel. Un pot au feu n’aura besoin que d’une heure de cuisson au lieu de trois !\nMais pour réussir sa recette, encore faut-il respecter quelques règles simples. Les tempsde cuisson peuvent en effet différer d’un modèle à l’autre. Il est donc indispensable dese référer au manuel d’utilisation. Quel que soit le modèle, le temps de cuisson sedécompte à partir du moment où la soupape chuchote.\nIl existe ensuite deux grands types de cuisson possibles avec un autocuiseur : à la vapeurou dans un liquide. Si l’on choisit de cuire dans un liquide (l’option la plus courantepour des viandes), les aliments sont plongés dans le liquide, avec ou sans le panier.À la vapeur, le fond du panier reste au-dessus du niveau d’eau. Dans tous les cas, il estimpératif de verser un minimum de 250 ml de liquide dans l’autocuiseur (eau, vin ou bouillon)sans jamais dépasser les deux tiers de la cuve.\nUne fois l’autocuiseur hermétiquement refermé, la cuisson doit démarrer à feu vif jusqu’à lamise en route de la soupape. Il faut ensuite baisser l’intensité de la source de chaleur demoitié. Lorsque la cuisson est terminée, on place la cocotte sous un filet d'eau froide de façon à la refroidir. Lorsqu'il n'y a plus de vapeur il est temps de retirer la soupape etd’ouvrir l’autocuiseur.\n<b>Quels morceaux de viande cuisiner à l’autocuiseur ?<\b>\nL’autocuiseur permet de cuire de multiples morceaux, de toutes les espèces de viande, que cesoit à la vapeur, braisées ou bouillies.\nLa cuisson à la vapeur permet de cuire sans ajout de matière grasse. On peut alors utiliser,une fois détaillés, des morceaux habituellement cuits à la poêle ou rôtis : filet de bœuf,carré de veau, noisettes d’agneau, filet mignon de porc, filet de cheval ou foie de veau.\nOn peut également bouillir les viandes, en reproduisant à l’identique, mais avec des tempsde cuisson raccourcis, les recettes du pot-au-feu, du bœuf gros sel ou encore de la têteet de la langue de veau. La cuisson bouillie à l’autocuiseur est également adaptée à lacuisson de certaines pièces de porc un peu grasses qui apprécient le bouillon : le jarret,la palette, la poitrine, voire le carré de côtes.\nDe la même manière, l’autocuiseur permet de préparer, également avec des temps de cuissonraccourcis, tous les plats braisés ou mijotés : bourguignon, ragoût ou daube de bœuf, sautéet jarret de veau, navarin d’agneau, joue et cœur de bœuf, bourguignon de cheval, et enfinrôti, poitrine, palette de porc, etc. Comme à la cocotte traditionnelle, il est bien sûrnécessaire de faire dorer préalablement viandes et légumes avant de les couvrir de liquidepuis de cuire l’ensemble.\n<b>Les temps de cuisson à l’autocuiseur (minutage indicatif)<\b>\n- Bœuf :\n+ Bourguignon 40 à 50 mn\n+ Pot-au-feu 50 mn à 1 h\n+ Rôti (1kg) 15 mn\n- Agneau/Mouton :\n+ Blanquette 25 mn\n+ Pieds 25 mn\n+ Ragoût 25 mn\n- Porc :\n+ Potée 40 mn\n+ Rôti (1 kg) 30 mn\n- Veau :\n+ Blanquette 20 mn\n+ Marengo 20 mn\n+ Rôti (1 kg) 25 mn\n- Produits tripiers :\n+ Gras double 35 mn\n<b>Les astuces du chef pour cuisiner à l’autocuiseur<\b>\nÀ l’autocuiseur, l’eau de cuisson des viandes braisées ne s’évapore pas. Il ne se produitdonc pas le phénomène de concentration des saveurs que l’on constate à la cocottetraditionnelle. C’est la raison pour laquelle il vaut mieux aromatiser généreusementle liquide utilisé pour cuire les viandes : bouillon, aromates, vin blanc ou rouge,épices, etc.\nA la fin de la cuisson, lorsque toute la vapeur s’est échappée, le couvercle peut êtremaintenu en place plusieurs minutes. Ce temps d’attente rend la viande encore plus moelleuse.",
     "morceaux":[
       11,
       12,

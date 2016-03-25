@@ -2,7 +2,7 @@
 
 require_once __DIR__."/classes/Ovs/custom_loader.php";
 
-$morceauId=getIdMorceaux(false);
+$morceauId=\Ovs\Utils\Utils::getIdMorceaux(false);
 if($morceauId) {
     $morceau = \Ovs\Entities\Morceaux::find($morceauId);
 }else{
@@ -11,7 +11,7 @@ if($morceauId) {
 }
 
 
-saveMorceau($morceauId);
+\Ovs\Utils\Utils::saveMorceau($morceauId);
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ saveMorceau($morceauId);
     <div class="container">
       <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-              <img src="<?php echo getImage($morceau->photo); ?>" alt="<?php echo $morceau->nom; ?>" class="Photo">
+              <img src="<?php echo \Ovs\Utils\Utils::getImage($morceau->photo); ?>" alt="<?php echo $morceau->nom; ?>" class="Photo">
           </div>
           <div class="col-xs-12">
               <h1><?php echo $morceau->nom; ?></h1>

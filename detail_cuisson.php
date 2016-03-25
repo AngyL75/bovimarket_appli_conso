@@ -1,7 +1,7 @@
 <?php
   require_once __DIR__ . "/classes/Ovs/custom_loader.php";
 
-  $idCuisson=getIdCuisson(1);
+  $idCuisson=\Ovs\Utils\Utils::getIdCuisson(1);
   $cuisson=\Ovs\Entities\Cuisson::find($idCuisson);
 
 ?>
