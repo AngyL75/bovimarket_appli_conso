@@ -1,4 +1,9 @@
-<?php include ("index.php");exit(); ?>
+<?php
+
+require_once __DIR__."/classes/Ovs/custom_loader.php";
+$entites=\Ovs\Entities\Entite::findAllFor(array("activite"=>"BOUCHER"));
+include ("index.php");exit();
+?>
 
 
 <?php

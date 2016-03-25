@@ -1,3 +1,13 @@
+<?php
+  require_once __DIR__."/classes/Ovs/custom_loader.php";
+  $idEntite=\Ovs\Utils\Utils::getIdEntite(false);
+  if($idEntite) {
+    $eleveur = \Ovs\Entities\Entite::find($idEntite);
+  }else{
+    $eleveur = \Ovs\Entities\Entite::findOneActiviteRandom("ELEVEUR");
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,24 +27,19 @@
     </div>
     <div class="row">
       <div class="col-xs-4 col-xs-offset-4">
-        <img src="images/olivier-maurin.jpg" class="Photo" />
+        <img src="<?php echo \Ovs\Entities\Entite::getImage($eleveur->photoResponsable); ?>" class="Photo" />
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <h3 class="text-center" style="padding:20px 0">Olivier Maurin</h3>
-        <p>Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit 
-        in pacem ea ratione maxime percita, quod norat expeditionibus crebris fortunam eius in malis tantum civilibus vigilasse.
-        Cum autem bella moverentur externa, accidisse plerumque luctuosa, icto post haec foedere gentium ritu perfectaque sollemnitate 
-        imperator Mediolanum ad hiberna discessit.
+        <h3 class="text-center" style="padding:20px 0"><?php echo $eleveur->nomContact; ?></h3>
+        <p><?php echo $eleveur->description; ?>
         </p>
       </div>
     </div>
     <div class="row">
      <div class="col-xs-6 col-xs-offset-3" style="padding:20px 0">
-        <form action="olivier-maurin.php">
-          <button class="btn btn-vert" id="Rechercher" type="submit">Voir sa fiche</button> 
-        </form>
+          <a href="boucher.php?id=<?php echo $eleveur->id; ?>" class="btn btn-vert" id="Rechercher" type="submit">Voir sa fiche</a>
       </div>
     </div>
   </div>

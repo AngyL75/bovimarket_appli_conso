@@ -60,9 +60,9 @@ class Entite extends Searchable
         return $adresseStr;
     }
 
-    public static function findOneEleveurRandom()
+    public static function findOneActiviteRandom($activite)
     {
-        $eleveurs=static::findAllFor(array("activite"=>"ELEVEUR"));
+        $eleveurs=static::findAllFor(array("activite"=>$activite));
         if(is_array($eleveurs)) {
             $nbMax = count($eleveurs) - 1;
             return $eleveurs[rand(0, $nbMax)];

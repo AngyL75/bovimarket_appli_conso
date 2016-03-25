@@ -15,11 +15,13 @@ use Ovs\Utils\Utils;
 class Menu
 {
 
-    public static function renderMenu()
+    public static function renderMenu($recette=null)
     {
-        $recette=Recettes::findOneRandom();
-        $eleveur=Entite::findOneEleveurRandom();
-        //$eleveur=Entite::find("55df29687525d90d7d066072");
+        if(!$recette) {
+            $recette = Recettes::findOneRandom();
+        }
+        $eleveur=Entite::findOneActiviteRandom("ELEVEUR");
+        $filiere=Entite::findOneActiviteRandom("FILIERE");
         include Utils::getResourcesDir()."/views/menu.php";
     }
 }
