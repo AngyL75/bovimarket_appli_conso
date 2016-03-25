@@ -1,3 +1,11 @@
+<?php require_once __DIR__."/classes/Ovs/custom_loader.php"; ?>
+
+<?php
+$idBoucher=\Ovs\Utils\Utils::getIdEntite();
+$boucher=\Ovs\Entities\Entite::find($idBoucher);
+\Ovs\Utils\Utils::saveEntite($idBoucher);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +19,15 @@
       <div class="container">
         <div class="row">
             <div class="col-xs-4 col-xs-offset-4">
-              <div class="Tof Label"><a class="link" href="label.php" data-color="#381b26"><img src="images/label.png" /></a></div>
-              <img class="Photo" src="images/ex.png" alt="..." />
+              <img class="Photo" src="<?php echo \Ovs\Entities\Entite::getImage($boucher->logo); ?>" alt="..." />
             </div>
             <div class="col-xs-12">
-                <h1>Boucherie du centre</h1>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
-                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur 
-                aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+                <h1><?php echo $boucher->name; ?></h1>
+                <p style="text-align: center">
+                    <?php
+                        echo \Ovs\Entities\Entite::getAdresse($boucher);
+                    ?>
+                </p>
             </div>
         </div>
         <div class="row IconAction">
@@ -30,6 +39,37 @@
             </ul>
           </div>
         </div>
+          <div class="row">
+              <div class="col-xs-4 col-xs-offset-4">
+                      <?php foreach($boucher->certifications as $certif): ?>
+                          <?php
+
+                            if(!$certif->valide){continue;}
+
+                            $certification=\Ovs\Entities\Certifications::find($certif->certificationId);
+                            $respCertif=\Ovs\Entities\Entite::find($certification->entiteId);
+                          ?>
+                          <div class="col-xs-4">
+                              <div class="thumbnail">
+                                <a href="label.php?id=<?php echo $respCertif->id; ?>" data-color="#381b26">
+                                    <?php if($respCertif && $respCertif->logo): ?>
+                                        <img src="<?php echo \Ovs\Entities\Entite::getImage($respCertif->logo);?>" class="img-circle">
+                                    <?php  else:  ?>
+                                        <img src="images/nophoto.png" class="img-circle">
+                                    <?php endif; ?>
+                                </a>
+                              </div>
+                              <div class="caption">
+                                <p>
+                                    <a href="label.php?id=<?php echo $certification->id; ?>" data-color="#381b26">
+                                        <?php echo $certification->nom; ?>
+                                    </a>
+                                </p>
+                              </div>
+                          </div>
+                      <?php endforeach; ?>
+              </div>
+          </div>
         <div class="row" style="padding:20px 0">
           <div class="col-xs-6 col-xs-offset-3">
             <form action="commande.php">
