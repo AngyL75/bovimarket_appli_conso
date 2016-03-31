@@ -40,7 +40,7 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
           </div>
         </div>
           <div class="row">
-              <div class="col-xs-10 col-xs-offset-1">
+              <div class="col-xs-10 col-xs-offset-1" id="Description">
                   <?php echo $boucher->description; ?>
               </div>
           </div>

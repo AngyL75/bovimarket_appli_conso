@@ -92,6 +92,9 @@ class Utils
 
     public static function resetSession()
     {
+        if(!isset($_SESSION)){
+            session_start();
+        }
         session_destroy();
     }
 

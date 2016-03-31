@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12" id="Description">
             <p><?php echo $resto->description; ?></p>
         </div>
       </div>

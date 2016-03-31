@@ -24,7 +24,7 @@
             </div>
             <div class="col-xs-12">
                 <h1><?php echo $label->name; ?></h1>
-                <p><?php echo $label->description; ?></p>
+                <p id="Description"><?php echo $label->description; ?></p>
             </div>
         </div>
         <div class="row">

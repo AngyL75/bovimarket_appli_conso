@@ -18,8 +18,11 @@
   <div id="close"><a href="carte2.php">x</a></div>
   <div class="container">
     <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <img class="Photo" src="<?php echo \Ovs\Utils\Utils::getImage($cuisson->cuisson_photo); ?>" alt="..." />
+      </div>
       <div class="col-xs-12">
-        <h1 class="IconBouillir"><?php echo $cuisson->nom;?></h1>
+        <h1><?php echo $cuisson->nom;?></h1>
         <p><?php echo nl2br($cuisson->description); ?></p>
         <h3>
           Quelques conseils et astuces : 

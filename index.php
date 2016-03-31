@@ -1,8 +1,8 @@
 <?php
     require_once __DIR__."/classes/Ovs/custom_loader.php";
     if(!isset($entites)) {
-        $entites = \Ovs\Entities\Entite::findAll();
         \Ovs\Utils\Utils::resetSession();
+        $entites = \Ovs\Entities\Entite::findAll();
     }
 ?>
 <!DOCTYPE html>

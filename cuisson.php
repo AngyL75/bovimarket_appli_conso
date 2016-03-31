@@ -5,7 +5,7 @@ require_once __DIR__ . "/classes/Ovs/custom_loader.php";
 $morceauId = \Ovs\Utils\Utils::getIdMorceaux(false);
 
 $morceau = \Ovs\Entities\Morceaux::find($morceauId);
-$cuissons = \Ovs\Entities\Cuisson::findAllFor(array("morceaux" => $morceauId));
+$cuissons = \Ovs\Entities\Cuisson::findAllForMorceau($morceau->type_viande,$morceauId);
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $cuissons = \Ovs\Entities\Cuisson::findAllFor(array("morceaux" => $morceauId));
                 foreach ($cuissons as $cuisson) {
                     ?>
                     <div class="col-xs-6">
-                        <a class="IconBouillir text-center" href="detail_cuisson.php?idCuisson=<?php echo $cuisson->id;?>">
+                        <a style="background-image: url('<?php echo \Ovs\Utils\Utils::getImage($cuisson->cuisson_logo); ?>')" class="IconBouillir text-center" href="detail_cuisson.php?idCuisson=<?php echo $cuisson->id;?>">
                             <?php echo $cuisson->nom; ?>
                         </a>
                     </div>

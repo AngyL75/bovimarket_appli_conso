@@ -54,14 +54,11 @@
     "description":"cuire la viande au four avec peu ou pas de matière grasse.",
     "conseils_astuces":"Ce mode de cuisson, très simple, nécessite néanmoins un peu de vigilance et une bonne maîtrise des températures du four. Les viandes blanches comme le porcou le veau cuisent à four moyen/chaud et les viandes rouges à four chaud/très chaud.\n\nFour très chaud :Th. 9 (250° à 280° C) à Th. 10 (+ de 280° C)\nFour chaud :Th. 7 (190° à 220 ° C) à Th. 8 (220° à 250° C)\nFour moyen :Th. 5 (130° à 160° C) ou Th.6 (160° à 190° C)\nFour doux :Th. 3 (80° à 100° C) ou Th. 4 (100° à 130° C)\nFour tiède :Th. 1 (40° à 60° C) ou Th. 2 (60° à80° C).\n\n<b>Quelques conseils et astuces :<\b>\n- Choisir un plat aux dimensions du rôti, ni trop petit, ni trop grand.\n- Préchauffer le four avec le plat de cuisson légèrement huilé puis saisirle rôti quelques minutes à four très chaud et poursuivre la cuisson à fourmoyen/chaud selon l’espèce.\n- Une autre solution consiste à « marquer » (saisir, colorer) le rôti (ou la grossepièce de viande) de tous les côtés dans une poêle bien chaude puis de poursuivre sacuisson au four.\n\n<b>Laisser reposer la viande :<\b>\nPour préserver la tendreté et la saveur d’une viande à griller, poêler ou rôtir,penser à R comme repos. Repos avant de cuire et repos après cuisson. Il faut penserà sortir la viande du réfrigérateur un peu avant de la cuire : remise à températureambiante, elle n’est pas agressée par un trop fort écart de température au moment dela cuisson. Une fois cuite, il est aussi essentiel de la laisser reposer : la chaleurse répartit uniformément, ce qui permet à la viande de se détendre. Pour les petitespièces (steaks, pavés, côtes ou escalopes), le temps de repos doit être égal au tempsde cuisson et pour les grosses pièces (rôti, carré ou gigot), idéalement, à la moitiésous une feuille de papier aluminium.",
     "morceaux":[
-      11,
-      12,
-      21,
-      22,
-      5,
-      32,
-      41,
-      42
+      1,
+      2,
+      6,
+      3,
+      5
     ],
     "recettes":[
       11,
@@ -83,14 +80,12 @@
     "description":"faire revenir la viande puis la cuire à couvert dans un peu de liquide. Elle cuit très doucement et très longtemps pour exprimer toute sa saveur et son fondant.",
     "conseils_astuces":"Cette cuisson rappelle la cuisine de nos grands-mères, pleine d’arômes chaleureux : de savoureux plats conviviaux qui mijotent longuement à feu doux et à couvert. Ilspeuvent être préparés la veille, sans surveillance particulière, et réchauffés lelendemain : ils n’en seront que meilleurs.\n\n<b>Quelques conseils et astuces :<\b>\n- Dans une cocotte légèrement huilée, faire revenir la viande sur toutes ses facesafin de lui conserver tous ses sucs.\n- Quand elle est uniformément colorée, ajouter une garniture aromatique (oignons,thym, laurier…), assaisonner et mouiller à hauteur avec de l’eau, du vin, du bouillonou un mélange des deux. La viande doit être à peine couverte de liquide. Porter doucementà ébullition.\n- Ajouter ensuite les légumes (sauf les pommes de terre qu’il est préférable de cuire à part),couvrir et laisser mijoter à feu doux jusqu’à ce que la viande soit bien tendre.\n- La cocotte peut également être mise à four tiède (Th. 5 - 150 °C).\n- Remuer de temps en temps, ajouter un peu de liquide si besoin et n’assaisonner qu’en finde cuisson.\n- Compter entre 1h et 3 h de cuisson, selon l’espèce, pour une viande fondante à souhait.\n- Pour diviser le temps de cuisson par 2, utiliser un autocuiseur.\n- Penser à cuisiner malin en préparant en grande quantité pour plusieurs repas : réchauffé lelendemain avec un autre accompagnement, restes accommodés selon de nombreuses recettes maisaussi congélation pour un autre jour sans cuisine.",
     "morceaux":[
-      11,
-      12,
-      21,
-      22,
-      31,
-      32,
-      41,
-      42
+      2,
+      5,
+      8,
+      9,
+      10,
+      11
     ],
     "recettes":[
       11,
