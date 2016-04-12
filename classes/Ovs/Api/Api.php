@@ -2,6 +2,13 @@
 
 namespace Ovs\Api;
 
+define("API_URL","http://51.254.44.168:8080/bovimarket/");
+define("TOKEN",'Authorization: Bearer 52a453ac-70e0-43ee-a59d-9af10eed4a9f');
+/**
+ * TOKEN POUR SHUTTLE
+define("TOKEN",'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
+ * /
+
 /**
  * Created by PhpStorm.
  * User: david
@@ -21,7 +28,7 @@ class Api
         if(isset($_SESSION["api_url"])){
             return $_SESSION["api_url"];
         }else {
-            return "http://51.254.44.168:8080/bovimarket/";
+            return API_URL;
         }
     }
 
@@ -34,7 +41,7 @@ class Api
 
 
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Authorization: Bearer 52a453ac-70e0-43ee-a59d-9af10eed4a9f'
+                TOKEN
             ));
 
             $result = curl_exec($curl);
