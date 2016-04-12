@@ -5,6 +5,14 @@ require_once __DIR__."/classes/Ovs/custom_loader.php";
 $idMorceaux=\Ovs\Utils\Utils::getIdMorceaux(1);
 $recettes=\Ovs\Entities\Recettes::findAllFor(array("morceaux"=>$idMorceaux));
 
+$classes=array(
+    0=>"neutre",
+    1=>"facile",
+    2=>"moyen",
+    3=>"difficile",
+    4=>"expert"
+);
+
 ?>
 
 
@@ -37,15 +45,10 @@ $recettes=\Ovs\Entities\Recettes::findAllFor(array("morceaux"=>$idMorceaux));
             <div class="col-xs-4 sablier">
               <?php echo $recette->temps_preparation; ?>
             </div>
-            <div class="col-xs-4 sablier">
+            <div class="col-xs-4 cuisson">
               <?php echo $recette->temps_cuisson; ?>
             </div>
-            <div class="col-xs-4 difficulte">
-              <?php for($i=0;$i<$recette->difficulte;$i++):?>
-                <span><img src="/images/IconeRecette.png" alt="" style="width: 40px"></span>
-              <?php endfor; ?>
-              <b style="font-size: 18px"><?php echo $recette->difficulte; ?></b>
-            </div>
+            <div class="col-xs-4 difficulte <?php echo $classes[$recette->difficulte]; ?>"></div>
           </div>
         </a>
       </div>

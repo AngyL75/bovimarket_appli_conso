@@ -7,7 +7,7 @@
 </head>
 <body class="page" id="holder">
 
-<div id="return"><a href="resultat.php"><</a></div>
+<div id="return"><a class="link" href="javascript:history.go(-1)" data-color="#ffffff"><</a></div>
   <div style="width: 100%; color:#fff">
     <div id="close"><a href="carte2.php">x</a></div>
     <div class="container">
@@ -21,11 +21,12 @@
         </div>
       </div>
       <div class="row IconAction">
-        <div class="col-xs-6 col-xs-offset-3">
+        <div class="col-xs-8 col-xs-offset-2">
           <ul class="row">
-            <li class="col-xs-4"><a class="IconItineraire" href="#"></a></li>
-            <li class="col-xs-4"><a class="IconAppeler" href="#"></a></li>
-            <li class="col-xs-4"><a class="IconFavoris" href="#"></a></li>
+            <li class="col-xs-3"><a class="IconItineraire" href="#"></a></li>
+            <li class="col-xs-3"><a class="IconAppeler" href="#"></a></li>
+            <li class="col-xs-3"><a class="IconFavoris" href="#"></a></li>
+            <li class="col-xs-3"><a class="IconReseau" href="reseau.php"></a></li>
           </ul>
         </div>
       </div>
@@ -69,12 +70,12 @@
         <div class="col-xs-10 col-xs-offset-1 Recommande">
           <div class="col-xs-10">
             <div class="row">
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
-              <div class="Tof"><a class="link" href="ami.php" data-color="#381b26"></a></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso1.png" /></a></div></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso2.png" /></a></div></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso3.png" /></a></div></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso4.png" /></a></div></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso5.png" /></a></div></div>
+              <div class="col-xs-2"><div class="Tof"><a class="link" href="ami.php" data-color="#381b26"><img src="images/perso6.png" /></a></div></div>
             </div>
           </div>
           <div class="col-xs-2"><div class="nombreplus">+ 23</div></div>

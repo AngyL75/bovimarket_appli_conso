@@ -30,6 +30,34 @@
         <?php echo nl2br($cuisson->conseils_astuces);?>
       </div>
     </div>
+    <div class="row" style="padding-top:50px;">
+      <div class="col-xs-12">
+        <h3>Les morceaux à bouillir</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row ListeStyle2">
+        <div class="col-xs-12">
+          <a class="link" href="qrcode.php" data-color="#ffffff">
+            <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
+            <div class="Description" style="padding:40px 20px">
+              <div class="Nom col-xs-12">Collier d'agneau</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="row ListeStyle2">
+        <div class="col-xs-12">
+          <a class="link" href="qrcode.php" data-color="#ffffff">
+            <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
+            <div class="Description" style="padding:40px 20px">
+              <div class="Nom col-xs-12">Collier d'agneau</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

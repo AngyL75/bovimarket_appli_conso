@@ -3,6 +3,15 @@
 
 $idRecette=\Ovs\Utils\Utils::getIdRecette(false);
 $recette=\Ovs\Entities\Recettes::find($idRecette);
+
+
+$classes=array(
+    0=>"neutre",
+    1=>"facile",
+    2=>"moyen",
+    3=>"difficile",
+    4=>"expert"
+);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,30 +39,10 @@ $recette=\Ovs\Entities\Recettes::find($idRecette);
                 <div class="col-xs-4 sablier">
                     <?php echo $recette->temps_preparation; ?>
                 </div>
-                <div class="col-xs-4 sablier">
+                <div class="col-xs-4 cuisson">
                     <?php echo $recette->temps_cuisson; ?>
                 </div>
-                <div class="col-xs-4 difficulte">
-                    <?php for($i=0;$i<$recette->difficulte;$i++):?>
-                        <span><img src="/images/IconeRecette.png" alt="" style="width: 40px"></span>
-                    <?php endfor; ?>
-                    <b style="font-size: 18px"><?php echo $recette->difficulte; ?></b>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-            <h3>Morceaux : </h3>
-            <ul>
-            <?php
-                foreach($recette->morceaux as $morceauId):
-                    $morceau=\Ovs\Entities\Morceaux::find($morceauId);
-                    ?>
-                    <li><a href='morceau.php?idMorceau=<?php echo $morceau->id; ?>'><?php echo $morceau->nom; ?></a></li>
-                <?php
-                endforeach;
-            ?>
-            </ul>
+                <div class="col-xs-4 difficulte <?php echo $classes[$recette->difficulte]; ?>"></div>
             </div>
         </div>
         <div class="row">
@@ -92,6 +81,47 @@ $recette=\Ovs\Entities\Recettes::find($idRecette);
                         <?php echo nl2br($recette->instructions_dressage); ?>
                     </p>
                     <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <button class="btn btn-vert" id="Video" type="submit" style="margin:40px 0 0px">Recette en vidéo</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="padding-top:50px;padding-bottom:20px;">
+            <div class="col-xs-12">
+                <h3>Les morceaux recommandés</h3>
+            </div>
+        </div>
+        <div class="row">
+                    <?php
+                    foreach($recette->morceaux as $morceauId):
+                        $morceau=\Ovs\Entities\Morceaux::find($morceauId);
+                        ?>
+                        <div class="row ListeStyle2">
+                            <div class="col-xs-12">
+                                <a class="link" href="morceau.php?idMorceau=<?php echo $morceau->id; ?>" data-color="#ffffff">
+                                    <div class="Tof2"><img src="<?php echo \Ovs\Utils\Utils::getImage($morceau->photo); ?>" alt="..." /></div>
+                                    <div class="Description" style="padding:40px 20px">
+                                        <div class="Nom col-xs-12"><?php echo $morceau->nom; ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <?php
+                    endforeach;
+                    ?>
+            <div class="row ListeStyle2">
+                <div class="col-xs-12">
+                    <a class="link" href="qrcode.php" data-color="#ffffff">
+                        <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
+                        <div class="Description" style="padding:40px 20px">
+                            <div class="Nom col-xs-12">Collier d'agneau</div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

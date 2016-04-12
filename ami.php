@@ -11,7 +11,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
-          <img class="Photo" src="images/nophoto.png" alt="..." />
+          <img class="Photo" src="images/perso1.png" alt="..." />
         </div>
         <div class="col-xs-12" style="text-align:center;">
             <h1>Jean Bidule</h1>

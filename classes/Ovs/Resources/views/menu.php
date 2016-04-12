@@ -1,5 +1,5 @@
 <div class="col-xs-10 col-xs-offset-1 ListeStyle2">
-    <div class="Tof2"><a href="#"><img src="images/nophoto.png" alt="..." /></a></div>
+    <div class="Tof2"><a href="#"><img src="images/salade-nicoise.jpg" alt="..." /></a></div>
     <div class="Description">
         <p class="Intitule">Entrée</p>
         <p class="Nom">Nom du plat</p>
@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="col-xs-10 col-xs-offset-1 ListeStyle2">
-    <div class="Tof2"><a class="link" href="/detail_recette.php?id=<?php echo $recette->id; ?>" data-color="#381b26"><img src="<?php echo \Ovs\Utils\Utils::getImage($recette->photo); ?>" alt="..." style="width: auto!important;"/></a></div>
+    <div class="Tof2"><a class="link" href="/detail_recette.php?idRecette=<?php echo $recette->id; ?>" data-color="#381b26"><img src="<?php echo \Ovs\Utils\Utils::getImage($recette->photo); ?>" alt="..." style="width: auto!important;"/></a></div>
     <div class="Description">
         <p class="Intitule">Plat</p>
         <p class="Nom"><?php echo $recette->titre; ?></p>

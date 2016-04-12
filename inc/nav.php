@@ -1,7 +1,7 @@
 <ul id="navs">
   <li class="nav1"><a href="#"></a></li>
   <li class="nav2"><a class="link" href="autour.php" data-color="#381b26"></a></li>
-  <li class="nav3"><a class="link" href="qrcode.php" data-color="#ffffff"></a></li>
+  <li class="nav3"><a class="link" href="flash.php" data-color="#ffffff"></a></li>
   <li class="nav4"><a class="link" href="rechercher-zones.php" data-color="#ffffff"></a></li>
 </ul>
 
@@ -26,7 +26,7 @@
   <ul> 
     <li><h2>Favoris</h2></li>
     <li>
-      <a class="link" href="boucher.php" data-color="#381b26">
+      <a class="link" href="boucher.php?id=5612cc931c394253439bc257" data-color="#381b26">
         <div class="Tof"><img src="images/ex.png" alt="..." /></div>
         <div class="Description">
           <p class="Nom" style="color:#fff !important;">Boucherie du centre</p>
@@ -35,7 +35,7 @@
       </a>
     </li>
     <li>
-      <a class="link" href="resto.php" data-color="#381b26">
+      <a class="link" href="resto.php?id=56a750a01efa456c7c7c5c2c" data-color="#381b26">
         <div class="Tof"><img src="images/resto.png" alt="..." /></div>
         <div class="Description">
           <p class="Nom" style="color:#fff !important;">Titre</p>
@@ -51,7 +51,7 @@
     <li><h2>Amis</h2></li>
     <li>
       <a class="link" href="ami.php" data-color="#381b26">
-        <div class="Tof"></div>
+        <div class="Tof"><img src="images/perso1.png" alt="..." /></div>
         <div class="Description">
           <p class="Nom" style="color:#fff !important;">Jean Bidule</p>
         </div>

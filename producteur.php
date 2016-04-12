@@ -39,7 +39,7 @@
     </div>
     <div class="row">
      <div class="col-xs-6 col-xs-offset-3" style="padding:20px 0">
-          <a href="boucher.php?id=<?php echo $eleveur->id; ?>" class="btn btn-vert" id="Rechercher" type="submit">Voir sa fiche</a>
+          <a href="boucher.php?id=<?php echo $eleveur->id; ?>" class="btn btn-vert" id="Rechercher" type="submit">Afficher</a>
       </div>
     </div>
   </div>

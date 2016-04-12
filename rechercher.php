@@ -62,12 +62,12 @@
                                 <var>Qualité</var>
                             </button>
                             <ul class="dropdown-menu">
-                                <li class="clearfix">Agneau de Lozère <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-                                <li class="clearfix">Boeuf Fin Gras de Mézenc <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-                                <li class="clearfix">Boeuf Salers LR <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-                                <li class="clearfix">Boeuf Bio de Haut-Marne <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-                                <li class="clearfix">Boeuf Blonde des Combrailles <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-                                <li class="clearfix">Porc de Haute-Loire  <a href="#" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Agneau de Lozère <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Boeuf Fin Gras de Mézenc <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Boeuf Salers LR <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Boeuf Bio de Haut-Marne <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Boeuf Blonde des Combrailles <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                                <li class="clearfix">Porc de Haute-Loire  <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
                             </ul>
                         </div>
                     </div>
