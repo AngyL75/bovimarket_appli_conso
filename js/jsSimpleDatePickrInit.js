@@ -17,8 +17,10 @@ function calInit(divId, btName, fieldId, classTable, classDay, classSel){
 	var h = "";
 	// si btName est dÃ©finit, un bouton est crÃ©er. En cliquant sur ce bouton le calendrier est affichÃ© / masquÃ©
 	// si btName n'est pas dÃ©finit, on attache la fonction calToogle au champ de texte qui contiendra la date
-	if(btName=="") dateEl.addEventListener('click', function(){	calToogleFromField(fieldId); }, false);
-	else h = '<input type="button" value="'+btName+'" onclick="calToogle('+jsSDPId+');" />';
+	if(btName=="")
+		dateEl.addEventListener('click', function(){	calToogleFromField(fieldId); }, false);
+	else
+		h = '<input type="button" value="'+btName+'" onclick="calToogle('+jsSDPId+');" />';
 	// crÃ©er un bloc div qui contient des boutons de navigation, le titre et le bloc dans lequel sera affichÃ© le calendrier
 	h += '<div id="calendarWrap'+jsSDPId+'" class="calendarWrap"><ul><li><input type="button" value="&lsaquo;" onclick="calMonthNav('+jsSDPId+', \'-1\');" /></li><li id="calendarTitle'+jsSDPId+'" class="calendarTitle"></li><li><input type="button" value="&rsaquo;" onclick="calMonthNav('+jsSDPId+', \'+1\');" /></li></ul><div id="calendar'+jsSDPId+'"></div></div><div class="spacer"></div>';
 	// ajoute le code HTML
@@ -94,8 +96,9 @@ function calClick(dateStr, id){
 	var dateArr = dateStr.split('/');
 	if(parseInt(dateArr[0], 10)<10) dateArr[0] = '0'+dateArr[0];
 	if(parseInt(dateArr[1], 10)<10) dateArr[1] = '0'+dateArr[1];
-	field = document.getElementById(jsSDPObj[id][1]);
+	var field = document.getElementById(jsSDPObj[id][1]);
 	field.value = dateArr[0]+'/'+dateArr[1]+'/'+dateArr[2];
+	updateButtonDate(dateArr);
 	document.getElementById('calendarWrap'+id).style.display = "none";
 }
 //
@@ -110,3 +113,24 @@ function calShowTitle(id){
 var jsSDPObj = Array();
 var jsSDPId = 0;
 var jsSDPMonthName = ['Jan', 'FÃ©v', 'Mar', 'Avr', 'Mai', 'Jui', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function fadeIn(elem){
+	var step = 0.01;
+	var opacity = elem.style.opacity;
+	if(opacity < 1){
+		elem.style.opacity=parseFloat(opacity)+step;
+		setTimeout(function(){fadeIn(elem)},5);
+	}
+}
+
+function updateButtonDate(dateArr){
+	var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+	var btn=document.querySelector("#calendarMain2>input");
+	if(btn == undefined) return 0;
+	btn.value = dateArr[0]+" "+months[dateArr[1]-1]+" "+dateArr[2];
+	var menuTable = document.querySelector("#menuTable");
+	menuTable.style.opacity = 0;
+	if(menuTable != undefined){
+		fadeIn(menuTable)
+	}
+}

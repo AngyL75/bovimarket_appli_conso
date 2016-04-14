@@ -39,8 +39,14 @@
         <div class="col-xs-12" id="Description">
             <p><?php echo $resto->description; ?></p>
         </div>
+      <?php if(isset($boucher->abonnement) && isset($boucher->abonnement->options) && isset($boucher->abonnement->options->venteDirecte)): ?>
+          <div class="col-xs-6 col-xs-offset-3">
+            <form action="commande.php">
+              <button class="btn btn-2 btn-blanc" id="Reserver" style="margin: 10px 0px;" type="submit">Vente à emporter</button>
+            </form>
+          </div>
+      <?php endif; ?>
       </div>
-
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
           <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10"></p>
@@ -48,7 +54,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" id="menuTable">
         <?php
         \Ovs\Entities\Menu::renderMenu();
         ?>
@@ -81,7 +87,7 @@
   <script src="js/jsSimpleDatePickrInit.js"></script>
   <script type="text/javascript">
     //<![CDATA[
-    calInit("calendarMain2", "Vendredi 8 mai 2018", "champ_date2", "jsCalendar", "day", "selectedDay");
+    calInit("calendarMain2", "8 mai 2018", "champ_date2", "jsCalendar", "day", "selectedDay");
     //]]>
   </script>
 </body>

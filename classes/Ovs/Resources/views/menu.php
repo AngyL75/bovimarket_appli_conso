@@ -2,8 +2,8 @@
     <div class="Tof2"><a href="#"><img src="images/salade-nicoise.jpg" alt="..." /></a></div>
     <div class="Description">
         <p class="Intitule">Entrée</p>
-        <p class="Nom">Nom du plat</p>
-        <p class="Fonction">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo</p>
+        <p class="Nom">Salade Niçoise</p>
+        <p class="Fonction">Spécialité culinaire célèbre de Nice aujourd'hui répandue dans le monde entier.</p>
     </div>
 </div>
 <div class="col-xs-10 col-xs-offset-1 ListeStyle2">
@@ -31,7 +31,7 @@
     <div class="Tof2"><a href="#"><img src="images/dessert.png" alt="..." /></a></div>
     <div class="Description">
         <p class="Intitule">Dessert</p>
-        <p class="Nom">Nom du plat</p>
-        <p class="Fonction">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo</p>
+        <p class="Nom">Panna Cotta</p>
+        <p class="Fonction">Recette de crème, de lait et de sucre, nappée de coulis de framboise</p>
     </div>
 </div>

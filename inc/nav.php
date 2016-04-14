@@ -1,3 +1,13 @@
+<?php require_once __DIR__."/../classes/Ovs/custom_loader.php"; ?>
+
+<?php
+$idBoucher="5612cc931c394253439bc257";
+$boucher=\Ovs\Entities\Entite::find($idBoucher);
+
+$idResto = "56a750a01efa456c7c7c5c2c";
+$resto = \Ovs\Entities\Entite::find($idResto);
+
+?>
 <ul id="navs">
   <li class="nav1"><a href="#"></a></li>
   <li class="nav2"><a class="link" href="autour.php" data-color="#381b26"></a></li>
@@ -7,7 +17,7 @@
 
 <nav id="menu">
   <ul> 
-    <li><h2>Menu</h2></li>
+    <li><h2>Navigation</h2></li>
     <li>
       <a class="link" href="carte.php" data-color="#fff">
         <span class="Chiffre">01</span>
@@ -26,19 +36,19 @@
   <ul> 
     <li><h2>Favoris</h2></li>
     <li>
-      <a class="link" href="boucher.php?id=5612cc931c394253439bc257" data-color="#381b26">
-        <div class="Tof"><img src="images/ex.png" alt="..." /></div>
+      <a class="link" href="boucher.php?id=<?php echo $idBoucher; ?>" data-color="#381b26">
+        <div class="Tof"><img src="<?php echo \Ovs\Entities\Entite::getImage($boucher->logo); ?>" alt="..." /></div>
         <div class="Description">
-          <p class="Nom" style="color:#fff !important;">Boucherie du centre</p>
+          <p class="Nom" style="color:#fff !important;"><?php echo $boucher->name; ?></p>
           <p class="Fonction">Boucher</p>
         </div>
       </a>
     </li>
     <li>
-      <a class="link" href="resto.php?id=56a750a01efa456c7c7c5c2c" data-color="#381b26">
-        <div class="Tof"><img src="images/resto.png" alt="..." /></div>
+      <a class="link" href="resto.php?id=<?php echo $idResto; ?>" data-color="#381b26">
+        <div class="Tof"><img src="<?php echo \Ovs\Entities\Entite::getImage($resto->logo); ?>" alt="..." /></div>
         <div class="Description">
-          <p class="Nom" style="color:#fff !important;">Titre</p>
+          <p class="Nom" style="color:#fff !important;"><?php echo $resto->name; ?></p>
           <p class="Fonction">Restaurant</p>
         </div>
       </a>

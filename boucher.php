@@ -3,6 +3,12 @@
 <?php
 $idBoucher=\Ovs\Utils\Utils::getIdEntite();
 $boucher=\Ovs\Entities\Entite::find($idBoucher);
+
+$boutonVD = array(
+    "ELEVEUR"=>"Vente directe",
+    "BOUCHER"=>"Voir les produits"
+);
+
 \Ovs\Utils\Utils::saveEntite($idBoucher);
 ?>
 
@@ -73,7 +79,7 @@ $boucher=\Ovs\Entities\Entite::find($idBoucher);
         <div class="row" style="padding:20px 0">
           <div class="col-xs-6 col-xs-offset-3">
             <form action="commande.php">
-              <button class="btn btn-vert" id="Reserver" style="margin: 10px 0px;" type="submit">Liste des produits</button>
+              <button class="btn btn-vert" id="Reserver" style="margin: 10px 0px;" type="submit"><?php echo isset($boutonVD[$boucher->activite])?$boutonVD[$boucher->activite]:"Vente directe";?></button>
             </form>
           </div>
         </div>
