@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__."/classes/Ovs/custom_loader.php";
-$entites=\Ovs\Entities\Entite::findAllFor(array("activite"=>"RESTAURANT"));
 include ("index.php");exit();
 ?>
 

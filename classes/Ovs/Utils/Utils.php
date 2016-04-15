@@ -102,6 +102,9 @@ class Utils
     {
         switch($object->activite){
             case "RESTAURANT":
+                return "/restaurant.php?id=".$object->id;
+                break;
+            case "RESTAURATION_COLLECTIVE":
                 return "/resto.php?id=".$object->id;
                 break;
             default:
@@ -154,6 +157,9 @@ MARKER;
                 break;
             case "RESTAURANT":
                 return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/restaurant.png");
+                break;
+            case "RESTAURATION_COLLECTIVE":
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/resto-co.png");
                 break;
             default:
                 return "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";

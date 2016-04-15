@@ -75,7 +75,7 @@ $boutonVD = array(
               </div>
           </div>
 
-          <?php if(isset($boucher->abonnement) && isset($boucher->abonnement->options) && isset($boucher->abonnement->options->venteDirecte)): ?>
+          <?php if($boucher->activite == "BOUCHER" || (isset($boucher->abonnement) && isset($boucher->abonnement->options) && isset($boucher->abonnement->options->venteDirecte))): ?>
         <div class="row" style="padding:20px 0">
           <div class="col-xs-6 col-xs-offset-3">
             <form action="commande.php">

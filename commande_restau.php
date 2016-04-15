@@ -1,8 +1,9 @@
 <?php
   require_once __DIR__."/classes/Ovs/custom_loader.php";
 
-  use Ovs\Entities\Morceaux;
+  use Ovs\Entities\Recettes;
   $lengthDesc = 200;
+
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
    
   
 
-    <div id="return"><a href="boucher.php"><</a></div>
+    <div id="return"><a href="restaurant.php"><</a></div>
     <div id="close"><a href="carte2.php">x</a></div>
     <div class="container">
       <div class="row">
@@ -26,7 +27,7 @@
       </div>
 
       <?php
-      $morceau = Morceaux::find(Morceaux::getIdForDecoupe("collier"));
+      $morceau = Recettes::findOneRandom();
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -36,8 +37,8 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Collier d'agneau</p>
-                <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
+                <p class="Nom"><?php echo $morceau->titre; ?></p>
+                <p class"Desc"><?php echo substr($morceau->instructions_preparation,0,$lengthDesc); ?></p>
               </div>
             </div>
             <div class="col-xs-2">
@@ -51,7 +52,7 @@
       </div>
 
       <?php
-      $morceau = Morceaux::find(Morceaux::getIdForDecoupe("cotes-decouvertes"));
+      $morceau = Recettes::findOneRandom();
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -61,8 +62,8 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Côtelettes d'agneau</p>
-                <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
+                <p class="Nom"><?php echo $morceau->titre; ?></p>
+                <p class"Desc"><?php echo substr($morceau->instructions_preparation,0,$lengthDesc); ?></p>
               </div>
             </div>
             <div class="col-xs-2">
@@ -76,7 +77,7 @@
       </div>
 
       <?php
-      $morceau = Morceaux::find(Morceaux::getIdForDecoupe("poitrine"));
+      $morceau = Recettes::findOneRandom();
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -86,8 +87,8 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Poitrine d'agneau</p>
-                <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
+                <p class="Nom"><?php echo $morceau->titre; ?></p>
+                <p class"Desc"><?php echo substr($morceau->instructions_preparation,0,$lengthDesc); ?></p>
               </div>
             </div>
             <div class="col-xs-2 text-right">
@@ -101,7 +102,7 @@
       </div>
 
       <?php
-      $morceau = Morceaux::find(Morceaux::getIdForDecoupe("gigot-raccourci"));
+      $morceau = Recettes::findOneRandom();
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -111,8 +112,8 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Gigot d'agneau</p>
-                <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
+                <p class="Nom"><?php echo $morceau->titre; ?></p>
+                <p class"Desc"><?php echo substr($morceau->instructions_preparation,0,$lengthDesc); ?></p>
               </div>
             </div>
             <div class="col-xs-2">
@@ -126,7 +127,7 @@
       </div>
 
       <?php
-      $morceau = Morceaux::find(Morceaux::getIdForDecoupe("epaule"));
+      $morceau = Recettes::findOneRandom();
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -136,8 +137,8 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Epaule d'agneau</p>
-                <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
+                <p class="Nom"><?php echo $morceau->titre; ?></p>
+                <p class"Desc"><?php echo substr($morceau->instructions_preparation,0,$lengthDesc); ?></p>
               </div>
             </div>
             <div class="col-xs-2">

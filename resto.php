@@ -39,13 +39,6 @@
         <div class="col-xs-12" id="Description">
             <p><?php echo $resto->description; ?></p>
         </div>
-      <?php if(isset($boucher->abonnement) && isset($boucher->abonnement->options) && isset($boucher->abonnement->options->venteDirecte)): ?>
-          <div class="col-xs-6 col-xs-offset-3">
-            <form action="commande.php">
-              <button class="btn btn-2 btn-blanc" id="Reserver" style="margin: 10px 0px;" type="submit">Vente à emporter</button>
-            </form>
-          </div>
-      <?php endif; ?>
       </div>
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
