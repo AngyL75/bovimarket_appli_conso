@@ -143,6 +143,13 @@ MARKER;
         return $marker;
     }
 
+    public static function saveTypeViande()
+    {
+        if(isset($_GET["typeViande"])){
+            $_SESSION["typeViande"]=$_GET["typeViande"];
+        }
+    }
+
     public static function getIconForActivite($type)
     {
         switch ($type) {

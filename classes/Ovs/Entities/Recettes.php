@@ -13,7 +13,23 @@ class Recettes extends Searchable
 {
     public static function getUrl()
     {
-        return "json://v2/recettes_agneau.json";
+
+        if(isset($_SESSION["typeViande"])){
+            $typeViande = $_SESSION["typeViande"];
+            switch ($typeViande){
+                case "agneau":
+                    return "json://agneau/recettes_agneau.json";
+                    break;
+                case "boeuf":
+                    return "json://boeuf/recettes.json";
+                    break;
+                default:
+                    return "json://agneau/recettes_agneau.json";
+                    break;
+            }
+        }else{
+            return "json://agneau/recettes_agneau.json";
+        }
     }
 
 }

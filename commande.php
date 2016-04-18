@@ -27,6 +27,7 @@
 
       <?php
       $morceau = Morceaux::find(Morceaux::getIdForDecoupe("collier"));
+      if($morceau):
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -36,7 +37,7 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Collier d'agneau</p>
+                <p class="Nom"><?php echo $morceau->nom; ?></p>
                 <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
               </div>
             </div>
@@ -51,7 +52,9 @@
       </div>
 
       <?php
+      endif;
       $morceau = Morceaux::find(Morceaux::getIdForDecoupe("cotes-decouvertes"));
+      if($morceau):
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -61,7 +64,7 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Côtelettes d'agneau</p>
+                <p class="Nom"><?php echo $morceau->nom; ?></p>
                 <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
               </div>
             </div>
@@ -76,7 +79,9 @@
       </div>
 
       <?php
+      endif;
       $morceau = Morceaux::find(Morceaux::getIdForDecoupe("poitrine"));
+      if($morceau):
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -86,7 +91,7 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Poitrine d'agneau</p>
+                <p class="Nom"><?php echo $morceau->nom; ?></p>
                 <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
               </div>
             </div>
@@ -101,7 +106,9 @@
       </div>
 
       <?php
+      endif;
       $morceau = Morceaux::find(Morceaux::getIdForDecoupe("gigot-raccourci"));
+      if($morceau):
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -111,7 +118,7 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Gigot d'agneau</p>
+                <p class="Nom"><?php echo $morceau->nom; ?></p>
                 <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
               </div>
             </div>
@@ -126,7 +133,9 @@
       </div>
 
       <?php
+      endif;
       $morceau = Morceaux::find(Morceaux::getIdForDecoupe("epaule"));
+      if($morceau):
       ?>
       <div class="row ListeStyle2">
         <div class="col-xs-12">
@@ -136,7 +145,7 @@
             </div>
             <div class="col-xs-6">
               <div class="Description" style="width:auto;">
-                <p class="Nom">Epaule d'agneau</p>
+                <p class="Nom"><?php echo $morceau->nom; ?></p>
                 <p class"Desc"><?php echo substr($morceau->description,0,$lengthDesc); ?></p>
               </div>
             </div>
@@ -149,6 +158,7 @@
           </div>
         </div>
       </div>
+      <?php endif; ?>
 
       <div class="row">
       <div class="col-xs-6 col-xs-offset-3">

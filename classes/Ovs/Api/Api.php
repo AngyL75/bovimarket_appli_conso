@@ -2,15 +2,14 @@
 
 namespace Ovs\Api;
 
-/**
+/** */
 define("API_URL","http://51.254.44.168:8080/bovimarket/");
 define("TOKEN",'Authorization: Bearer 52a453ac-70e0-43ee-a59d-9af10eed4a9f');
- */
 /**
  * Config POUR SHUTTLE
- */
 define("API_URL","http://172.22.33.2:8080/bovimarket/");
 define("TOKEN",'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
+ */
 
 /**
  * Created by PhpStorm.

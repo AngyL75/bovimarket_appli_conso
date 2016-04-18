@@ -15,7 +15,23 @@ class Cuisson extends Searchable
 {
     public static function getUrl()
     {
-        return "json://v2/cuissons.json";
+
+        if(isset($_SESSION["typeViande"])){
+            $typeViande = $_SESSION["typeViande"];
+            switch ($typeViande){
+                case "agneau":
+                    return "json://agneau/cuissons.json";
+                    break;
+                case "boeuf":
+                    return "json://boeuf/cuissons.json";
+                    break;
+                default:
+                    return "json://agneau/cuissons.json";
+                    break;
+            }
+        }else{
+            return "json://agneau/cuissons.json";
+        }
     }
 
     public static function findAllForMorceau($type,$id)

@@ -2,6 +2,8 @@
 
 require_once __DIR__."/classes/Ovs/custom_loader.php";
 
+\Ovs\Utils\Utils::saveTypeViande();
+
 $morceauId=\Ovs\Utils\Utils::getIdMorceaux(false);
 if($morceauId) {
     $morceau = \Ovs\Entities\Morceaux::find($morceauId);

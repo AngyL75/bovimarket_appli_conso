@@ -13,7 +13,22 @@ class Morceaux extends Searchable
 {
     public static function getUrl()
     {
-        return "json://v2/morceaux_agneau.json";
+        if(isset($_SESSION["typeViande"])){
+            $typeViande = $_SESSION["typeViande"];
+            switch ($typeViande){
+                case "agneau":
+                    return "json://agneau/morceaux_agneau.json";
+                    break;
+                case "boeuf":
+                    return "json://boeuf/morceaux.json";
+                    break;
+                default:
+                    return "json://agneau/morceaux_agneau.json";
+                    break;
+            }
+        }else{
+            return "json://agneau/morceaux_agneau.json";
+        }
     }
 
     public static function getImageDecoupe($morceau)
