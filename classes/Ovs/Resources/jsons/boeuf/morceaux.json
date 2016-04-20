@@ -120,8 +120,8 @@
   "cuissons": [],
   "recettes": []
 }, {
-  "id": 18,
-  "nom_id": [18],
+  "id": 17,
+  "nom_id": [17],
   "nom": "Plat de tranche / Rond de tranche / Mouvant de boeuf",
   "type_viande": "boeuf",
   "identifiant_map": "map_boeuf_plat_de_tranche",
