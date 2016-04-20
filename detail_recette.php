@@ -100,6 +100,7 @@ $classes=array(
                     <?php
                     foreach($recette->morceaux as $morceauId):
                         $morceau=\Ovs\Entities\Morceaux::find($morceauId);
+                        if(!is_object($morceau)) continue;
                         ?>
                         <div class="row ListeStyle2">
                             <div class="col-xs-12">
@@ -114,16 +115,6 @@ $classes=array(
                         <?php
                     endforeach;
                     ?>
-            <div class="row ListeStyle2">
-                <div class="col-xs-12">
-                    <a class="link" href="qrcode.php" data-color="#ffffff">
-                        <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
-                        <div class="Description" style="padding:40px 20px">
-                            <div class="Nom col-xs-12">Collier d'agneau</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 

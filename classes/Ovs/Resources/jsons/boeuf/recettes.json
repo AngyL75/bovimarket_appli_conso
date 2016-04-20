@@ -70,7 +70,7 @@
     "cuisson"           : 0  },
   {    "id"                : 4,
     "type_viande"       : "boeuf",
-    "titre"             : "Côtes d’agneau façon caillettes",
+    "titre"             : "Côtes de boeuf façon caillettes",
     "photo"             : "recette_4_agneau_cotes_agneau_facon_caillettes_aux_blettes.jpg",
     "temps_preparation" : "30 minutes",
     "temps_cuisson"     : "35 minutes",

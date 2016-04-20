@@ -23,7 +23,7 @@ class Cuisson extends Searchable
                     return "json://agneau/cuissons.json";
                     break;
                 case "boeuf":
-                    return "json://boeuf/cuissons.json";
+                    return "json://agneau/cuissons.json";
                     break;
                 default:
                     return "json://agneau/cuissons.json";

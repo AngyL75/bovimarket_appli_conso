@@ -32,7 +32,7 @@
     </div>
     <div class="row" style="padding-top:50px;">
       <div class="col-xs-12">
-        <h3>Les morceaux à bouillir</h3>
+        <h3>Les morceaux à <?php echo $cuisson->nom; ?></h3>
       </div>
     </div>
     <div class="row">
