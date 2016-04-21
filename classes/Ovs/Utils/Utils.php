@@ -132,13 +132,15 @@ class Utils
 
         $url = static::getUrlDetailForObject($object);
         $icon = static::getIconForActivite($object->activite);
+        $name=$object->name;
+        $name=addcslashes($name,"'");
 
         $marker = <<<MARKER
 var marker$object->id = new google.maps.Marker({
 position: new google.maps.LatLng($latLng[0],$latLng[1]),
 map: map,
 url: "$url",
-title: '$object->name',
+title: '$name',
 icon: "$icon"
 });
 
