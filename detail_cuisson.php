@@ -35,29 +35,31 @@
         <h3>Les morceaux à <?php echo $cuisson->nom; ?></h3>
       </div>
     </div>
+
+    <?php $typeViande = \Ovs\Utils\Utils::getTypeViande(); ?>
+    <?php if(isset($cuisson->morceaux->$typeViande)){
+          $morceaux = $cuisson->morceaux->$typeViande;
+      }
+      ?>
+    <?php foreach($morceaux as $morceauId): ?>
+
+    <?php
+      $morceau = \Ovs\Entities\Morceaux::find($morceauId);
+      if(!isset($morceau)) continue;
+    ?>
     <div class="row">
       <div class="row ListeStyle2">
         <div class="col-xs-12">
-          <a class="link" href="qrcode.php" data-color="#ffffff">
-            <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
+          <a class="link" href="morceau.php?idMorceau=<?php echo $morceau->id; ?>" data-color="#ffffff">
+            <div class="Tof2"><img src="<?php echo \Ovs\Utils\Utils::getImage($morceau->photo) ?>" alt="..." /></div>
             <div class="Description" style="padding:40px 20px">
-              <div class="Nom col-xs-12">Collier d'agneau</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="row ListeStyle2">
-        <div class="col-xs-12">
-          <a class="link" href="qrcode.php" data-color="#ffffff">
-            <div class="Tof2"><img src="images/collier.png" alt="..." /></div>
-            <div class="Description" style="padding:40px 20px">
-              <div class="Nom col-xs-12">Collier d'agneau</div>
+              <div class="Nom col-xs-12"><?php echo $morceau->nom; ?></div>
             </div>
           </a>
         </div>
       </div>
     </div>
+      <?php endforeach; ?>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

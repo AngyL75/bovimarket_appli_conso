@@ -18,7 +18,7 @@ class Recettes extends Searchable
             $typeViande = $_SESSION["typeViande"];
             switch ($typeViande){
                 case "agneau":
-                    return "json://agneau/recettes_agneau.json";
+                    return "json://agneau/listing_recettes_agneau.json";
                     break;
                 case "boeuf":
                     return "json://boeuf/recettes.json";

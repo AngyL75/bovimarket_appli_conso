@@ -25,10 +25,10 @@ class Morceaux extends Searchable
             $typeViande = $_SESSION["typeViande"];
             switch ($typeViande) {
                 case self::AGNEAU:
-                    return "json://agneau/morceaux_agneau.json";
+                    return "json://agneau/listing_morceaux_agneau.json";
                     break;
                 case self::BOEUF:
-                    return "json://boeuf/morceaux.json";
+                    return "json://boeuf/listing_morceaux_boeufs.json";
                     break;
                 default:
                     return "json://agneau/morceaux_agneau.json";

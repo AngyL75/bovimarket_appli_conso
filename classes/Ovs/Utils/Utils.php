@@ -26,6 +26,15 @@ class Utils
         return $idMorceaux;
     }
 
+    public static function getTypeViande()
+    {
+        if(isset($_SESSION["typeViande"])){
+            return $_SESSION["typeViande"];
+        }else{
+            return "agneau";
+        }
+    }
+
     public static function getIdRecette($default = 1)
     {
         if (isset($_GET["idRecette"])) {
