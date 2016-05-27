@@ -83,53 +83,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="clearfix hide" data-activites="Restaurants">
-                        <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <var>Allergènes</var>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>Sans gluten</li>
-                                <li>Sans crustacé</li>
-                                <li>Sans oeuf</li>
-                                <li>Sans poisson</li>
-                                <li>Sans arachide</li>
-                                <li>Sans soja</li>
-                                <li>Sans lait</li>
-                                <li>Sans trace de fruit à coques</li>
-                                <li>Sans céleri</li>
-                                <li>Sans moutarde</li>
-                                <li>Sans graines de sésame</li>
-                                <li>Sans anhydride sulfureux ou sulfites</li>
-                                <li>Sans lupin</li>
-                                <li>Sans mollusques</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix hide" data-activites="Restaurants">
-                        <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <var>Diététique</var>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>Hypocalorique</li>
-                                <li>Sans sel</li>
-                                <li>Végétarien</li>
-                                <li>Sans sucre ajouté</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="clearfix hide" data-activites="Bouchers Restaurants">
-                        <div class="btn-group dropdown">
-                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <var>Rituels</var>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>Halal</li>
-                                <li>Casher</li>
-                            </ul>
-                        </div>
-                    </div>
                     <button class="btn btn-vert" id="Rechercher" type="submit">Rechercher</button> 
                 </form>
             </div>
@@ -143,11 +96,6 @@
     <script>
         $("form.recherche .dropdown-menu li").click(function (e) {
             $(this).parent().parent().find("button var").text($(this).text());
-        });
-        $("#activitesSelect .dropdown-menu li").click(function (e) {
-            $("form.recherche > div[data-activites]").addClass("hide");
-            var activite = $(this).text();
-            $("form.recherche > div[data-activites~='"+activite+"']").toggleClass("hide");
         });
     </script>
 

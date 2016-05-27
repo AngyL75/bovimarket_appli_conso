@@ -14,11 +14,11 @@
             <div class="row">
                 <div class="row">
                     <div id="Adresse1" style="top:25%">
-                        <div class="pin restoco"><a class="link" href="resto.php" data-color="#381b26"></a></div>
+                        <div class="pin resto"><a class="link" href="restaurant.php" data-color="#381b26"></a></div>
                         <div class="pulse"></div>
                     </div>
                     <div id="Adresse4">
-                        <div class="pin restoco"><a class="link" href="resto.php" data-color="#381b26"></a></div>
+                        <div class="pin resto"><a class="link" href="restaurant2.php" data-color="#381b26"></a></div>
                         <div class="pulse"></div>
                     </div>
                     <div id="map" style="height:400px;"></div>
@@ -44,10 +44,10 @@
 
                 <div class="row ListeStyle2">
                     <div class="col-xs-12">
-                        <a class="link" href="restaurant.php" data-color="#ffffff">
-                            <div class="Tof2"><img src="images/resto2.png" alt="..." /></div>
+                        <a class="link" href="restaurant2.php" data-color="#ffffff">
+                            <div class="Tof2"><img src="images/resto.png" alt="..." /></div>
                             <div class="Description" style="padding:40px 20px">
-                                <div class="Nom col-xs-12">Restaurant Chez Camillou</div>
+                                <div class="Nom col-xs-12">Restaurant Chez Romeu</div>
                                 <div class="col-xs-12 notation notation4"></div>
                             </div>
                         </a>
