@@ -13,6 +13,7 @@ use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
+use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Twig\MapMarkerExtension;
 use Slim\Container;
 use Slim\Views\Twig;
@@ -59,5 +60,6 @@ class ServicesManager
         };
 
         $container["api"]=new Api();
+        $container["morceaux"]=new MorceauxFetcherService();
     }
 }

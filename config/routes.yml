@@ -1,3 +1,10 @@
-homepage:
+map.homepage:
     action: "Ovs\\Bovimarket\\Controller\\MapController:index"
     path: "/"
+flash.qrcode:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:qrCode"
+    path: "/qrcode"
+
+flash.categorie:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:categorieViande"
+    path: "/viande/{categ}"

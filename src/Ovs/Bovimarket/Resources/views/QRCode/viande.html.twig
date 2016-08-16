@@ -1,0 +1,7 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    {% for morceau in morceaux %}
+        {{ morceau.nom }}
+    {% endfor %}
+{% endblock %}

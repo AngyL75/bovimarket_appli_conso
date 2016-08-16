@@ -35,6 +35,6 @@ class BaseController
 
     public function get($key)
     {
-        return $this->container->get("key");
+        return $this->container->get($key);
     }
 }

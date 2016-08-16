@@ -1,0 +1,38 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    {% if live %}
+        <div class="qrCodeReader" style="height: 400px">
+        </div>
+    {% else %}
+        <div class="row">
+            {% for categ,photo in paths %}
+                <div class="col-xs-6">
+                    <a href="{{ path_for("flash.categorie",{"categ":categ}) }}"><img class="Photo" src="{{ photo }}" alt="..." /></a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/web/js/jsqrcode-combined.min.js"></script>
+    <script src="/web/js/html5-qrcode.min.js"></script>
+    <script type="text/javascript">
+        $('.qrCodeReader').html5_qrcode(
+                function (data) {
+                    if(data.slice(0,4) !== "http"){
+                        data="http://"+data;
+                    }
+                    document.location.href=data;
+                },
+                function (error) {
+                    console.log(error)
+                }, function (videoError) {
+                    alert("Erreur Video");
+                }
+        );
+    </script>
+{% endblock %}
+

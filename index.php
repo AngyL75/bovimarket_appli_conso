@@ -13,13 +13,9 @@ use Slim\Container;
 use Ovs\SlimUtils\Configuration;
 
 require "vendor/autoload.php";
-require "config/registerServices.php";
-
-
 
 $config=new Configuration();
 $configArray=$config->getConfig();
-
 $container = new Container($configArray);
 $container["configService"]=$config;
 ServicesManager::registerServices($container);

@@ -59,26 +59,7 @@ class Api
             curl_close($curl);
             return $result;
         }elseif(strpos($url,"json://")!==false){
-            return self::getLocal($url);
-        }
-        return json_encode(array());
-    }
-
-    private static function getJsonDir()
-    {
-        return __DIR__."/../Resources/jsons/";
-    }
-
-    protected static function getLocal($url)
-    {
-        $jsonDir=self::getJsonDir();
-        $file=str_replace("json://","",$url);
-        if(substr($file,-5)!=".json"){
-            $file.=".json";
-        }
-        $file=$jsonDir.$file;
-        if(file_exists($file)){
-            return file_get_contents($file);
+            return JSONFetcher::get($url);
         }
         return json_encode(array());
     }

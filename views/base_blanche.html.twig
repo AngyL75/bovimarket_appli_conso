@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block bodyOpenTag %}
+<body class="pageblanche" id="holder" style="background:#dddddd;">
+{% endblock %}
+{% block bodyContent %}
+<div id="close"><a href="{{ path_for("map.homepage") }}">x</a></div>
+<div class="container">
+    <div class="row">
+        {% block page_content %}
+
+        {% endblock %}
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/web/js/main.js"></script>
+{% endblock %}
+</body>
+{% endblock %}
+
+
