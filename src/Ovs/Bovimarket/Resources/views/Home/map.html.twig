@@ -1,0 +1,7 @@
+{% extends "base.html.twig" %}
+
+{% block afterMapInit %}
+        {% for entite in entites %}
+            {{ createMarker(entite) }}
+        {% endfor %}
+{% endblock %}

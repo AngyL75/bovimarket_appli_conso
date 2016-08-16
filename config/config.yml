@@ -1,0 +1,5 @@
+settings:
+    displayErrorDetails: true
+    logger:
+        name: "slim-app"
+        path: "app.log"

@@ -8,8 +8,13 @@
     ],
     "autoload": {
         "psr-0": {
-            "Ovs":"classes/"
+            "Ovs\\":"src/"
         }
     },
-    "require": {}
+    "require": {
+        "slim/slim": "3.5.*",
+        "symfony/yaml": "3.1.*",
+        "slim/twig-view": "2.1.*",
+        "monolog/monolog": "1.9.*"
+    }
 }
