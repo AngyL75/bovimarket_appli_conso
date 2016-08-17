@@ -28,9 +28,9 @@ abstract class Searchable
 
     public static function findAll()
     {
-        $result=Api::get(static::getUrl());
+        /*$result=Api::get(static::getUrl());
         $objects=json_decode($result);
-        return $objects;
+        return $objects;*/
     }
 
     public static function findOneRandom()

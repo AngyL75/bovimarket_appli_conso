@@ -18,7 +18,7 @@ class MapController extends BaseController
 {
     public function indexAction(Request $request,Response $response,$args)
     {
-        $entites = Entite::findAll();
+        $entites = $this->get("entites")->findAll();
         return $this->render($response,"Home/map.html.twig",array("entites"=>$entites));
     }
 }

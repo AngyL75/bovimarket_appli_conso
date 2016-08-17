@@ -2,6 +2,7 @@
 
 namespace Ovs\Bovimarket\Entities;
 
+use JMS\Serializer\Annotation as Serializer;
 use Ovs\Bovimarket\Entities\Interfaces\Searchable;
 use Ovs\Bovimarket\Utils\Utils;
 
@@ -11,7 +12,7 @@ use Ovs\Bovimarket\Utils\Utils;
  * Date: 15/03/2016
  * Time: 09:38
  */
-class Morceaux extends Searchable
+class Morceaux
 {
 
     const BOEUF = "boeuf";
@@ -19,37 +20,289 @@ class Morceaux extends Searchable
     const PORC = "porc";
     const VEAU = "veau";
 
-    public static function getUrl()
+
+    /**
+     * @Serializer\Type("integer")
+     */
+    protected $id;
+    /**
+     * @Serializer\Type("string")
+     */
+    protected $nom;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $typeViande;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $identifiantMap;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $photo;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $description;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $conseilsCuisson;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $conseilsAchat;
+
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $conseilsConservation;
+
+    /**
+     * @var
+     * @Serializer\Type("array")
+     */
+    protected $cuissons;
+
+    /**
+     * @var
+     * @Serializer\Type("array")
+     */
+    protected $recettes;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
-        if (isset($_SESSION["typeViande"])) {
-            $typeViande = $_SESSION["typeViande"];
-            switch ($typeViande) {
-                case self::BOEUF:
-                    return "json://boeuf/listing_morceaux_boeufs.json";
-                    break;
-                case self::AGNEAU:
-                default:
-                    return "json://agneau/listing_morceaux_agneau.json";
-                    break;
-            }
-        } else {
-            return "json://agneau/morceaux_agneau.json";
-        }
+        return $this->id;
     }
 
-    public static function getImageDecoupe($morceau)
+    /**
+     * @param mixed $id
+     * @return Morceaux
+     */
+    public function setId($id)
     {
-        switch ($morceau->type_viande) {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param mixed $nom
+     * @return Morceaux
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeViande()
+    {
+        return $this->typeViande;
+    }
+
+    /**
+     * @param mixed $typeViande
+     * @return Morceaux
+     */
+    public function setTypeViande($typeViande)
+    {
+        $this->typeViande = $typeViande;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdentifiantMap()
+    {
+        return $this->identifiantMap;
+    }
+
+    /**
+     * @param mixed $identifiantMap
+     * @return Morceaux
+     */
+    public function setIdentifiantMap($identifiantMap)
+    {
+        $this->identifiantMap = $identifiantMap;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     * @return Morceaux
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     * @return Morceaux
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConseilsCuisson()
+    {
+        return $this->conseilsCuisson;
+    }
+
+    /**
+     * @param mixed $conseilsCuisson
+     * @return Morceaux
+     */
+    public function setConseilsCuisson($conseilsCuisson)
+    {
+        $this->conseilsCuisson = $conseilsCuisson;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConseilsAchat()
+    {
+        return $this->conseilsAchat;
+    }
+
+    /**
+     * @param mixed $conseilsAchat
+     * @return Morceaux
+     */
+    public function setConseilsAchat($conseilsAchat)
+    {
+        $this->conseilsAchat = $conseilsAchat;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConseilsConservation()
+    {
+        return $this->conseilsConservation;
+    }
+
+    /**
+     * @param mixed $conseilsConservation
+     * @return Morceaux
+     */
+    public function setConseilsConservation($conseilsConservation)
+    {
+        $this->conseilsConservation = $conseilsConservation;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCuissons()
+    {
+        return $this->cuissons;
+    }
+
+    /**
+     * @param mixed $cuissons
+     * @return Morceaux
+     */
+    public function setCuissons($cuissons)
+    {
+        $this->cuissons = $cuissons;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecettes()
+    {
+        return $this->recettes;
+    }
+
+    /**
+     * @param mixed $recettes
+     * @return Morceaux
+     */
+    public function setRecettes($recettes)
+    {
+        $this->recettes = $recettes;
+        return $this;
+    }
+
+
+    public function getPhotoPath()
+    {
+        return Utils::getImage($this->typeViande."/morceaux/".$this->photo);
+    }
+
+
+
+    public function getImageDecoupe()
+    {
+        switch ($this->typeViande) {
             case self::AGNEAU:
-                return static::getDecoupeAgneau($morceau);
+                return $this->getDecoupeAgneau();
                 break;
             case self::BOEUF:
-                return static::getDecoupeBoeuf($morceau);
+                return $this->getDecoupeBoeuf();
                 break;
         }
     }
 
-    private static function getDecoupeAgneau($morceau)
+    private function getDecoupeAgneau()
     {
         $images = array(
             "1"  => "agneau1.png",
@@ -62,12 +315,10 @@ class Morceaux extends Searchable
             "10" => "agneau4.png",
             "11" => "agneau2.png"
         );
-
-
-        return "/images/" . $images[$morceau->id];
+        return "/images/" . $images[$this->id];
     }
 
-    private static function getDecoupeBoeuf($morceau)
+    private function getDecoupeBoeuf()
     {
         $images = array(
             "28" => "boeuf1.jpg",
@@ -98,13 +349,13 @@ class Morceaux extends Searchable
             "7" => "boeuf26.jpg",
         );
 
-        if(!isset($images[$morceau->id])){
-            $images[$morceau->id]= "boeuf0.jpg";
+        if(!isset($images[$this->id])){
+            $images[$this->id]= "boeuf0.jpg";
         }
-        return "/images/" . $images[$morceau->id];
+        return "/images/" . $images[$this->id];
     }
 
-    public static function getIdForDecoupe($decoupe, $type = self::AGNEAU)
+    public function getIdForDecoupe($decoupe, $type = self::AGNEAU)
     {
         switch ($type) {
             case self::AGNEAU:
@@ -159,9 +410,9 @@ class Morceaux extends Searchable
         return (isset($decoupes[$decoupe]))?$decoupes[$decoupe]:"";
     }
 
-    public static function renderMapForMorceau($morceau)
+    public function renderMap()
     {
-        switch ($morceau->type_viande) {
+        switch ($this->typeViande) {
             case self::AGNEAU:
                 include_once Utils::getResourcesDir() . "/views/map_agneau.php";
                 break;

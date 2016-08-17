@@ -2,13 +2,17 @@
 
 {% block page_content %}
     {% if live %}
-        <div class="qrCodeReader" style="height: 400px">
+        <div class="row">
+            <div class="qrCodeReader" style="height: 400px">
+            </div>
         </div>
     {% else %}
         <div class="row">
             {% for categ,photo in paths %}
                 <div class="col-xs-6">
-                    <a href="{{ path_for("flash.categorie",{"categ":categ}) }}"><img class="Photo" src="{{ photo }}" alt="..." /></a>
+                    <a href="{{ path_for("flash.categorie",{"categ":categ,"id":1}) }}"><img class="Photo"
+                                                                                            src="{{ photo }}"
+                                                                                            alt="..."/></a>
                 </div>
             {% endfor %}
         </div>
@@ -22,10 +26,10 @@
     <script type="text/javascript">
         $('.qrCodeReader').html5_qrcode(
                 function (data) {
-                    if(data.slice(0,4) !== "http"){
-                        data="http://"+data;
+                    if (data.slice(0, 4) !== "http") {
+                        data = "http://" + data;
                     }
-                    document.location.href=data;
+                    document.location.href = data;
                 },
                 function (error) {
                     console.log(error)

@@ -2,23 +2,25 @@
 
 namespace Ovs\Bovimarket\Api;
 
-define("DEBUG",false);
-
-if(strpos($_SERVER["SERVER_NAME"],"bovi.dav") !== false) {
-    /** Config POUR Overscan */
-
-    if(DEBUG){
-        define("API_URL", "http://172.22.33.2:8080/bovimarket/");
-        define("TOKEN", 'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
-    }else{
-        define("API_URL","http://51.254.44.168:8080/bovimarket/");
-        define("TOKEN",'Authorization: Bearer 52a453ac-70e0-43ee-a59d-9af10eed4a9f');
-    }
-}else {
-    /** Config POUR SHUTTLE */
-    define("API_URL", "http://172.22.33.2:8080/bovimarket/");
-    define("TOKEN", 'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
-}
+//define("DEBUG",false);
+//define("API_URL","http://185.30.92.167:8081/");
+//if(strpos($_SERVER["SERVER_NAME"],"bovi.dav") !== false) {
+//    /** Config POUR Overscan */
+//
+//    if(DEBUG){
+//        define("API_URL", "http://172.22.33.2:8080/bovimarket/");
+//        define("TOKEN", 'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
+//    }else{
+//        define("API_URL","http://51.254.44.168:8080/bovimarket/");
+//        define("TOKEN",'Authorization: Bearer 52a453ac-70e0-43ee-a59d-9af10eed4a9f');
+//    }
+//}else {
+//    /** Config POUR SHUTTLE */
+//    define("API_URL", "http://172.22.33.2:8080/bovimarket/");
+//    define("TOKEN", 'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
+//}
+use GuzzleHttp\Client;
+use Monolog\Logger;
 
 /**
  * Created by PhpStorm.
@@ -26,41 +28,26 @@ if(strpos($_SERVER["SERVER_NAME"],"bovi.dav") !== false) {
  * Date: 15/03/2016
  * Time: 09:09
  */
-class Api
+class Api extends Client
 {
 
-    public static function getBaseApiUrl()
+    protected $logger;
+
+    public function __construct(array $config,Logger $logger)
     {
-        return static::getBaseUrl()."api/";
+        parent::__construct($config);
+        $this->logger=$logger;
     }
 
-    public static function getBaseUrl()
+    public function request($method, $uri = '', array $options = [])
     {
-        if(isset($_SESSION["api_url"])){
-            return $_SESSION["api_url"];
-        }else {
-            return API_URL;
-        }
+        $this->logger->addDebug("REQ : [".$method."] ".$uri." - ".implode(";",$options));
+        $this->logger->addDebug("Headers : ".$this->getConfig());
+        $res = parent::request($method, $uri, $options);
+        $body = (string)$res->getBody();
+        $this->logger->addDebug("RES : ".$body);
+        return $res;
     }
 
-    public static function get($url)
-    {
-        if(strpos($url,"http")!==false) {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
-
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                TOKEN
-            ));
-
-            $result = curl_exec($curl);
-            curl_close($curl);
-            return $result;
-        }elseif(strpos($url,"json://")!==false){
-            return JSONFetcher::get($url);
-        }
-        return json_encode(array());
-    }
 }

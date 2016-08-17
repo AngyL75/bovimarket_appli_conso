@@ -7,4 +7,8 @@ flash.qrcode:
 
 flash.categorie:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:categorieViande"
-    path: "/viande/{categ}"
+    path: "/viande/{categ}/{id}"
+
+flash.recettes_list:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:recettes"
+    path: "/viande/{categ}/{idMorceau}/recettes"
