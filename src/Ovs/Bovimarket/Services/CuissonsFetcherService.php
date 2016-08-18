@@ -60,4 +60,10 @@ class CuissonsFetcherService extends JSONFetcher
 
         return $this->cuissons;
     }
+
+    public function getCuissonForViande($viande,$id)
+    {
+        $this->cuissons = $this->getCuissonsForViande($viande);
+        return $this->cuissons->find($id);
+    }
 }

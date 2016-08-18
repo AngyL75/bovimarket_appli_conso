@@ -9,6 +9,7 @@
 namespace Ovs\Bovimarket\Controller;
 
 
+use Ovs\Bovimarket\Entities\Cuisson;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
@@ -55,12 +56,11 @@ class FlashController extends BaseController
 
         /** @var MorceauxFetcherService $morceauxFetcher */
         $morceauxFetcher = $this->get("morceaux");
-        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
-        $morceau = $morceau->find($idMorceau);
+        $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
 
         /** @var RecettesFetcherService $recetteFetcher */
         $recetteFetcher = $this->get("recettes");
-        $recettes = $recetteFetcher->getRecetteForMorceau($morceau);
+        $recettes = $recetteFetcher->getRecettesForMorceau($morceau);
 
         return $this->render($response, "QRCode/recettes.html.twig", array(
                 "morceau"  => $morceau,
@@ -78,13 +78,11 @@ class FlashController extends BaseController
 
         /** @var MorceauxFetcherService $morceauxFetcher */
         $morceauxFetcher = $this->get("morceaux");
-        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
-        $morceau = $morceau->find($idMorceau);
+        $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
 
         /** @var RecettesFetcherService $recetteFetcher */
         $recetteFetcher = $this->get("recettes");
-        $recettes = $recetteFetcher->getRecetteForMorceau($morceau);
-        $recette = $recettes->find($idRecette);
+        $recette = $recetteFetcher->getRecetteForMorceau($morceau, $idRecette);
 
         $morceauxRecommandes = $morceauxFetcher->getMorceauxForRecette($recette);
 
@@ -103,8 +101,7 @@ class FlashController extends BaseController
         $idMorceau = $args["idMorceau"];
         /** @var MorceauxFetcherService $morceauxFetcher */
         $morceauxFetcher = $this->get("morceaux");
-        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
-        $morceau = $morceau->find($idMorceau);
+        $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
 
         return $this->render($response, "QRCode/morceau.html.twig", array(
             "morceau" => $morceau
@@ -118,8 +115,7 @@ class FlashController extends BaseController
 
         /** @var MorceauxFetcherService $morceauxFetcher */
         $morceauxFetcher = $this->get("morceaux");
-        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
-        $morceau = $morceau->find($idMorceau);
+        $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
 
         /** @var CuissonsFetcherService $cuissonFetcher */
         $cuissonFetcher = $this->get("cuissons");
@@ -129,5 +125,30 @@ class FlashController extends BaseController
             "cuissons" => $cuissons,
             "morceau"  => $morceau
         ));
+    }
+
+    public function detailCuissonAction(Request $request, Response $response, $args)
+    {
+        $typeViande = $args["categ"];
+        $idMorceau = $args["idMorceau"];
+        $idCuisson = $args["idCuisson"];
+
+        /** @var MorceauxFetcherService $morceauFetcher */
+        $morceauFetcher = $this->get("morceaux");
+        $morceau = $morceauFetcher->getMorceauForViande($typeViande, $idMorceau);
+
+        /** @var CuissonsFetcherService $cuissonFetcher */
+        $cuissonFetcher = $this->get("cuissons");
+        $cuisson = $cuissonFetcher->getCuissonForViande($typeViande, $idCuisson);
+        $cuisson->setTypeViande($typeViande);
+
+        $morceauRecommande = $morceauFetcher->getMorceauxForCuisson($cuisson);
+
+        return $this->render($response, "QRCode/cuisson.html.twig", array(
+            "morceau"             => $morceau,
+            "cuisson"             => $cuisson,
+            "morceauxRecommandes" => $morceauRecommande
+        ));
+
     }
 }

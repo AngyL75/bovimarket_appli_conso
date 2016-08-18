@@ -49,10 +49,16 @@ class RecettesFetcherService extends JSONFetcher
         return $this->recettes;
     }
 
-    public function getRecetteForMorceau(Morceaux $morceaux)
+    public function getRecettesForMorceau(Morceaux $morceaux)
     {
         $recettes = $this->getRecettesForViande($morceaux->getTypeViande());
         $this->recettes = $recettes->findContaining("morceaux",$morceaux->getId());
         return $this->recettes;
+    }
+
+    public function getRecetteForMorceau(Morceaux $morceaux, $id)
+    {
+        $recettes = $this->getRecettesForMorceau($morceaux);
+        return $recettes->find($id);
     }
 }

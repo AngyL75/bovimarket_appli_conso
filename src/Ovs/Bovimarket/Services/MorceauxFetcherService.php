@@ -9,6 +9,7 @@
 namespace Ovs\Bovimarket\Services;
 
 
+use Ovs\Bovimarket\Entities\Cuisson;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Entities\Recettes;
@@ -46,6 +47,12 @@ class MorceauxFetcherService extends JSONFetcher
         return $this->morceaux;
     }
 
+    public function getMorceauForViande($viande, $id)
+    {
+        $morceaux = $this->getMorceauxForViande($viande);
+        return $morceaux->find($id);
+    }
+
     /**
      * @param Recettes $recette
      * @return mixed
@@ -56,5 +63,18 @@ class MorceauxFetcherService extends JSONFetcher
         $this->morceaux=new Collection($objects,$this->objectClass);
 
         return $this->morceaux->findIn("id",$recette->getMorceaux());
+    }
+
+    /**
+     * @param Cuisson $cuisson
+     * @return mixed
+     */
+    public function getMorceauxForCuisson($cuisson)
+    {
+        $objects  = json_decode($this->get($this->getUrlForViande($cuisson->getTypeViande())));
+        $this->morceaux=new Collection($objects,$this->objectClass);
+
+
+        return $this->morceaux->findIn("id",$cuisson->getMorceauxIds());
     }
 }

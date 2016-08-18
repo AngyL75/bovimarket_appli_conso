@@ -12,6 +12,7 @@ namespace Ovs\Bovimarket\Entities;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Ovs\Bovimarket\Entities\Interfaces\Searchable;
+use Ovs\Bovimarket\Utils\Utils;
 
 class Cuisson
 {
@@ -58,7 +59,7 @@ class Cuisson
     protected $morceaux;
     /**
      * @var
-     * @Serializer\Type("array")
+     * @Serializer\Type("ArrayCollection<string,array>")
      */
     protected $recettes;
 
@@ -224,36 +225,20 @@ class Cuisson
         return $this;
     }
 
+    public function getLogoPath()
+    {
+        return Utils::getImage($this->cuissonLogo);
+    }
 
-    /*
-        public static function findAllForMorceau($type,$id)
-        {
-            $results=array();
-            $objects=static::findAll();
-            foreach ($objects as $object) {
-                $morceaux=$object->morceaux;
-                if(is_object($morceaux)){
-                    if(isset($morceaux->$type)){
-                        $morceauxType=$morceaux->$type;
-                        if(is_array($morceauxType)){
-                            if(in_array($id,$morceauxType)){
-                                $results[]=$object;
-                            }
-                        }
-                    }
-                }else{
-                    if(is_array($morceaux)){
-                        if(in_array($id,$morceaux)){
-                            $results[]=$object;
-                        }
-                    }else {
-                        if ($morceaux == $id) {
-                            $results[] = $object;
-                        }
-                    }
-                }
-            }
-            return $results;
-        }
-    */
+    public function getPhotoPath(){
+        return Utils::getImage($this->cuissonPhoto);
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getMorceauxIds()
+    {
+        return $this->getMorceaux()->get($this->getTypeViande());
+    }
 }
