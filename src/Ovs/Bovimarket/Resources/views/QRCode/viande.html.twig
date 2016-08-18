@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
-                    <a class="link IconeMorceau" href="morceau.php?id=<?php echo $morceauId; ?>" data-color="#ffffff">
+                    <a class="link IconeMorceau" href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
                         Le morceau
                     </a>
                 </div>

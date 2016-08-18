@@ -105,4 +105,14 @@ class Collection extends ArrayCollection implements Selectable
         return $this->get($keys[$key]);
     }
 
+    public function findIn($field, $values)
+    {
+        $criteria = Criteria::create();
+        $expr = Criteria::expr();
+        $expr = $expr->in($field,$values);
+        $criteria = $criteria->andWhere($expr);
+
+        return $this->matching($criteria);
+    }
+
 }

@@ -1,6 +1,7 @@
 map.homepage:
     action: "Ovs\\Bovimarket\\Controller\\MapController:index"
     path: "/"
+
 flash.qrcode:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:qrCode"
     path: "/qrcode"
@@ -12,3 +13,11 @@ flash.categorie:
 flash.recettes_list:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:recettes"
     path: "/viande/{categ}/{idMorceau}/recettes"
+
+flash.recettes_detail:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:detailRecette"
+    path: "/viande/{categ}/{idMorceau}/recette/{idRecette}"
+
+flash.morceau:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:detailMorceau"
+    path: "/viande/{categ}/morceau/{idMorceau}"

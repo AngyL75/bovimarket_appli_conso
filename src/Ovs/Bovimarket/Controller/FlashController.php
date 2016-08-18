@@ -29,7 +29,10 @@ class FlashController extends BaseController
             TypeViande::BOEUF  => "/web/images/barquette4.jpg"
         );
 
-        return $this->render($response, "QRCode/categories.html.twig", array("paths" => $paths, "live" => false));
+        return $this->render($response, "QRCode/categories.html.twig", array(
+            "paths" => $paths,
+            "live"  => false
+        ));
     }
 
     public function categorieViandeAction(Request $request, Response $response, $args)
@@ -38,7 +41,10 @@ class FlashController extends BaseController
         $morceauxFetcher = $this->get("morceaux");
         /** @var Collection $morceaux */
         $morceaux = $morceauxFetcher->getMorceauxForViande($args["categ"]);
-        return $this->render($response, "QRCode/viande.html.twig", array("morceau" => $morceaux->random()));
+        return $this->render($response, "QRCode/viande.html.twig", array(
+                "morceau" => $morceaux->random()
+            )
+        );
     }
 
     public function recettesAction(Request $request, Response $response, $args)
@@ -55,7 +61,52 @@ class FlashController extends BaseController
         $recetteFetcher = $this->get("recettes");
         $recettes = $recetteFetcher->getRecetteForMorceau($morceau);
 
-        return $this->render($response,"QRCode/recettes.html.twig",array("morceau"=>$morceau,"recettes"=>$recettes));
+        return $this->render($response, "QRCode/recettes.html.twig", array(
+                "morceau"  => $morceau,
+                "recettes" => $recettes
+            )
+        );
 
+    }
+
+    public function detailRecetteAction(Request $request, Response $response, $args)
+    {
+        $typeViande = $args["categ"];
+        $idMorceau = $args["idMorceau"];
+        $idRecette = $args["idRecette"];
+
+        /** @var MorceauxFetcherService $morceauxFetcher */
+        $morceauxFetcher = $this->get("morceaux");
+        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
+        $morceau = $morceau->find($idMorceau);
+
+        /** @var RecettesFetcherService $recetteFetcher */
+        $recetteFetcher = $this->get("recettes");
+        $recettes = $recetteFetcher->getRecetteForMorceau($morceau);
+        $recette = $recettes->find($idRecette);
+
+        $morceauxRecommandes = $morceauxFetcher->getMorceauxForRecette($recette);
+
+        return $this->render($response, "QRCode/recette.html.twig", array(
+                "morceau"  => $morceau,
+                "recette"  => $recette,
+                "morceaux" => $morceauxRecommandes
+            )
+        );
+
+    }
+
+    public function detailMorceauAction(Request $request, Response $response, $args)
+    {
+        $typeViande = $args["categ"];
+        $idMorceau = $args["idMorceau"];
+        /** @var MorceauxFetcherService $morceauxFetcher */
+        $morceauxFetcher = $this->get("morceaux");
+        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
+        $morceau = $morceau->find($idMorceau);
+
+        return $this->render($response, "QRCode/morceau.html.twig", array(
+            "morceau" => $morceau
+        ));
     }
 }

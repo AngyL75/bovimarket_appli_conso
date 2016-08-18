@@ -12,6 +12,7 @@ namespace Ovs\Bovimarket\Services;
 use Ovs\Bovimarket\Api\JSONFetcher;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
 use Ovs\Bovimarket\Entities\Morceaux;
+use Ovs\Bovimarket\Entities\Recettes;
 use Ovs\Bovimarket\Utils\TypeViande;
 
 class MorceauxFetcherService
@@ -42,5 +43,17 @@ class MorceauxFetcherService
         $objects  = json_decode(JSONFetcher::get($this->getUrlForViande($viande)));
         $this->morceaux=new Collection($objects,Morceaux::class);
         return $this->morceaux;
+    }
+
+    /**
+     * @param Recettes $recette
+     * @return mixed
+     */
+    public function getMorceauxForRecette($recette)
+    {
+        $objects  = json_decode(JSONFetcher::get($this->getUrlForViande($recette->getTypeViande())));
+        $this->morceaux=new Collection($objects,Morceaux::class);
+
+        return $this->morceaux->findIn("id",$recette->getMorceaux());
     }
 }

@@ -1,0 +1,54 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="IconeMorceau">Le morceau</h1>
+        </div>
+    </div>
+    <div class="row">
+        <?php
+      \Ovs\Entities\Morceaux::renderMapForMorceau($morceau);
+      ?>
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">{{ morceau.nom }}</h3>
+            <p>
+                {{ morceau.description|nl2br }}
+            </p>
+        </div>
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">Conseil Achat</h3>
+            <p>
+                {{ morceau.conseilsAchat|nl2br }}
+            </p>
+        </div>
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">Conseil Conservation</h3>
+            <p>
+                {{ morceau.conseilsConservation|nl2br }}
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <h3 class="text-center" style="padding:20px 0">Conseil cuisson</h3>
+        <p>
+            {{ morceau.conseilsCuisson|nl2br }}
+        </p>
+    </div>
+    <div class="row" id="IconeQRcode">
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="row">
+                <div class="col-xs-6 text-center">
+                    <a class="link IconeRecette" href="{{ path_for("flash.recettes_list",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
+                        Les recettes
+                    </a>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <a class="link IconeCuisson" href="cuisson.php?idMorceau=<?php echo $morceau->id; ?>" data-color="#ffffff">
+                        La cuisson
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

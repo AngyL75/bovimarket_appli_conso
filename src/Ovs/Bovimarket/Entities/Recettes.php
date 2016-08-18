@@ -62,6 +62,13 @@ class Recettes
      * @Serializer\Type("array")
      */
     protected $ingredients;
+
+    /**
+     * @var
+     * @Serializer\Type("array")
+     */
+    protected $ingredientsSauce;
+
     /**
      * @var
      * @Serializer\Type("string")
@@ -339,4 +346,23 @@ class Recettes
     {
         return Utils::getImage($this->typeViande."/recettes/".$this->photo);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIngredientsSauce()
+    {
+        return $this->ingredientsSauce;
+    }
+
+    /**
+     * @param mixed $ingredientsSauce
+     * @return $this
+     */
+    public function setIngredientsSauce($ingredientsSauce)
+    {
+        $this->ingredientsSauce = $ingredientsSauce;
+        return $this;
+    }
+
 }
