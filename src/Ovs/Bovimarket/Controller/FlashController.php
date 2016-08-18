@@ -11,10 +11,12 @@ namespace Ovs\Bovimarket\Controller;
 
 use Ovs\Bovimarket\Entities\Cuisson;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
+use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Utils\TypeViande;
+use Ovs\Bovimarket\Utils\Utils;
 use Ovs\SlimUtils\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -99,9 +101,18 @@ class FlashController extends BaseController
     {
         $typeViande = $args["categ"];
         $idMorceau = $args["idMorceau"];
+
+
         /** @var MorceauxFetcherService $morceauxFetcher */
         $morceauxFetcher = $this->get("morceaux");
-        $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
+        if(!is_numeric($idMorceau)) {
+            $idMorceau = Morceaux::getIdForDecoupe($idMorceau,$typeViande);
+        }
+            $morceau = $morceauxFetcher->getMorceauForViande($typeViande, $idMorceau);
+        /*}else{
+            $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
+            $morceau = $morceau->findOneBy(array("nom"=>$idMorceau));
+        }*/
 
         return $this->render($response, "QRCode/morceau.html.twig", array(
             "morceau" => $morceau

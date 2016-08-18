@@ -1,5 +1,10 @@
 {% extends "base_blanche.html.twig" %}
 
+{% block bodyOpenTag %}
+    <body class="pageblanche" id="holder" style="width:769px;max-width:769px;">
+{% endblock %}
+
+
 {% block page_content %}
     <div class="row">
         <div class="col-xs-12">
@@ -7,9 +12,7 @@
         </div>
     </div>
     <div class="row">
-        <?php
-      \Ovs\Entities\Morceaux::renderMapForMorceau($morceau);
-      ?>
+        {{ mapDecoupe(morceau) }}
         <div class="col-xs-12">
             <h3 class="text-center" style="padding:20px 0">{{ morceau.nom }}</h3>
             <p>
@@ -44,7 +47,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
-                    <a class="link IconeCuisson" href="cuisson.php?idMorceau=<?php echo $morceau->id; ?>" data-color="#ffffff">
+                    <a class="link IconeCuisson" href="{{ path_for("flash.cuissons_list",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
                         La cuisson
                     </a>
                 </div>

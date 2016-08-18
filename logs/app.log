@@ -205,3 +205,7 @@
 [2016-08-18 11:15:00] slim-app.DEBUG: Headers : Array [] []
 [2016-08-18 11:30:40] slim-app.DEBUG: REQ : [get] entites/ -  [] []
 [2016-08-18 11:30:40] slim-app.DEBUG: Headers : Array [] []
+[2016-08-18 16:37:40] slim-app.DEBUG: REQ : [get] entites/ -  [] []
+[2016-08-18 16:37:40] slim-app.DEBUG: Headers : Array [] []
+[2016-08-18 16:47:23] slim-app.DEBUG: REQ : [get] entites/ -  [] []
+[2016-08-18 16:47:23] slim-app.DEBUG: Headers : Array [] []

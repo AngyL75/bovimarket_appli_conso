@@ -285,21 +285,69 @@ class Morceaux
 
     public function getPhotoPath()
     {
-        return Utils::getImage($this->typeViande."/morceaux/".$this->photo);
+        return Utils::getImage($this->typeViande . "/morceaux/" . $this->photo);
     }
 
 
-
-    public function getImageDecoupe()
+    public function oldgetImageDecoupe()
     {
         switch ($this->typeViande) {
             case self::AGNEAU:
-                return $this->getDecoupeAgneau();
+                return Utils::getImage($this->getDecoupeAgneau());
                 break;
             case self::BOEUF:
-                return $this->getDecoupeBoeuf();
+                return Utils::getImage($this->getDecoupeBoeuf());
                 break;
         }
+    }
+
+    public function getImageDecoupe()
+    {
+        $images = array(
+            "agneau" => array(
+                "1"  => "agneau1.png",
+                "2"  => "agneau5.png",
+                "3"  => "agneau6.png",
+                "5"  => "agneau7.png",
+                "7"  => "agneau9.png",
+                "8"  => "agneau8.png",
+                "9"  => "agneau3.png",
+                "10" => "agneau4.png",
+                "11" => "agneau2.png"
+            ),
+            "boeuf"  => array(
+                "28" => "boeuf1.jpg",
+                "1"  => "boeuf2.jpg",
+                "33" => "boeuf3.jpg",
+                "31" => "boeuf4.jpg",
+                "29" => "boeuf5.jpg",
+                "30" => "boeuf6.jpg",
+                "32" => "boeuf7.jpg",
+                "2"  => "boeuf8.jpg",
+                "26" => "boeuf9.jpg",
+                "25" => "boeuf10.jpg",
+                "3"  => "boeuf11.jpg",
+                "5"  => "boeuf12.jpg",
+                "22" => "boeuf13.jpg",
+                "24" => "boeuf14.jpg",
+                "23" => "boeuf15.jpg",
+                "21" => "boeuf16.jpg",
+                "20" => "boeuf17.jpg",
+                "18" => "boeuf18.jpg",
+                "10" => "boeuf19.jpg",
+                "10" => "boeuf20.jpg",
+                "9"  => "boeuf21.jpg",
+                "10" => "boeuf22.jpg",
+                "9"  => "boeuf23.jpg",
+                "19" => "boeuf24.jpg",
+                "6"  => "boeuf25.jpg",
+                "7"  => "boeuf26.jpg",
+            )
+        );
+
+        $id = sprintf("%d",$this->id);
+
+        return Utils::getImage($this->typeViande."/decoupes/".$images[$this->typeViande][$id]);
     }
 
     private function getDecoupeAgneau()
@@ -315,7 +363,7 @@ class Morceaux
             "10" => "agneau4.png",
             "11" => "agneau2.png"
         );
-        return "/images/" . $images[$this->id];
+        return "agneau/decoupes/" . $images[$this->id];
     }
 
     private function getDecoupeBoeuf()
@@ -324,15 +372,15 @@ class Morceaux
             "28" => "boeuf1.jpg",
             "1"  => "boeuf2.jpg",
             "33" => "boeuf3.jpg",
-            "31"=> "boeuf4.jpg",
+            "31" => "boeuf4.jpg",
             "29" => "boeuf5.jpg",
-            "30"=> "boeuf6.jpg",
+            "30" => "boeuf6.jpg",
             "32" => "boeuf7.jpg",
-            "2" => "boeuf8.jpg",
+            "2"  => "boeuf8.jpg",
             "26" => "boeuf9.jpg",
             "25" => "boeuf10.jpg",
-            "3" => "boeuf11.jpg",
-            "5" => "boeuf12.jpg",
+            "3"  => "boeuf11.jpg",
+            "5"  => "boeuf12.jpg",
             "22" => "boeuf13.jpg",
             "24" => "boeuf14.jpg",
             "23" => "boeuf15.jpg",
@@ -341,21 +389,21 @@ class Morceaux
             "18" => "boeuf18.jpg",
             "10" => "boeuf19.jpg",
             "10" => "boeuf20.jpg",
-            "9" => "boeuf21.jpg",
+            "9"  => "boeuf21.jpg",
             "10" => "boeuf22.jpg",
-            "9" => "boeuf23.jpg",
+            "9"  => "boeuf23.jpg",
             "19" => "boeuf24.jpg",
-            "6" =>"boeuf25.jpg",
-            "7" => "boeuf26.jpg",
+            "6"  => "boeuf25.jpg",
+            "7"  => "boeuf26.jpg",
         );
 
-        if(!isset($images[$this->id])){
-            $images[$this->id]= "boeuf0.jpg";
+        if (!isset($images[$this->id])) {
+            $images[$this->id] = "boeuf0.jpg";
         }
-        return "/images/" . $images[$this->id];
+        return "boeuf/" . $images[$this->id];
     }
 
-    public function getIdForDecoupe($decoupe, $type = self::AGNEAU)
+    public static function getIdForDecoupe($decoupe, $type = self::AGNEAU)
     {
         switch ($type) {
             case self::AGNEAU:
@@ -373,32 +421,32 @@ class Morceaux
                 break;
             case self::BOEUF: {
                 $decoupes = array(
-                    "gros-poitrine" => "28",
-                    "collier" => "1",
-                    "jumeau-pot-feu"=>"33",
-                    "jumeau-biftek" => "31",
-                    "macreuse-biftek" => "29",
-                    "paleron"=>"30",
+                    "gros-poitrine"    => "28",
+                    "collier"          => "1",
+                    "jumeau-pot-feu"   => "33",
+                    "jumeau-biftek"    => "31",
+                    "macreuse-biftek"  => "29",
+                    "paleron"          => "30",
                     "macreuse-pot-feu" => "32",
-                    "basse-cote"=>"2",
-                    "poitrine"=>"26",
-                    "plat-cote"=>"25",
-                    "entrecote"=>"3",
-                    "faux-filet"=>"5",
-                    "bavette-aloyau"=>"22",
-                    "flanchet"=>"24",
-                    "bavette-flanchet"=>"23",
-                    "hampe"=>"21",
-                    "onglet"=>"20",
-                    "gite"=>"18",
-                    "tranche"=>"10",
-                    "araignee"=>"10",
-                    "noix-gite"=>"9",
-                    "merlan"=>"10",
-                    "rond-gite"=>"9",
-                    "aiguillette"=>"19",
-                    "filet"=>"6",
-                    "rumstek"=>"7"
+                    "basse-cote"       => "2",
+                    "poitrine"         => "26",
+                    "plat-cote"        => "25",
+                    "entrecote"        => "3",
+                    "faux-filet"       => "5",
+                    "bavette-aloyau"   => "22",
+                    "flanchet"         => "24",
+                    "bavette-flanchet" => "23",
+                    "hampe"            => "21",
+                    "onglet"           => "20",
+                    "gite"             => "18",
+                    "tranche"          => "10",
+                    "araignee"         => "10",
+                    "noix-gite"        => "9",
+                    "merlan"           => "10",
+                    "rond-gite"        => "9",
+                    "aiguillette"      => "19",
+                    "filet"            => "6",
+                    "rumstek"          => "7"
                 );
                 break;
             }
@@ -407,7 +455,7 @@ class Morceaux
                 break;
         }
 
-        return (isset($decoupes[$decoupe]))?$decoupes[$decoupe]:"";
+        return (isset($decoupes[$decoupe])) ? $decoupes[$decoupe] : "";
     }
 
     public function renderMap()

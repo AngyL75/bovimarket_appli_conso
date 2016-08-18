@@ -9,6 +9,7 @@
 namespace Ovs\Bovimarket\Twig;
 
 
+use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Utils\Utils;
 
 class MapMarkerExtension extends \Twig_Extension
@@ -27,10 +28,20 @@ class MapMarkerExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction("createMarker",array($this,"createMarker"),array(
-                "is_safe"=>array("html")
+            new \Twig_SimpleFunction("createMarker", array($this, "createMarker"), array(
+                "is_safe" => array("html")
+            )),
+            new \Twig_SimpleFunction("mapDecoupe", array($this, "createDecoupe"), array(
+                "is_safe"           => array("html"),
+                "needs_environment" => true
             ))
         );
+    }
+
+
+    public function createDecoupe(\Twig_Environment $env, Morceaux $morceaux)
+    {
+        return $env->render("QRCode/decoupes/map_".$morceaux->getTypeViande().".html.twig",array("morceau"=>$morceaux));
     }
 
     public function createMarker($entite)
