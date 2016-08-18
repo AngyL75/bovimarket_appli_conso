@@ -9,11 +9,11 @@
 namespace Ovs\SlimUtils;
 
 
-use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
-use Ovs\Bovimarket\Services\EntiteFetcherService;
+use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
+use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Twig\MapMarkerExtension;
@@ -55,8 +55,6 @@ class ServicesManager
         $logPath = __DIR__ . "/../../../logs/" . $configLog["path"];
         $file_handler = new StreamHandler($logPath);
         $logger->pushHandler($file_handler);
-        $logger->pushHandler(new FirePHPHandler());
-        $logger->addInfo('My logger is now ready');
         $container['logger'] = $logger;
 
         $container["api"] = new Api(
@@ -71,6 +69,7 @@ class ServicesManager
 
         $container["morceaux"] = new MorceauxFetcherService();
         $container["recettes"] = new RecettesFetcherService();
+        $container["cuissons"] = new CuissonsFetcherService();
 
         $container["entites"] = new EntiteFetcherService($container["api"]);
     }

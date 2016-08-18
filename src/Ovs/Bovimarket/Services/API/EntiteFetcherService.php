@@ -6,7 +6,7 @@
  * Time: 12:25
  */
 
-namespace Ovs\Bovimarket\Services;
+namespace Ovs\Bovimarket\Services\Api;
 
 
 use GuzzleHttp\Exception\RequestException;

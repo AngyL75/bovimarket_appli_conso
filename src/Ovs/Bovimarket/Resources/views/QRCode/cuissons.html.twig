@@ -1,0 +1,41 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="IconeCuisson">La cuisson</h1>
+            <p>Le {{ morceau.nom }} est une viande à
+                {% for cuisson in cuissons %}
+                    <a class="link" href="#" data-color="#ffffff">
+                        {{ cuisson.nom }}
+                    </a>
+                    {% if loop.revindex0 == 1 %}
+                        ou à
+                    {% else %}
+                        ,&nbsp;
+                    {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="row">
+                {% for cuisson in cuissons %}
+                <div class="col-xs-6">
+                    <a style="background-image: url('<?php echo \Ovs\Utils\Utils::getImage($cuisson->cuisson_logo); ?>')" class="IconBouillir text-center" href="detail_cuisson.php?idCuisson=<?php echo $cuisson->id;?>">
+                        {{ cuisson.nom }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p>
+                {{ morceau.conseilsCuisson }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

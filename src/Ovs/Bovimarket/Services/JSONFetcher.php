@@ -6,17 +6,20 @@
  * Time: 11:25
  */
 
-namespace Ovs\Bovimarket\Api;
+namespace Ovs\Bovimarket\Services;
 
 
 class JSONFetcher
 {
-    public static function getJsonDir()
+
+    protected $objectClass;
+
+    public function getJsonDir()
     {
         return __DIR__."/../../../../web/jsons/";
     }
 
-    public static function get($url)
+    public function get($url)
     {
         $jsonDir=self::getJsonDir();
         $file=str_replace("json://","",$url);

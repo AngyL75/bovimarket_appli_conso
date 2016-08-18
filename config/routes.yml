@@ -21,3 +21,7 @@ flash.recettes_detail:
 flash.morceau:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:detailMorceau"
     path: "/viande/{categ}/morceau/{idMorceau}"
+
+flash.cuissons_list:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:cuissonsList"
+    path: "/viande/{categ}/{idMorceau}/cuissons"

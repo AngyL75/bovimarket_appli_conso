@@ -86,6 +86,7 @@ class Collection extends ArrayCollection implements Selectable
     }
 
     protected function searchIn($field,$value,$limit=null){
+
         $criteria = Criteria::create();
         $expr = Criteria::expr();
         $expr = $expr->memberOf($field,$value);

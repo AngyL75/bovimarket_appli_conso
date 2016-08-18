@@ -10,6 +10,7 @@ namespace Ovs\Bovimarket\Controller;
 
 
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
+use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Utils\TypeViande;
@@ -107,6 +108,26 @@ class FlashController extends BaseController
 
         return $this->render($response, "QRCode/morceau.html.twig", array(
             "morceau" => $morceau
+        ));
+    }
+
+    public function cuissonsListAction(Request $request, Response $response, $args)
+    {
+        $typeViande = $args["categ"];
+        $idMorceau = $args["idMorceau"];
+
+        /** @var MorceauxFetcherService $morceauxFetcher */
+        $morceauxFetcher = $this->get("morceaux");
+        $morceau = $morceauxFetcher->getMorceauxForViande($typeViande);
+        $morceau = $morceau->find($idMorceau);
+
+        /** @var CuissonsFetcherService $cuissonFetcher */
+        $cuissonFetcher = $this->get("cuissons");
+        $cuissons = $cuissonFetcher->getCuissonsForMorceau($morceau);
+
+        return $this->render($response, "QRCode/cuissons.html.twig", array(
+            "cuissons" => $cuissons,
+            "morceau"  => $morceau
         ));
     }
 }

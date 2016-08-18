@@ -9,13 +9,12 @@
 namespace Ovs\Bovimarket\Services;
 
 
-use Ovs\Bovimarket\Api\JSONFetcher;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Entities\Recettes;
 use Ovs\Bovimarket\Utils\TypeViande;
 
-class RecettesFetcherService
+class RecettesFetcherService extends JSONFetcher
 {
 
     /** @var Collection  */
@@ -26,7 +25,8 @@ class RecettesFetcherService
      */
     public function __construct()
     {
-        $this->recettes = new Collection(array(),Recettes::class);
+        $this->objectClass = Recettes::class;
+        $this->recettes = new Collection(array(),$this->objectClass);
     }
 
     protected function getUrlForViande($typeViande = null)
@@ -44,8 +44,8 @@ class RecettesFetcherService
 
     public function getRecettesForViande($viande)
     {
-        $objects  = json_decode(JSONFetcher::get($this->getUrlForViande($viande)));
-        $this->recettes=new Collection($objects,Recettes::class);
+        $objects  = json_decode($this->get($this->getUrlForViande($viande)));
+        $this->recettes=new Collection($objects,$this->objectClass);
         return $this->recettes;
     }
 
