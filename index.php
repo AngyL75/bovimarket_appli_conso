@@ -30,6 +30,7 @@ $container["configService"]=$config;
 ServicesManager::registerServices($container);
 
 $app = new App($container);
+ServicesManager::registerMiddlewares($app);
 Router::registerRoutes($app);
 
 $app->run();

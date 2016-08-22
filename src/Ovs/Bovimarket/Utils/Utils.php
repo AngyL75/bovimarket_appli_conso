@@ -9,7 +9,7 @@
 namespace Ovs\Bovimarket\Utils;
 
 
-use Ovs\Bovimarket\Entities\Entite;
+use Ovs\Bovimarket\Entities\Api\Entite;
 
 class Utils
 {
@@ -111,34 +111,40 @@ class Utils
 
     public static function getUrlDetailForObject($object)
     {
-        switch($object->activite){
+        switch($object->getActivite()){
             case "RESTAURANT":
-                return "/restaurant.php?id=".$object->id;
+                return "/restaurant.php?id=".$object->getId();
                 break;
             case "RESTAURATION_COLLECTIVE":
-                return "/resto.php?id=".$object->id;
+                return "/resto.php?id=".$object->getId();
                 break;
             default:
-                return "/boucher.php?id=".$object->id;
+                return "/boucher.php?id=".$object->getId();
                 break;
 
         }
     }
 
+    /**
+     * @param Entite $object
+     * @return string
+     */
     public static function createMapMarker($object)
     {
-        $latLng = Entite::getLatLng($object);
+
+        $latLng = $object->getLatLng();
         if (!$latLng) {
             return "";
         }
 
         $url = static::getUrlDetailForObject($object);
-        $icon = static::getIconForActivite($object->activite);
-        $name=$object->name;
+        $icon = static::getIconForActivite($object->getActivite());
+        $name=$object->getName();
         $name=addcslashes($name,"'");
+        $id = $object->getId();
 
         $marker = <<<MARKER
-var marker$object->id = new google.maps.Marker({
+var marker$id = new google.maps.Marker({
 position: new google.maps.LatLng($latLng[0],$latLng[1]),
 map: map,
 url: "$url",
@@ -146,7 +152,7 @@ title: '$name',
 icon: "$icon"
 });
 
-google.maps.event.addListener(marker$object->id, 'click', function() {
+google.maps.event.addListener(marker$id, 'click', function() {
     window.location.href = this.url;
 });
 

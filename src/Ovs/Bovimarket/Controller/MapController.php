@@ -11,6 +11,7 @@ namespace Ovs\Bovimarket\Controller;
 
 use Ovs\Bovimarket\Entities\Entite;
 use Ovs\SlimUtils\Controller\BaseController;
+use Psr7Middlewares\Middleware\AuraSession;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -18,6 +19,8 @@ class MapController extends BaseController
 {
     public function indexAction(Request $request,Response $response,$args)
     {
+        $session = $this->getSession($request);
+        $session->setFlash("success","Hello");
         $entites = $this->get("entites")->findAll();
         return $this->render($response,"Home/map.html.twig",array("entites"=>$entites));
     }

@@ -33,19 +33,31 @@ class Api extends Client
 
     protected $logger;
 
-    public function __construct(array $config,Logger $logger)
+    public function __construct(array $config, Logger $logger)
     {
         parent::__construct($config);
-        $this->logger=$logger;
+        $this->logger = $logger;
     }
 
     public function request($method, $uri = '', array $options = [])
     {
-        $this->logger->addDebug("REQ : [".$method."] ".$uri." - ".implode(";",$options));
-        $this->logger->addDebug("Headers : ".$this->getConfig());
+
+        $baseURI = $this->getConfig("base_uri");
+        $headers = $this->getConfig("headers");
+        $headers = $output = implode(', ', array_map(
+            function ($v, $k) {
+                return sprintf("%s='%s'", $k, $v);
+            },
+            $headers,
+            array_keys($headers)
+        ));
+
+
+        $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . implode(";", $options));
+        $this->logger->addDebug("Headers : " .$headers);
         $res = parent::request($method, $uri, $options);
-        $body = (string)$res->getBody();
-        $this->logger->addDebug("RES : ".$body);
+        $body = $res->getBody();
+        $this->logger->addDebug("RES : " .(string) $body);
         return $res;
     }
 

@@ -10,6 +10,7 @@ namespace Ovs\SlimUtils\Controller;
 
 
 use Interop\Container\ContainerInterface;
+use Psr7Middlewares\Middleware\AuraSession;
 use Slim\Http\Response;
 
 class BaseController
@@ -36,5 +37,10 @@ class BaseController
     public function get($key)
     {
         return $this->container->get($key);
+    }
+
+    public function getSession($request)
+    {
+        return AuraSession::getSession($request)->getSegment(static::class);
     }
 }

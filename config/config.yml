@@ -1,4 +1,10 @@
 settings:
+    debug: false
+    api:
+        baseURI: "http://185.30.92.167:8081/bovimarket/api/"
+        token: "262895a3-00dc-46b9-b958-82f879e593ac"
+        #baseURI: "http://51.254.44.168:8080/bovimarket/api/"
+        #token: "52a453ac-70e0-43ee-a59d-9af10eed4a9f"
     displayErrorDetails: true
     logger:
         name: "slim-app"

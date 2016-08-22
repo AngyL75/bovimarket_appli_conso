@@ -35,7 +35,7 @@ class FlashController extends BaseController
 
         return $this->render($response, "QRCode/categories.html.twig", array(
             "paths" => $paths,
-            "live"  => false
+            "live"  => true
         ));
     }
 
