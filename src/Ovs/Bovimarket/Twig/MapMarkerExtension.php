@@ -29,7 +29,8 @@ class MapMarkerExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction("createMarker", array($this, "createMarker"), array(
-                "is_safe" => array("html")
+                "is_safe" => array("html"),
+                "needs_environment" => true
             )),
             new \Twig_SimpleFunction("mapDecoupe", array($this, "createDecoupe"), array(
                 "is_safe"           => array("html"),
@@ -44,9 +45,9 @@ class MapMarkerExtension extends \Twig_Extension
         return $env->render("QRCode/decoupes/map_".$morceaux->getTypeViande().".html.twig",array("morceau"=>$morceaux));
     }
 
-    public function createMarker($entite)
+    public function createMarker(\Twig_Environment $env, $entite)
     {
-        return Utils::createMapMarker($entite);
+        return $env->render("Block/marker.html.twig",array("entite"=>$entite));
     }
 
 

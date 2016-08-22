@@ -1,0 +1,11 @@
+var marker{{ entite.id }} = new google.maps.Marker({
+position: new google.maps.LatLng({{ entite.lat }},{{ entite.lng }}),
+map: map,
+url: "{{ path_for("app.entite.detail",{"id":entite.id}) }}",
+title: '{{ entite.name }}',
+icon: "{{ entite.icon }}"
+});
+
+google.maps.event.addListener(marker{{ entite.id }}, 'click', function() {
+    window.location.href = this.url;
+});

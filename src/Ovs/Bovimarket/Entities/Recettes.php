@@ -365,4 +365,15 @@ class Recettes
         return $this;
     }
 
+    public function getDifficulteClass()
+    {
+        $classes=array(
+            0=>"neutre",
+            1=>"facile",
+            2=>"moyen",
+            3=>"difficile",
+            4=>"expert"
+        );
+        return $classes[$this->difficulte];
+    }
 }

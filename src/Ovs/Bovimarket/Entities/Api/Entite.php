@@ -696,6 +696,22 @@ class Entite extends Searchable
         return null;
     }
 
+    public function getLat()
+    {
+        if($latLng = $this->getLatLng()){
+            return $latLng[0];
+        }
+        return 0;
+    }
+
+    public function getLng()
+    {
+        if($latLng = $this->getLatLng()){
+            return $latLng[1];
+        }
+        return 0;
+    }
+
     public static function getImage($photo)
     {
         if(empty($photo)){
@@ -729,5 +745,8 @@ class Entite extends Searchable
         return false;
     }
 
-
+    public function getIcon()
+    {
+        return Utils::getIconForActivite($this->activite);
+    }
 }

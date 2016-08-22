@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-6 text-center">
-                    <a class="link IconeCuisson" href="cuisson.php?idMorceau=<?php echo $morceauId; ?>" data-color="#ffffff">
+                    <a class="link IconeCuisson" href="{{ path_for("flash.cuissons_list",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
                         La cuisson
                     </a>
                 </div>

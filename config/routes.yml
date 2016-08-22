@@ -29,3 +29,8 @@ flash.cuissons_list:
 flash.cuissons_detail:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:detailCuisson"
     path: "/viande/{categ}/{idMorceau}/cuissons/{idCuisson}"
+
+
+app.entite.detail:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:showDetail"
+    path: "/entite/{id}"
