@@ -1,0 +1,32 @@
+{% extends "Entites/detail.html.twig" %}
+
+{% block menu %}
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10"></p>
+            <div id="calendarMain2"></div>
+        </div>
+    </div>
+
+    <div class="row" id="menuTable">
+
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/web/js/jsSimpleDatePickr.js"></script>
+    <script src="/web/js/jsSimpleDatePickrInit.js"></script>
+    <script type="text/javascript">
+        calInit("calendarMain2", "{{ "now"|localizeddate("medium","none","fr_FR") }}", "champ_date2", "jsCalendar", "day", "selectedDay");
+    </script>
+    <script>
+        document.querySelector("#calendarMain2>input").addEventListener("date-changed",function(e){
+            var link="{{ path_for("app.entite.menu",{"id":entite.id,"date":"__date__"}) }}";
+            var date = e.detail.date;
+            date=date.join("-");
+            link = link.replace(/__date__/,date);
+        });
+    </script>
+{% endblock %}

@@ -34,3 +34,7 @@ flash.cuissons_detail:
 app.entite.detail:
     action: "Ovs\\Bovimarket\\Controller\\EntiteController:showDetail"
     path: "/entite/{id}"
+
+app.entite.menu:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:getMenu"
+    path: "/menu/{id}/{date}"

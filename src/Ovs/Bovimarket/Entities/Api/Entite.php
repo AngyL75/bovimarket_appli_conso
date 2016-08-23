@@ -9,14 +9,16 @@
 namespace Ovs\Bovimarket\Entities\Api;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Interfaces\Searchable;
 use Ovs\Bovimarket\Utils\Utils;
 
-class Entite extends Searchable
+class Entite
 {
 
+    //region Properties
     /**
      * @var
      * @Serializer\Type("string")
@@ -124,7 +126,7 @@ class Entite extends Searchable
     protected $activite;
     /**
      * @var
-     * @Serializer\Type("stdClass")
+     * @Serializer\Type("ArrayCollection")
      */
     protected $abonnement;
     /**
@@ -162,7 +164,10 @@ class Entite extends Searchable
      * @Serializer\Type("array")
      */
     protected $concours;
+    //endregion
 
+
+    //region Getters/Setters
     /**
      * @return mixed
      */
@@ -542,7 +547,7 @@ class Entite extends Searchable
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getAbonnement()
     {
@@ -684,6 +689,7 @@ class Entite extends Searchable
         $this->concours = $concours;
         return $this;
     }
+    //endregion
 
     public function getLatLng()
     {
@@ -699,7 +705,9 @@ class Entite extends Searchable
     public function getLat()
     {
         if($latLng = $this->getLatLng()){
-            return $latLng[0];
+            $lat = (string)$latLng[0];
+            $lat = str_replace(",",".",$lat);
+            return $lat;
         }
         return 0;
     }
@@ -707,19 +715,16 @@ class Entite extends Searchable
     public function getLng()
     {
         if($latLng = $this->getLatLng()){
-            return $latLng[1];
+            $lng = (string)$latLng[1];
+            $lng = str_replace(",",".",$lng);
+            return $lng;
         }
         return 0;
     }
 
-    public static function getImage($photo)
+    public function getOptions()
     {
-        if(empty($photo)){
-            return Utils::getWebPathOfDir(__DIR__."/../../../images/nophoto.png");
-        }
-        $url=Api::getBaseUrl()."resources";
-        $photo=str_replace("\\","/",$photo);
-        return $url."/".$photo;
+        return $this->getAbonnement()->get("options");
     }
 
     public function getAdresseString()
@@ -748,5 +753,19 @@ class Entite extends Searchable
     public function getIcon()
     {
         return Utils::getIconForActivite($this->activite);
+    }
+
+    public function getAdresseComplete()
+    {
+        /** @var Adresse $adresse */
+        $adresse = $this->getAdresse();
+
+        return $adresse->getAdresse()." ".$adresse->getComplementAdresse()." ".$adresse->getCodePostal()." ".$adresse->getVille();
+    }
+
+    public function hasVenteDirecte()
+    {
+        $options = $this->getOptions();
+        return $options["venteDirecte"]!=0;
     }
 }

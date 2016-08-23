@@ -9,35 +9,18 @@
 namespace Ovs\Bovimarket\Services\Api;
 
 
-use GuzzleHttp\Exception\RequestException;
-use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\Entite;
-use Ovs\Bovimarket\Entities\Interfaces\Collection;
 
 class EntiteFetcherService extends ApiFetcher
 {
-    protected $endpoint;
 
-    public function __construct(Api $api)
+    public function getEndpoint()
     {
-        parent::__construct($api);
-        $this->endpoint = "entites/";
+        return "entites/";
     }
 
-    public function findAll()
+    public function getClass()
     {
-        try{
-            $res = $this->api->get($this->endpoint,array("query"=>"name=A"));
-            $body = (string)$res->getBody();
-
-
-            $entites = json_decode($body);
-            $entites = new Collection($entites,Entite::class);
-
-            return $entites;
-        }catch (RequestException $e){
-
-        }
+        return Entite::class;
     }
-
 }

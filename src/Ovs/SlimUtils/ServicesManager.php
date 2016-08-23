@@ -13,6 +13,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
+use Ovs\Bovimarket\Services\API\MenuFetcherService;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
@@ -31,27 +32,6 @@ class ServicesManager
      */
     public static function registerServices(&$container)
     {
-        $container['view'] = function ($container) {
-            $view = new Twig(
-                array(
-                    __DIR__ . "/../Bovimarket/Resources/views",
-                    'views/'
-                ),
-                [
-                    'cache'       => 'cache/',
-                    'auto_reload' => true
-                ]
-            );
-            $view->addExtension(new TwigExtension(
-                $container['router'],
-                $container['request']->getUri()
-            ));
-
-            $view->addExtension(new MapMarkerExtension());
-
-            return $view;
-        };
-
         $configLog = $container->settings["logger"];
         $logger = new Logger($configLog["name"]);
         $logPath = __DIR__ . "/../../../logs/" . $configLog["path"];
@@ -75,7 +55,30 @@ class ServicesManager
         $container["recettes"] = new RecettesFetcherService();
         $container["cuissons"] = new CuissonsFetcherService();
 
-        $container["entites"] = new EntiteFetcherService($container["api"]);
+        $container["entites"] = new EntiteFetcherService($container["api"],$container["logger"]);
+        $container["menus"] = new MenuFetcherService($container["api"],$container["logger"]);
+
+        $container['view'] = function ($container) {
+            $view = new Twig(
+                array(
+                    __DIR__ . "/../Bovimarket/Resources/views",
+                    'views/'
+                ),
+                [
+                    'cache'       => 'cache/',
+                    'auto_reload' => true
+                ]
+            );
+            $view->addExtension(new TwigExtension(
+                $container['router'],
+                $container['request']->getUri()
+            ));
+
+            $view->addExtension(new MapMarkerExtension($container["api"]));
+            $view->addExtension(new \Twig_Extensions_Extension_Intl());
+
+            return $view;
+        };
     }
 
 

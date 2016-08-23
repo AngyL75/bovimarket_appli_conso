@@ -16,6 +16,8 @@ use Ovs\SlimUtils\Configuration;
 
 require "vendor/autoload.php";
 
+setlocale(LC_ALL,"fr_FR");
+
 AnnotationRegistry::registerLoader(function($class){
     $file = explode("\\",$class);
     $file = array_pop($file);

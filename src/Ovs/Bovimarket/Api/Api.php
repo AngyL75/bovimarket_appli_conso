@@ -56,10 +56,16 @@ class Api extends Client
         $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . implode(";", $options));
         $this->logger->addDebug("Headers : " .$headers);
         $res = parent::request($method, $uri, $options);
-        $body = $res->getBody();
-        $this->logger->addDebug("RES : " .(string) $body);
+        $body = (string)$res->getBody();
+        $this->logger->addDebug("RES : " .$body);
         return $res;
     }
 
+    public function getResourcesPath()
+    {
+        $baseUri = $this->getConfig("base_uri");
+        $baseUri = str_replace("/api/","",$baseUri);
+        return $baseUri."/resources";
+    }
 
 }

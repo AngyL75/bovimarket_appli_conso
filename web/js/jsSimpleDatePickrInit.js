@@ -100,6 +100,7 @@ function calClick(dateStr, id){
 	field.value = dateArr[0]+'/'+dateArr[1]+'/'+dateArr[2];
 	updateButtonDate(dateArr);
 	document.getElementById('calendarWrap'+id).style.display = "none";
+	return false;
 }
 //
 // affiche le titre
@@ -133,4 +134,7 @@ function updateButtonDate(dateArr){
 	if(menuTable != undefined){
 		fadeIn(menuTable)
 	}
+
+	var event = new CustomEvent("date-changed",{'detail': {"date":dateArr}});
+	btn.dispatchEvent(event);
 }
