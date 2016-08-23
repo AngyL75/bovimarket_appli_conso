@@ -41,6 +41,6 @@ class BaseController
 
     public function getSession($request)
     {
-        return AuraSession::getSession($request)->getSegment(static::class);
+        return AuraSession::getSession($request)->getSegment("overscan");
     }
 }

@@ -10,10 +10,11 @@ namespace Ovs\Bovimarket\Twig;
 
 
 use Ovs\Bovimarket\Api\Api;
+use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Utils\Utils;
 
-class MapMarkerExtension extends \Twig_Extension
+class BoviExtension extends \Twig_Extension
 {
     protected $api;
 
@@ -48,7 +49,10 @@ class MapMarkerExtension extends \Twig_Extension
                 "needs_environment" => true
             )),
             new \Twig_SimpleFunction("apiImagePath", array($this, "getApiImagePath"), array(
-                "is_sage" => array("html")
+                "is_safe" => array("html")
+            )),
+            new \Twig_SimpleFunction("isInCart",array($this,"isInCart"),array(
+                "is_safe"=>array("html")
             ))
         );
     }
@@ -70,6 +74,15 @@ class MapMarkerExtension extends \Twig_Extension
             return $this->api->getResourcesPath() . "/" . $path;
         }else{
             return Utils::getImage("nophoto.png");
+        }
+    }
+
+    public function isInCart(Produit $produit, array $cart)
+    {
+        if(in_array($produit->getId(),array_keys($cart))){
+            return "PanierSelect";
+        }else{
+            return "Panier";
         }
     }
 

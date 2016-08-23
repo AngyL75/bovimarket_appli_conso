@@ -43,3 +43,7 @@ app.entite.menu:
 app.entite.produits:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:listProduits"
     path: "/produits/{id}"
+
+app.entite.addToCart:
+    action: "Ovs\\Bovimarket\\Controller\\ProduitController:addToCart"
+    path: "/produits/{idEntite}/addToCart/{idProduit}"

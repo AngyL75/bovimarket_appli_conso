@@ -18,7 +18,7 @@ use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
-use Ovs\Bovimarket\Twig\MapMarkerExtension;
+use Ovs\Bovimarket\Twig\BoviExtension;
 use Psr7Middlewares\Middleware;
 use Slim\App;
 use Slim\Container;
@@ -78,7 +78,7 @@ class ServicesManager
                 $container['request']->getUri()
             ));
 
-            $view->addExtension(new MapMarkerExtension($api));
+            $view->addExtension(new BoviExtension($api));
             $view->addExtension(new \Twig_Extensions_Extension_Intl());
 
             return $view;

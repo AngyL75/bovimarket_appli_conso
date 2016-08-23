@@ -1,5 +1,5 @@
 settings:
-    debug: false
+    debug: true
     api:
         baseURI: "http://185.30.92.167:8081/bovimarket/api/"
         token: "262895a3-00dc-46b9-b958-82f879e593ac"
