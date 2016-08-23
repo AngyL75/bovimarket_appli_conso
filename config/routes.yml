@@ -38,3 +38,8 @@ app.entite.detail:
 app.entite.menu:
     action: "Ovs\\Bovimarket\\Controller\\EntiteController:getMenu"
     path: "/menu/{id}/{date}"
+
+
+app.entite.produits:
+    action: "Ovs\\Bovimarket\\Controller\\ProduitController:listProduits"
+    path: "/produits/{id}"

@@ -4,7 +4,7 @@
 <body class="page" id="holder" style="color: #ffffff;">
 {% endblock %}
 {% block bodyContent %}
-        <div id="close"><a href="javascript:history.back()">x</a></div>
+        <div id="close"><a href="{{ path_for("map.homepage") }}">x</a></div>
         <div class="container">
             {% block page_content %}
             {% endblock %}

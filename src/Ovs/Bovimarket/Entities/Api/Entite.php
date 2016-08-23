@@ -724,7 +724,12 @@ class Entite
 
     public function getOptions()
     {
-        return $this->getAbonnement()->get("options");
+        $abo = $this->getAbonnement();
+        if($abo) {
+            return $abo->get("options");
+        }else{
+            return null;
+        }
     }
 
     public function getAdresseString()
@@ -766,6 +771,6 @@ class Entite
     public function hasVenteDirecte()
     {
         $options = $this->getOptions();
-        return $options["venteDirecte"]!=0;
+        return (isset($options["venteDirecte"]) && $options["venteDirecte"]!=0);
     }
 }

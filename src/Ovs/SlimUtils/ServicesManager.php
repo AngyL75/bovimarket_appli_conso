@@ -14,6 +14,7 @@ use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
+use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
@@ -45,7 +46,7 @@ class ServicesManager
             [
                 "base_uri" => $configApi["baseURI"],
                 "headers"  => [
-                    "Authorization" => "Bearer ".$configApi["token"]
+                    "Authorization" => "Bearer " . $configApi["token"]
                 ]
             ],
             $container["logger"]
@@ -55,10 +56,13 @@ class ServicesManager
         $container["recettes"] = new RecettesFetcherService();
         $container["cuissons"] = new CuissonsFetcherService();
 
-        $container["entites"] = new EntiteFetcherService($container["api"],$container["logger"]);
-        $container["menus"] = new MenuFetcherService($container["api"],$container["logger"]);
+        $api = $container["api"];
 
-        $container['view'] = function ($container) {
+        $container["entites"] = new EntiteFetcherService($api, $logger);
+        $container["menus"] = new MenuFetcherService($api, $logger);
+        $container["produits"] = new ProduitFetcherService($api, $logger);
+
+        $container['view'] = function ($container) use($api) {
             $view = new Twig(
                 array(
                     __DIR__ . "/../Bovimarket/Resources/views",
@@ -74,7 +78,7 @@ class ServicesManager
                 $container['request']->getUri()
             ));
 
-            $view->addExtension(new MapMarkerExtension($container["api"]));
+            $view->addExtension(new MapMarkerExtension($api));
             $view->addExtension(new \Twig_Extensions_Extension_Intl());
 
             return $view;
@@ -86,19 +90,19 @@ class ServicesManager
     {
 
         Middleware::setStreamFactory(function ($file, $mode) {
-            return new Stream(fopen($file,$mode));
+            return new Stream(fopen($file, $mode));
         });
 
 
-        $middlewares=array(
+        $middlewares = array(
             Middleware::FormatNegotiator(),
             Middleware::AuraSession()->name('boviSession'),
             function ($request, $response, $next) {
                 //Get the session instance
                 $session = Middleware\AuraSession::getSession($request);
-                $request->withAttribute("session",$session);
+                $request->withAttribute("session", $session);
 
-                return $next($request,$response);
+                return $next($request, $response);
             }
         );
 
@@ -106,12 +110,12 @@ class ServicesManager
             $app->add($middleware);
         }
 
-        if($app->getContainer()->settings["debug"]){
+        if ($app->getContainer()->settings["debug"]) {
             $app->add(
                 Middleware::DebugBar()->captureAjax(true)
             );
         }
 
     }
-    
+
 }

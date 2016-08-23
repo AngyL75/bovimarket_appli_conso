@@ -1,0 +1,51 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block prev %}
+    <div id="return"><a href="javascript:history.back()">&lt;</a></div>
+{% endblock %}
+
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Liste des produits</h1>
+        </div>
+    </div>
+
+    {% for produit in produits %}
+        <div class="row ListeStyle2">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="Tof">
+                            <img src="{{ apiImagePath(produit.photo) }}" alt="..."/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="Description" style="width:auto;">
+                            <p class="Nom">{{ produit.nom }}</p>
+                            <p class"Desc">{{ produit.accroche }}</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <p class="Prix text-right">{{ produit.prix }} &euro;</p>
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-blanc Panier" type="submit"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h3>Pas de produits en stock</h3>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <form action="panier.php">
+                <button class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">Afficher mon panier
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
