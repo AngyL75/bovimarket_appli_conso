@@ -27,4 +27,5 @@ deploy to nolimit:
     stage: deploy
     script: bundle exec cap nolimit deploy
     environment: nolimit
-    only: SlimFramework
+    only:
+        - SlimFramework
