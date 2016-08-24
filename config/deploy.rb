@@ -1,14 +1,13 @@
 # config valid only for current version of Capistrano
-lock '3.4.0'
 
 set :application, 'Bovimarket'
-set :repo_url, 'git@bitbucket.org:overscan/bovimarket.git'
+set :repo_url, 'git@gitlab.com:overscan/Bovimarket.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/bovimarket.overscan.biz'
+
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -32,16 +31,16 @@ set :deploy_to, '/home/bovimarket.overscan.biz'
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 3
 
-namespace :deploy do
+set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+
+namespace :composer do
+
+  before :run, :change_path do
+    on roles(:web) do
+      SSHKit.config.command_map[:composer] = "php70 #{release_path.join("composer.phar")}"
     end
   end
 

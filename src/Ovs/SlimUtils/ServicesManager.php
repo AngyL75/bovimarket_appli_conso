@@ -38,7 +38,7 @@ class ServicesManager
         $container["config"] = $container->settings;
         $configLog = $container->settings["logger"];
         $logger = new Logger($configLog["name"]);
-        $logPath = __DIR__ . "/../../../logs/" . $configLog["path"];
+        $logPath = realpath(__DIR__ ). "/../../../logs/" . $configLog["path"];
         $file_handler = new StreamHandler($logPath);
         $logger->pushHandler($file_handler);
         $container['logger'] = $logger;
