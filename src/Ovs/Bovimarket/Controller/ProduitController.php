@@ -11,6 +11,7 @@ namespace Ovs\Bovimarket\Controller;
 
 use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\SlimUtils\Controller\BaseController;
+use Psr7Middlewares\Middleware\AuraSession;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Router;

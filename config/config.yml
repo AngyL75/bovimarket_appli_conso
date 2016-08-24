@@ -1,4 +1,6 @@
 settings:
+    session:
+        lifetime: 14400
     debug: true
     api:
         baseURI: "http://185.30.92.167:8081/bovimarket/api/"

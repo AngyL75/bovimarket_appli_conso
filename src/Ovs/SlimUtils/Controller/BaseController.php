@@ -41,6 +41,11 @@ class BaseController
 
     public function getSession($request)
     {
-        return AuraSession::getSession($request)->getSegment("overscan");
+        $config = $this->get("config");
+        $session  = AuraSession::getSession($request);
+        if(isset($config["session"]) && isset($config["session"]["lifetime"])) {
+            $session->setCookieParams(array("lifetime" =>$config["session"]["lifetime"]));
+        }
+        return $session->getSegment("overscan");
     }
 }

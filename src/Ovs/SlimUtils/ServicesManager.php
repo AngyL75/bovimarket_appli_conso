@@ -22,6 +22,8 @@ use Ovs\Bovimarket\Twig\BoviExtension;
 use Psr7Middlewares\Middleware;
 use Slim\App;
 use Slim\Container;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Http\Stream;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
@@ -33,6 +35,7 @@ class ServicesManager
      */
     public static function registerServices(&$container)
     {
+        $container["config"] = $container->settings;
         $configLog = $container->settings["logger"];
         $logger = new Logger($configLog["name"]);
         $logPath = __DIR__ . "/../../../logs/" . $configLog["path"];
@@ -97,10 +100,13 @@ class ServicesManager
         $middlewares = array(
             Middleware::FormatNegotiator(),
             Middleware::AuraSession()->name('boviSession'),
-            function ($request, $response, $next) {
+            function (Request $request, Response $response, $next) {
+                $config = $this->get("config");
                 //Get the session instance
                 $session = Middleware\AuraSession::getSession($request);
-                $request->withAttribute("session", $session);
+                if($session && isset($config["session"]) && isset($config["session"]["lifetime"])) {
+                    $session->setCookieParams(array("lifetime" =>$config["session"]["lifetime"]));
+                }
 
                 return $next($request, $response);
             }
