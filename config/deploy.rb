@@ -3,6 +3,8 @@
 set :application, 'Bovimarket'
 set :repo_url, 'git@gitlab.com:overscan/Bovimarket.git'
 
+set :group, "nginx"
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -34,14 +36,3 @@ set :repo_url, 'git@gitlab.com:overscan/Bovimarket.git'
 set :keep_releases, 3
 
 set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'
-
-
-namespace :composer do
-
-  before :run, :change_path do
-    on roles(:web) do
-      SSHKit.config.command_map[:composer] = "php70 #{release_path.join("composer.phar")}"
-    end
-  end
-
-end
