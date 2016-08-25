@@ -58,7 +58,7 @@ abstract class ApiFetcher
     public function findBy($criteria)
     {
         try{
-            $res = $this->api->get($this->getFullEndpoint(),$criteria);
+            $res = $this->api->get($this->getFullEndpoint(),array("query"=>$criteria));
             $body = (string)$res->getBody();
 
 

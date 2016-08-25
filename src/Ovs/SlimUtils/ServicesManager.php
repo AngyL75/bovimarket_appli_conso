@@ -12,6 +12,7 @@ namespace Ovs\SlimUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
+use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
 use Ovs\Bovimarket\Services\API\ProduitFetcherService;
@@ -38,7 +39,7 @@ class ServicesManager
         $container["config"] = $container->settings;
         $configLog = $container->settings["logger"];
         $logger = new Logger($configLog["name"]);
-        $logPath = realpath(__DIR__ ). "/../../../logs/" . $configLog["path"];
+        $logPath = realpath(__DIR__) . "/../../../logs/" . $configLog["path"];
         $file_handler = new StreamHandler($logPath);
         $logger->pushHandler($file_handler);
         $container['logger'] = $logger;
@@ -64,11 +65,12 @@ class ServicesManager
         $container["entites"] = new EntiteFetcherService($api, $logger);
         $container["menus"] = new MenuFetcherService($api, $logger);
         $container["produits"] = new ProduitFetcherService($api, $logger);
+        $container["certifications"] = new CertificationFetcherService($api, $logger);
 
-        $container['view'] = function ($container) use($api) {
+        $container['view'] = function ($container) use ($api) {
             $view = new Twig(
                 array(
-                    __DIR__ . "/../Bovimarket/Resources/views",
+                    realpath(__DIR__ . "/../Bovimarket/Resources/views"),
                     'views/'
                 ),
                 [
@@ -104,8 +106,8 @@ class ServicesManager
                 $config = $this->get("config");
                 //Get the session instance
                 $session = Middleware\AuraSession::getSession($request);
-                if($session && isset($config["session"]) && isset($config["session"]["lifetime"])) {
-                    $session->setCookieParams(array("lifetime" =>$config["session"]["lifetime"]));
+                if ($session && isset($config["session"]) && isset($config["session"]["lifetime"])) {
+                    $session->setCookieParams(array("lifetime" => $config["session"]["lifetime"]));
                 }
 
                 return $next($request, $response);

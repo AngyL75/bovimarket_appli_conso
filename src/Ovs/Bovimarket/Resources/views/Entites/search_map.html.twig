@@ -1,0 +1,75 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block prev %}
+    <div id="return"><a href="javascript:history.back()"><</a></div>
+{% endblock %}
+
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center" id="TitreRecherche">
+                Sélectionnez votre région
+            </h1>
+        </div>
+    </div>
+
+    <form class="recherche" action="{{ path_for("app.entite.search_form") }}" method="post">
+        <input type="hidden" name="region" value="" id="selectedRegion" />
+        <div id="mapFr" style="height: 400px"></div>
+        <div class="col-xs-8 col-xs-offset-2">
+            <button type="submit" class="btn btn-vert" id="Valider">Valider</button>
+        </div>
+    </form>
+    <div class="text-center"><img src="/web/images/troupeau.png" alt="" /></div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/web/js/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="/web/js/jquery_map-fr_merc.js"></script>
+    <script>
+
+        function updateRegionSelected(e,code,isSelected,regions){
+            if(isSelected) {
+                $("#selectedRegion").val(code)
+            }else{
+                $("#selectedRegion").val("");
+            }
+        }
+
+
+        $(function(){
+            $("#mapFr").vectorMap({
+                map: 'fr_regions_merc',
+                zoomOnScroll: false,
+                backgroundColor: "transparent",
+                regionsSelectable: true,
+                regionsSelectableOne: true,
+                zoomMin:1,
+                zoomMax:1,
+                regionStyle:{
+                    initial:{
+                        fill: "rgb(95, 47, 67)",
+                        stroke: "#7c5264",
+                        "stroke-width": 1
+                    },
+                    hover:{
+                        fill: "#8bb000"
+                    },
+                    selected:{
+                        fill: "#8bb000"
+                    }
+                },
+                onRegionSelected:updateRegionSelected
+            })
+        })
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/web/css/jquery-jvectormap-2.0.3.css">
+{% endblock %}
+

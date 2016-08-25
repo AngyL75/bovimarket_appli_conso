@@ -40,6 +40,28 @@ app.entite.menu:
     path: "/menu/{id}/{date}"
 
 
+app.entite.search_map:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:searchMap"
+    path: "/search_zone"
+
+app.entite.search_form:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:search"
+    path: "/search"
+    methods:
+        - "GET"
+        - "POST"
+
+app.entite.do_search:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:doSearch"
+    path: "/results"
+    methods:
+        - "GET"
+        - "POST"
+
+app.entite.get_certif:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:getCertifications"
+    path: "/certifications/[{viande}]"
+
 app.entite.produits:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:listProduits"
     path: "/produits/{id}"

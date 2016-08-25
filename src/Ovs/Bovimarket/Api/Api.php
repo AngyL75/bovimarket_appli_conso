@@ -53,11 +53,11 @@ class Api extends Client
         ));
 
 
-        $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . implode(";", $options));
+        $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
         $this->logger->addDebug("Headers : " .$headers);
         $res = parent::request($method, $uri, $options);
-        $body = (string)$res->getBody();
-        $this->logger->addDebug("RES : " .$body);
+        /*$body = (string)$res->getBody();
+        $this->logger->addDebug("RES : " .$body);*/
         return $res;
     }
 

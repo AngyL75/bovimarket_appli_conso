@@ -10,7 +10,9 @@ namespace Ovs\Bovimarket\Controller;
 
 
 
+use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
+use Ovs\Bovimarket\Utils\Region;
 use Ovs\SlimUtils\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -38,5 +40,78 @@ class EntiteController extends BaseController
         $idEntite = $args["id"];
         $date = $args["date"];
         //TODO
+    }
+
+    public function searchMapAction(Request $request, Response $response, $args)
+    {
+        return $this->render($response,"Entites/search_map.html.twig");
+    }
+
+    public function searchAction(Request $request, Response $response, $args)
+    {
+        $region=null;
+
+
+        /** @var CertificationFetcherService $certifFetcher */
+        $certifFetcher=$this->get("certifications");
+
+        $parsedBody = $request->getParsedBody();
+
+        if(isset($parsedBody["region"]) && $region = $parsedBody["region"]){
+            $this->getSession($request)->set("region",$region);
+        }
+
+        if(!$region) {
+            $region = $this->getSession($request)->get("region");
+        }
+
+        if($region) {
+            $region = Region::CODE[$region];
+        }
+
+        if(!$region){
+            return $response->withRedirect($this->get("router")->pathFor("app.entite.search_map"));
+        }
+
+        $certifications = $certifFetcher->findAll();
+
+        return $this->render($response,"Entites/search.html.twig",array(
+            "region"=>$region,
+            "certifications"=>$certifications
+        ));
+    }
+
+    public function doSearchAction(Request $request,Response $response,$args){
+        $parsedBody = $request->getParsedBody();
+        $fetcher = $this->get("entites");
+
+        if($request->isPost() && isset($parsedBody["search_form"])) {
+            $criteres=$parsedBody["search_form"];
+            $results = $fetcher->findBy($criteres);
+        }else{
+            return $response->withRedirect($this->get("router")->pathFor("app.entite.search_form"));
+        }
+
+
+        return $this->render($response,"Entites/results.html.twig",array(
+            "results"=>$results
+        ));
+    }
+
+    public function getCertificationsAction(Request $request, Response $response, $args)
+    {
+
+        $viande = $args["viande"];
+
+        /** @var CertificationFetcherService $certifFetcher */
+        $certifFetcher=$this->get("certifications");
+        $certifications = $certifFetcher->findAll();
+        if($viande) {
+           $certifications = $certifications->findContaining("categoriesIngredients", $viande);
+        }
+
+        return $this->render($response,"Block/certifications.html.twig",array(
+            "certifications" =>$certifications
+        ));
     }
 }

@@ -1,0 +1,123 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block prev %}
+    <div id="return"><a href="javascript:history.back()"><</a></div>
+{% endblock %}
+
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center" id="TitreRecherche">
+                Vous recherchez
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-4 text-center IconRecherche">
+                <a href="#">
+                    <i class="fa fa-location-arrow"></i>
+                    <p>Autour de moi</p>
+                </a>
+            </div>
+            <div class="col-xs-4 text-center IconRecherche">
+                <a href="#">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Villes</p>
+                </a>
+            </div>
+            <div class="col-xs-4 text-center selected IconRecherche">
+                <a href="#">
+                    <i class="fa fa-globe"></i>
+                    <p>{{region}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <form class="recherche" action="{{ path_for("app.entite.do_search") }}" method="post">
+                <div class="clearfix">
+                    <div class="btn-group dropdown" id="viande">
+                        <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <var>Type de viande</var>
+                            <input type="hidden" name="search_form[viande]" id="searchFormViande"/>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li data-val="boeuf">Boeuf</li>
+                            <li data-val="veau">Veau</li>
+                            <li data-val="agneau">Agneau</li>
+                            <li data-val="porc">Porc</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="btn-group dropdown" id="certifications">
+                        <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <var>Qualité</var>
+                            <input type="hidden" name="search_form[certificationsId]"/>
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for certif in certifications %}
+                                <li class="clearfix" data-val="{{ certif.id }}">{{certif.nom}} <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            {% endfor %}
+                            <!--<li class="clearfix">Agneau de Lozère <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            <li class="clearfix">Boeuf Fin Gras de Mézenc <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            <li class="clearfix">Boeuf Salers LR <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            <li class="clearfix">Boeuf Bio de Haut-Marne <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            <li class="clearfix">Boeuf Blonde des Combrailles <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+                            <li class="clearfix">Porc de Haute-Loire  <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="btn-group dropdown" id="activitesSelect">
+                        <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <var>Activité</var>
+                            <input type="hidden" name="search_form[activites]"/>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li data-val="RESTAURANT">Restaurants</li>
+                            <li data-val="BOUCHER">Bouchers</li>
+                            <li data-val="ELEVEUR">Eleveurs</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-vert" id="Rechercher" type="submit">Rechercher</button>
+            </form>
+        </div>
+        <div class="text-center"><img src="/web/images/troupeau.png" alt="" /></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/web/js/bootstrap.js"></script>
+    <script>
+
+        function clickChoice(e){
+            var $button=$(this).parent().parent().find("button");
+            $button.find("var").text($(this).text());
+            $button.find("input").val($(this).data("val"));
+
+            if($button.parent().attr("id") == "viande"){
+                var url = "{{ path_for("app.entite.get_certif",{ "viande":"__viande__" })}}";
+
+
+                var viande = $("#searchFormViande").val();
+                url = url.replace("__viande__",viande);
+
+                $.ajax(url,{
+                    success:function(data,status,xhr){
+                        $("#certifications").html(data);
+                        $("form.recherche #certifications .dropdown-menu li").click(clickChoice);
+                    }
+                });
+            }
+
+        }
+
+        $("form.recherche .dropdown-menu li").click(clickChoice);
+    </script>
+{% endblock %}
