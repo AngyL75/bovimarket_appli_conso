@@ -9,9 +9,11 @@
 
 
 server 'd.rimbault@185.30.92.167:823', roles: %w{app db web}
-set :deploy_to, '/var/www/domains/nginx/www-prod/overscan'
+set :deploy_to, '/var/www/domains/nginx/boviweb.cloud-sak.com/overscan'
 
 set :branch, "SlimFramework"
+
+SSHKit.config.umask = 002
 
 # role-based syntax
 # ==================
@@ -69,7 +71,7 @@ set :branch, "SlimFramework"
 namespace :deploy do
     before :updated, :change_ownership do
         on roles(:web) do
-            execute "chgrp", fetch(:group), fetch(:release_path)
+            execute :chgrp, "-R" , fetch(:group), fetch(:release_path)
         end
     end
     namespace :symlink do
@@ -77,8 +79,11 @@ namespace :deploy do
         Rake::Task["release"].clear_actions
         task :release do
           on release_roles :all do
+            tmp_current_path = release_path.parent.join(current_path.basename)
             relative_path  = Pathname.new("releases/").join(release_path.basename)
-            execute :ln, "-s", relative_path, current_path
+            execute :ln, "-s", relative_path, tmp_current_path
+            execute :mv, tmp_current_path, current_path.parent
+            #execute :ln, "-s", relative_path, current_path
           end
         end
     end
