@@ -15,18 +15,33 @@
 
 
 {% block javascripts %}
+    {% set date="now"|localizeddate("medium","none","fr_FR") %}
     {{ parent() }}
     <script src="/web/js/jsSimpleDatePickr.js"></script>
     <script src="/web/js/jsSimpleDatePickrInit.js"></script>
     <script type="text/javascript">
-        calInit("calendarMain2", "{{ "now"|localizeddate("medium","none","fr_FR") }}", "champ_date2", "jsCalendar", "day", "selectedDay");
+        calInit("calendarMain2", "{{ date }}", "champ_date2", "jsCalendar", "day", "selectedDay");
     </script>
     <script>
-        document.querySelector("#calendarMain2>input").addEventListener("date-changed",function(e){
+        dateChanged("{{ "now"|date("d-m-Y") }}");
+
+        function displayMenu(html,status,xhr){
+            $("#menuTable").html(html);
+        }
+
+        function dateChanged(date){
             var link="{{ path_for("app.entite.menu",{"id":entite.id,"date":"__date__"}) }}";
+            link = link.replace(/__date__/,date);
+
+            $.ajax(link,{
+                success:displayMenu
+            })
+        }
+
+        document.querySelector("#calendarMain2>input").addEventListener("date-changed",function(e){
             var date = e.detail.date;
             date=date.join("-");
-            link = link.replace(/__date__/,date);
+            dateChanged(date);
         });
     </script>
 {% endblock %}

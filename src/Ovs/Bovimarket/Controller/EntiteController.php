@@ -35,10 +35,20 @@ class EntiteController extends BaseController
         return $this->render($response,$template,array("entite"=>$entite,"menus"=>$menus));
     }
 
-    public function getMenu(Request $request, Response $response, $args)
+    public function getMenuAction(Request $request, Response $response, $args)
     {
         $idEntite = $args["id"];
         $date = $args["date"];
+
+        /** @var MenuFetcherService $menuFetcher */
+        $menuFetcher = $this->get("menus");
+        //On triche un peu pour construire une url type /menus/plannings
+        $menus = $menuFetcher->getPlanning($idEntite,$date);
+
+        return $this->render($response,"Block/menu.html.twig",array(
+           "planning"=>$menus,
+        ));
+
         //TODO
     }
 

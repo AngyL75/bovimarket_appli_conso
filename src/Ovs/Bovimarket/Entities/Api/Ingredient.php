@@ -21,6 +21,9 @@ class Ingredient
     protected $nom;
     protected $categorie;
     protected $quantite;
+    protected $certificationId;
+    protected $certificationNom;
+    protected $indicationPrix;
 
     /**
      * @param JsonDeserializationVisitor $visitor
@@ -32,6 +35,16 @@ class Ingredient
         $this->nom=$obj["ingredient"]["nom"];
         $this->categorie=$obj["ingredient"]["categorie"];
         $this->quantite = $obj["quantite"];
+
+        if(isset($obj["certification"])){
+            $this->certificationId = $obj["certification"]["id"];
+            $this->certificationNom = $obj["certification"]["nom"];
+        }
+
+        if(isset($obj["indicationPrix"])){
+            $this->indicationPrix=$obj["indicationPrix"];
+        }
+
         return $this;
     }
 
