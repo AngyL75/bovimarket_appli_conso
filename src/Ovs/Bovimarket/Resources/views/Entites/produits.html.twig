@@ -31,7 +31,7 @@
                         <p class="Prix text-right">{{ produit.prix }} &euro;</p>
                     </div>
                     <div class="col-xs-2">
-                        <a class="btn btn-blanc {{ isInCart(produit,panier) }}" href="{{ path_for("app.entite.addToCart",{"idEntite":entiteId,"idProduit":produit.id}) }}"></a>
+                        <a class="btn btn-blanc {{ isInCart(produit,panier) }}" href="{{ path_for("app.entite.add_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}"></a>
                     </div>
                 </div>
             </div>
@@ -42,10 +42,7 @@
 
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <form action="panier.php">
-                <button class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">Afficher mon panier
-                </button>
-            </form>
+                <a class="btn btn-vert" id="Rechercher" type="button" style="margin:30px 0;line-height: 38px;" href="{{ path_for("app.commande.show_cart") }}">Afficher mon panier</a>
         </div>
     </div>
 {% endblock %}

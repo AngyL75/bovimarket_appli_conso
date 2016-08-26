@@ -66,6 +66,14 @@ app.entite.produits:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:listProduits"
     path: "/produits/{id}"
 
-app.entite.addToCart:
+app.entite.add_to_cart:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:addToCart"
     path: "/produits/{idEntite}/addToCart/{idProduit}"
+
+app.commande.show_cart:
+    action: "Ovs\\Bovimarket\\Controller\\ProduitController:showCart"
+    path: "/panier"
+
+app.commande.remove_from_cart:
+    action: "Ovs\\Bovimarket\\Controller\\ProduitController:removeFromCart"
+    path: "/panier/remove/{idProduit}"

@@ -10,12 +10,14 @@ namespace Ovs\SlimUtils\Controller;
 
 
 use Interop\Container\ContainerInterface;
+use Ovs\Bovimarket\Entities\Panier;
 use Psr7Middlewares\Middleware\AuraSession;
 use Slim\Http\Response;
 
 class BaseController
 {
     protected $container;
+    protected $cartSessionKey = "cart";
 
     public function __construct(ContainerInterface $container)
     {
@@ -47,5 +49,29 @@ class BaseController
             $session->setCookieParams(array("lifetime" =>$config["session"]["lifetime"]));
         }
         return $session->getSegment("overscan");
+    }
+
+    /**
+     * @param $request
+     * @return Panier
+     */
+    public function getPanier($request)
+    {
+        $session = $this->getSession($request);
+        $cart = $session->get($this->cartSessionKey, new Panier());
+        return $cart;
+    }
+
+
+    public function savePanier($request,$panier)
+    {
+        $session = $this->getSession($request);
+        $session->set($this->cartSessionKey,$panier);
+    }
+
+    public function destroySession($request)
+    {
+        $session = AuraSession::getSession($request);
+        $session->destroy();
     }
 }

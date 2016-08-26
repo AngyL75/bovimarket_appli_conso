@@ -12,6 +12,7 @@ namespace Ovs\Bovimarket\Twig;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Morceaux;
+use Ovs\Bovimarket\Entities\Panier;
 use Ovs\Bovimarket\Utils\Utils;
 
 class BoviExtension extends \Twig_Extension
@@ -57,6 +58,24 @@ class BoviExtension extends \Twig_Extension
         );
     }
 
+    public function getFilters()
+    {
+        return array(
+            new \Twig_SimpleFilter("total",array($this,"calculTotalPanier"),array(
+                "is_safe"=>array("html")
+            ))
+        );
+    }
+
+    public function calculTotalPanier(Panier $panier)
+    {
+        $total = 0;
+        foreach ($panier->getLignes() as $produit) {
+            $total+=(intval($produit["qte"])*intval($produit["prix"]));
+        }
+        return $total;
+    }
+
 
     public function createDecoupe(\Twig_Environment $env, Morceaux $morceaux)
     {
@@ -77,9 +96,9 @@ class BoviExtension extends \Twig_Extension
         }
     }
 
-    public function isInCart(Produit $produit, array $cart)
+    public function isInCart(Produit $produit, Panier $cart)
     {
-        if(in_array($produit->getId(),array_keys($cart))){
+        if(in_array($produit->getId(),array_keys($cart->getLignes()))){
             return "PanierSelect";
         }else{
             return "Panier";

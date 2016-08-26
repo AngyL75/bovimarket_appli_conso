@@ -9,6 +9,8 @@
 namespace Ovs\Bovimarket\Controller;
 
 
+use Ovs\Bovimarket\Entities\Api\Produit;
+use Ovs\Bovimarket\Entities\Panier;
 use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\SlimUtils\Controller\BaseController;
 use Psr7Middlewares\Middleware\AuraSession;
@@ -26,13 +28,12 @@ class ProduitController extends BaseController
 
         $produits = $produitsFetcher->findAll();
 
-        $session = $this->getSession($request);
-        $cart= $session->get("cart",array());
+        $panier = $this->getPanier($request);
 
         return $this->render($response, "Entites/produits.html.twig", array(
             "produits" => $produits,
-            "entiteId"=>$args["id"],
-            "panier"=>$cart
+            "entiteId" => $args["id"],
+            "panier"   => $panier
         ));
     }
 
@@ -40,12 +41,41 @@ class ProduitController extends BaseController
     {
         $idEntite = $args["idEntite"];
         $id = $args["idProduit"];
-        $session = $this->getSession($request);
-        $cart= $session->get("cart",array());
-        $cart[$id]+=1;
-        $session->set("cart",$cart);
+
+
+        /** @var ProduitFetcherService $produitsFetcher */
+        $produitsFetcher = $this->get("produits");
+        $produitsFetcher->setEndpointParams(array("entiteId" => $idEntite));
+
+        /** @var Produit $produit */
+        $produit = $produitsFetcher->find($id);
+
+        $panier = $this->getPanier($request);
+        $panier->add($produit);
+        $this->savePanier($request,$panier);
+
         /** @var Router $router */
         $router = $this->get("router");
-        return $response->withRedirect($router->pathFor("app.entite.produits",array("id"=>$idEntite)));
+        return $response->withRedirect($router->pathFor("app.entite.produits", array("id" => $idEntite)));
+    }
+
+    public function showCartAction(Request $request, Response $response, $args)
+    {
+        $panier = $this->getPanier($request);
+
+        return $this->render($response,"Commande/panier.html.twig",array(
+            "panier"=>$panier
+        ));
+    }
+
+    public function removeFromCartAction(Request $request, Response $response, $args)
+    {
+        $idProduit = $args["idProduit"];
+        $panier = $this->getPanier($request);
+        $panier->remove($idProduit);
+
+        $this->savePanier($request,$panier);
+
+        return $response->withRedirect($this->get("router")->pathFor("app.commande.show_cart"));
     }
 }
