@@ -53,10 +53,11 @@ class MenuFetcherService extends ApiFetcher
         $body=(string)$response->getBody();
         $planning = new Collection(json_decode($body),MenuPlanning::class);
         $this->setEndpointParams(array("entiteId"=>$idEntite));
+        $menus = $this->findAll();
         /** @var MenuPlanning $menu */
         foreach ($planning as $id =>$menu) {
             $idMenu = $menu->getMenuId();
-            $menuComp = $this->find($idMenu);
+            $menuComp=$menus->find($idMenu);
             $menu->setMenu($menuComp);
         }
 

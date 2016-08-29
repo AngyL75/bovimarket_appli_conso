@@ -75,7 +75,7 @@ class ServicesManager
                 ),
                 [
                     'cache'       => 'cache/',
-                    'auto_reload' => true
+                    'auto_reload' => $container->settings["debug"]
                 ]
             );
             $view->addExtension(new TwigExtension(

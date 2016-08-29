@@ -22,6 +22,8 @@ abstract class ApiFetcher
 
     /**
      * ApiFetcher constructor.
+     * @param Api $api
+     * @param Logger $logger
      */
     public function __construct(Api $api,Logger $logger)
     {
@@ -35,11 +37,7 @@ abstract class ApiFetcher
             $res = $this->api->get($this->getFullEndpoint());
             $body = (string)$res->getBody();
 
-
-            $entites = json_decode($body);
-            $entites = new Collection($entites,$this->getClass());
-
-            return $entites;
+            return $this->unserialize($body);
         }catch (RequestException $e){
             $this->logger->addCritical("RequestException : ".$e->getMessage());
         }
@@ -61,11 +59,7 @@ abstract class ApiFetcher
             $res = $this->api->get($this->getFullEndpoint(),array("query"=>$criteria));
             $body = (string)$res->getBody();
 
-
-            $entites = json_decode($body);
-            $entites = new Collection($entites,$this->getClass());
-
-            return $entites;
+            return $this->unserialize($body);
         }catch (RequestException $e){
             $this->logger->addCritical("RequestException : ".$e->getMessage());
         }
@@ -86,6 +80,25 @@ abstract class ApiFetcher
         }
 
         return $endpoint;
+    }
+
+    /**
+     * @return Api
+     */
+    public function getApi()
+    {
+        return $this->api;
+    }
+
+    public function unserialize($body, $class = null)
+    {
+        if($class == null){
+            $class = $this->getClass();
+        }
+
+        $entites = json_decode($body);
+        $entites = new Collection($entites,$class);
+        return $entites;
     }
 
     abstract public function getEndpoint();
