@@ -63,9 +63,7 @@
     {% if panier.lignes|length >0 %}
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <form action="recup.php">
-                <button class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">Valider mon panier</button>
-            </form>
+                <a href="{{ path_for("app.commande.select_livraison") }}" class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">Valider mon panier</a>
         </div>
     </div>
     {% endif %}

@@ -52,6 +52,7 @@ class ProduitController extends BaseController
 
         $panier = $this->getPanier($request);
         $panier->add($produit);
+        $panier->setVendeur($idEntite);
         $this->savePanier($request,$panier);
 
         /** @var Router $router */

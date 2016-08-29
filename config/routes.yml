@@ -77,3 +77,33 @@ app.commande.show_cart:
 app.commande.remove_from_cart:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:removeFromCart"
     path: "/panier/remove/{idProduit}"
+
+app.commande.select_livraison:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:selectLivraison"
+    path: "/panier/delivery"
+
+app.commande.save_livraison:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:saveCanal"
+    path: "/panier/delivery/save"
+    methods:
+        - "POST"
+
+app.commande.select_paiement:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:choixPaiement"
+    path: "/panier/paiement"
+
+app.commande.save_paiement:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:savePaiement"
+    path: "/panier/paiement/save"
+    methods:
+        - "POST"
+
+app.commande.do_paiement:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:doPaiement"
+    path: "/panier/paiement/process"
+
+app.commande.save_commande:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:saveCommande"
+    path: "/panier/commande/save"
+    methods:
+        - "POST"

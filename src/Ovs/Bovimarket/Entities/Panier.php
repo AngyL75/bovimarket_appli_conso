@@ -30,6 +30,21 @@ class Panier
      */
     protected $validé;
 
+    /**
+     * @var
+     */
+    protected $vendeur;
+
+    /**
+     * @var
+     */
+    protected $paiement;
+
+    /**
+     * @var
+     */
+    protected $canal;
+
     public function __construct()
     {
         $this->lignes=array();
@@ -84,6 +99,48 @@ class Panier
         $this->validé = $validé;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getVendeur()
+    {
+        return $this->vendeur;
+    }
+
+    /**
+     * @param mixed $vendeur
+     */
+    public function setVendeur($vendeur)
+    {
+        $this->vendeur = $vendeur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCanal()
+    {
+        return $this->canal;
+    }
+
+    /**
+     * @param mixed $canal
+     * @return Panier
+     */
+    public function setCanal($canal)
+    {
+        $this->canal = $canal;
+        return $this;
+    }
+
+
+
+    public function isEmpty()
+    {
+        return count($this->getLignes())==0;
+    }
+
+
     public function add(Produit $produit, $qte = 1)
     {
         if ($ligne=$this->getLigneProduit($produit->getId())) {
@@ -100,6 +157,7 @@ class Panier
         $ligne["prix"] = $produit->getPrix();
         $ligne["produit"] = $produit;
         $this->lignes[$produit->getId()] = $ligne;
+        $this->calculTotal();
     }
 
     public function getLigneProduit($idProduit)
@@ -128,6 +186,37 @@ class Panier
         } else {
             $this->add($produit, $qte * (-1));
         }
+        $this->calculTotal();
     }
+
+    public function calculTotal()
+    {
+        $total = 0;
+        foreach ($this->getLignes() as $produit) {
+            $total+=(intval($produit["qte"])*intval($produit["prix"]));
+        }
+        $this->total = $total;
+        return $total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
+    }
+
+    /**
+     * @param mixed $paiement
+     * @return $this
+     */
+    public function setPaiement($paiement)
+    {
+        $this->paiement = $paiement;
+        return $this;
+    }
+
+
 
 }

@@ -12,6 +12,7 @@ namespace Ovs\SlimUtils\Controller;
 use Interop\Container\ContainerInterface;
 use Ovs\Bovimarket\Entities\Panier;
 use Psr7Middlewares\Middleware\AuraSession;
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 class BaseController
@@ -33,6 +34,9 @@ class BaseController
      */
     public function render(Response $response,$view, $vars=array())
     {
+        /*$session = $this->getSession($this->container->get("request"));
+        $flashes = $session->getFlash("flashes");
+        $vars["flashes"]=$flashes;*/
         return $this->container->get("view")->render($response,$view,$vars);
     }
 
@@ -73,5 +77,18 @@ class BaseController
     {
         $session = AuraSession::getSession($request);
         $session->destroy();
+    }
+
+    public function redirectToRoute(Response $response,$routeName,$args=array())
+    {
+        return $response->withRedirect($this->get("router")->pathFor($routeName,$args));
+    }
+
+    public function addFlash(Request $request, $type, $message)
+    {
+        $session = $this->getSession($request);
+        $flashes = $session->getFlash("flashes",array());
+        $flashes[$type]=$message;
+        $session->setFlashNow("flashes",$flashes);
     }
 }

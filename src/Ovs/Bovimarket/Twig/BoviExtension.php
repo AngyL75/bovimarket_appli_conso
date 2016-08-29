@@ -10,6 +10,7 @@ namespace Ovs\Bovimarket\Twig;
 
 
 use Ovs\Bovimarket\Api\Api;
+use Ovs\Bovimarket\Entities\Api\Creneau;
 use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Entities\Panier;
@@ -53,6 +54,9 @@ class BoviExtension extends \Twig_Extension
                 "is_safe" => array("html")
             )),
             new \Twig_SimpleFunction("isInCart",array($this,"isInCart"),array(
+                "is_safe"=>array("html")
+            )),
+            new \Twig_SimpleFunction("renderHoraire",array($this,"renderHoraire"),array(
                 "is_safe"=>array("html")
             ))
         );
@@ -103,6 +107,33 @@ class BoviExtension extends \Twig_Extension
         }else{
             return "Panier";
         }
+    }
+
+    public function renderHoraire(Creneau $creneau)
+    {
+        $jours = array(
+            1=>"Lundi",
+            2=>"Mardi",
+            3=>"Mercredi",
+            4=>"Jeudi",
+            5=>"Vendredi",
+            6=>"Samedi",
+            7=>"Dimanche"
+            );
+
+        $debut = $this->millsecsToHours($creneau->getDebut());
+        $fin = $this->millsecsToHours($creneau->getFin());
+
+        return $jours[$creneau->getJour()]." de ".$debut." à ".$fin;
+    }
+
+    protected function millsecsToHours($duree)
+    {
+        $secondes = $duree/1000;
+        $heures = intval($secondes/3600);
+        $minutes = intval($secondes%3600)/60;
+
+        return sprintf("%02d:%02d",$heures,$minutes);
     }
 
 

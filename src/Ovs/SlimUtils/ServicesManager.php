@@ -12,6 +12,7 @@ namespace Ovs\SlimUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
+use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
@@ -66,6 +67,7 @@ class ServicesManager
         $container["menus"] = new MenuFetcherService($api, $logger);
         $container["produits"] = new ProduitFetcherService($api, $logger);
         $container["certifications"] = new CertificationFetcherService($api, $logger);
+        $container["canaux"] = new CanauxFetcherService($api,$logger);
 
         $container['view'] = function ($container) use ($api) {
             $view = new Twig(
@@ -101,17 +103,7 @@ class ServicesManager
 
         $middlewares = array(
             Middleware::FormatNegotiator(),
-            Middleware::AuraSession()->name('boviSession'),
-            function (Request $request, Response $response, $next) {
-                $config = $this->get("config");
-                //Get the session instance
-                $session = Middleware\AuraSession::getSession($request);
-                if ($session && isset($config["session"]) && isset($config["session"]["lifetime"])) {
-                    $session->setCookieParams(array("lifetime" => $config["session"]["lifetime"]));
-                }
-
-                return $next($request, $response);
-            }
+            Middleware::AuraSession()->name('boviSession')
         );
 
         foreach ($middlewares as $middleware) {
