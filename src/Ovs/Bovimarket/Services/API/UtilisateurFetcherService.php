@@ -1,0 +1,76 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: david
+ * Date: 30/08/2016
+ * Time: 11:52
+ */
+
+namespace Ovs\Bovimarket\Services\API;
+
+
+use GuzzleHttp\Exception\RequestException;
+use JMS\Serializer\SerializerBuilder;
+use Ovs\Bovimarket\Entities\Api\Utilisateur;
+
+class UtilisateurFetcherService extends ApiFetcher
+{
+
+    public function getEndpoint()
+    {
+        return "utilisateurs/";
+    }
+
+    public function getClass()
+    {
+        return Utilisateur::class;
+    }
+
+    public function me()
+    {
+        $response = $this->api->get("utilisateurs/current");
+        $json =(string)$response->getBody();
+        $user = $this->unserialize($json);
+        var_dump($user);die();
+        return $user;
+    }
+
+    public function registerUser(Utilisateur $utilisateur)
+    {
+        $serial=SerializerBuilder::create()->build();
+        $json = $serial->serialize($utilisateur,"json");
+        try {
+            $response = $this->api->put("public/inscription/", array(
+                "body"    => $json,
+                "headers" => array(
+                    "Content-Type" => "application/json"
+                )
+            ));
+        }catch (RequestException $exception){
+            if($exception->getCode()==409){
+                return false;
+            }
+        }
+
+        $body = (string)$response->getBody();
+        if(strlen($body)==0){
+            return $utilisateur;
+        }
+        return $serial->deserialize($body,$this->getClass(),"json");
+    }
+
+    public function updateUser(Utilisateur $utilisateur)
+    {
+        $serial=SerializerBuilder::create()->build();
+        $json = $serial->serialize($utilisateur,"json");
+        $response = $this->api->post($this->getEndpoint(),array(
+            "body"=>$json,
+            "headers"=>array(
+                "Content-Type"=>"application/json"
+            )
+        ));
+
+        $body = (string)$response->getBody();
+        return $serial->deserialize($body,$this->getClass(),"json");
+    }
+}

@@ -1,10 +1,12 @@
 settings:
     session:
-        lifetime: 14400
+        lifetime: 3600
     debug: true
     api:
+        oauthLogin: "bovimarketcore"
+        oauthSecret: "mySecretOAuthSecret"
         baseURI: "http://185.30.92.167:8081/bovimarket/api/"
-        token: "262895a3-00dc-46b9-b958-82f879e593ac"
+        token: "1e8aed3e-9b5e-4c22-8971-dd3b57b5b6ba"
         #baseURI: "http://51.254.44.168:8080/bovimarket/api/"
         #token: "52a453ac-70e0-43ee-a59d-9af10eed4a9f"
     displayErrorDetails: true

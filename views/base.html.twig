@@ -60,6 +60,12 @@
             <a href="#amis"></a>
         </div>
 
+        {% if isLogged %}
+        <div class="header" id="Menu4">
+            <a href="#mon-compte"></a>
+        </div>
+        {% endif %}
+
         {% include("Blocks/nav.html.twig") %}
 
         <div id="content">
@@ -84,11 +90,11 @@
                 $('body').addClass('loaded');
             }, 3000);
         });
-        alsolike(
+        /*alsolike(
                 "RWBQRM", "Flexbox Products interaction",
                 "aOQddB", "Open & Close Animation",
                 "wBOder", "Subtle Icons hover effect"
-        );
+        );*/
     </script>
     <script type="text/javascript" src="/web/js/jquery.mmenu.all.min.js"></script>
     <script type="text/javascript">
@@ -108,6 +114,18 @@
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $("nav#amis").mmenu({
+                "extensions": [
+                    "effect-menu-zoom"
+                ],
+                "offCanvas": {
+                    "position": "right"
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("nav#mon-compte").mmenu({
                 "extensions": [
                     "effect-menu-zoom"
                 ],

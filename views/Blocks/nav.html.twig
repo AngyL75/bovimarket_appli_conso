@@ -60,3 +60,14 @@
     </ul>
     <button class="btn btn-vert" id="Ajouter">Ajouter un ami</button>
 </nav>
+
+{% if isLogged %}
+<nav id="mon-compte">
+    <ul>
+        <li><h2>Mon Compte</h2></li>
+        <li><a class="link" href="" data-color="#381b26">Mes Commandes</a></li>
+        <li><a class="link" href="" data-color="#381b26">Mon profil</a></li>
+        <li><a class="link" href="{{ path_for("app.logout") }}" data-color="#381b26">Se déconnecter</a></li>
+    </ul>
+</nav>
+{% endif %}

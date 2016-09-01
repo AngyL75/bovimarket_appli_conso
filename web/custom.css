@@ -20,3 +20,17 @@
 .panel-title {display: inline;font-weight: bold;}
 .checkbox.pull-right { margin: 0; }
 .pl-ziro { padding-left: 0px; }
+
+/** Mon Compte **/
+#Menu4.header {top: 75px;right: 0}
+#Menu4.header {background:#5d3043;}
+#Menu4.header a {top:0;background:url(images/moi.png) no-repeat center;}
+.mm-opened #Menu4.header a {background: url(images/moi.png) no-repeat center #381b26 }
+#mon-compte .mm-panels>.mm-panel.mm-hasnavbar {background: #381b26;}
+#mon-compte .Tof {width:75px;height:75px; overflow: hidden;border-radius: 50%;clear:both;float:left; background:url(images/nophoto-thmb2.png) center no-repeat; background-size: 100%;}
+#mon-compte .Tof img {width:100%;height:100%;}
+#mon-compte a, #mon-compte h2 {padding:5px 0;color:#fff;}
+#mon-compte p {padding: 0; float:;}
+#mon-compte .Description {float:left;padding:10px 20px;}
+#mon-compte .Description .Nom {font-weight: 500;float: none;padding: 15px 0;}
+#mon-compte .Description .Fonction {font-size: 18px; font-style: italic;}

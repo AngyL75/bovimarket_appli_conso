@@ -10,7 +10,10 @@ namespace Ovs\SlimUtils\Controller;
 
 
 use Interop\Container\ContainerInterface;
+use Ovs\Bovimarket\Entities\Api\Utilisateur;
 use Ovs\Bovimarket\Entities\Panier;
+use Ovs\Bovimarket\Twig\FlashExtension;
+use Ovs\Bovimarket\Utils\Session;
 use Psr7Middlewares\Middleware\AuraSession;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -18,13 +21,31 @@ use Slim\Http\Response;
 class BaseController
 {
     protected $container;
-    protected $cartSessionKey = "cart";
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
+    /**
+     * Verifie sur l'utilisateur est loggé
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     */
+    protected function isLogged(Request $request)
+    {
+        $session = $this->getSession($request);
+        return $session->get(Session::loggedSessionKey,false);
+    }
+
+    protected function isSecure(Request $request,Response $response)
+    {
+        if(!$this->isLogged($request)){
+            return $this->redirectToRoute($response,"app.login.form");
+        }
+        return null;
+    }
 
     /**
      *
@@ -34,9 +55,10 @@ class BaseController
      */
     public function render(Response $response,$view, $vars=array())
     {
-        /*$session = $this->getSession($this->container->get("request"));
-        $flashes = $session->getFlash("flashes");
-        $vars["flashes"]=$flashes;*/
+        $session=$this->getSession($this->container->get("myRequest"));
+        $session->getFlash("flashes");
+        $this->get("view")->addExtension(new FlashExtension($session));
+
         return $this->container->get("view")->render($response,$view,$vars);
     }
 
@@ -62,7 +84,7 @@ class BaseController
     public function getPanier($request)
     {
         $session = $this->getSession($request);
-        $cart = $session->get($this->cartSessionKey, new Panier());
+        $cart = $session->get(Session::cartSessionKey, new Panier());
         return $cart;
     }
 
@@ -70,7 +92,7 @@ class BaseController
     public function savePanier($request,$panier)
     {
         $session = $this->getSession($request);
-        $session->set($this->cartSessionKey,$panier);
+        $session->set(Session::cartSessionKey,$panier);
     }
 
     public function destroySession($request)
@@ -84,11 +106,31 @@ class BaseController
         return $response->withRedirect($this->get("router")->pathFor($routeName,$args));
     }
 
-    public function addFlash(Request $request, $type, $message)
+    public function addFlash($type, $message)
     {
-        $session = $this->getSession($request);
+        $session = $this->getSession($this->getRequest());
         $flashes = $session->getFlash("flashes",array());
         $flashes[$type]=$message;
+        $session->keepFlash();
         $session->setFlashNow("flashes",$flashes);
+    }
+
+    public function getRequest()
+    {
+        return $this->container->get("myRequest");
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed|Utilisateur
+     */
+    public function getUser(Request $request)
+    {
+        return $this->getSession($request)->get(Session::loggedUserSessionKey,null);
+    }
+
+    public function removePanier(Request $request)
+    {
+        return $this->getSession($request)->set(Session::cartSessionKey,null);
     }
 }

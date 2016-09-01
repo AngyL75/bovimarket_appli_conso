@@ -1,0 +1,21 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Merci</h1>
+        </div>
+    </div>
+
+    <div class="row ListeStyle2">
+        <div class="col-xs-4">
+            <a href="{{ path_for("app.commande.show_cart") }}"" class="IconPanier">Panier</a>
+        </div>
+        <div class="col-xs-4">
+            <a href="{{ path_for("app.commande.select_livraison") }}" class="IconRecup">Livraison</a>
+        </div>
+        <div class="col-xs-4">
+            <a href="{{ path_for("app.commande.select_paiement") }}" class="IconPaiementSelect">Paiement</a>
+        </div>
+    </div>
+{% endblock %}

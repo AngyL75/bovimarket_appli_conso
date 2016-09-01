@@ -1,0 +1,76 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="row">
+
+        {% if hasFlashes() %}
+            <div class="col-xs-12">
+                {% for type,flash in getFlashes() %}
+                    <div class="alert alert-{{ type }}">
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        <div class="col-sm-6 col-xs-12">
+            <h1>Connectez-vous</h1>
+
+
+            <form action="{{ path_for("app.login.login") }}" method="post">
+                <input type="hidden" name="referer" value="{{ referer }}">
+                <div class="form-group">
+                    <label for="username">E-Mail</label>
+                    <input type="text" class="form-control" name="login[username]">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" name="login[password]">
+                </div>
+                <button class="btn btn-vert" type="submit">Se connecter</button>
+            </form>
+        </div>
+        <div class="col-sm-6 col-xs-12" style="border-left: solid 1px #5d3043">
+            <h1>Inscrivez-vous</h1>
+            <form action="{{ path_for("app.login.register") }}" method="post">
+                <input type="hidden" name="register[referer]" value="{{ referer }}">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" name="register[nom]">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" name="register[prenom]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="register[email]">
+                </div>
+                <div class="form-group">
+                    <label for="email">Mot de passe</label>
+                    <input type="password" class="form-control" name="register[password]">
+                </div>
+                <!-- Adresse, Pour le moment pas utilisée
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" name="register[adresse]">
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="codePostal">Code Postal</label>
+                        <input type="text" class="form-control" name="register[code_postal]">
+                    </div>
+                    <div class="form-group col-sm-9">
+                        <label for="ville">Ville</label>
+                        <input type="text" class="form-control" name="register[ville]">
+                    </div>
+                </div>
+                -->
+                <button class="btn btn-vert" type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -22,11 +22,13 @@ class Adresse
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("complementAdresse")
      */
     protected $complementAdresse;
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("codePostal")
      */
     protected $codePostal;
     /**
@@ -37,6 +39,7 @@ class Adresse
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("villeId")
      */
     protected $villeId;
     /**

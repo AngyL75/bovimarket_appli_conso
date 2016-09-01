@@ -72,8 +72,6 @@ class EntiteController extends BaseController
         return $this->render($response, "Block/menu.html.twig", array(
             "planning" => $menus,
         ));
-
-        //TODO
     }
 
     public function searchMapAction(Request $request, Response $response, $args)

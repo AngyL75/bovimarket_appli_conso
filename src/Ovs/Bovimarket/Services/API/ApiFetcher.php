@@ -10,6 +10,7 @@ namespace Ovs\Bovimarket\Services\Api;
 
 
 use GuzzleHttp\Exception\RequestException;
+use JMS\Serializer\SerializerBuilder;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
@@ -97,7 +98,12 @@ abstract class ApiFetcher
         }
 
         $entites = json_decode($body);
-        $entites = new Collection($entites,$class);
+        if(is_array($entites)) {
+            $entites = new Collection($entites, $class);
+        }elseif (is_object($entites)){
+            $serializer = SerializerBuilder::create()->build();
+            $entites = $serializer->deserialize($body,$class,"json");
+        }
         return $entites;
     }
 

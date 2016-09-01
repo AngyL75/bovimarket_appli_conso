@@ -20,6 +20,7 @@ namespace Ovs\Bovimarket\Api;
 //    define("TOKEN", 'Authorization: Bearer d8d22d3e-342a-4910-abe4-cce0eee6f7e8');
 //}
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Monolog\Logger;
 
 /**
@@ -32,6 +33,8 @@ class Api extends Client
 {
 
     protected $logger;
+
+    protected $coolCodes = array(201,200);
 
     public function __construct(array $config, Logger $logger)
     {
@@ -55,9 +58,13 @@ class Api extends Client
 
         $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
         $this->logger->addDebug("Headers : " .$headers);
-        $res = parent::request($method, $uri, $options);
-        /*$body = (string)$res->getBody();
-        $this->logger->addDebug("RES : " .$body);*/
+        try {
+            $res = parent::request($method, $uri, $options);
+        }catch (RequestException $ex){
+            $this->logger->addDebug((string)$ex->getResponse()->getBody());
+            $this->logger->addError("Error : ". $ex->getMessage()."\r\n".$ex->getTraceAsString());
+            throw $ex;
+        }
         return $res;
     }
 

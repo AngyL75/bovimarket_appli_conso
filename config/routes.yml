@@ -107,3 +107,23 @@ app.commande.save_commande:
     path: "/panier/commande/save"
     methods:
         - "POST"
+
+app.login.form:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:loginForm"
+    path: "/login"
+
+app.login.login:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:login"
+    path: "/login/process"
+    methods:
+        - "POST"
+
+app.login.register:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:register"
+    path: "/register"
+    methods:
+        - "POST"
+
+app.logout:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:logout"
+    path: "/logout"
