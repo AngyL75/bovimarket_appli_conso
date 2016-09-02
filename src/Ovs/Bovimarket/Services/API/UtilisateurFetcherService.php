@@ -30,8 +30,9 @@ class UtilisateurFetcherService extends ApiFetcher
     {
         $response = $this->api->get("utilisateurs/current");
         $json =(string)$response->getBody();
-        $user = $this->unserialize($json);
-        var_dump($user);die();
+        $json = json_decode($json);
+        $user = json_encode($json->user);
+        $user = $this->unserialize($user);
         return $user;
     }
 

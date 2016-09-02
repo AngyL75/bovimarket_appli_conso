@@ -54,6 +54,7 @@ class UserController extends BaseController
     {
         $this->getSession($request)->set(Session::loggedSessionKey,false);
         $this->getSession($request)->set(Session::loggedUserSessionKey,null);
+        $this->getSession($request)->set(Session::oauthToken,null);
         return $this->redirectToRoute($response,"map.homepage");
     }
 
