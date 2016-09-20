@@ -36,10 +36,13 @@ class Api extends Client
 
     protected $coolCodes = array(201,200);
 
-    public function __construct(array $config, Logger $logger)
+    protected $debugBar;
+
+    public function __construct(array $config, Logger $logger,$debugBar=null)
     {
         parent::__construct($config);
         $this->logger = $logger;
+        $this->debugBar = $debugBar;
     }
 
     public function request($method, $uri = '', array $options = [])
@@ -55,12 +58,22 @@ class Api extends Client
             array_keys($headers)
         ));
 
+        if($this->debugBar){
+            $this->debugBar["messages"]->debug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
+            $this->debugBar["messages"]->debug("Headers : " .$headers);
+        }
 
         $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
         $this->logger->addDebug("Headers : " .$headers);
         try {
             $res = parent::request($method, $uri, $options);
         }catch (RequestException $ex){
+
+            if($this->debugBar){
+                $this->debugBar["messages"]->warning((string)$ex->getResponse()->getBody());
+                $this->debugBar["messages"]->error("Error : ". $ex->getMessage()."\r\n".$ex->getTraceAsString());
+            }
+
             $this->logger->addDebug((string)$ex->getResponse()->getBody());
             $this->logger->addError("Error : ". $ex->getMessage()."\r\n".$ex->getTraceAsString());
             throw $ex;

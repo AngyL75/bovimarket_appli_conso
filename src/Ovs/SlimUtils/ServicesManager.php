@@ -9,23 +9,16 @@
 namespace Ovs\SlimUtils;
 
 
+use DebugBar\StandardDebugBar;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\OauthToken;
 use Ovs\Bovimarket\Entities\Api\Utilisateur;
-use Ovs\Bovimarket\Services\API\CanauxFetcherService;
-use Ovs\Bovimarket\Services\API\CertificationFetcherService;
-use Ovs\Bovimarket\Services\API\CommandeFetcherService;
-use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
-use Ovs\Bovimarket\Services\API\MenuFetcherService;
-use Ovs\Bovimarket\Services\API\ProduitFetcherService;
-use Ovs\Bovimarket\Services\API\UtilisateurFetcherService;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Twig\BoviExtension;
-use Ovs\Bovimarket\Twig\FlashExtension;
 use Ovs\Bovimarket\Utils\Session;
 use Ovs\Bovimarket\Utils\UserManager;
 use Psr7Middlewares\Middleware;
@@ -44,9 +37,11 @@ class ServicesManager
      */
     public static function registerServices(&$container)
     {
-        $container["config"] = $container->settings;
         $configApi = $container->settings["api"];
         $configLog = $container->settings["logger"];
+
+        $container["config"] = $container->settings;
+        $container["debugBar"]=new StandardDebugBar();
 
 
         $logger = new Logger($configLog["name"]);
@@ -61,7 +56,8 @@ class ServicesManager
                 array(
                     "base_uri" => $configApi["baseURI"]
                 ),
-                $logger
+                $logger,
+                $container["debugBar"]
             ),
             $configApi["oauthLogin"],
             $configApi["oauthSecret"]
@@ -72,29 +68,26 @@ class ServicesManager
         $container["recettes"] = new RecettesFetcherService();
         $container["cuissons"] = new CuissonsFetcherService();
 
-        $container['view'] = function ($container) {
-            $view = new Twig(
-                array(
-                    realpath(__DIR__ . "/../Bovimarket/Resources/views"),
-                    'views/'
-                ),
-                [
-                    'debug'       => true,
-                    'cache'       => 'cache/',
-                    'auto_reload' => $container->settings["debug"]
-                ]
-            );
-            $view->addExtension(new TwigExtension(
-                $container['router'],
-                $container['request']->getUri()
-            ));
 
-            $view->addExtension(new \Twig_Extension_Debug());
+        $view = new Twig(
+            array(
+                realpath(__DIR__ . "/../Bovimarket/Resources/views"),
+                'views/'
+            ),
+            [
+                'debug'       => true,
+                'cache'       => 'cache/',
+                'auto_reload' => $container->settings["debug"]
+            ]
+        );
+        $view->addExtension(new TwigExtension(
+            $container['router'],
+            $container['request']->getUri()
+        ));
+        $view->addExtension(new \Twig_Extension_Debug());
+        $view->addExtension(new \Twig_Extensions_Extension_Intl());
 
-            $view->addExtension(new \Twig_Extensions_Extension_Intl());
-
-            return $view;
-        };
+        $container['view'] = $view;
     }
 
 
@@ -106,6 +99,14 @@ class ServicesManager
         });
 
 
+        if ($app->getContainer()->settings["debug"]) {
+            $debugBar = $app->getContainer()["debugBar"];
+            $app->add(
+                Middleware::DebugBar($debugBar)->captureAjax(true)
+            );
+        }
+
+
         $middlewares = array(
             Middleware::FormatNegotiator(),
             Middleware::AuraSession()->name('boviSession'),
@@ -113,23 +114,23 @@ class ServicesManager
 
                 /** @var UserManager $oauth */
                 $oauth = $app->getContainer()["oauth"];
+                $auraSess = Middleware\AuraSession::getSession($request);
+                $auraSess->setCookieParams(array('lifetime' => '3600'));
+                $session = $auraSess->getSegment("overscan");
 
-                $session = Middleware\AuraSession::getSession($request)->getSegment("overscan");
-
+                //Token en session
                 if ($session->get(Session::oauthToken, false)) {
                     /** @var OauthToken $token */
                     $token = $session->get(Session::oauthToken);
-                    $tokenValue = $token->getToken();
-                    $oauth->refreshApiToken($tokenValue);
-                } else {
-                    if (!$session->get(Session::loggedSessionKey, false) || !$session->get(Session::loggedUserSessionKey, null)) {
-                        //TODO: Changer nroux/nroux par mobile et le bon mdp quand l'api sera en place
-                        $oauth->logUser($session,"nroux","nroux");
+                    //Expiré?
+                    if ($token->isExpired()) {
+                        $oauth->logUser($session);
                     } else {
-                        /** @var Utilisateur $loggedUser */
-                        $loggedUser = $session->get(Session::loggedUserSessionKey);
-                        $oauth->logUser($session,$loggedUser->getEmail(),$loggedUser->getPassword());
+                        $tokenValue = $token->getToken();
+                        $oauth->refreshApiToken($tokenValue);
                     }
+                } else {
+                    $oauth->logUser($session);
                 }
                 $api = $app->getContainer()->get("api");
                 $app->getContainer()->get("view")->addExtension(new BoviExtension($api));
@@ -157,12 +158,6 @@ class ServicesManager
          */
         foreach (array_reverse($middlewares) as $middleware) {
             $app->add($middleware);
-        }
-
-        if ($app->getContainer()->settings["debug"]) {
-            $app->add(
-                Middleware::DebugBar()->captureAjax(true)
-            );
         }
 
     }

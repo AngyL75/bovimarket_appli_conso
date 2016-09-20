@@ -11,8 +11,10 @@ namespace Ovs\Bovimarket\Utils;
 
 use Aura\Session\Segment;
 use GuzzleHttp\Exception\RequestException;
+use JMS\Serializer\SerializerBuilder;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\OauthToken;
+use Ovs\Bovimarket\Entities\Api\Utilisateur;
 use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\CommandeFetcherService;
@@ -42,9 +44,20 @@ class UserManager
      * @param Segment $session
      * @param string $login
      * @param string $password
+     * @return bool
      */
-    public function logUser($session, $login = "mobile", $password = "mobile")
+    public function logUser($session, $login = null, $password = null)
     {
+
+        if ($session->get(Session::loggedSessionKey, false) && $session->get(Session::loggedUserSessionKey, null)) {
+            /** @var Utilisateur $loggedUser */
+            $loggedUser = $session->get(Session::loggedUserSessionKey);
+            $login = $loggedUser->getEmail();
+            $password= $loggedUser->getPassword();
+        }elseif($login == null || $password == null){
+            $login = "mobile";
+            $password="mobile";
+        }
 
         $auth = base64_encode($this->oauthClientLogin . ":" . $this->oauthClientSecret);
 
@@ -62,8 +75,8 @@ class UserManager
             ));
             if ($response->getStatusCode() == 200) {
                 $body = (string)$response->getBody();
-                $body = json_decode($body);
-                $token = new OauthToken($body->access_token);
+                $this->container->get("debugBar")["messages"]->info("Retrieved Token : ".$body);
+                $token=SerializerBuilder::create()->build()->deserialize($body,OauthToken::class,"json");
                 $session->set(Session::oauthToken, $token);
                 $this->refreshApiToken($token->getToken());
                 return true;
@@ -88,7 +101,8 @@ class UserManager
                     "Authorization" => "Bearer " . $token
                 ]
             ],
-            $container["logger"]
+            $container["logger"],
+            $container["debugBar"]
         );
         $container["entites"] = new EntiteFetcherService($container["api"], $logger);
         $container["menus"] = new MenuFetcherService($container["api"], $logger);

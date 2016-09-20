@@ -9,36 +9,35 @@
 namespace Ovs\Bovimarket\Entities\Api;
 
 
+use JMS\Serializer\Annotation as Serializer;
+
 class OauthToken
 {
-    protected $token;
-    protected $refreshToken;
-    protected $expires;
-
     /**
-     * OauthToken constructor.
-     * @param $token
-     * @param $refreshToken
-     * @param $expires
+     * @var
+     * @Serializer\Type("string")
      */
-    public function __construct($token)
-    {
-        $this->token = $token;
-        $this->refreshToken = "";
+    protected $accessToken;
+    /**
+     * @var
+     * @Serializer\Type("string")
+     */
+    protected $refreshToken;
+    /**
+     * @var
+     * @Serializer\Type("integer")
+     * @Serializer\Accessor(setter="setExpiresIn")
+     */
+    protected $expiresIn;
 
-        if(!empty($this->refreshToken)) {
-            $this->expires = time() + (24 * 60 * 60);
-        }else{
-            $this->expires = 0;
-        }
-    }
+    protected $expiresAt;
 
     /**
      * @return mixed
      */
     public function getToken()
     {
-        return $this->token;
+        return $this->accessToken;
     }
 
     /**
@@ -46,7 +45,7 @@ class OauthToken
      */
     public function setToken($token)
     {
-        $this->token = $token;
+        $this->accessToken = $token;
     }
 
     /**
@@ -68,20 +67,55 @@ class OauthToken
     /**
      * @return int
      */
-    public function getExpires()
+    public function getExpiresIn()
     {
-        return $this->expires;
+        return $this->expiresIn;
     }
 
     /**
-     * @param int $expires
+     * @param int $expiresIn
      */
-    public function setExpires($expires)
+    public function setExpiresIn($expiresIn)
     {
-        $this->expires = $expires;
+        $this->expiresIn = $expiresIn;
+        $this->expiresAt = time()+$expiresIn;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
 
+    /**
+     * @param mixed $accessToken
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * @param mixed $expiresAt
+     */
+    public function setExpiresAt($expiresAt)
+    {
+        $this->expiresAt = $expiresAt;
+    }
+
+    public function isExpired()
+    {
+        return $this->expiresAt < time();
+    }
 
 }

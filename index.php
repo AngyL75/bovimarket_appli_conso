@@ -6,7 +6,6 @@
  * Time: 17:56
  */
 
-ini_set("display_errors",1);
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Ovs\SlimUtils\Router;
 use Ovs\SlimUtils\ServicesManager;
@@ -27,6 +26,13 @@ AnnotationRegistry::registerLoader(function($class){
 
 $config=new Configuration();
 $configArray=$config->getConfig();
+
+
+if($configArray["settings"]["debug"]){
+    ini_set("display_errors",1);
+}
+
+
 $container = new Container($configArray);
 $container["configService"]=$config;
 ServicesManager::registerServices($container);
