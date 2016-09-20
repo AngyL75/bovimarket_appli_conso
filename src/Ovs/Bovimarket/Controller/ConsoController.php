@@ -114,14 +114,18 @@ class ConsoController extends BaseController
             return $retour;
         }
 
-        $panier = $this->getPanier($request);
-        $cmd = $this->panierToCommande($panier,$this->getUser($request));
+        if($request->isPost()) {
+            $panier = $this->getPanier($request);
+            $cmd = $this->panierToCommande($panier, $this->getUser($request));
 
-        /** @var CommandeFetcherService $cmdFetcher */
-        $cmdFetcher = $this->get("commandes");
+            /** @var CommandeFetcherService $cmdFetcher */
+            $cmdFetcher = $this->get("commandes");
 
-        $cmd=$cmdFetcher->saveCommande($cmd);
-        $this->removePanier($request);
+            $cmd = $cmdFetcher->saveCommande($cmd);
+            $this->removePanier($request);
+        }else{
+            $cmd=new Commande();
+        }
 
         return $this->render($response,"Commande/merci.html.twig",array(
             "commande"=>$cmd
@@ -130,7 +134,12 @@ class ConsoController extends BaseController
     }
 
 
-    protected function panierToCommande(Panier $panier,Utilisateur $user)
+    /**
+     * @param Panier $panier
+     * @param Utilisateur $user
+     * @return Commande
+     */
+    protected function panierToCommande(Panier $panier, Utilisateur $user)
     {
         /** @var CanauxFetcherService $canauxFetch */
         $canauxFetch = $this->get("canaux");
