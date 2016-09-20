@@ -50,6 +50,8 @@ class UtilisateurFetcherService extends ApiFetcher
         }catch (RequestException $exception){
             if($exception->getCode()==409){
                 return false;
+            }else{
+                throw $exception;
             }
         }
 

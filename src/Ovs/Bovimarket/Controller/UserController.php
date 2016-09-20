@@ -64,9 +64,20 @@ class UserController extends BaseController
         $user = Utilisateur::fromForm($userValues);
         /** @var UtilisateurFetcherService $userFetcher */
         $userFetcher = $this->get("utilisateurs");
+
+        // Inscription de l'utilisateur
         $user = $userFetcher->registerUser($user);
+        //Inscription OK
         if(is_a($user,Utilisateur::class)) {
             $session = $this->getSession($request);
+            // Log l'utilisateur auto
+            /** @var UserManager $oauth */
+            $oauth = $this->get("oauth");
+            $oauth->logUser($session,$user->getEmail(),$user->getPassword());
+            //Récupère mes infos
+            $userFetcher = $this->get("utilisateurs");
+            $user = $userFetcher->me();
+            //Sauvegarde la connexion en Session
             $session->set(Session::loggedSessionKey, true);
             $session->set(Session::loggedUserSessionKey, $user);
 
@@ -75,7 +86,7 @@ class UserController extends BaseController
                 return $response->withRedirect($userValues["referer"]);
             }
         }else{
-            $this->addFlash("danger","User exists");
+            $this->addFlash("danger","Ce compte existe déjà");
             return $this->redirectToRoute($response,"app.login.form");
         }
 
