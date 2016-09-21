@@ -62,6 +62,7 @@ class UserController extends BaseController
     {
         $userValues=$request->getParsedBodyParam("register");
         $user = Utilisateur::fromForm($userValues);
+        $user->setHideTelephone(null);
         /** @var UtilisateurFetcherService $userFetcher */
         $userFetcher = $this->get("utilisateurs");
 
@@ -91,6 +92,24 @@ class UserController extends BaseController
         }
 
         return $this->redirectToRoute($response,"app.commande.select_paiement");
+    }
+
+    public function profileAction(Request $request, Response $response, $args)
+    {
+        $user = $this->get("utilisateurs")->me();
+        return  $this->render($response,"User/profile.html.twig",array(
+            "user"=>$user
+        ));
+    }
+
+    public function updateProfileAction(Request $request,Response $response,$args)
+    {
+        $userValues = $request->getParsedBodyParam("profile");
+        $user = Utilisateur::fromForm($userValues);
+        $this->get("utilisateurs")->updateUser($user);
+
+        $this->addFlash("success","Profil mis à jour");
+        return $this->redirectToRoute($response,"app.profile");
     }
 
 }

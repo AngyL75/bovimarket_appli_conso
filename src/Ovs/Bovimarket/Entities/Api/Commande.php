@@ -266,4 +266,15 @@ class Commande
         $this->entiteId = $entiteId;
     }
 
+    public function getEtatCommandeLabel()
+    {
+        $labels = array(
+            Commande::ETAT_ACCEPTE=>"Paiement Validé",
+            Commande::ETAT_ATTENTE=>"En attente",
+            Commande::ETAT_LIVREE=>"Livrée",
+            Commande::ETAT_REFUS=>"Refusée"
+        );
+        return $labels[$this->getEtatCommade()];
+    }
+
 }

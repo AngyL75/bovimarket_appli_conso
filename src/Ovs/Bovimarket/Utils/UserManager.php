@@ -82,6 +82,7 @@ class UserManager
                 return true;
             }
         }catch (RequestException $exception){
+            throw $exception;
             return false;
         }
     }

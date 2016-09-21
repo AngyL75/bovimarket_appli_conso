@@ -314,13 +314,24 @@ class Utilisateur
         $user->setEmail($formValues["email"]);
         $user->setPassword($formValues["password"]);
 
-/*
-        $adresse = new Adresse();
-        $adresse->setAdresse($formValues["adresse"]);
-        $adresse->setCodePostal($formValues["code_postal"]);
-        $adresse->setVille($formValues["ville"]);
-        $user->setAdresse($adresse);
-*/
+        if(isset($formValues["id"])){
+            $user->setId($formValues["id"]);
+        }
+
+        if(isset($formValues["displayTelephone"])){
+            $user->setHideTelephone($formValues["displayTelephone"]!="on");
+        }else{
+            $user->setHideTelephone(true);
+        }
+
+        if(isset($formValues["adresse"])) {
+            $formValues=$formValues["adresse"];
+            $adresse = new Adresse();
+            $adresse->setAdresse($formValues["adresse"]);
+            $adresse->setCodePostal($formValues["code_postal"]);
+            $adresse->setVille($formValues["ville"]);
+            $user->setAdresse($adresse);
+        }
         return $user;
     }
 

@@ -40,6 +40,26 @@ class CommandeProduit
      */
     protected $prixUnitaire;
 
+    protected $produitObj;
+
+    /**
+     * @return mixed
+     */
+    public function getProduitObj()
+    {
+        return $this->produitObj;
+    }
+
+    /**
+     * @param mixed $produitObj
+     */
+    public function setProduitObj($produitObj)
+    {
+        $this->produitObj = $produitObj;
+    }
+
+
+
     /**
      * @return mixed
      */

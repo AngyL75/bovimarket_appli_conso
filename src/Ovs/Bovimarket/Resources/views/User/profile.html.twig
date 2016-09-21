@@ -1,0 +1,51 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Mon profil</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form action="{{ path_for("app.update_profile") }}" method="post">
+                <input type="hidden" name="profile[id]" value="{{ user.id }}" />
+                <div class="form-group">
+                    <label for="username">E-Mail</label>
+                    <input type="text" class="form-control" name="profile[email]" value="{{ user.email }}">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Nom</label>
+                    <input type="text" class="form-control" name="profile[nom]" value="{{ user.lastName }}">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" class="form-control" name="profile[prenom]" value="{{ user.firstName }}">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" name="profile[adresse][adresse]" value="{{ user.adresse.adresse }}">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Code Postal</label>
+                    <input type="text" class="form-control" name="profile[adresse][code_postal]" value="{{ user.adresse.codePostal }}">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Ville</label>
+                    <input type="text" class="form-control" name="profile[adresse][ville]" value="{{ user.adresse.ville }}">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Téléphone</label>
+                    <input type="text" class="form-control" name="profile[telephone]" value="{{ user.telephone }}">
+                </div>
+                <div class="form-group">
+                        <label for="hideTel">Afficher le Téléphone</label>
+                        <input type="checkbox" class="form-control" name="profile[displayTelephone]" {% if not user.hideTelephone %}checked{% endif %}>
+
+                </div>
+
+                <button class="btn btn-vert" type="submit">Valider</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

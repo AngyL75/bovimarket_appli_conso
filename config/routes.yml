@@ -127,3 +127,23 @@ app.login.register:
 app.logout:
     action: "Ovs\\Bovimarket\\Controller\\UserController:logout"
     path: "/logout"
+
+app.profile:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:profile"
+    path: "/profile"
+    methods:
+        - "GET"
+
+app.update_profile:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:updateProfile"
+    path: "/profile/update"
+    methods:
+        - "POST"
+
+app.commande.list:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:listCommandes"
+    path: "/commandes"
+
+app.commande.detail:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:showCommande"
+    path: "/commande/{id}"

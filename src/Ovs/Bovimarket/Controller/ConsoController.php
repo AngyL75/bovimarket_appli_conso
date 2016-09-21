@@ -16,9 +16,12 @@ use Ovs\Bovimarket\Entities\Api\CommandeCanal;
 use Ovs\Bovimarket\Entities\Api\CommandeProduit;
 use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Api\Utilisateur;
+use Ovs\Bovimarket\Entities\Interfaces\Collection;
 use Ovs\Bovimarket\Entities\Panier;
 use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CommandeFetcherService;
+use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
+use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\SlimUtils\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -177,5 +180,56 @@ class ConsoController extends BaseController
         $cmd->setListeProduits($listProduits);
 
         return $cmd;
+    }
+
+    public function listCommandesAction(Request $request, Response $response, $args)
+    {
+        /** @var CommandeFetcherService $commandeApi */
+        $commandeApi = $this->get("commandes");
+
+        $user = $this->getUser($request);
+
+        $json = $commandeApi->getApi()->get("commandes/client/".$user->getId());
+        //$json = $commandeApi->getApi()->get("commandes/client/67");
+        $json= (string)$json->getBody();
+        /** @var Collection $commandes */
+        $commandes = $commandeApi->unserialize($json);
+
+        return $this->render($response,"User/commandes.html.twig",array(
+            "commandes"=>$commandes->toArray()
+        ));
+    }
+
+    public function showCommandeAction(Request $request, Response $response, $args)
+    {
+        /** @var CommandeFetcherService $commandeApi */
+        $commandeApi = $this->get("commandes");
+        /** @var EntiteFetcherService $entiteApi */
+        $entiteApi = $this->get("entites");
+        /** @var ProduitFetcherService $produitApi */
+        $produitApi=$this->get("produits");
+
+
+        $commande = $commandeApi->getApi()->get("commandes/".$args["id"]);
+        $commande = (string)$commande->getBody();
+        /** @var Commande $commande */
+        $commande = $commandeApi->unserialize($commande);
+        $entiteId = $commande->getEntiteId();
+        $entite = $entiteApi->find($entiteId);
+
+        $produitApi->setEndpointParams(array("entiteId"=>$entiteId));
+        $produitsEntite = $produitApi->findAll();
+        $produits = $commande->getListeProduits();
+        /** @var CommandeProduit $prod */
+        foreach($produits as $prod){
+            $produit = $produitsEntite->find($prod->getId());
+            $prod->setProduitObj($produit);
+        }
+
+        return $this->render($response,"Commande/detail.html.twig",array(
+            "commande"=>$commande,
+            "entite"=>$entite,
+            "produits"=>$produits
+        ));
     }
 }
