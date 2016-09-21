@@ -19,7 +19,7 @@
 
 
             <form action="{{ path_for("app.login.login") }}" method="post">
-                <input type="hidden" name="referer" value="{{ referer }}">
+                <input type="hidden" name="login[referer]" value="{{ referer }}">
                 <div class="form-group">
                     <label for="username">E-Mail</label>
                     <input type="text" class="form-control" name="login[username]">

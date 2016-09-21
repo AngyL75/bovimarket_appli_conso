@@ -75,7 +75,7 @@ class ServicesManager
                 'views/'
             ),
             [
-                'debug'       => true,
+                'debug'       => $container->settings["debug"],
                 'cache'       => 'cache/',
                 'auto_reload' => $container->settings["debug"]
             ]

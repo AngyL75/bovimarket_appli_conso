@@ -1,7 +1,7 @@
 settings:
     session:
         lifetime: 3600
-    debug: true
+    debug: false
     api:
         oauthLogin: "mobile"
         oauthSecret: "7d5cc9b6-1ed8-49e0-a56a-ecfb0a2f5f69"
