@@ -21,8 +21,12 @@ class UserController extends BaseController
 {
     public function loginFormAction(Request $request,Response $response,$args)
     {
+
         $server=$request->getServerParams();
-        $referer = $server["HTTP_REFERER"];
+	    $referer="/";
+	    if(isset($_SERVER["HTTP_REFERER"])) {
+		    $referer = $_SERVER["HTTP_REFERER"];
+	    }
 
         return $this->render($response,"User/login.html.twig",array(
             "referer"=>$referer

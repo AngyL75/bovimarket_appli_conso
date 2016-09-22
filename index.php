@@ -27,7 +27,6 @@ AnnotationRegistry::registerLoader(function($class){
 $config=new Configuration();
 $configArray=$config->getConfig();
 
-
 if($configArray["settings"]["debug"]){
     ini_set("display_errors",1);
 }else{
