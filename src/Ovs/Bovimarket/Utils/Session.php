@@ -15,4 +15,5 @@ class Session
     const loggedSessionKey = "isLogged";
     const loggedUserSessionKey = "loggedUser";
     const oauthToken = "oauth";
+	const idProducteur = "idProducteur";
 }

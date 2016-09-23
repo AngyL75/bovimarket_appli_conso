@@ -15,6 +15,7 @@ use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
+use Ovs\Bovimarket\Utils\Session;
 use Ovs\Bovimarket\Utils\TypeViande;
 use Ovs\Bovimarket\Utils\Utils;
 use Ovs\SlimUtils\Controller\BaseController;
@@ -45,8 +46,17 @@ class FlashController extends BaseController
         $morceauxFetcher = $this->get("morceaux");
         /** @var Collection $morceaux */
         $morceaux = $morceauxFetcher->getMorceauxForViande($args["categ"]);
+
+	    if($args["idProducteur"]){
+	    	$idProducteur = $args["idProducteur"];
+		    $this->getSession($request)->set(Session::idProducteur,$idProducteur);
+	    } else{
+		    $idProducteur = $this->getSession($request)->get(Session::idProducteur,false);
+	    }
+
         return $this->render($response, "QRCode/viande.html.twig", array(
-                "morceau" => $morceaux->random()
+                "morceau" => $morceaux->find($args["id"]),
+		        "idProducteur"=>$idProducteur
             )
         );
     }

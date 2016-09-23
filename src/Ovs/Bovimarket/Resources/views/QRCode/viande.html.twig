@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <div class="col-xs-6 text-center">
-                    <a class="link IconeProducteur" href="producteur.php" data-color="#ffffff">
+                    <a class="link IconeProducteur" href="{% if idProducteur %}{{ path_for("app.entite.detail",{"id":idProducteur}) }}{% endif %}" data-color="#ffffff">
                         Le producteur
                     </a>
                 </div>

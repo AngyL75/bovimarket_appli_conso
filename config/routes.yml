@@ -6,9 +6,6 @@ flash.qrcode:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:qrCode"
     path: "/qrcode"
 
-flash.categorie:
-    action: "Ovs\\Bovimarket\\Controller\\FlashController:categorieViande"
-    path: "/viande/{categ}/{id}"
 
 flash.recettes_list:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:recettes"
@@ -29,6 +26,10 @@ flash.cuissons_list:
 flash.cuissons_detail:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:detailCuisson"
     path: "/viande/{categ}/{idMorceau}/cuissons/{idCuisson}"
+
+flash.categorie:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:categorieViande"
+    path: "/viande/{categ}/{id}[/{idProducteur}]"
 
 
 app.entite.detail:
