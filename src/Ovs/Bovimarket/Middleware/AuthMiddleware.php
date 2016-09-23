@@ -33,7 +33,9 @@ class AuthMiddleware {
 		$this->notSecuredPath = array(
 			"/login",
 			"/login/process",
-			"/register"
+			"/register",
+			"/presentation",
+			"/register/process"
 		);
 	}
 
@@ -43,7 +45,7 @@ class AuthMiddleware {
 		$segment = $session->getSegment( "overscan" );
 		$isLogged = $segment->get( Session::loggedSessionKey, false );
 		if(!$isLogged && !in_array($request->getRequestTarget(),$this->notSecuredPath)){
-			$response = $response->withRedirect($this->router->pathFor("app.login.form"),403);
+			$response = $response->withRedirect($this->router->pathFor("app.not_connected"),403);
 			$_SERVER["HTTP_REFERER"]=$request->getRequestTarget();
 		}
 		return $next($request,$response);

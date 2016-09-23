@@ -41,11 +41,6 @@
 {% endblock %}
 {% block bodyContent %}
 
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
 
     <div id="page" style="overflow:hidden;">
         <div class="header" id="Menu1">
@@ -85,11 +80,6 @@
     <script src="/web/js/bootstrap.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            setTimeout(function () {
-                $('body').addClass('loaded');
-            }, 3000);
-        });
         /*alsolike(
                 "RWBQRM", "Flexbox Products interaction",
                 "aOQddB", "Open & Close Animation",

@@ -1,0 +1,70 @@
+{% extends "base_login.html.twig" %}
+
+{% block prev %}
+    <div id="return"><a href="javascript:history.back()">&lt;</a></div>
+{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+
+        {% if hasFlashes() %}
+            <div class="col-xs-12">
+                {% for type,flash in getFlashes() %}
+                    <div class="alert alert-{{ type }}">
+                        {{ flash }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="col-xs-12" style="border-left: solid 1px #5d3043">
+            <h1>Inscrivez-vous</h1>
+            <form action="{{ path_for("app.login.register") }}" method="post">
+                <input type="hidden" name="register[referer]" value="{{ referer }}">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" name="register[nom]">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" name="register[prenom]">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="register[email]">
+                </div>
+                <div class="form-group">
+                    <label for="email">Mot de passe</label>
+                    <input type="password" class="form-control" name="register[password]">
+                </div>
+                <!-- Adresse, Pour le moment pas utilisée
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" name="register[adresse]">
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="codePostal">Code Postal</label>
+                        <input type="text" class="form-control" name="register[code_postal]">
+                    </div>
+                    <div class="form-group col-sm-9">
+                        <label for="ville">Ville</label>
+                        <input type="text" class="form-control" name="register[ville]">
+                    </div>
+                </div>
+                -->
+                <div class="form-group">
+                    <div class="col-xs-7">
+                        <button class="btn btn-vert" type="submit">S'inscrire</button>
+                    </div>
+                    <div class="col-xs-5">
+                        <a class="btn btn-fb">
+                            <img src="/web/images/fb-btn.png" alt="" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

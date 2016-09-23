@@ -120,9 +120,17 @@ app.login.login:
 
 app.login.register:
     action: "Ovs\\Bovimarket\\Controller\\UserController:register"
-    path: "/register"
+    path: "/register/process"
     methods:
         - "POST"
+
+app.not_connected:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:notConnected"
+    path: "/presentation"
+
+app.register.form:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:registerForm"
+    path: "/register"
 
 app.logout:
     action: "Ovs\\Bovimarket\\Controller\\UserController:logout"

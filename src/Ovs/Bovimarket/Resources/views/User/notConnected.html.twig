@@ -1,0 +1,29 @@
+{% extends "base_login.html.twig" %}
+
+{% block page_content %}
+    <div class="row" id="presentation">
+        <div class="col-xs-12 text-important" >
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut distinctio, earum eligendi fugit itaque
+                laboriosam magni, necessitatibus nulla numquam obcaecati, pariatur qui quis rem sit sunt veritatis vitae
+                voluptates!
+            </div>
+            <div>A animi aut cupiditate doloremque laboriosam obcaecati praesentium repellendus sequi. Beatae
+                consectetur eligendi et inventore libero nihil nobis nostrum obcaecati omnis quae! Dolores fugiat harum
+                illum impedit itaque sit vero.
+            </div>
+            <div>Consectetur distinctio dolor eius eligendi, expedita facilis incidunt nam natus. Aspernatur blanditiis
+                cum cumque distinctio, harum labore molestiae obcaecati pariatur perferendis porro quam, quisquam quos
+                temporibus, tenetur vero vitae voluptates.
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="inscript">
+        <div class="col-xs-6">
+            <a href="{{ path_for("app.register.form") }}" class="btn btn-violet">Inscription</a>
+        </div>
+        <div class="col-xs-6">
+            <a href="{{ path_for("app.login.form") }}" class="btn btn-vert">Connexion</a>
+        </div>
+    </div>
+{% endblock %}

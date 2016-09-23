@@ -34,3 +34,44 @@
 #mon-compte .Description {float:left;padding:10px 20px;}
 #mon-compte .Description .Nom {font-weight: 500;float: none;padding: 15px 0;}
 #mon-compte .Description .Fonction {font-size: 18px; font-style: italic;}
+
+.text-important{
+    font-size:1.6em;
+    color:#5d3043;
+    font-weight: bold;
+}
+
+#presentation{
+    margin-top:50px;
+}
+
+#inscript{
+    margin-top: 50px;
+}
+
+#inscript .btn{
+    line-height:38px;
+}
+
+.btn-violet {
+    height: 55px;
+    background: #5d3043;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    width:100%;
+}
+
+.btn-violet:hover{
+    color:#8cae08;
+}
+
+.btn-violet i {color:#fff !important;}
+
+.btn-fb{
+    height: 55px;
+    display: block;
+}
+.btn-fb img{
+    height: 100%;
+}

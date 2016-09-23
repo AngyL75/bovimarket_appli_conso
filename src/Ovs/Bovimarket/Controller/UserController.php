@@ -19,14 +19,19 @@ use Slim\Http\Response;
 
 class UserController extends BaseController
 {
+
+	public function notConnectedAction( Request $request, Response $response, $args ) {
+		return $this->render($response,"User/notConnected.html.twig");
+	}
+
     public function loginFormAction(Request $request,Response $response,$args)
     {
 
         $server=$request->getServerParams();
 	    $referer="/";
-	    if(isset($_SERVER["HTTP_REFERER"])) {
+	    /*if(isset($_SERVER["HTTP_REFERER"])) {
 		    $referer = $_SERVER["HTTP_REFERER"];
-	    }
+	    }*/
 
         return $this->render($response,"User/login.html.twig",array(
             "referer"=>$referer
@@ -60,6 +65,18 @@ class UserController extends BaseController
         $this->getSession($request)->set(Session::loggedUserSessionKey,null);
         $this->getSession($request)->set(Session::oauthToken,null);
         return $this->redirectToRoute($response,"map.homepage");
+    }
+
+	public function registerFormAction( Request $request, Response $response, $args ) {
+		$server=$request->getServerParams();
+		$referer="/";
+		/*if(isset($_SERVER["HTTP_REFERER"])) {
+			$referer = $_SERVER["HTTP_REFERER"];
+		}*/
+
+		return $this->render($response,"User/register.html.twig",array(
+			"referer"=>$referer
+		));
     }
 
     public function registerAction(Request $request, Response $response, $args)
