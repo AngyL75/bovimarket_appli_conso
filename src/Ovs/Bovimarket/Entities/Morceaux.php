@@ -342,6 +342,28 @@ class Morceaux
                 "19" => "boeuf24.jpg",
                 "6"  => "boeuf25.jpg",
                 "7"  => "boeuf26.jpg",
+            ),
+	        "porc"=>array(
+	        	"1"=>"porc-ardoise.jpg",
+		        "2"=>"porc-ardoise.jpg",
+		        "3"=>"porc-ardoise.jpg",
+		        "4"=>"porc-ardoise.jpg",
+		        "5"=>"porc-ardoise.jpg",
+		        "6"=>"porc-ardoise.jpg",
+		        "7"=>"porc-ardoise.jpg",
+		        "8"=>"porc-ardoise.jpg",
+		        "9"=>"porc-ardoise.jpg"
+	        ),
+            "veau"=>array(
+	            "1"=>"veau-ardoise.jpg",
+	            "2"=>"veau-ardoise.jpg",
+	            "3"=>"veau-ardoise.jpg",
+	            "4"=>"veau-ardoise.jpg",
+	            "6"=>"veau-ardoise.jpg",
+	            "5"=>"veau-ardoise.jpg",
+	            "7"=>"veau-ardoise.jpg",
+	            "8"=>"veau-ardoise.jpg",
+	            "9"=>"veau-ardoise.jpg"
             )
         );
 
@@ -401,6 +423,10 @@ class Morceaux
             $images[$this->id] = "boeuf0.jpg";
         }
         return "boeuf/" . $images[$this->id];
+    }
+
+    private function getDecoupePorc(){
+
     }
 
     public static function getIdForDecoupe($decoupe, $type = self::AGNEAU)

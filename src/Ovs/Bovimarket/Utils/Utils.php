@@ -136,6 +136,7 @@ class Utils
         if (!$latLng) {
             return "";
         }
+        $activite = $object->getActivite();
 
         $url = static::getUrlDetailForObject($object);
         $icon = static::getIconForActivite($object->getActivite());
@@ -148,7 +149,7 @@ var marker$id = new google.maps.Marker({
 position: new google.maps.LatLng($latLng[0],$latLng[1]),
 map: map,
 url: "$url",
-title: '$name',
+title: '$activite',
 icon: "$icon"
 });
 
@@ -179,10 +180,10 @@ MARKER;
 
         switch ($type) {
             case "ABATTOIR":
-                return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+	            return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/abattoir$suffix.png");
                 break;
             case "BOUCHER":
-                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/boucher.$suffix.png");
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/boucher$suffix.png");
                 break;
             case "ELEVEUR":
                 return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/eleveur$suffix.png");
@@ -193,6 +194,9 @@ MARKER;
             case "RESTAURATION_COLLECTIVE":
                 return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/resto-co$suffix.png");
                 break;
+	        case "FILIERE":
+		        return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/filiere$suffix.png");
+	        	break;
             default:
                 return "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 break;
