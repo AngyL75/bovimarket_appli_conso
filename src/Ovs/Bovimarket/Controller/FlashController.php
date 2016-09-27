@@ -46,6 +46,16 @@ class FlashController extends BaseController
         $morceauxFetcher = $this->get("morceaux");
         /** @var Collection $morceaux */
         $morceaux = $morceauxFetcher->getMorceauxForViande($args["categ"]);
+	    $morceau = $morceaux->find($args["id"]);
+
+	    /** @var RecettesFetcherService $recetteFetcher */
+	    $recetteFetcher = $this->get("recettes");
+	    $recettes = $recetteFetcher->getRecettesForMorceau($morceau);
+
+
+	    /** @var CuissonsFetcherService $cuissonFetcher */
+	    $cuissonFetcher = $this->get("cuissons");
+	    $cuissons = $cuissonFetcher->getCuissonsForMorceau($morceau);
 
 	    if(isset($args["idProducteur"]) && $args["idProducteur"]){
 	    	$idProducteur = $args["idProducteur"];
@@ -55,7 +65,9 @@ class FlashController extends BaseController
 	    }
 
         return $this->render($response, "QRCode/viande.html.twig", array(
-                "morceau" => $morceaux->find($args["id"]),
+                "morceau" => $morceau,
+		        "cuissons"=>$cuissons,
+		        "recettes"=>$recettes,
 		        "idProducteur"=>$idProducteur
             )
         );

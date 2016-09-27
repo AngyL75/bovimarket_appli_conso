@@ -1,41 +1,118 @@
 {% extends "base_blanche.html.twig" %}
 
 {% block page_content %}
-    <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-            <img src="{{ morceau.photoPath }}" alt="{{ morceau.nom }}" class="Photo">
+
+
+
+
+    <div class="container" style="border-bottom:1px solid #ececec">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <img src="{{ morceau.photoPath }}" alt="{{ morceau.nom }}" class="Photo">
+            </div>
+            <div class="col-xs-12">
+                <h1>{{ morceau.nom }}</h1>
+                <p>{{ morceau.description|nl2br }}</p>
+            </div>
         </div>
-        <div class="col-xs-12">
-            <h1>{{ morceau.nom }}</h1>
-            <p>{{ morceau.description|nl2br }}</p>
+        <div class="row" id="IconeQRcode">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-xs-6 text-center">
+                        <a class="link IconeProducteur" href="{% if idProducteur %}{{ path_for("app.entite.detail",{"id":idProducteur}) }}{% endif %}" data-color="#ffffff">
+                            Le producteur
+                        </a>
+                    </div>
+
+                    <div class="col-xs-6 text-center">
+                        <a class="link IconeMorceau" href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
+                            Le morceau
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row" id="IconeQRcode">
-        <div class="col-xs-10 col-xs-offset-1">
-            <div class="row">
-                <div class="col-xs-6 text-center">
-                    <a class="link IconeRecette" href="{{ path_for("flash.recettes_list",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
-                        Les recettes
-                    </a>
-                </div>
-                <div class="col-xs-6 text-center">
-                    <a class="link IconeProducteur" href="{% if idProducteur %}{{ path_for("app.entite.detail",{"id":idProducteur}) }}{% endif %}" data-color="#ffffff">
-                        Le producteur
-                    </a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="IconeCuisson">La cuisson</h1>
+                <p>Le {{ morceau.nom }} est une viande à
+                    {% for cuisson in cuissons %}
+                        <a class="link" href="{{ path_for("flash.cuissons_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idCuisson":cuisson.id}) }}" data-color="#ffffff">
+                            {{ cuisson.nom }}
+                        </a>
+                        {% if loop.revindex0 == 1 %}
+                            ou à
+                        {% else %}
+                            ,&nbsp;
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="row">
+                    {% for cuisson in cuissons %}
+                        <div class="col-xs-6">
+                            <a style="background-image: url('{{ cuisson.logoPath }}')" class="IconBouillir text-center"
+                               href="{{ path_for("flash.cuissons_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idCuisson":cuisson.id}) }}">
+                                {{ cuisson.nom }}
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    {{ morceau.conseilsCuisson }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding:30px 15px">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">Les recettes</h2>
+            </div>
+        </div>
+        <div class="row ListeStyle2">
             <div class="row">
-                <div class="col-xs-6 text-center">
-                    <a class="link IconeCuisson" href="{{ path_for("flash.cuissons_list",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
-                        La cuisson
-                    </a>
-                </div>
-                <div class="col-xs-6 text-center">
-                    <a class="link IconeMorceau" href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}" data-color="#ffffff">
-                        Le morceau
-                    </a>
+                <div class="col-xs-12">
+                    <h1 class="IconeRecette">Les recettes</h1>
                 </div>
             </div>
+            {% for recette in recettes %}
+
+                <div class="row ListeStyle2">
+                    <div class="col-xs-12">
+                        <a class="link" href="{{ path_for("flash.recettes_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idRecette":recette.id}) }}" data-color="#ffffff">
+                            <div class="Tof2"><img src="{{ recette.photoPath }}" alt="..."/></div>
+                            <div class="Description" style="padding:40px 20px;width: 80% !important;">
+                                <div class="Nom col-xs-12">{{ recette.titre }}</div>
+                                <div class="col-xs-4 sablier">
+                                    {{recette.tempsPreparation}}
+                                </div>
+                                <div class="col-xs-4 cuisson">
+                                    {{ recette.tempsCuisson }}
+                                </div>
+                                <div class="col-xs-4 difficulte {{recette.difficulteClass}}"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row ListeStyle2">
+                    <div class="col-xs-12">
+                        <h3>Pas de recettes pour ce morceau</h3>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
