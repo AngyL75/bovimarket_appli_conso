@@ -14,6 +14,7 @@ use Ovs\Bovimarket\Entities\Api\Creneau;
 use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Entities\Panier;
+use Ovs\Bovimarket\Utils\Session;
 use Ovs\Bovimarket\Utils\Utils;
 
 class BoviExtension extends \Twig_Extension
@@ -23,9 +24,10 @@ class BoviExtension extends \Twig_Extension
     /**
      * MapMarkerExtension constructor.
      */
-    public function __construct(Api $api)
+    public function __construct(Api $api,$session)
     {
         $this->api = $api;
+	    $this->session = $session;
     }
 
 
@@ -58,7 +60,10 @@ class BoviExtension extends \Twig_Extension
             )),
             new \Twig_SimpleFunction("renderHoraire",array($this,"renderHoraire"),array(
                 "is_safe"=>array("html")
-            ))
+            )),
+	        new \Twig_SimpleFunction("isFavorite",array($this,"isFavorite"),array(
+	        	"is_safe"=>array("html")
+	        ))
         );
     }
 
@@ -134,6 +139,15 @@ class BoviExtension extends \Twig_Extension
         $minutes = intval($secondes%3600)/60;
 
         return sprintf("%02d:%02d",$heures,$minutes);
+    }
+
+	public function isFavorite($idEntite) {
+		$favs = $this->session->get(Session::favoris,array());
+		foreach ($favs as $fav){
+			if($fav->id == $idEntite)
+				return true;
+		}
+		return false;
     }
 
 

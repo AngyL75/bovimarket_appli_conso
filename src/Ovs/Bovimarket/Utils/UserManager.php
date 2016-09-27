@@ -15,6 +15,7 @@ use JMS\Serializer\SerializerBuilder;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\OauthToken;
 use Ovs\Bovimarket\Entities\Api\Utilisateur;
+use Ovs\Bovimarket\Services\API\BilletFetcherService;
 use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\CommandeFetcherService;
@@ -112,6 +113,10 @@ class UserManager
         $container["canaux"] = new CanauxFetcherService($container["api"], $logger);
         $container["utilisateurs"] = new UtilisateurFetcherService($container["api"], $logger);
         $container["commandes"] = new CommandeFetcherService($container["api"], $logger);
+	    $container["billets"] = new BilletFetcherService($container["api"],$logger);
+
+	    $this->container = $container;
+	    $this->api = $container["api"];
     }
 
 }

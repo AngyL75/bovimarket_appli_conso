@@ -16,4 +16,5 @@ class Session
     const loggedUserSessionKey = "loggedUser";
     const oauthToken = "oauth";
 	const idProducteur = "idProducteur";
+	const favoris = "favoris";
 }

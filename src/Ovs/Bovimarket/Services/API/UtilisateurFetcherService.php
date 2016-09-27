@@ -11,6 +11,7 @@ namespace Ovs\Bovimarket\Services\API;
 
 use GuzzleHttp\Exception\RequestException;
 use JMS\Serializer\SerializerBuilder;
+use Ovs\Bovimarket\Entities\Api\Entite;
 use Ovs\Bovimarket\Entities\Api\Utilisateur;
 
 class UtilisateurFetcherService extends ApiFetcher
@@ -76,4 +77,26 @@ class UtilisateurFetcherService extends ApiFetcher
         $body = (string)$response->getBody();
         return $serial->deserialize($body,$this->getClass(),"json");
     }
+
+	public function getFavoris() {
+		$serializer = SerializerBuilder::create()->build();
+		$response = $this->api->get("utilisateurs/current/favoris");
+		$json = (string)$response->getBody();
+		return json_decode($json);
+    }
+
+	public function addFavoris($entite) {
+		if(is_a($entite,Entite::class)){
+			$entite=$entite->getId();
+		}
+		$this->api->post("utilisateurs/current/favoris/".$entite);
+    }
+
+	public function removeFavoris($entite) {
+		if(is_a($entite,Entite::class)){
+			$entite=$entite->getId();
+		}
+		$this->api->delete("utilisateurs/current/favoris/".$entite);
+	}
+
 }

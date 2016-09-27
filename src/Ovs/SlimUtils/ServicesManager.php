@@ -15,6 +15,7 @@ use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Middleware\AuthMiddleware;
 use Ovs\Bovimarket\Middleware\OauthTokenMiddleware;
+use Ovs\Bovimarket\Middleware\TwigGlobalsMiddleware;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
@@ -108,22 +109,7 @@ class ServicesManager {
 			Middleware::AuraSession()->name( 'boviSession' ),
 			new AuthMiddleware($app->getContainer()->get("router")),
 			new OauthTokenMiddleware($app),
-			function ( Request $request, Response $response, $next ) use ( $app ) {
-
-				/** @var Twig $view */
-				$view = $app->getContainer()->get( "view" );
-
-				$session = Middleware\AuraSession::getSession( $request );
-				$segment = $session->getSegment( "overscan" );
-
-				$isLogged = $segment->get( Session::loggedSessionKey, false );
-				$view->getEnvironment()->addGlobal( "isLogged", $isLogged );
-				$app->getContainer()["myRequest"] = $request;
-
-				$resp = $next( $request, $response );
-
-				return $resp;
-			}
+			new TwigGlobalsMiddleware($app)
 		);
 
 		/**

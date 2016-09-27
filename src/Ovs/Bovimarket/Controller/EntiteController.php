@@ -11,6 +11,7 @@ namespace Ovs\Bovimarket\Controller;
 
 use Ovs\Bovimarket\Entities\Api\Certification;
 use Ovs\Bovimarket\Entities\Api\Entite;
+use Ovs\Bovimarket\Services\API\BilletFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
 use Ovs\Bovimarket\Utils\Region;
@@ -22,12 +23,14 @@ class EntiteController extends BaseController
 {
     public function showDetailAction(Request $request, Response $response, $args)
     {
+	    $certifs = null;
+
         /** @var Entite $entite */
         $entite = $this->get("entites")->find($args["id"]);
-        $certifs = null;
+	    /** @var MenuFetcherService $menuFetcher */
+	    $menuFetcher = $this->get("menus");
 
-        /** @var MenuFetcherService $menuFetcher */
-        $menuFetcher = $this->get("menus");
+
         $menuFetcher->setEndpointParams(array("entiteId" => $args["id"]));
         $menus = $menuFetcher->findAll();
 
@@ -56,7 +59,20 @@ class EntiteController extends BaseController
             $certifs = $certifFetcher->unserialize($body, Certification::class);
         }
 
-        return $this->render($response, $template, array("entite" => $entite, "menus" => $menus, "certifs" => $certifs));
+        /** @var BilletFetcherService $billetFetcher */
+        $billetFetcher = $this->get("billets");
+	    $billetFetcher->setEndpointParams(array("idEntite"=>$args["id"]));
+	    $billets = $billetFetcher->findAll();
+	    $billetFetcher->setEndpointParams(array("idEntite"=>$args["id"]."/presse"));
+	    $presse =$billetFetcher->findAll();
+
+        return $this->render($response, $template, array(
+        	"entite" => $entite,
+	        "menus" => $menus,
+	        "certifs" => $certifs,
+	        "blog"=>$billets,
+	        "presse"=>$presse
+        ));
     }
 
     public function getMenuAction(Request $request, Response $response, $args)

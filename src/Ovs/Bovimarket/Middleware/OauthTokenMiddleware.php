@@ -51,7 +51,7 @@ class OauthTokenMiddleware {
 			$oauth->logUser( $session );
 		}
 		$api = $app->getContainer()->get( "api" );
-		$app->getContainer()->get( "view" )->addExtension( new BoviExtension( $api ) );
+		$app->getContainer()->get( "view" )->addExtension( new BoviExtension( $api,$session ) );
 
 		return $next( $request, $response );
 	}

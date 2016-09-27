@@ -701,3 +701,42 @@ h1 {text-align: center;padding:20px 0 20px;}
 /* FIN calendrier JS : jsSimpleDatePickr */
 
 #Date {display:none;}
+
+
+/*Ajout marine*/
+
+.photo-miniature {
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+}
+
+.post {
+  display: inline-block;
+  vertical-align: top;
+  width: 80%;
+}
+
+.photo-miniature > a > img {
+  width: 70px;
+  height: 70px;
+  border-radius: 45px;
+}
+
+.titre {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.texte {
+  padding: 0 0 30px 0;
+}
+
+.ListeStyle3 {
+  border-bottom: 1px solid #553341;
+  padding-top: 40px;
+}

@@ -9,6 +9,7 @@
 namespace Ovs\Bovimarket\Controller;
 
 
+use Aura\Session\Segment;
 use Ovs\Bovimarket\Entities\Api\Utilisateur;
 use Ovs\Bovimarket\Services\API\UtilisateurFetcherService;
 use Ovs\Bovimarket\Utils\Session;
@@ -29,9 +30,6 @@ class UserController extends BaseController
 
         $server=$request->getServerParams();
 	    $referer="/";
-	    /*if(isset($_SERVER["HTTP_REFERER"])) {
-		    $referer = $_SERVER["HTTP_REFERER"];
-	    }*/
 
         return $this->render($response,"User/login.html.twig",array(
             "referer"=>$referer
@@ -46,17 +44,12 @@ class UserController extends BaseController
 
         /** @var UserManager $oauth */
         $oauth = $this->get("oauth");
-        if($oauth->logUser($this->getSession($request),$login,$password)){
-            $user = $this->get("utilisateurs")->me();
-            $session = $this->getSession($request);
-            $session->set(Session::loggedSessionKey,true);
-            $session->set(Session::loggedUserSessionKey,$user);
+        if($this->logUser($oauth,$this->getSession($request),$login,$password)){
             if (isset($userValues["referer"])) {
                 return $response->withRedirect($userValues["referer"]);
             }
             return $this->redirectToRoute($response,"map.homepage");
         }
-
     }
 
     public function logoutAction(Request $request,Response $response,$args)
@@ -64,15 +57,40 @@ class UserController extends BaseController
         $this->getSession($request)->set(Session::loggedSessionKey,false);
         $this->getSession($request)->set(Session::loggedUserSessionKey,null);
         $this->getSession($request)->set(Session::oauthToken,null);
+	    $this->getSession($request)->set(Session::favoris,null);
         return $this->redirectToRoute($response,"map.homepage");
     }
+
+
+	/**
+	 * @param UserManager $oauthService
+	 * @param UtilisateurFetcherService $userService
+	 * @param Segment $session
+	 * @param $login
+	 * @param $password
+	 *
+	 * @return bool
+	 */
+	private function logUser($oauthService,$session,$login,$password){
+		if($oauthService->logUser($session,$login,$password)){
+			$userService=$this->get("utilisateurs");
+			$user = $userService->me();
+			$session->set(Session::loggedSessionKey,true);
+			$session->set(Session::loggedUserSessionKey,$user);
+			$this->updateFavorites($userService,$session);
+			return true;
+		}
+		return false;
+	}
+
+	private function updateFavorites($userService,$session){
+		$favs=$userService->getFavoris();
+		$session->set(Session::favoris,$favs);
+	}
 
 	public function registerFormAction( Request $request, Response $response, $args ) {
 		$server=$request->getServerParams();
 		$referer="/";
-		/*if(isset($_SERVER["HTTP_REFERER"])) {
-			$referer = $_SERVER["HTTP_REFERER"];
-		}*/
 
 		return $this->render($response,"User/register.html.twig",array(
 			"referer"=>$referer
@@ -92,18 +110,8 @@ class UserController extends BaseController
         //Inscription OK
         if(is_a($user,Utilisateur::class)) {
             $session = $this->getSession($request);
-            // Log l'utilisateur auto
-            /** @var UserManager $oauth */
             $oauth = $this->get("oauth");
-            $oauth->logUser($session,$user->getEmail(),$user->getPassword());
-            //Récupère mes infos
-            $userFetcher = $this->get("utilisateurs");
-            $user = $userFetcher->me();
-            //Sauvegarde la connexion en Session
-            $session->set(Session::loggedSessionKey, true);
-            $session->set(Session::loggedUserSessionKey, $user);
-
-
+	        $this->logUser($oauth,$session,$user->getEmail(),$user->getPassword());
             if (isset($userValues["referer"])) {
                 return $response->withRedirect($userValues["referer"]);
             }
@@ -131,6 +139,20 @@ class UserController extends BaseController
 
         $this->addFlash("success","Profil mis à jour");
         return $this->redirectToRoute($response,"app.profile");
+    }
+
+	public function changeFavoriteAction( Request $request, Response $response, $args ) {
+		/** @var UtilisateurFetcherService $userFetcher */
+		$userFetcher = $this->get("utilisateurs");
+		if($args["action"]=="add") {
+			$userFetcher->addFavoris( $args["idEntite"] );
+		}else{
+			$userFetcher->removeFavoris( $args["idEntite"] );
+		}
+
+		$this->updateFavorites($userFetcher,$this->getSession($request));
+
+		return $response->withRedirect($_SERVER["HTTP_REFERER"]);
     }
 
 }

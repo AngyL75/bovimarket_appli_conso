@@ -156,3 +156,7 @@ app.commande.list:
 app.commande.detail:
     action: "Ovs\\Bovimarket\\Controller\\ConsoController:showCommande"
     path: "/commande/{id}"
+
+app.change.favorite:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:changeFavorite"
+    path: "/favorite/{idEntite}/{action}"
