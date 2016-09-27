@@ -169,23 +169,29 @@ MARKER;
         }
     }
 
-    public static function getIconForActivite($type)
+    public static function getIconForActivite($type,$isFav)
     {
+
+    	$suffix="";
+	    if($isFav){
+	    	$suffix="_fav";
+	    }
+
         switch ($type) {
             case "ABATTOIR":
                 return "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
                 break;
             case "BOUCHER":
-                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/boucher.png");
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/boucher.$suffix.png");
                 break;
             case "ELEVEUR":
-                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/eleveur.png");
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/eleveur$suffix.png");
                 break;
             case "RESTAURANT":
-                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/restaurant.png");
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/restaurant$suffix.png");
                 break;
             case "RESTAURATION_COLLECTIVE":
-                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/resto-co.png");
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/resto-co$suffix.png");
                 break;
             default:
                 return "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";

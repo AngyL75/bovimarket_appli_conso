@@ -25,24 +25,18 @@
 <nav class="favoris" id="favoris">
     <ul>
         <li><h2>Favoris</h2></li>
-        <li>
-            <a class="link" href="boucher.php" data-color="#381b26">
-                <div class="Tof"><img src="/web/images/ex.png" alt="..." /></div>
-                <div class="Description">
-                    <p class="Nom" style="color:#fff !important;">Boucherie du centre</p>
-                    <p class="Fonction">Boucher</p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a class="link" href="resto.php" data-color="#381b26">
-                <div class="Tof"><img src="/web/images/resto.png" alt="..." /></div>
-                <div class="Description">
-                    <p class="Nom" style="color:#fff !important;">Titre</p>
-                    <p class="Fonction">Restaurant</p>
-                </div>
-            </a>
-        </li>
+
+        {% for favoris in getFavorites() %}
+            <li>
+                <a class="link" href="{{ path_for("app.entite.detail",{"id":favoris.id}) }}" data-color="#381b26">
+                    <div class="Tof"><img src="{{ apiImagePath(favoris.logo) }}" alt="..." /></div>
+                    <div class="Description">
+                        <p class="Nom" style="color:#fff !important;">{{ favoris.name }}</p>
+                        <p class="Fonction">{{favoris.activite}}</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </nav>
 

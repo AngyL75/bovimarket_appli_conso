@@ -63,6 +63,9 @@ class BoviExtension extends \Twig_Extension
             )),
 	        new \Twig_SimpleFunction("isFavorite",array($this,"isFavorite"),array(
 	        	"is_safe"=>array("html")
+	        )),
+	        new \Twig_SimpleFunction("getFavorites",array($this,"getFavoris"),array(
+	        	"is_safe"=>array("html")
 	        ))
         );
     }
@@ -148,6 +151,10 @@ class BoviExtension extends \Twig_Extension
 				return true;
 		}
 		return false;
+    }
+
+	public function getFavoris() {
+		return $this->session->get(Session::favoris,array());
     }
 
 

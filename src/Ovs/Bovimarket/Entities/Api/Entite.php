@@ -755,9 +755,9 @@ class Entite
         return false;
     }
 
-    public function getIcon()
+    public function getIcon($isFav)
     {
-        return Utils::getIconForActivite($this->activite);
+        return Utils::getIconForActivite($this->activite,$isFav);
     }
 
     public function getAdresseComplete()
