@@ -48,8 +48,9 @@ class Cuisson
      */
     protected $description;
     /**
-     * @var
-     * @Serializer\Type("string")
+     * @var ArrayCollection
+     * @Serializer\Type("ArrayCollection<string,string>")
+     * @Serializer\SerializedName("specificite")
      */
     protected $conseilsAstuces;
     /**
@@ -174,9 +175,9 @@ class Cuisson
     /**
      * @return mixed
      */
-    public function getConseilsAstuces()
+    public function getConseilsAstuces($typeViande)
     {
-        return $this->conseilsAstuces;
+        return $this->conseilsAstuces->get($typeViande);
     }
 
     /**

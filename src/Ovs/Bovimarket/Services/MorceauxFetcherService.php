@@ -30,11 +30,18 @@ class MorceauxFetcherService extends JSONFetcher
     {
         switch ($typeViande) {
             case TypeViande::BOEUF:
-                return "json://boeuf/listing_morceaux_boeufs.json";
+                return "json://boeuf/morceaux.json";
                 break;
             case TypeViande::AGNEAU:
+	            return "json://agneau/morceaux.json";
+	            break;
+	        case TypeViande::PORC:
+	        	return "json://porc/morceaux.json";
+	        	break;
+	        case TypeViande::VEAU:
+	        	return "json://veau/morceaux.json";
+	        	break;
             default:
-                return "json://agneau/listing_morceaux_agneau.json";
                 break;
         }
     }

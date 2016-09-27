@@ -82,6 +82,7 @@ class Recettes
     /**
      * @var
      * @Serializer\Type("array")
+     * @Serializer\SerializedName("morceaux_alternatifs")
      */
     protected $morceaux;
     /**

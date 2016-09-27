@@ -9,13 +9,13 @@
             <h1>
                 {{ cuisson.nom }}
             </h1>
-            <p>
-                {{ cuisson.description|raw|nl2br }}
-            </p>
             <h3>
                 Quelques conseils et astuces :
             </h3>
-            {{ cuisson.conseilsAstuces|raw|nl2br }}
+            <p>{{ cuisson.getConseilsAstuces(morceau.typeViande)|raw|nl2br }}</p>
+            <p>
+                {{ cuisson.description|raw|nl2br }}
+            </p>
         </div>
     </div>
     <div class="row" style="padding-top:50px;">

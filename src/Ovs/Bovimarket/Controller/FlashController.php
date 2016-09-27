@@ -47,7 +47,7 @@ class FlashController extends BaseController
         /** @var Collection $morceaux */
         $morceaux = $morceauxFetcher->getMorceauxForViande($args["categ"]);
 
-	    if($args["idProducteur"]){
+	    if(isset($args["idProducteur"]) && $args["idProducteur"]){
 	    	$idProducteur = $args["idProducteur"];
 		    $this->getSession($request)->set(Session::idProducteur,$idProducteur);
 	    } else{
