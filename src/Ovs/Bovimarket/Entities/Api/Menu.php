@@ -153,5 +153,8 @@ class Menu
         return $this;
     }
 
+	public function getMenu() {
+		return $this;
+    }
 
 }
