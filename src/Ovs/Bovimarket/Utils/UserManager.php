@@ -83,6 +83,13 @@ class UserManager
                 return true;
             }
         }catch (RequestException $exception){
+        	if($exception->getCode() == 400){
+        		$body = (string)$exception->getResponse()->getBody();
+		        $body = json_decode($body);
+		        if($body->error_description == "Bad credentials"){
+		        	return false;
+		        }
+	        }
             throw $exception;
             return false;
         }

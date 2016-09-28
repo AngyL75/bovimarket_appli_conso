@@ -49,6 +49,9 @@ class UserController extends BaseController
                 return $response->withRedirect($userValues["referer"]);
             }
             return $this->redirectToRoute($response,"map.homepage");
+        }else{
+        	$this->addFlash("danger","Identifiants non valides");
+	        return $this->redirectToRoute($response,"app.login.form");
         }
     }
 

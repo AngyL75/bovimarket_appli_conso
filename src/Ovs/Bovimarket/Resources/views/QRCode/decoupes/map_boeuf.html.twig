@@ -1,55 +1,30 @@
-<img src="{{ morceau.imageDecoupe }}" width="100%" usemap="#Map" />
-<map name="Map">
-    <area shape="poly" coords="123,210,141,152,170,139,184,116,234,115,271,125,277,138,274,174,266,196,235,199,206,198,183,213,141,203,122,210"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"rumstek"}) }}">
-    <area shape="poly" coords="260,217,218,219,186,212,206,198,264,196,260,219"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"filet"}) }}">
-    <area shape="poly" coords="244,265,216,218,262,219"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"aiguillette"}) }}">
-    <area shape="poly" coords="242,266,144,241,142,205,218,217"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"merlan"}) }}">
-    <area shape="poly" coords="124,209,122,246,137,290,157,295,144,241,142,202"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"rond-gite"}) }}">
-    <area shape="poly" coords="144,241,157,294,189,298,186,252"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"noix-gite"}) }}">
-    <area shape="poly" coords="192,298,207,256,185,253,190,298"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"araignee"}) }}">
-    <area shape="poly" coords="236,282,220,296,193,296,206,258,241,264"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"tranche"}) }}">
-    <area shape="poly" coords="206,364,165,360,145,349,151,324,138,292,178,296,220,295,217,335"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"gite"}) }}">
-    <area shape="poly" coords="338,130,270,126,274,167,262,211,251,248,327,249,345,191,345,157"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"faux-filet"}) }}">
-    <area shape="poly" coords="291,250,262,264,240,272,251,249,281,248"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"onglet"}) }}">
-    <area shape="poly" coords="289,249,321,249,278,274,254,282,234,285,238,273,263,265"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"hampe"}) }}">
-    <area shape="poly" coords="257,339,217,324,218,300,235,288,264,278,299,262,268,290,259,313"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"bavette-aloyau"}) }}">
-    <area shape="poly" coords="330,362,308,362,255,338,255,315,263,302,313,312,320,339"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"flanchet"}) }}">
-    <area shape="poly" coords="266,301,312,312,316,277,327,247,294,263,273,285,266,293"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"bavette-flanchet"}) }}">
-    <area shape="poly" coords="336,130,345,166,344,200,329,247,408,242,392,203,386,170,401,126"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"entrecote"}) }}">
-    <area shape="poly" coords="407,242,418,270,431,320,355,316,313,310,315,278,326,250,328,245,384,243"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"plat-cote"}) }}">
-    <area shape="poly" coords="442,337,332,361,312,314,362,317,430,321"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"poitrine"}) }}">
-    <area shape="poly" coords="411,172,434,218,455,316,430,316,405,241,391,195,387,168"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"macreuse-biftek"}) }}">
-    <area shape="poly" coords="400,127,471,118,491,137,503,162,450,168,386,167"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"basse-cote"}) }}">
-    <area shape="poly" coords="414,171,434,219,439,239,482,240,477,194,469,165,415,168"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"paleron"}) }}">
-    <area shape="poly" coords="470,167,478,198,481,239,507,237,510,194,501,163"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"macreuse-pot-feu"}) }}">
-    <area shape="poly" coords="439,241,454,317,471,317,491,310,482,239,453,239"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"jumeau-biftek"}) }}">
-    <area shape="poly" coords="482,238,489,314,507,303,509,239"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"jumeau-pot-feu"}) }}">
-    <area shape="poly" coords="473,118,502,163,509,203,509,239,562,241,570,228,559,203,552,171,552,148,565,123,562,103,533,96,504,115"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"collier"}) }}">
-    <area shape="poly" coords="507,237,507,302,501,330,550,340,567,321,572,298,584,276,578,250,558,242"
-          href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"gros-poitrine"}) }}">
+<img src="{{ morceau.imageDecoupe }}" width="100%" usemap="#Map" id="imageMap" />
+<map name="Map" id="Map">
+    <area id="morceau24" alt="" title="" href="#" shape="poly" coords="146,87,159,100,156,109,149,115,132,123,122,128,111,141,106,153,100,156,98,153,106,133,111,117,117,108" />
+    <area id="morceau23" alt="" title="" href="#" shape="poly" coords="158,94,175,93,197,97,236,100,253,104,260,110,261,122,258,140,256,155,250,172,247,184,244,193,225,183,193,168,169,172,162,172,152,163,129,154,123,153,114,145,112,143,127,126,148,106" />
+    <area id="morceau14" alt="" title="" href="#" shape="poly" coords="261,105,288,106,308,110,324,113,330,131,328,147,327,173,322,189,316,214,309,232,301,228,286,224,261,218,254,215,245,213,237,212,253,154,258,138" />
+    <area id="morceau15" alt="" title="" href="#" shape="poly" coords="168,173,177,183,183,192,189,198,209,201,223,207,232,209,237,211,243,191,225,181,204,171,194,167" />
+    <area id="morceau9" alt="" title="" href="#" shape="poly" coords="320,108,341,108,358,110,371,110,384,106,391,106,383,114,378,128,372,151,374,171,376,188,384,209,389,221,393,229,379,229,362,227,343,226,330,228,318,230,311,233,314,216,323,193,328,178,330,160,328,140,329,126" />
+    <area id="morceau3" alt="" title="" href="#" shape="poly" coords="392,107,410,104,439,100,452,99,459,96,469,106,479,122,486,139,491,149,491,164,487,154,481,143,474,135,465,132,450,129,437,127,421,127,411,131,399,137,395,144,388,155,384,164,378,170,376,175,376,139,382,114" />
+    <area id="morceau4" alt="" title="" href="#" shape="poly" coords="379,175,391,157,397,148,406,159,408,174,412,193,414,204,410,226,412,237,413,252,411,265,408,273,394,229,382,199,376,177" />
+    <area id="morceau5" alt="" title="" href="#" shape="poly" coords="398,144,411,135,423,128,435,129,451,130,454,136,456,150,461,165,463,177,467,192,468,204,466,214,468,224,456,223,441,222,431,223,421,223,415,223,415,205,412,183,409,168,406,156" />
+    <area id="morceau6" alt="" title="" href="#" shape="poly" coords="453,131,463,131,471,135,477,143,484,152,490,163,496,172,496,184,496,202,496,219,493,221,482,221,469,223,467,199,464,179,462,164" />
+    <area id="morceau1" alt="" title="" href="#" shape="poly" coords="461,96,481,93,493,91,508,84,520,76,526,77,533,83,540,89,545,123,543,131,539,138,537,146,544,163,548,173,556,192,559,202,560,215,553,224,550,226,539,225,527,223,516,223,504,223,494,225,496,210,496,185,496,167,491,140,480,118" />
+    <area id="morceau28" alt="" title="" href="#" shape="poly" coords="113,144,108,157,105,172,100,190,95,215,101,240,108,260,115,279,125,294,143,295,139,281,130,253,125,232,123,207,118,171,119,160,122,150" />
+    <area id="morceau25" alt="" title="" href="#" shape="poly" coords="127,154,136,158,148,165,157,171,165,177,171,178,178,187,188,198,192,202,197,209,205,218,210,232,215,243,221,246,209,246,190,244,171,239,157,232,140,223,129,218,125,215,122,187,119,172,122,155" />
+    <area id="morceau16" alt="" title="" href="#" shape="poly" coords="225,250,231,233,238,221,240,213,228,207,216,204,205,200,198,198,190,196,205,219,216,240" />
+    <area id="morceau17" alt="" title="" href="#" shape="poly" coords="242,212,257,214,269,219,274,222,272,228,262,237,251,243,243,249,230,253,222,257,220,258" />
+    <area id="morceau18" alt="" title="" href="#" shape="poly" coords="276,222,289,228,300,229,303,233,288,241,278,246,267,253,254,261,241,266,232,267,221,268,214,269,212,269,220,258,235,252,248,246,259,241,272,230" />
+    <area id="morceau19" alt="" title="" href="#" shape="poly" coords="311,235,307,242,302,254,299,270,297,283,299,296,294,297,277,294,253,286,244,285,243,284,249,274,254,265,263,257,283,247,302,233" />
+    <area id="morceau11" alt="" title="" href="#" shape="poly" coords="302,298,319,301,341,305,368,305,392,305,411,306,417,302,411,287,408,276,402,253,395,232,395,228,383,228,365,226,347,226,332,227,321,230,313,234,313,233,308,244,303,255,299,270,300,289" />
+    <area id="morceau7" alt="" title="" href="#" shape="poly" coords="410,274,412,288,418,303,427,309,453,305,464,302,472,286,473,266,473,245,469,226,468,222,450,220,427,219,418,221,415,230" />
+    <area id="morceau8" alt="" title="" href="#" shape="poly" coords="473,223,487,221,497,223,494,236,495,255,495,276,491,292,486,298,474,301,464,303,472,272,474,248" />
+    <area id="morceau2" alt="" title="" href="#" shape="poly" coords="499,222,521,224,548,223,558,225,566,229,572,236,573,249,576,257,572,270,562,279,555,297,557,305,551,316,544,325,538,329,517,322,500,319,491,315,486,314" />
+    <area id="morceau29" alt="" title="" href="#" shape="poly" coords="145,294,166,297,167,278,165,256,165,238,155,231,136,223,127,218,125,216,128,238" />
+    <area id="morceau30" alt="" title="" href="#" shape="poly" coords="168,235,183,242,177,258,170,277,168,281" />
+    <area id="morceau31" alt="" title="" href="#" shape="poly" coords="167,300,189,302,196,288,217,271,222,256,222,244,201,243,185,241,180,255,170,276" />
+    <area id="morceau34" alt="" title="" href="#" shape="poly" coords="125,297,128,311,126,329,122,339,133,342,151,347,174,353,185,353,191,331,196,311,198,299,184,300,159,293,145,292" />
+    <area id="morceau21" alt="" title="" href="#" shape="poly" coords="220,269,211,278,201,287,196,295,196,308,197,316,225,321,231,321,236,321,237,307,240,293,246,281,259,260" />
+    <area id="morceau20" alt="" title="" href="#" shape="poly" coords="238,324,258,333,277,342,293,352,303,354,317,350,309,337,301,321,298,305,297,298,282,295,264,289,250,285,245,285,239,303" />
+    <area id="morceau12" alt="" title="" href="#" shape="poly" coords="320,350,349,341,379,334,412,324,426,320,419,306,393,306,364,305,340,305,328,302,310,299,305,298,299,298,299,298,305,324" />
 </map>

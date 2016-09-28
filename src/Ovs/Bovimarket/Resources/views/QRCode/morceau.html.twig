@@ -55,3 +55,35 @@
         </div>
     </div>
 {% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if idCss %}
+    <script src="/web/js/jquery.maphilight.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#{{ idCss }}").data({
+                "maphilight":{
+                    "alwaysOn":true
+                }
+            });
+            $("#imageMap").maphilight({
+                "fill":true,
+                "fillColor":"5d3043",
+                "strokeColor":"5d3043",
+                "fillOpacity":"0.60"
+            });
+            $("#{{ idCss }}").data("maphighlight");
+            $("area").click(function(e){
+                e.preventDefault();
+                var url = "{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"#id#"}) }}";
+                var id = $(this).prop("id");
+                id = id.replace(/morceau/,"");
+                url= url.replace(/#id#/,id);
+                document.location.href=url;
+            })
+        })
+    </script>
+    {% endif %}
+{% endblock %}
