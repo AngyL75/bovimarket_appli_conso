@@ -6,7 +6,9 @@
             <h1 class="IconeCuisson">La cuisson</h1>
             <p>Le {{ morceau.nom }} est une viande à
                 {% for cuisson in cuissons %}
-                    <a class="link" href="{{ path_for("flash.cuissons_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idCuisson":cuisson.id}) }}" data-color="#ffffff">
+                    <a class="link"
+                       href="{{ path_for("flash.cuissons_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idCuisson":cuisson.id}) }}"
+                       data-color="#ffffff">
                         {{ cuisson.nom }}
                     </a>
                     {% if loop.revindex0 == 1 %}
@@ -22,12 +24,7 @@
         <div class="col-xs-8 col-xs-offset-2">
             <div class="row">
                 {% for cuisson in cuissons %}
-                <div class="col-xs-6">
-                    <a style="background-image: url('{{ cuisson.logoPath }}')" class="IconBouillir text-center"
-                       href="{{ path_for("flash.cuissons_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idCuisson":cuisson.id}) }}">
-                        {{ cuisson.nom }}
-                        </a>
-                    </div>
+                    {% include "Block/cuisson.html.twig" %}
                 {% endfor %}
             </div>
         </div>

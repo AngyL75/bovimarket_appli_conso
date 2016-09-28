@@ -1,0 +1,19 @@
+<div class="row ListeStyle2">
+    <div class="col-xs-12">
+        <a class="link"
+           href="{{ path_for("flash.recettes_detail",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idRecette":recette.id}) }}"
+           data-color="#ffffff">
+            <div class="Tof2"><img src="{{ recette.photoPath }}" alt="..."/></div>
+            <div class="Description" style="padding:40px 20px;width: 80% !important;">
+                <div class="Nom col-xs-12">{{ recette.titre }}</div>
+                <div class="col-xs-4 sablier">
+                    {{ recette.tempsPreparation }}
+                </div>
+                <div class="col-xs-4 cuisson">
+                    {{ recette.tempsCuisson }}
+                </div>
+                <div class="col-xs-4 difficulte {{ recette.difficulteClass }}"></div>
+            </div>
+        </a>
+    </div>
+</div>
