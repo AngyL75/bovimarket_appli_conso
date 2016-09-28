@@ -42,11 +42,36 @@ class Recettes
      * @Serializer\Type("string")
      */
     protected $tempsCuisson;
+
+	/**
+	 * @var
+	 * @Serializer\Type("string")
+	 */
+	protected $tempsRepos;
+
+	/**
+	 * @var
+	 * @Serializer\Type("string")
+	 */
+	protected $tempsTrempage;
+
+	/**
+	 * @var
+	 * @Serializer\Type("string")
+	 */
+	protected $tempsMarinade;
+
     /**
      * @var
      * @Serializer\Type("integer")
      */
     protected $difficulte;
+
+	/**
+	 * @var
+	 * @Serializer\Type("string")
+	 */
+	protected $difficulteNom;
     /**
      * @var
      * @Serializer\Type("string")
@@ -66,8 +91,16 @@ class Recettes
     /**
      * @var
      * @Serializer\Type("array")
+     * @Serializer\SerializedName("sauce")
      */
     protected $ingredientsSauce;
+
+	/**
+	 * @var
+	 * @Serializer\Type("array")
+	 * @Serializer\SerializedName("accompagnement")
+	 */
+	protected $ingredientsAccompagnement;
 
     /**
      * @var
@@ -377,4 +410,78 @@ class Recettes
         );
         return $classes[$this->difficulte];
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getIngredientsAccompagnement() {
+		return $this->ingredientsAccompagnement;
+	}
+
+	/**
+	 * @param mixed $ingredientsAccompagnement
+	 */
+	public function setIngredientsAccompagnement( $ingredientsAccompagnement ) {
+		$this->ingredientsAccompagnement = $ingredientsAccompagnement;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTempsRepos() {
+		return $this->tempsRepos;
+	}
+
+	/**
+	 * @param mixed $tempsRepos
+	 */
+	public function setTempsRepos( $tempsRepos ) {
+		$this->tempsRepos = $tempsRepos;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTempsTrempage() {
+		return $this->tempsTrempage;
+	}
+
+	/**
+	 * @param mixed $tempsTrempage
+	 */
+	public function setTempsTrempage( $tempsTrempage ) {
+		$this->tempsTrempage = $tempsTrempage;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTempsMarinade() {
+		return $this->tempsMarinade;
+	}
+
+	/**
+	 * @param mixed $tempsMarinade
+	 */
+	public function setTempsMarinade( $tempsMarinade ) {
+		$this->tempsMarinade = $tempsMarinade;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDifficulteNom() {
+		return $this->difficulteNom;
+	}
+
+	/**
+	 * @param mixed $difficulteNom
+	 */
+	public function setDifficulteNom( $difficulteNom ) {
+		$this->difficulteNom = $difficulteNom;
+	}
+
+
+
+
 }

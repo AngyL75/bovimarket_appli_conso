@@ -33,9 +33,19 @@
                 {% endfor %}
             </ul>
             {% if recette.ingredientsSauce is defined and recette.ingredientsSauce|length > 0 %}
+                <br/>
                 <b>Pour la sauce :</b>
                 <ul>
                     {% for ingredient in recette.ingredientsSauce %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if recette.ingredientsAccompagnement is defined and recette.ingredientsAccompagnement|length > 0 %}
+                <br/>
+                <b>En accompagnement :</b>
+                <ul>
+                    {% for ingredient in recette.ingredientsAccompagnement %}
                         <li>{{ ingredient }}</li>
                     {% endfor %}
                 </ul>
@@ -48,12 +58,12 @@
         <h3 style="padding:30px 0">Préparation</h3>
         <div class="text-justify">
             <p>
-                {{ recette.instructionsPreparation|nl2br }}
+                {{ recette.instructionsPreparation|raw|nl2br }}
             </p>
             {% if recette.instructionsDressage is defined %}
                 <p><strong>Dressage</strong></p>
                 <p>
-                    <?php echo nl2br($recette->instructions_dressage); ?>
+                    {{ recette.instructionsDressage|raw|nl2br }}
                 </p>
             {% endif %}
         </div>

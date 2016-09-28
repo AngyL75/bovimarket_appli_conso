@@ -88,7 +88,7 @@
     ],
     "instructions_preparation": "\n<b>La viande</b>\n1 Parez l’échine de porc pour enlever les nerfs, le gras et les os. Découpez en 6 escalopes.\n2 Pour la panure, fouettez les œufs et ajoutez du sel.\n3 Trempez les escalopes une par une, d’abord dans la farine, plongez dans les œufs puis dans la chapelure.\n4 Dans une poêle chaude avec de l’huile d’arachide, faites frire les escalopes 3 minutes de chaque côté. Déposez sur du papier absorbant puis découpez en 4 ou 5 tranches dans la largeur. Réservez.\n\n<b>La sauce</b>\n1 Lavez les oignons frais et émincez finement. Séparé le blanc et le vert.\n2 Dans une casserole faites suer le blanc des oignons avec un peu d’huile d’arachide.\n3 Ajoutez le miel, la sauce soja et l’eau. Laissez compoter pendant 5 minutes.\n4 Ajoutez les tranches de porc.\n5 Pendant ce temps, dans une poêle avec un peu d’huile d’olive, cuire les œufs battus à la fourchette en les remuant rapidement pour faire des œufs brouillés.",
     "instructions_service"    : "Dans un bol, remplir aux 3/4 de riz chaud, déposez les tranches de porc, les œufs brouillés et parsemez des tiges des oignons nouveaux. Servez tout de suite.",
-    "morceaux_alternatifs"    : ["échine","grillade","filet"]
+    "morceaux_alternatifs"    : [1,3,5]
     },
     {
     "id"                : 4,
