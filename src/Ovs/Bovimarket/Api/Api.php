@@ -78,8 +78,7 @@ class Api extends Client {
 				$this->logger->addDebug( (string) $ex->getResponse()->getBody() );
 			}
 			$this->logger->addError( "Error : " . $ex->getMessage() . "\r\n" . $ex->getTraceAsString() );
-			return new Response();
-			//throw $ex;
+			throw $ex;
 		}
 
 		return $res;
