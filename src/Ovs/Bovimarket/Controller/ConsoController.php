@@ -131,7 +131,8 @@ class ConsoController extends BaseController
         }
 
         return $this->render($response,"Commande/merci.html.twig",array(
-            "commande"=>$cmd
+            "commande"=>$cmd,
+	        "email"=>$this->getUser($request)->getEmail()
         ));
 
     }
