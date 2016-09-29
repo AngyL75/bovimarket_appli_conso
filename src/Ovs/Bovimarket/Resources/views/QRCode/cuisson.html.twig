@@ -29,7 +29,7 @@
         <div class="row">
             <div class="row ListeStyle2">
                 <div class="col-xs-12">
-                    <a class="link" href="{{ path_for("flash.morceau",{"categ":morceauRec.typeViande,"idMorceau":morceauRec.id}) }}" data-color="#ffffff">
+                    <a class="link" href="{{ path_for("flash.categorie",{"categ":morceauRec.typeViande,"id":morceauRec.id}) }}" data-color="#ffffff">
                         <div class="Tof2"><img src="{{ morceauRec.photoPath }}" alt="..." /></div>
                         <div class="Description" style="padding:40px 20px">
                             <div class="Nom col-xs-12">{{ morceauRec.nom }}</div>
