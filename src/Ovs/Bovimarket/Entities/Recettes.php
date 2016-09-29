@@ -378,7 +378,12 @@ class Recettes
 
     public function getPhotoPath()
     {
-        return Utils::getImage($this->typeViande."/recettes/".$this->photo);
+	    if($image=="XXX" || empty($image))
+	    {
+		    return Utils::getImage("nophoto.png");
+	    }else{
+		    return Utils::getImage($this->typeViande."/recettes/".$this->photo);
+	    }
     }
 
     /**

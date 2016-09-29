@@ -20,6 +20,10 @@ class MapController extends BaseController
     public function indexAction(Request $request,Response $response,$args)
     {
         $entites = $this->get("entites")->findAll();
-        return $this->render($response,"Home/map.html.twig",array("entites"=>$entites));
+	    $center=$request->getQueryParam("center",false);
+        return $this->render($response,"Home/map.html.twig",array(
+        	"entites"=>$entites,
+	        "center"=>$center
+        ));
     }
 }

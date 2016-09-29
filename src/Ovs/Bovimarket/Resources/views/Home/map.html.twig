@@ -4,4 +4,7 @@
         {% for entite in entites %}
             {{ createMarker(entite) }}
         {% endfor %}
+    {% if center %}
+        map.setCenter(new google.maps.LatLng({{ center }}));
+    {% endif %}
 {% endblock %}

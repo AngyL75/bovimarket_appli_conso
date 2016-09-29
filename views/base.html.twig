@@ -148,10 +148,11 @@
     <script src="/web/js/main.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
+        var center = new google.maps.LatLng(45.7833, 3.0833);
         var mapElement = document.getElementById('map');
         var mapOptions = {
             zoom: 15,
-            center: new google.maps.LatLng(45.7833, 3.0833),
+            center: center,
             styles: [{
                 "featureType": "water",
                 "elementType": "geometry",

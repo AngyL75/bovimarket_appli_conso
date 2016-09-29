@@ -82,7 +82,7 @@
         </div>
     </div>
 
-    <div class="container" style="padding: 0px">
+    <div class="container" style="padding: 0px;margin-left: -15px;">
         {% include "Block/decoupe.html.twig" %}
     </div>
 {% endblock %}
@@ -109,7 +109,7 @@
                 $("#{{ idCss }}").data("maphighlight");
                 $("area").click(function(e){
                     e.preventDefault();
-                    var url = "{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"#id#"}) }}";
+                    var url = "{{ path_for("flash.categorie",{"categ":morceau.typeViande,"id":"#id#"}) }}";
                     var id = $(this).prop("id");
                     id = id.replace(/morceau/,"");
                     url= url.replace(/#id#/,id);
