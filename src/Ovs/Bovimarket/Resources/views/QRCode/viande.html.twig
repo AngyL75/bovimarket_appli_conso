@@ -1,10 +1,6 @@
 {% extends "base_blanche.html.twig" %}
 
 {% block page_content %}
-
-
-
-
     <div class="container" style="border-bottom:1px solid #ececec">
         <div class="row">
             <div class="col-xs-4 col-xs-offset-4">
@@ -15,33 +11,12 @@
                 <p>{{ morceau.description|nl2br }}</p>
             </div>
         </div>
-        <div class="row" id="IconeQRcode">
-            <div class="col-xs-10 col-xs-offset-1">
-                <div class="row">
-                    <div class="col-xs-6 text-center">
-                        <a class="link IconeProducteur"
-                           href="{% if idProducteur %}{{ path_for("app.entite.detail",{"id":idProducteur}) }}{% endif %}"
-                           data-color="#ffffff">
-                            Le producteur
-                        </a>
-                    </div>
-
-                    <div class="col-xs-6 text-center">
-                        <a class="link IconeMorceau"
-                           href="{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":morceau.id}) }}"
-                           data-color="#ffffff">
-                            Le morceau
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-center">La cuisson</h2>
+                <h2 class="text-center"><i class="IconeCuisson"></i>La cuisson</h2>
                 <p>Le {{ morceau.nom }} est une viande à
                     {% for cuisson in cuissons %}
                         <a class="link"
@@ -79,7 +54,7 @@
     <div class="container" style="padding:30px 15px">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-center">Les recettes</h2>
+                <h2 class="text-center"><i class="IconeRecette"></i>Les recettes</h2>
             </div>
         </div>
         {% for recette in recettes %}
@@ -92,4 +67,55 @@
             </div>
         {% endfor %}
     </div>
+
+    <div class="container" style="padding: 30px 15px">
+        <div class="row">
+            <div class="col-xs-12">
+                {% if idProducteur %}
+                <a href="{{ path_for("app.entite.detail",{"id":idProducteur}) }}" data-color="#ffffff">
+                    {% endif %}
+                    <h2 class="text-center"><i class="IconeProducteur"></i>Le producteur</h2>
+                    {% if idProducteur %}
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 0px">
+        {% include "Block/decoupe.html.twig" %}
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if idCss %}
+        <script src="/web/js/jquery.maphilight.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#{{ idCss }}").data({
+                    "maphilight":{
+                        "alwaysOn":true
+                    }
+                });
+                $("#imageMap").maphilight({
+                    "fill":true,
+                    "fillColor":"5d3043",
+                    "strokeColor":"5d3043",
+                    "fillOpacity":"0.60"
+                });
+                $("#{{ idCss }}").data("maphighlight");
+                $("area").click(function(e){
+                    e.preventDefault();
+                    var url = "{{ path_for("flash.morceau",{"categ":morceau.typeViande,"idMorceau":"#id#"}) }}";
+                    var id = $(this).prop("id");
+                    id = id.replace(/morceau/,"");
+                    url= url.replace(/#id#/,id);
+                    document.location.href=url;
+                })
+            })
+        </script>
+    {% endif %}
 {% endblock %}

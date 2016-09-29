@@ -54,6 +54,8 @@ class FlashController extends BaseController {
 		$cuissonFetcher = $this->get( "cuissons" );
 		$cuissons       = $cuissonFetcher->getCuissonsForMorceau( $morceau );
 
+		$idCss= "morceau" . $morceau->getId();
+
 		if ( isset( $args["idProducteur"] ) && $args["idProducteur"] ) {
 			$idProducteur = $args["idProducteur"];
 			$this->getSession( $request )->set( Session::idProducteur, $idProducteur );
@@ -65,7 +67,8 @@ class FlashController extends BaseController {
 				"morceau"      => $morceau,
 				"cuissons"     => $cuissons,
 				"recettes"     => $recettes,
-				"idProducteur" => $idProducteur
+				"idProducteur" => $idProducteur,
+				"idCss" => $idCss
 			)
 		);
 	}

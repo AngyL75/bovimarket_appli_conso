@@ -575,7 +575,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 .clearfix {cursor: pointer;}
 #IconeQRcode {padding:40px 0;}
 .IconeRecette {background: url(images/IconeRecette.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;margin-bottom:20px;}
-.IconeProducteur {background: url(images/IconeProducteur.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;margin-bottom:20px;}
+.IconeProducteur {background: url(images/IconeProducteur.svg) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;margin-bottom:20px;}
 .IconeCuisson {background: url(images/IconeCuisson.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;}
 .IconeMorceau {background: url(images/IconeMorceau.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;}
 .sablier {background: url(images/sablier.png) no-repeat center left; padding:15px 15px 15px 40px;font-size:18px;}

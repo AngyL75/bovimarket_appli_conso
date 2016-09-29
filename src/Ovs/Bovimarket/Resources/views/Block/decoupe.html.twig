@@ -1,0 +1,34 @@
+<div style="margin: 0 auto" id="decoupeWrapper">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="text-center"><i class="IconeMorceau"></i>Le morceau</h2>
+        </div>
+    </div>
+    <div class="row">
+        {{ mapDecoupe(morceau) }}
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">{{ morceau.nom }}</h3>
+            <p>
+                {{ morceau.description|nl2br }}
+            </p>
+        </div>
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">Conseil Achat</h3>
+            <p>
+                {{ morceau.conseilsAchat|nl2br }}
+            </p>
+        </div>
+        <div class="col-xs-12">
+            <h3 class="text-center" style="padding:20px 0">Conseil Conservation</h3>
+            <p>
+                {{ morceau.conseilsConservation|nl2br }}
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <h3 class="text-center" style="padding:20px 0">Conseil cuisson</h3>
+        <p>
+            {{ morceau.conseilsCuisson|nl2br }}
+        </p>
+    </div>
+</div>

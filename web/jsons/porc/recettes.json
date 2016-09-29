@@ -258,7 +258,7 @@
     ],
     "instructions_preparation": "1 Hachez finement dans un robot, les piments, les oignons verts, l’oignon, l’ail, la coriandre, le persil, le gingembre et les herbes de Provence.\n2 Ajoutez les épices et les liquides.\n3 Désossez l’épaule de porc et l’ouvrir en papillon (demandez plutôt à votre boucher de la faire). Faites de petites incisions de chaque côté pour permettre à la marinade de bien pénétrer la viande.\n4 Mettez l’épaule dans un grand plat de cuisson, ajoutez la marinade. Massez la viande pour bien l’imprégner de marinade. Couvrez et laissez mariner une nuit (en veillant à retourner la viande).\n5 Posez l’épaule de porc sur la grille chaude du barbecue, la peau tournée vers le bas et faires cuire de 20 à 25 min de chaque côté, jusqu'à ce que la viande soit cuite.\nIdéalement, vérifiez la cuisson avec un thermomètre à viande ; la température à cœur devrait atteindre 90°C.",
     "instructions_service"    : "Mettez la viande sur une planche à découper et laissez reposer 10 minutes. Découpez en tranches et servez immédiatement.",
-    "morceaux_alternatifs"    : ["épaule","jarret","jambon","palette"]
+    "morceaux_alternatifs"    : [1]
     },
     {
     "id"                : 10,

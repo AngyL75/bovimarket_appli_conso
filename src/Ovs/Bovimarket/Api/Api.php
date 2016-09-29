@@ -21,6 +21,7 @@ namespace Ovs\Bovimarket\Api;
 //}
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response;
 use Monolog\Logger;
 
 /**
@@ -29,63 +30,66 @@ use Monolog\Logger;
  * Date: 15/03/2016
  * Time: 09:09
  */
-class Api extends Client
-{
+class Api extends Client {
 
-    protected $logger;
+	protected $logger;
 
-    protected $coolCodes = array(201,200);
+	protected $coolCodes = array( 201, 200 );
 
-    protected $debugBar;
+	protected $debugBar;
 
-    public function __construct(array $config, Logger $logger,$debugBar=null)
-    {
-        parent::__construct($config);
-        $this->logger = $logger;
-        $this->debugBar = $debugBar;
-    }
+	public function __construct( array $config, Logger $logger, $debugBar = null ) {
+		parent::__construct( $config );
+		$this->logger   = $logger;
+		$this->debugBar = $debugBar;
+	}
 
-    public function request($method, $uri = '', array $options = [])
-    {
+	public function request( $method, $uri = '', array $options = [] ) {
 
-        $baseURI = $this->getConfig("base_uri");
-        $headers = $this->getConfig("headers");
-        $headers = $output = implode(', ', array_map(
-            function ($v, $k) {
-                return sprintf("%s='%s'", $k, $v);
-            },
-            $headers,
-            array_keys($headers)
-        ));
+		$baseURI = $this->getConfig( "base_uri" );
+		$headers = $this->getConfig( "headers" );
+		$headers = $output = implode( ', ', array_map(
+			function ( $v, $k ) {
+				return sprintf( "%s='%s'", $k, $v );
+			},
+			$headers,
+			array_keys( $headers )
+		) );
 
-        if($this->debugBar){
-            $this->debugBar["messages"]->debug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
-            $this->debugBar["messages"]->debug("Headers : " .$headers);
-        }
+		if ( $this->debugBar ) {
+			$this->debugBar["messages"]->debug( "REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode( $options ) );
+			$this->debugBar["messages"]->debug( "Headers : " . $headers );
+		}
 
-        $this->logger->addDebug("REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode($options));
-        $this->logger->addDebug("Headers : " .$headers);
-        try {
-            $res = parent::request($method, $uri, $options);
-        }catch (RequestException $ex){
+		$this->logger->addDebug( "REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode( $options ) );
+		$this->logger->addDebug( "Headers : " . $headers );
+		try {
+			$res = parent::request( $method, $uri, $options );
+		} catch ( RequestException $ex ) {
 
-            if($this->debugBar){
-                $this->debugBar["messages"]->warning((string)$ex->getResponse()->getBody());
-                $this->debugBar["messages"]->error("Error : ". $ex->getMessage()."\r\n".$ex->getTraceAsString());
-            }
+			if ( $this->debugBar ) {
+				if ( $ex->hasResponse() ) {
+					$this->debugBar["messages"]->warning( (string) $ex->getResponse()->getBody() );
+				}
+				$this->debugBar["messages"]->error( "Error : " . $ex->getMessage() . "\r\n" . $ex->getTraceAsString() );
+			}
 
-            $this->logger->addDebug((string)$ex->getResponse()->getBody());
-            $this->logger->addError("Error : ". $ex->getMessage()."\r\n".$ex->getTraceAsString());
-            throw $ex;
-        }
-        return $res;
-    }
+			if ( $ex->hasResponse() ) {
+				$this->logger->addDebug( (string) $ex->getResponse()->getBody() );
+			}
+			$this->logger->addError( "Error : " . $ex->getMessage() . "\r\n" . $ex->getTraceAsString() );
+			return new Response();
+			//throw $ex;
+		}
 
-    public function getResourcesPath()
-    {
-        $baseUri = $this->getConfig("base_uri");
-        $baseUri = str_replace("/api/","",$baseUri);
-        return $baseUri."/resources";
-    }
+		return $res;
+	}
+
+	public function getResourcesPath() {
+		$baseUri = $this->getConfig( "base_uri" );
+		$baseUri = str_replace( "/api/", "", $baseUri );
+
+		return $baseUri . "/resources";
+	}
 
 }
