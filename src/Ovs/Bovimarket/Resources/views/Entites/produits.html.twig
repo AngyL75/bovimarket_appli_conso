@@ -13,24 +13,24 @@
     </div>
 
     {% for produit in produits %}
-        <div class="row ListeStyle2">
+        <div class="row ListeStyle">
             <div class="col-xs-12">
                 <div class="row">
-                    <div class="col-xs-2">
+                    <div class="col-sm-2 col-xs-4">
                         <div class="Tof">
                             <img src="{{ apiImagePath(produit.photo) }}" alt="..."/>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-sm-6 col-xs-8">
                         <div class="Description" style="width:auto;">
                             <p class="Nom">{{ produit.nom }}</p>
                             <p class"Desc">{{ produit.accroche }}</p>
                         </div>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-sm-2 col-xs-3 col-xs-offset-4 col-sm-offset-0">
                         <p class="Prix text-right">{{ produit.prix }} &euro;</p>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-sm-2 col-xs-5">
                         <a class="btn btn-blanc {{ isInCart(produit,panier) }}" href="{{ path_for("app.entite.add_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}"></a>
                     </div>
                 </div>

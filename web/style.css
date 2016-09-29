@@ -588,7 +588,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 .IconBouillir, .IconBouillir:hover {display: block;color:#5d3043; background: url(images/bouillir.png) no-repeat center top;padding:110px 0 20px;margin:20px 0}
 .IconBraise, .IconBraise:hover {display: block;color:#5d3043; background: url(images/braise.png) no-repeat center top;padding:110px 0 20px;margin:20px 0}
 .Supprimer a  {height: 75px;width: 100px;background: url(images/Sup.png) no-repeat center #fff;display: block;}
-.Prix {font-size: 28px; font-weight: 600; color:#5d3043;padding-top:20px;}
+.Prix {font-size: 25px; font-weight: 600; color:#5d3043;padding-top:20px;}
 
 .IconPanierSelect, .IconPanierSelect:hover,
 .IconPanier, .IconPanier:hover,

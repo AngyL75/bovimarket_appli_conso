@@ -177,3 +177,23 @@
 .RecetteLine .difficulte{
     background-position: left 14px;
 }
+
+.ListeStyle{
+    border-bottom: 1px solid #ececec;
+    padding: 0px 0px;
+}
+
+.Supprimer a  {height: 75px;width: auto !important;background: url(images/Sup.png) no-repeat center #fff;display: block;}
+
+.btn-primary{
+    background: #5d3043;
+    border: none;
+}
+
+.btn-primary:hover{
+    background: #8cae08;
+}
+
+.btn-primary i{
+    color: #ffffff;
+}

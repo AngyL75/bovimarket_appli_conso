@@ -37,6 +37,20 @@ class ProduitController extends BaseController
         ));
     }
 
+	public function delToCartAction(Request $request, Response $response, $args)
+	{
+		$idEntite = $args["idEntite"];
+		$id = $args["idProduit"];
+
+		$panier = $this->getPanier($request);
+		$panier->remove($id,1);
+		$this->savePanier($request,$panier);
+
+		$referer = $request->getServerParams()["HTTP_REFERER"];
+
+		return $response->withRedirect($referer);
+	}
+
     public function addToCartAction(Request $request, Response $response, $args)
     {
         $idEntite = $args["idEntite"];
@@ -55,9 +69,9 @@ class ProduitController extends BaseController
         $panier->setVendeur($idEntite);
         $this->savePanier($request,$panier);
 
-        /** @var Router $router */
-        $router = $this->get("router");
-        return $response->withRedirect($router->pathFor("app.entite.produits", array("id" => $idEntite)));
+	    $referer = $request->getServerParams()["HTTP_REFERER"];
+
+	    return $response->withRedirect($referer);
     }
 
     public function showCartAction(Request $request, Response $response, $args)
@@ -65,7 +79,8 @@ class ProduitController extends BaseController
         $panier = $this->getPanier($request);
 
         return $this->render($response,"Commande/panier.html.twig",array(
-            "panier"=>$panier
+            "panier"=>$panier,
+	        "entiteId"=>$panier->getVendeur()
         ));
     }
 
