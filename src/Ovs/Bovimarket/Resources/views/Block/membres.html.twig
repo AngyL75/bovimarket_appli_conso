@@ -1,0 +1,21 @@
+{% for membre in membres if membre.activite==activite %}
+    {% if loop.first %}
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h5>{{ title }}</h5>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row ListeStyle">
+        <a href="{{ path_for("app.entite.detail",{"id":membre.id}) }}" style="color: #ffffff">
+            <div class="col-xs-4">
+                <div class="Tof">
+                    <img src="{{ apiImagePath(membre.logo) }}" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-xs-8 Description">
+                <p class="Nom">{{ membre.name }}</p>
+            </div>
+        </a>
+    </div>
+{% endfor %}
