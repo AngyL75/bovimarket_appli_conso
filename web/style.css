@@ -77,7 +77,6 @@ nav:not(.mm-menu) {display:none;}
 .favoris a, .favoris h2 {padding:5px 0;color:#fff !important;}
 .favoris p {padding: 0;}
 .Description {float:left;padding:10px 20px;}
-.ListeStyle2 .Description {width: 420px;}
 .Description .Nom {font-weight: 500;float: none;padding:0;font-size: 20px;}
 .ListeStyle2 {border-bottom: 1px solid #553341;}
 .ListeStyle2 a {color:#fff;}

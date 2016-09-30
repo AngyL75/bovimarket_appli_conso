@@ -54,6 +54,8 @@
         </div>
     </div>
 
+    {% block menu %}{% endblock %}
+
     {% block certifs %}
         {% if certifs|length >0 %}
             <div id="certifs" class="row">
@@ -89,10 +91,6 @@
                 </div>
             </div>
         {% endif %}
-    {% endblock %}
-
-    {% block menu %}
-
     {% endblock %}
 
     {% block blog %}
