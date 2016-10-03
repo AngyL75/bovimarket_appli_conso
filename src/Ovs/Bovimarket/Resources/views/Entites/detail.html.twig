@@ -76,12 +76,12 @@
                                 {% set link="" %}
                             {% endif %}
                             <a class="link" href="{{ link }}" data-color="#381b26">
-                                <div class="ListeStyle2 row">
-                                    <div class="Tof col-xs-3 col-sm-3">
-                                        <img src="{{ apiImagePath(certif.logo) }}">
-                                    </div>
+                                <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
                                     <div class="col-sm-1"></div>
-                                    <div class="col-xs-9 col-sm-8">
+                                    <div class="col-xs-3 col-sm-1">
+                                        <img src="{{ apiImagePath(certif.logo) }}" class="img-circle img-responsive">
+                                    </div>
+                                    <div class="col-xs-9 col-sm-10">
                                         <p class="Prix text-center" style="color: #ffffff">{{ certif.nom }}</p>
                                     </div>
                                 </div>
