@@ -9,7 +9,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "A conserver deux à trous jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Si vous utilisez du vin blanc pour votre mijoté, il est recommandé de servir le même à table.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 2,
     "nom_id"          : [2],
@@ -22,7 +22,7 @@
     "conseils"        : "Cuisez les morceaux tels quels sans enlever le gras. Cela leur donnera plus de moelleux et de goût.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur, un peu plus si vous possédez un compartiment spécial viandes et poissons.",
     "accords_mets_et_vins"  : "Pour le blanc un petit Rully léger fera l’affaire, si vous préférez un rouge, optez pour une Sancerre.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 3,
     "nom_id"          : [3],
@@ -35,7 +35,7 @@
     "conseils"        : "Achetez toujours des côtes assez épaisses, si elles sont découpées trop fines, mieux vaut les paner comme les escalopes.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Ladoix rouge avec ses notes de framboises sublimera votre carré d’agneau rôti.",
-    "cuissons"        : ["griller","poêler","rôtir"]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 4,
     "nom_id"          : [4],
@@ -48,7 +48,7 @@
     "conseils"        : "Il vaut mieux acheter un gros rôti de veau. Les petits sont souvent trop secs après cuisson. Vous pourrez réutiliser la viande de multiples façons.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Les bouchées à la Reine s’accommodent très bien d’un Bourgogne, tels le Pouilly Fuissée ou le Meursault. De grands vins pour ce plat royal.",
-    "cuissons"        : ["griller","poêler","rôtir"]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 5,
     "nom_id"          : [5],
@@ -61,7 +61,7 @@
     "conseils"        : "Le jarret entier se cuit au four lentement et longtemps. Cela donne une chair onctueuse et légèrement confite qui se détache à la cuillère. Compter au minimum trois heures.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge italien comme un Barbera d’Asti ou un Dolecto est un excellent choix pour un Osso-Bucco. Dans sa version francophone on préfèrera un rouge léger comme un Saumur-Champigny.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 6,
     "nom_id"          : [6],
@@ -74,7 +74,7 @@
     "conseils"        : "Achetez toujours des côtes assez épaisses, si elles sont découpées trop fines, mieux vaut les paner comme les escalopes.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Ladoix rouge avec ses notes de framboises sublimera votre carré d’agneau rôti.",
-    "cuissons"        : ["griller","poêler","rôtir"]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 7,
     "nom_id"          : [7],
@@ -87,7 +87,7 @@
     "conseils"        : "Pour un barbecue réussi, frotter les travers au sel, préparer une marinade asiatique, enveloppez dans du film transparent et laissez reposer 24H. Faites cuire sur des braises vives pendant 70 minutes. Retirer du feu,  détaillez, badigeonnez avec la marinade et laissez reposer 10 minutes dans du papier aluminium.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge du Languedoc, puissant et charpenté, révèlera les saveurs fumés des travers de veau grillé.",
-    "cuissons"        : ["griller"]
+    "cuissons"        : [2,3,4]
     },
     {"id"              : 8,
     "nom_id"          : [8],
@@ -100,7 +100,7 @@
     "conseils"        : "Achetez toujours des côtes assez épaisses, si elles sont découpées trop fines, mieux vaut les paner comme les escalopes.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Ladoix rouge avec ses notes de framboises sublimera votre carré d’agneau rôti.",
-    "cuissons"        : ["griller","poêler","rôtir"]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 9,
     "nom_id"          : [9],
@@ -113,7 +113,7 @@
     "conseils"        : "Cuisez ces morceaux sans les dégraisser, vos plats n’en seront que plus savoureux.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Avec le veau Marengo, un Saint-Joseph ou un Crozes-Hermitage remportent la bataille !",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 10,
     "nom_id"          : [10],
@@ -126,7 +126,7 @@
     "conseils"        : "La côte filet est excellente poêlée. Veillez à la saisir à feu vif, puis à feu modéré en l’arrosant régulièrement de son jus de cuisson pour éviter qu’elle se dessèche.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Pouilly-Fuissé ou un Saint-Véran en blanc. En rouge, on préférera un rouge léger comme un Beaujolais.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 11,
     "nom_id"          : [11],
@@ -139,7 +139,7 @@
     "conseils"        : "Quelle que soit sa cuisson, rôti ou poêlé, on le déguste rosé ou à point pour garder son moelleux.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour le veau Orloff un Pinot Gris d’Alsace en blanc. Pour les amateurs de vin rouge, nous vous conseillons un bon Bourgogne comme un Mercurey.",
-    "cuissons"        : ["poêler","rotir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 12,
     "nom_id"          : [12],
@@ -152,7 +152,7 @@
     "conseils"        : "Pour réussir une bonne blanquette de veau, veillez à associer du tendron, du jarret et de l’épaule pour rendre ce plat exceptionnel.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Le côté gélatineux du plat demande des vins blancs un peu toniques comme un Chardonnay de Bourgogne ou un Sauvignon Blanc de Loire. Pour les rouges évitez tous les vins tanniques et préférez un Pinot Noir ou un petit Gamay léger.",
-    "cuissons"        : ["braiser","poêler"]
+    "cuissons"        : [4,1]
     },
     {"id"              : 13,
     "nom_id"          : [13],
@@ -165,7 +165,7 @@
     "conseils"        : "N’oubliez pas que le veau se mange rosé. Il doit rester tendre et moelleux, donc pensez bien à l’arroser tout au long de la cuisson.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "On peut cuisiner le quasi de veau à la moutarde. Pour tous les plats moutardés optez pour un vin blanc sec et floral comme le Saint-Peray ou le Saint-Joseph en vallée du Rhône.",
-    "cuissons"        : ["rôtir"]
+    "cuissons"        : [3]
     },
     {"id"              : 14,
     "nom_id"          : [14],
@@ -178,7 +178,7 @@
     "conseils"        : "Si vous choisissez ce morceau pour le braiser ou le rôtir, demandez à votre boucher de le barder de lard.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos paupiettes nous vous recommandons un vin rouge sec et puissant comme un Moulin-a-Vent ou un Bordeaux type Saint-Emilion.",
-    "cuissons"        : ["poêler","rôtir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 15,
     "nom_id"          : [15],
@@ -191,7 +191,7 @@
     "conseils"        : "Si vous choisissez ce morceau pour le braiser ou le rôtir, demandez à votre boucher de le barder de lard.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Châteauneuf-du-Pape blanc fera des merveilles sur un rôti de veau cuit au four.",
-    "cuissons"        : ["poêler","rôtir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 16,
     "nom_id"          : [16],
@@ -204,7 +204,7 @@
     "conseils"        : "Si vous choisissez ce morceau pour le braiser ou le rôtir, demandez à votre boucher de le barder de lard.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos paupiettes nous vous recommandons un vin rouge sec et puissant comme un Moulin-a-Vent ou un Bordeaux type Saint-Emilion.",
-    "cuissons"        : ["poêler","rôtir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 17,
     "nom_id"          : [17],
@@ -217,6 +217,6 @@
     "conseils"        : "Le jarret entier se cuit au four lentement et longtemps. Cela donne une chair onctueuse et légèrement confite qui se détache à la cuillère. Compter au minimum trois heures.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge italien comme un Barbera d’Asti ou un Dolecto est un excellent choix pour un Osso-Bucco. Dans sa version francophone on préfèrera un rouge léger comme un Saumur-Champigny.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     }
 ]

@@ -9,9 +9,9 @@
                             "porc"   : "Il faut toujours saisir la viande à feu moyen pour conserver les sucs à l’intérieur et garder une viande juteuse. On la déguste généralement à point.",
                             "agneau" : "Il faut toujours saisir la viande à feu vif pour conserver les sucs à l’intérieur et garder une viande juteuse. \nLes côtes : 3 à 4 minutes par face \nLes brochettes, l’épaule, la selle : 5 à 6 minutes \nFilet : 8 minutes par face."
                         },
-    "morceaux"        : {   "boeuf"  : [6,14,15,16,17,18,19,21,28,31,32,33],
+    "morceaux"        : {   "boeuf"  : [4,6,9,10,14,15,16,17,18,19,21,25,26,27,28,30,31,32,33],
                             "veau"   : [3,4,6,8,10,11,12,14,15,16],
-                            "porc"   : [7,13],
+                            "porc"   : [7,10,13],
                             "agneau" : [5,6]
                          },
     "recettes"        : {   "boeuf"  : [],
@@ -56,7 +56,7 @@
     "morceaux"        : {   "boeuf"  : [15,23,29,31,32,33],
                             "veau"   : [3,4,6,8,11,13,14,15,16],
                             "porc"   : [1,2,3,6,7,11,12,14,15],
-                            "agneau" : [2,3,4,5,6,7,8,11]
+                            "agneau" : [2,3,4,5,6,7,8,11,12]
                          },
     "recettes"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -78,7 +78,7 @@
     "morceaux"        : {   "boeuf"  : [1,3,5,7,8,11,12,13,20,22,24,29,34],
                             "veau"   : [1,2,5,9,12,17],
                             "porc"   : [2,3,4,5,9,11,12,14,15,16,17],
-                            "agneau" : [1,9,10,11]
+                            "agneau" : [1,9,10,11,12]
                          },
     "recettes"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -97,7 +97,7 @@
                             "porc"   : "",
                             "agneau" : ""
                          },
-    "morceaux"        : {   "boeuf"  : [],
+    "morceaux"        : {   "boeuf"  : [1,2,5,7,8,11,12,13,24,34],
                             "veau"   : [],
                             "porc"   : [],
                             "agneau" : []
@@ -113,8 +113,8 @@
     "nom"             : "plancha",
     "cuisson_photo"   : "cuisson_plancha.jpg",
     "cuisson_logo"    : "logo_plancha.png",
-    "description"     : "La plancha permet, comme le barbecue dont elle est complémentaire, une cuisine rapide et conviviale des viandes, poissons et légumes, avec, comme atout supplémentaire, une cuissonuniforme et saine, avec peu ou pas de matières grasses.<b>La cuisine à la plancha pour redécouvrir les grillades.<\b>\n« Planche de métal » en espagnol, la plancha a vu le jour en Espagne, sur le chemin deSaint Jacques de Compostelle : d’énormes plaques de tôle posées sur la braise permettaientde cuire, en même temps, des aliments différents, ce qui permettaient aux nombreux pèlerinsde profiter d’une alimentation variée. Tout d’abord associée aux grandes fêtes religieuses,elle devient, au fil des ans, un grand classique des restaurants à tapas. Méconnue desFrançais jusqu’au début des années 2000, elle a, depuis, conquis un très large publicd’amateurs d’une cuisine conviviale, simple et saine.\nSi leurs adeptes peuvent s’y adonner toute l’année, c’est bien sûr en été que ces nouveauxappareils, à gaz ou électriques, mobiles, sur meuble ou sur chariot, sont de sortie dans lesjardins et sur les terrasses. La plancha au soleil, c’est merveilleux.",
-    "specificite"     : {   "boeuf"  : "<b>La cuisson à la plancha : une cuisson uniforme et saine<\b>\nLa plancha désigne à la fois l'appareil de cuisson et la méthode de cuisson associée. La cuisson à la plancha repose sur le principe du contact direct des aliments avec une largesurface de cuisson plane et très fortement chauffée pouvant atteindre une températuresupérieure à 300°C. Elle respecte les produits et leurs qualités nutritionnelles : ilssont saisis, ce qui permet la formation rapide d’une « croute » qui « emprisonne » leurssucs et préserve leurs saveurs. De plus, elle permet une cuisson homogène et sanscarbonisation.\n\n<b>La cuisine à la plancha : une cuisine rapide et conviviale<\b>\nAvec une plancha, la cuisine c’est rapide. Une dizaine de minutes de préchauffage, unedizaine d’autres pour la cuisson et le tour est joué. Et pas besoin de savoir cuisinerpour rassembler ses amis autour d’un repas chaleureux! Tout se prépare au dernier momentet on peut cuire en quantité : c’est donc très pratique pour les grandes tablées.\nPour une cuisson parfaite des viandes, la plancha doit être bien chaude, 250° C, mais pastrop sinon les fibres de la viande se contractent violemment, la viande durcit, noircit etbrûle.\nAutre atout de taille, chacun cuit la viande de son choix le temps qu’il convient, selonses goûts : de l’aller-retour rapide au centre de la plancha pour une viande bleue à unecuisson un peu plus longue en périphérie de la plancha où la température est un peu moinsforte.\nA ne pas oublier pour avoir une viande tendre et savoureuse à souhait : la laisser reposerquelques minutes avant de la déguster : les fibres se détendent, la chaleur et les sucs serépartissent uniformément.\n\n<b>Morceaux choisis pour la plancha<\b>\nLes recettes à la plancha sont innombrables, tout comme le choix des viandes et desmorceaux. Avec la plancha, les « piécés » sont à l’honneur. Les piécés, ce sont de petitespièces de viande, pas trop épaisses et de la taille d’un steak. Les cubes et émincés, leplus souvent retenus pour la cuisine au wok s’adaptent à la plancha mais attention à lacuisson ! Si vous optez pour des brochettes, faites-les plates avec des bandes de viandeplutôt que des cubes.\nPour le bœuf ou la viande chevaline, vous avez le choix entre des tranches de faux-filetou de rumsteck, de la poire ou du merlan, deux petits muscles de la cuisse très tendres ouencore la bavette qu’elle soit d’aloyau ou de flanchet, l’araignée. Côté veau, des morceauxtendres comme la noix ou la sous-noix, le filet. Aussi des tranches de gigot d’agneau, desgrillades de porc, de la hampe et de l’onglet, du foie ou des rognons. Sans oublier leshachés pour les burgers maison, les boulettes et les keftas.\nPour ces viandes ou produits tripiers, pas besoin de matière grasse ou très peu : une légèrepulvérisation d’huile suffit. Pour l’assaisonnement, une pincée de fleur de sel et un tour depoivre du moulin.",
+    "description"     : "La plancha est une manière rapide et saine de faire griller votre viande en conservant ses qualités nutritionnelles. Ce type de cuisson n’apporte pas de goût supplémentaire comme peut le faire le barbecue, alors veillez à bien assaisonner votre viande pour révéler toutes ses saveurs.\nPour réussir votre cuisson, préchauffez votre plancha pendant 10 minutes pour qu’elle atteigne 250°, pas plus sinon les fibres de la viande vont brûler et vous risquez l’effet « semelle ».\nIl ne faut jamais graisser la plaque mais uniquement les aliments.\nLes viandes marinées sont parfaite pour une cuisson à la plancha ! Alors laissez parler votre imagination !\n<b>Les temps de cuisson:<\b><ul><li>Pour les morceaux épais (pavés, entrecôtes, etc...) = 3 à 5 minutes de chaque côté en fonction de la cuisson désirée.</li><li>Les autres morceaux (tranche, côtelettes, bifteck = 1 à 3 minutes de chaque côté en fonction de la cuisson désirée.</li><li>Les brochettes de viande rouge : 10 minutes en retournant sur chaque face.</li><li>Les brochettes de viande blanche : 20 minutes en retournant sur chaque face.</li></ul>",
+    "specificite"     : {   "boeuf"  : "",
                             "veau"   : "",
                             "porc"   : "",
                             "agneau" : ""
@@ -135,11 +135,11 @@
     "nom"             : "barbecue",
     "cuisson_photo"   : "cuisson_barbecue.jpg",
     "cuisson_logo"    : "logo_barbecue.png",
-    "description"     : "Le barbecue perpétue la tradition séculaire de la cuisson à la braise. L’appareil est adapté à la vie moderne mais une cuisson au barbecue réussie suppose le respect de certaines règles.On en savourera d’autant mieux toutes sortes de viandes et de préparations.",
-    "specificite"     : {   "boeuf"  : "<b>Viande au barbecue : que cuisiner ?<\b>\nOn peut cuire la viande de nombreuses espèces avec la cuisson au barbecue : bœuf, agneau,cheval, et dans une moindre mesure le veau, qui réclame une cuisson plus à cœur.\nLes « classiques » du barbecue :\n- Les morceaux à cuisson rapide (côtes, côtelettes, bifteck, entrecôtes, etc.) dont le jus àl’intérieur des fibres sera préservé.\n- Du steak haché de bœuf, mais aussi de veau ou d’agneau acheté dans le commerce ou préparésoi-même agrémenté d’aromates (oignons, cornichons, câpres émincés, etc.)\n- Les brochettes de bœuf (rumsteck, aiguillette, faux-filet, macreuse, bavette, onglet, hampe,langue, foie) ou d’agneau (petites pièces issues du gigot, de l’épaule, de la selle ou ducarré, rognons) en alternant cubes de viande suffisamment épais (3 à 4 cm) et légumes detexture ferme (poivrons, oignons, tomates, etc.)<b>Temps de cuisson au barbecue<\b>\nLes temps de cuisson moyens au barbecue sont variables.\n- Côtelettes de veau ou d’agneau de 2-3 cm : 9 à 10 minutes.\n- Carré d’agneau de 1,5 kilo : 1 heure et 10 minutes.\n- Côte de bœuf de 5 cm : 20 minutes.\n- Brochettes : 7 à 8 minutes.\n- Steaks hachés : 6 à 7 minutes.\nBon à savoir : pour éviter de carboniser la viande on peut la préparer avec une marinade.Légère ou épaisse, elle conduit la chaleur et évite le dessèchement et la carbonisation desurface. Une marinade « instantanée » suffit pour les petites pièces, comme les steaks oules brochettes. Pour les cuissons plus longues (grosses côtes de veau ou de bœuf, carrésd’agneau), on privilégiera des mélanges plus épais, liés par exemple avec de la moutardeou du miel.\nPour obtenir une cuisson régulière, retourner régulièrement les plus grosses pièces, commeles côtes ou les carrés.",
-                            "veau"   : [],
-                            "porc"   : [],
-                            "agneau" : []
+    "description"     : "Le barbecue est une cuisson simple goûteuse et conviviale. On peut cuire de nombreux morceaux de cette manière. \n\n<b>Les conseils de pro</b><ol><li>Pour marquer votre grillade, attendez que la grille soit bien chaude et déposez la viande en diagonale. Attendez que la viande se détache bien et tournez d’un quart de tour pour dessiner le fameux losange.</li><li>Pour éviter les flammes et donc de brûler la viande, dégraisser un maximum votre viande et veillez aussi à bien essuyer la marinade.</li><li>Le temps de cuisson peut varier en fonction de la température du barbecue, du fait de fermer ou non le couvercle, et surtout, de l’épaisseur des morceaux de viande. Voici à titre indicatif les temps de cuisson :<ul><li>Côtelettes de veau ou d’agneau de 2-3 cm : 9 à 10 minutes.</li><li>Carré d’agneau de 1,5 kilo : 1 heure et 10 minutes.</li><li>Côte de bœuf de 5 cm : 20 minutes.</li><li>Brochettes : 7 à 8 minutes.</li><li>Steaks hachés : 6 à 7 minutes.</li></ul></li></ol>",
+    "specificite"     : {   "boeuf"  : "",
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
                          },
     "morceaux"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -159,9 +159,9 @@
     "cuisson_logo"    : "logo_wok.png",
     "description"     : "<b>La cuisine au Wok, la poêle à tout faire<\b>\nLe wok, ustensile traditionnel de la cuisine chinoise, s’est imposé dans le paysage culinairefrançais grâce aux multiples possibilités de cuissons et de préparations qu’il offre. Sa baseétroite et ses bords hauts et évasés permettent de faire sauter rapidement les viandes danstrès peu de matière grasse. Mais le wok a bien d’autres ressources…",
     "specificite"     : {   "boeuf"  : "<b>Cuisiner avec un wok<\b>\nLe principal usage du wok consiste à faire sauter successivement les aliments d’une mêmepréparation (viandes et légumes notamment) en les réservant une fois cuits sur la grillesemi-circulaire. Outre la rapidité, l’avantage de ce mode de cuisson est qu'il préserve l’essentiel des qualités nutritionnelles et organoleptiques et nécessite l’ajout de trèspeu de matière grasse.\nDans la plupart des recettes, notamment asiatiques, on termine la préparation en reversantles aliments dans le wok à feu plus doux puis en liant les différents éléments avec del’huile de sésame, de la sauce soja, du miel, etc.\nMais le succès du wok tient aux nombreuses autres possibilités de cuisson qu’il offre. Laforme évasée du wok permet de friredans beaucoup moins d’huile. C’est idéal pour des nemsou des tempuras mais aussi des beignets à la viande. On les égoutte ensuite sur la grillesemi-circulaire.\nLe wok sert également à cuire à la vapeur en faisant bouillir de l’eau au fond de l’ustensilet en plaçant une grille qui permet de surélever le panier vapeur. En recouvrant le wok, onpeut alors aussi bien cuire des raviolis chinois, que des morceaux d’épaule d’agneau ou defilet de bœuf. Enfin on peut même cuire à l’étouffée en utilisant le couvercle et enmouillant sa préparation pour des recettes de viande de type braisées.\n",
-                            "veau"   : [],
-                            "porc"   : [],
-                            "agneau" : []
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
                          },
     "morceaux"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -181,9 +181,9 @@
     "cuisson_logo"    : "logo_friture.png",
     "description"     : "Outre la traditionnelle fondue bourguignonne, la cuisson en friture offre d’innombrables possibilités et recettes de viandes panées, en beignets, en boulettes et même en tempuras.Voici les principales idées et précautions à prendre.",
     "specificite"     : {   "boeuf"  : "<b>La cuisson en friture<\b>\nLa friture consiste à cuire les aliments par une immersion rapide dans un bain de matièregrasse porté à une température élevée. Ce mode de cuisson, universel et savoureux, donneun caractère croustillant à l'enveloppe extérieure de l’aliment, sans trop durcir son intérieur.\nIl suffit d’une casserole profonde ou d’une sauteuse pour faire de la friture, mais onutilise également des appareils à fondue ou, le plus souvent, des friteuses électriques,plus pratiques. La cuisson en friteuse réclame dans tous les cas de respecter quelquesrègles de sécurité et d’utilisation pour ne pas se brûler ou consommer trop gras, parexemple en renouvelant régulièrement l’huile et en égouttant les aliments une fois sortisdu bain sur du papier absorbant.\nLa cuisson en friture augmente en effet le pouvoir calorique des aliments. Même s’ilexiste des outils et astuces pour en réduire la portée, il est sage d’équilibrer le repas,en allégeant les sauces employées, et d’accompagner les préparations cuisinées en friteuseavec des salades ou des légumes plutôt qu’avec des frites.<b>Quels morceaux de viande peut-on frire ?<\b>\nLa viande peut se frire soit directement, soit enrobée préalablement d’une panure.\nLa cuisson directe dans un bain d’huile est principalement pratiquée dans la fondue« bourguignonne », qui se prépare à table dans un poêlon posé sur un réchaud. La recetteoriginale est à base de bœuf et réclame des viandes très tendres, prises parmi les viandesà griller (filet, rumsteck, poire ou merlan) ou à rôtir. On trouve dans le commerce desbarquettes vendues sous l’appellation « morceaux à fondue », correspondant à des morceaux« trois étoiles ».\nD’autres viandes conviennent cependant à la préparation en fondue. Les pièces à griller ouà rôtir de viande de cheval sont particulièrement bien adaptées. Mais on peut égalementsurprendre ses invités avec des pièces tirées d’autres viandes : noix de veau, filet deporc ou encore gigot d’agneau, que l’on peut au préalable faire mariner.\nDans tous les cas, il faut veiller à bien sécher les viandes au préalable, notamment sielles ont été surgelées, afin d’éviter la formation de vapeur qui ramollit et faitbouillonner l’huile, et découper de petits morceaux de la taille d’une bouchée pour unecuisson uniforme. On compte généralement 3 volumes d’huile pour 1 volume d’aliment. Onpeut enfin aromatiser l’huile avec du laurier, du thym ou du romarin.\nLa cuisson en panure est la plus courante pour les préparations à base de viande. Il existeune infinité de variétés de préparations, tant pour le type d’enrobage que pour les viandesutilisées pour la farce. On peut paner des préparations à base de bœuf, de veau, d’agneau,de porc, de cheval, mais aussi de produits tripiers, comme pour la recette du tablier desapeur : des rectangles de gras-double marinés dans du vin blanc, panés, frits, coupés entranches et servis avec une sauce gribiche.\nLes préparations contenant de la viande enrobée ou mélangée en boulettes puis frites existentdans toutes les cuisines : beignets et tourtons en France, croquettes et fritto misto enItalie, nuggets dans les pays anglo-saxons,samoussas en Inde, nems au Vietnam, kushikatsuet tempura au Japon, etc.",
-                            "veau"   : [],
-                            "porc"   : [],
-                            "agneau" : []
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
                          },
     "morceaux"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -203,9 +203,9 @@
     "cuisson_logo"    : "logo_papillote.png",
     "description"     : "Pratiquée depuis la nuit des temps et sur tous les continents sous différentes formes, la cuisson « en papillote » constitue une méthode simplissime de cuisson des viandes« à l’étouffée ». Elle présente en outre de nombreux avantages culinaires et diététiques.Il faut cependant respecter quelques règles de base suivant les espèces et les morceauxutilisés.",
     "specificite"     : {   "boeuf"  : "<b>Cuisiner en papillote, une cuisine simple et légère<\b>\nLa cuisine en papillote constitueune méthode simple, légère et savoureuse pour cuiretoutes les viandes, seules mais assaisonnées ou avec différents accompagnements. Leprincipe consiste à cuire les aliments dans leur propre vapeur après les avoir enfermésdans un emballage hermétique résistant à la chaleur. Différents procédés sont employéssuivant les cultures et les matériaux disponibles : des végétaux comme la feuille debananier, de figuier ou de chou, des emballages alimentaires comme la feuille de brikou la pâte filo ou encore des emballages non comestibles comme le papier sulfurisé etle silicone. Une fois en papillote, les aliments peuvent être cuits par différents moyens :le plus souvent au four, traditionnel ou micro-ondes, mais aussi sur un feu voire dans ousur de l’eau bouillante.\nLa préparation en papillote peut servir à cuire uniquement la viande avec un peu de matièregrasse, des herbes ou des épices ; mais aussi à préparer un plat élaboré associant parexemple une viande, des légumes, des herbes, voire un ou des condiments.\nLes avantages de la cuisine en papillote sont multiples. C’est une cuisine très simple,puisqu’elle permet de cuire en même temps plusieurs ingrédients, sans autre manipulation.Elle est savoureuse, chaque ingrédient communiquant son goût aux autres durant la cuisson,sans pour autant se mélanger. L’essentiel des qualités nutritionnelles et organoleptiquesest préservé. C’est aussi une cuisine légère, la préparation réclamant peu de matière grasseajoutée.\n<b>Quels morceaux de viande cuisiner en papillote ?<\b>\nTous les morceaux peuvent être cuits en papillote, des plus épais comme les rôtis, aux plusminces comme les côtelettes, d’agneau ou de porc, jusqu’aux viandes émincées.La cuissonen papillote est cependant particulièrement adaptée aux grosses pièces et aux viandesblanches, dont le taux d’humidité est élevé, ou pour terminer en douceur la cuisson deviandes préalablement grillées ou snackées.Pour les petites pièces et les morceauxémincés, contenant moins d’eau, il est nécessaire de les cuire avec des aliments humides,voire d’ajouter à la préparation de l'eau, du vin ou du bouillon pour créer de la vapeur.\n<b>Les temps de cuisson en papillote<\b>\nDe façon générale la température de cuisson doit être comprise entre 150° et 180°(thermostats 5 à 6 pour un four).\n- Pour un filet de bœuf de 800 grammes : 20 minutes\n- Pour un gigot d’agneau :\n+ cuisson courte : 45 minutes (1/4 par 500 grammes)\n+ en cuisson longue (« gigot de sept heures ») : 5 heures à 120°\n- Pour des côtes de veau (ou de bœuf) : 10 minutes au gril, puis 10 minutes en papillote\n- Pour un rôti de porc : environ 1 heure par kilo de viande\n- Pour une joue de porc : environ 1h30\n- Pour une côte de poulain : 5 minutes au gril, 10 minutes en papillote\n<b>Les astuces du chef pour cuisiner en papillote<\b>\nLa paillote préfère généralement les cuissons douces. Mais pour aller plus vite, lemicro-ondes fait aussi très bien l’affaire, avec des temps de cuisson raccourcis. Etsi l’on n’a ni four, ni barbecue… ni papillote, il est encore possible d’avoir recoursà ce procédé : déposer tous les ingrédients dans une assiette creuse, la couvrir avecune seconde assiette puis poser le tout sur une casserole d'eau bouillante. La vapeur d'eau va permettre de cuire l’ensemble.",
-                            "veau"   : [],
-                            "porc"   : [],
-                            "agneau" : []
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
                          },
     "morceaux"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -225,9 +225,9 @@
     "cuisson_logo"    : "logo_autocuisseur.png",
     "description"     : "L’autocuiseur offre de nombreuses possibilités de cuisson des viandes à la vapeur ou dans du liquide, bouillies ou mijotées. Principal avantage : diviser par deux ou trois les temps decuisson du pot-au-feu, de la blanquette et de dizaines d’autres recettes. Une aubaine, àcondition de respecter quelques règles simples d’utilisation.",
     "specificite"     : {   "boeuf"  : "<b>Cuisiner avec un autocuiseur pour une cuisson express et des saveurs préservées</b>\nL’autocuiseur est un outil de cuisine multifonctions permettant de cuire rapidement desaliments à la vapeur ou dans du liquide tout en préservant leurs saveurs et qualitésnutritionnelles. Accélérée par l’augmentation de la pression, la cuisson est deux àtrois fois plus rapide dans un autocuiseur que dans une cocotte ou un cuit-vapeurtraditionnel. Un pot au feu n’aura besoin que d’une heure de cuisson au lieu de trois !\nMais pour réussir sa recette, encore faut-il respecter quelques règles simples. Les tempsde cuisson peuvent en effet différer d’un modèle à l’autre. Il est donc indispensable dese référer au manuel d’utilisation. Quel que soit le modèle, le temps de cuisson sedécompte à partir du moment où la soupape chuchote.\nIl existe ensuite deux grands types de cuisson possibles avec un autocuiseur : à la vapeurou dans un liquide. Si l’on choisit de cuire dans un liquide (l’option la plus courantepour des viandes), les aliments sont plongés dans le liquide, avec ou sans le panier.À la vapeur, le fond du panier reste au-dessus du niveau d’eau. Dans tous les cas, il estimpératif de verser un minimum de 250 ml de liquide dans l’autocuiseur (eau, vin ou bouillon)sans jamais dépasser les deux tiers de la cuve.\nUne fois l’autocuiseur hermétiquement refermé, la cuisson doit démarrer à feu vif jusqu’à lamise en route de la soupape. Il faut ensuite baisser l’intensité de la source de chaleur demoitié. Lorsque la cuisson est terminée, on place la cocotte sous un filet d'eau froide de façon à la refroidir. Lorsqu'il n'y a plus de vapeur il est temps de retirer la soupape etd’ouvrir l’autocuiseur.\n<b>Quels morceaux de viande cuisiner à l’autocuiseur ?<\b>\nL’autocuiseur permet de cuire de multiples morceaux, de toutes les espèces de viande, que cesoit à la vapeur, braisées ou bouillies.\nLa cuisson à la vapeur permet de cuire sans ajout de matière grasse. On peut alors utiliser,une fois détaillés, des morceaux habituellement cuits à la poêle ou rôtis : filet de bœuf,carré de veau, noisettes d’agneau, filet mignon de porc, filet de cheval ou foie de veau.\nOn peut également bouillir les viandes, en reproduisant à l’identique, mais avec des tempsde cuisson raccourcis, les recettes du pot-au-feu, du bœuf gros sel ou encore de la têteet de la langue de veau. La cuisson bouillie à l’autocuiseur est également adaptée à lacuisson de certaines pièces de porc un peu grasses qui apprécient le bouillon : le jarret,la palette, la poitrine, voire le carré de côtes.\nDe la même manière, l’autocuiseur permet de préparer, également avec des temps de cuissonraccourcis, tous les plats braisés ou mijotés : bourguignon, ragoût ou daube de bœuf, sautéet jarret de veau, navarin d’agneau, joue et cœur de bœuf, bourguignon de cheval, et enfinrôti, poitrine, palette de porc, etc. Comme à la cocotte traditionnelle, il est bien sûrnécessaire de faire dorer préalablement viandes et légumes avant de les couvrir de liquidepuis de cuire l’ensemble.\n<b>Les temps de cuisson à l’autocuiseur (minutage indicatif)<\b>\n- Bœuf :\n+ Bourguignon 40 à 50 mn\n+ Pot-au-feu 50 mn à 1 h\n+ Rôti (1kg) 15 mn\n- Agneau/Mouton :\n+ Blanquette 25 mn\n+ Pieds 25 mn\n+ Ragoût 25 mn\n- Porc :\n+ Potée 40 mn\n+ Rôti (1 kg) 30 mn\n- Veau :\n+ Blanquette 20 mn\n+ Marengo 20 mn\n+ Rôti (1 kg) 25 mn\n- Produits tripiers :\n+ Gras double 35 mn\n<b>Les astuces du chef pour cuisiner à l’autocuiseur<\b>\nÀ l’autocuiseur, l’eau de cuisson des viandes braisées ne s’évapore pas. Il ne se produitdonc pas le phénomène de concentration des saveurs que l’on constate à la cocottetraditionnelle. C’est la raison pour laquelle il vaut mieux aromatiser généreusementle liquide utilisé pour cuire les viandes : bouillon, aromates, vin blanc ou rouge,épices, etc.\nA la fin de la cuisson, lorsque toute la vapeur s’est échappée, le couvercle peut êtremaintenu en place plusieurs minutes. Ce temps d’attente rend la viande encore plus moelleuse.",
-                            "veau"   : [],
-                            "porc"   : [],
-                            "agneau" : []
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
                          },
     "morceaux"        : {   "boeuf"  : [],
                             "veau"   : [],
@@ -239,5 +239,27 @@
                             "porc"   : [],
                             "agneau" : []
                          }
-    }
+    },
+    {
+    "id"              : 12,
+    "nom"             : "tartare et carpaccio",
+    "cuisson_photo"   : "cuisson_tartare.jpg",
+    "cuisson_logo"    : "logo_tartare.png",
+    "description"     : "Les recettes à base de viande crue sont de plus en plus populaires. D’une manière générale on retrouve deux types de plats : les carpaccios et les tartares.\n\nLe choix de la viande est primordial, demandez conseil à votre boucher en fonction de la recette choisie mais d’une manière générale la poire, le merlan, le filet, le contre-filet,  et le tende de tranche sont parfaits pour ce type de préparation.\n\nPour réussir un carpaccio, nous vous conseillons de congeler la viande préalablement une demie heure, cela facilitera grandement la réalisation de tranches bien fines.\n\nPour le steak tartare, n’utilisez surtout pas un robot mixeur si vous voulez évitez de vous retrouvez avec une bouillie de viande. L’idéal est le traditionnel hachoir berceau, ou la coupe au couteau! Pour relever ce plat on utilise des épices, des herbes et des condiments comme les câpres, la moutarde, les cornichons,  la sauce Worcestershire, le Tabasco, le piment d’Espelette, la fleur de sel, le poivre, l’échalote ou la ciboulette.",
+    "specificite"     : {   "boeuf"  : "",
+                            "veau"   : "",
+                            "porc"   : "",
+                            "agneau" : ""
+                         },
+    "morceaux"        : {   "boeuf"  : [],
+                            "veau"   : [],
+                            "porc"   : [],
+                            "agneau" : []
+                         },
+    "recettes"        : {   "boeuf"  : [],
+                            "veau"   : [],
+                            "porc"   : [],
+                            "agneau" : []
+                         }
+    }    
 ]

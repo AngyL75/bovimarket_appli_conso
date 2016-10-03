@@ -10,7 +10,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Côtes du Roussillon, puissant mais élégant fera parfaitement l’affaire !",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 2,
     "nom_id"          : [2],
@@ -23,7 +23,7 @@
     "conseils"        : "Pour une cuisson réussie au barbecue, la couche de graisse doit faire face à la source de chaleur.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Sancerre rouge, fruité et épicé tranchera avec le fumé de la grillade",
-    "cuissons"        : ["griller"]
+    "cuissons"        : [2]
     },
     {"id"              : 3,
     "nom_id"          : [3],
@@ -36,7 +36,7 @@
     "conseils"        : "En grillade comptez 150g par personne, en ragoût plutôt 250 g par personne.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin de Bourgogne rouge accompagnera dignement des plats en ragoût ou des grillades",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
  
     {"id"              : 4,
@@ -50,7 +50,7 @@
     "conseils"        : "Pour tous les steaks, il faut la saisir à feu vif, pour caraméliser ses sucs et la garder juteuse à l’intérieur.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur. Si hachée, la cuisiner aussitôt.",
     "accords_mets_et_vins"  : "Un Gigondas ou un autre Côtes du Rhône puissant, robuste et charpenté.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 5,
     "nom_id"          : [5],
@@ -63,7 +63,7 @@
     "conseils"        : "C’est un morceau très gélatineux que nous vous conseillons d’ajouter à tous vos plats mijotés comme le pot-au-feu.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur. Si haché, le cuisiner aussitôt.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 6,
     "nom_id"          : [6],
@@ -76,7 +76,7 @@
     "conseils"        : "Idéal en bifteck il peut aussi se cuisiner en pavé épais accompagné d’une sauce marchande de vin ou au poivre.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un petit Bordeaux rouge tout simple sera le compagnon idéal.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },    
     {"id"              : 7,
     "nom_id"          : [7],
@@ -89,7 +89,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain. N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin léger et fruité comme un Côte Roannaise ou un Beaujolais rouge sera parfait sur un hachis Parmentier.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 8,
     "nom_id"          : [8],
@@ -102,7 +102,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain. N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez, il n’en sera que plus savoureux.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 9,
     "nom_id"          : [9],
@@ -115,7 +115,7 @@
     "conseils"        : "Une fois sortie du réfrigérateur, laissez reposer la viande 1 heure à température ambiante sur une feuille d’aluminium. Elle n’en sera que plus savoureuse.",
     "conservation"    : "Conserver 3 à 4 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un Pinot noir épicé révèlera les saveurs de ce morceau de choix.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 10,
     "nom_id"          : [10],
@@ -128,7 +128,7 @@
     "conseils"        : "Une fois sortie du réfrigérateur, laissez reposer la viande 1 heure à température ambiante sur une feuille d’aluminium. Elle n’en sera que plus savoureuse.",
     "conservation"    : "Conserver la 3 à 4 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un très bon morceau de viande réclame un très bon vin. Un Saint-Emilion sublimera cette pièce.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 11,
     "nom_id"          : [11],
@@ -141,7 +141,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain. N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez, il n’en sera que plus savoureux.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 12,
     "nom_id"          : [12,13],
@@ -154,7 +154,7 @@
     "conseils"        : "Idéalement un pot-au-feu se compose de 7 ou 8 viandes différentes (paleron, gîte, plat de côte, basse côte, jumeau, joue et queue de bœuf) ainsi que d’un os à moelle qui apportera de la saveur au bouillon.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 14,
     "nom_id"          : [14],
@@ -167,7 +167,7 @@
     "conseils"        : "Si vous choisissez de le griller ou de le poêler, découpez des tranches épaisses de 2,5 cm que vous partagerez ensuite, plutôt qu’une tranche fine par personne. Cela évitera de lui faire perdre sa saveur.",
     "conservation"    : "Conservez la 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un vin de Loire rouge, épicé comme le Saint-Nicolas de Bourgueil donnera du peps à votre rôti.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 15,
     "nom_id"          : [15],
@@ -180,7 +180,7 @@
     "conseils"        : "Le filet est un morceau maigre et délicat. Il faut le cuire avec peu de matières grasses à feu moyen. Nous vous recommandons de le saler après cuisson avec de la fleur de sel.",
     "conservation"    : "Le filet de boeuf se conserve, au réfrigérateur dans sa partie la plus froide,  2 à 3 jours dans son emballage d'origine.",
     "accords_mets_et_vins"  : "Un Bordeaux rouge fruité et léger est un accord parfait pour un filet de bœuf au four.",
-    "cuissons"        : ["poêler","rotir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 16,
     "nom_id"          : [16],
@@ -193,7 +193,7 @@
     "conseils"        : "Faites griller les aiguillettes dans une poêle avec de la matière grasse à feu vif. Salez après cuisson et laisser la viande se détendre deux minutes dans du papier d’aluminium. Pour une sauce express, émincez  une échalote et déglacez dans la poêle.",
     "conservation"    : "Conserver la 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Une aiguillette baronne mérite un bon Bordeaux supérieur rouge.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 17,
     "nom_id"          : [17],
@@ -206,7 +206,7 @@
     "conseils"        : "L’onglet se fait griller à feu vif avec ajout de matière grasse. Nous vous conseillons d’entailler légèrement la surface, tous les 3 cm de chaque côté avant cuisson. La surface doit être bien grillée et l’intérieur rouge chaud.",
     "conservation"    : "La hampe et l’onglet, comme tout bifteck, se conserveront 2 à 3 jours au réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin de Loire  rouge léger comme le Saint-Nicolas de Bourgueil sublimera ce morceau de choix.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 18,
     "nom_id"          : [18],
@@ -219,7 +219,7 @@
     "conseils"        : "La hampe se fait griller à feu vif avec ajout de matière grasse. Nous vous conseillons d’entailler légèrement la surface, tous les 3 cm de chaque côté avant cuisson. La surface doit être bien grillée et l’intérieur rouge chaud.",
     "conservation"    : "La hampe et l’onglet, comme tout bifteck, se conserveront 2 à 3 jours au réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin de Loire  rouge léger comme le Saint-Nicolas de Bourgueil sublimera ce morceau de choix.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 19,
     "nom_id"          : [19],
@@ -232,7 +232,7 @@
     "conseils"        : "Pour tous les steaks, il faut le saisir à feu vif, pour caraméliser ses sucs et la garder juteuse à l’intérieur.",
     "conservation"    : "Conservez la 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un vin rouge charnu et puissant comme un Côtes de Blaye ravira vos papilles.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 20,
     "nom_id"          : [20],
@@ -245,7 +245,7 @@
     "conseils"        : "Idéalement un pot-au-feu se compose de 7 ou 8 viandes différentes (paleron, gîte, plat de côte, basse côte, jumeau, joue et queue de bœuf) ainsi que d’un os à moelle qui apportera de la saveur au bouillon.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 21,
     "nom_id"          : [21],
@@ -258,7 +258,7 @@
     "conseils"        : "Nous vous conseillons d’entailler la surface de la viande afin d’éviter que les fibres ne se rétractent à la cuissons Pour éviter que les fibres ne se rétractent à la cuisson, nous vous suggérons d'entailler légèrement la surface de la viande.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un vin rouge charnu et puissant comme un Côtes de Blaye ravira vos papilles.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },    
     {"id"              : 22,
     "nom_id"          : [22],
@@ -271,7 +271,7 @@
     "conseils"        : "Effilochée froide, elle permet de réaliser de bons sandwichs accompagnés de mayonnaise moutardée, d’une tranche de Cantal et de cornichons. Zéro gaspi et parfaite pour les pique-nique.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 23,
     "nom_id"          : [23],
@@ -284,7 +284,7 @@
     "conseils"        : "Si vous cuisinez le rumsteck en pavé, veillez à faire griller toutes les faces pour une cuisson homogène.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "En été, un rosé de Provence fruité sera le compagnon idéal de votre carpaccio de boeuf.",
-    "cuissons"        : ["griller","rotir"]
+    "cuissons"        : [2,3]
     },
     {"id"              : 24,
     "nom_id"          : [24],
@@ -297,7 +297,7 @@
     "conseils"        : "Avant d’être cuisinée, la queue de bœuf doit être dégraissée, lavée à l’eau froide et dégraissée. Laissez là au réfrigérateur quelques heures, ceci facilitera l’enlèvement du gras.",
     "conservation"    : "Conserver maximum 2 jours au réfrigérateur.",
     "accords_mets_et_vins"  : "Un jeune Saint-Nicolas de Bourgeuil révèlera le fondant de la queue de boeuf.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 25,
     "nom_id"          : [25,26,27],
@@ -310,7 +310,7 @@
     "conseils"        : "Dans une poêle bien chaude saisissez la viande de chaque côté pour qu’elle forme une belle croûte. Baissez le feu, et laisser cuire 4 minutes pour une cuisson saignante.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un Morgon du Beaujolais est une alliance originale pour le merlan ou la poire.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 28,
     "nom_id"          : [28],
@@ -323,7 +323,7 @@
     "conseils"        : "Pour un carpaccio maison, faites durcir la viande au réfrigérateur puis tranchez-la finement. Si vous trouvez les tranches trop épaisses, placez-le entre deux feuilles de film transparent et aplatissez les avec un rouleau à pâtisserie.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé. Les carpaccios et la viande hachée doivent être consommés aussitôt achetés.",
     "accords_mets_et_vins"  : "En été, un rosé de Provence fruité sera le compagnon idéal de votre carpaccio de boeuf.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 29,
     "nom_id"          : [29],
@@ -336,7 +336,7 @@
     "conseils"        : "Pour un tartare coupé au couteau réussi, coupez en biais de fines tranches, puis superposez-les et découpez des petites lamelles. Enfin, finissez en découpant de petits cubes.",
     "conservation"    : "Conservez la 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Le tartare de boeuf au couteau se marie parfaitement avec du vin rouge sec jeune comme un Bourgogne ou un vin de Savoie.",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 30,
     "nom_id"          : [30],
@@ -349,7 +349,7 @@
     "conseils"        : "Dans une poêle bien chaude saisissez la viande de chaque côté pour qu’elle forme une belle croûte. Baissez le feu, et laissez  cuire 4 minutes pour une cuisson saignante.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un Médoc rouge et boisé sera un compagnon charmant pour ce morceau de choix.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 31,
     "nom_id"          : [31,32,33],
@@ -362,7 +362,7 @@
     "conseils"        : "Dans une poêle bien chaude saisissez la viande de chaque côté pour qu’elle forme une belle croûte. Baissez le feu, et laissez cuire 4 minutes pour une cuisson saignante.",
     "conservation"    : "Conserver 2 à 3 jours dans la partie haute du réfrigérateur qui est la plus froide. Enveloppez dans un papier sulfurisé.",
     "accords_mets_et_vins"  : "Un Pinot Noir d’Alsace fruité et léger sublimera le délicat mouvant.",
-    "cuissons"        : ["griller","poêler","rotir"]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 34,
     "nom_id"          : [34],
@@ -375,6 +375,6 @@
     "conseils"        : "Idéalement un pot-au-feu se compose de 7 ou 8 viandes différentes (paleron, jumeau, flanchet, plat de côte, basse côte, joue et queue de bœuf) ainsi que d’un os à moelle qui apportera de la saveur au bouillon.",
     "conservation"    : "Conserver maximum 2 jours au réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Pourçain, ou un Bourgogne rouge fruité et peu tannique est une valeur sûre pour le pot-au-feu.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     }
 ]

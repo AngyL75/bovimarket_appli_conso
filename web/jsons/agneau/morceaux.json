@@ -10,7 +10,8 @@
     "conseils"        : "les plats mijotés sont toujours meilleurs le lendemain. N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Le couscous est le plat préféré des français. Avec toutes ces épices, il est compliqué de l’accorder avec un vin. Nous vous conseillons un petit rosé frais et fleuri qui conviendra à tous les palais !",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
+    
     },
     {"id"              : 2,
     "nom_id"          : [2],
@@ -23,7 +24,7 @@
     "conseils"        : "Pour des côtelettes de qualité, vérifiez que le grain de la chair est serré et que le gras qui l’entoure est bien blanc. Veillez à ce que les côtelettes soient assez épaisses pour éviter qu’elles ne se dessèchent à la cuisson.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos côtelette grillées, rien de mieux qu’un rosé du Languedoc-Roussillon.",
-    "cuissons"        : ["rôtir","griller"]
+    "cuissons"        : [3,2]
     },
     {"id"              : 3,
     "nom_id"          : [3,4],
@@ -36,7 +37,7 @@
     "conseils"        : "Pour des côtelettes de qualité, vérifiez que le grain de la chair est serré et que le gras qui l’entoure est bien blanc. Veillez à ce que les côtelettes soient assez épaisses pour éviter qu’elles ne se dessèchent à la cuisson.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos côtelette grillées, rien de mieux qu’un rosé du Languedoc-Roussillon.",
-    "cuissons"        : ["rôtir","griller"]
+    "cuissons"        : [3,2]
     },
     {"id"              : 5,
     "nom_id"          : [5,6],
@@ -49,7 +50,7 @@
     "conseils"        : "Badigeonnez légèrement votre viande d’agneau d’huile d’olive avant de la remettre dans son papier d’origine.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Avec un mutton chop grillé, un Médoc rouge et puissant lui fera honneur.",
-    "cuissons"        : ["poêler","rôtir"]
+    "cuissons"        : [1,3]
     },
     {"id"              : 7,
     "nom_id"          : [7],
@@ -62,7 +63,7 @@
     "conseils"        : "Si vous êtes très nombreux à table, vous pouvez demander à votre boucher de vous préparer une culotte d’agneau. Elle est composée des deux gigots et des deux selles de gigots.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Pour votre selle de gigot rôti préférez un Côtes du Rhône charpenté et puissant.",
-    "cuissons"        : ["rôtir"]
+    "cuissons"        : [3]
     },
     {"id"              : 8,
     "nom_id"          : [8],
@@ -75,7 +76,7 @@
     "conseils"        : "Pour bien choisir votre gigot, un conseil : un gigot court et rond sera toujours meilleur qu’un gigot long et fin.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Pour un gigot à cuisson basse température comme le gigot d’agneau de sept heures, nous vous proposons de déguster un Bordeaux Rouge comme un Pauillac ou un Saint-Estèphe.",
-    "cuissons"        : ["rôtir"]
+    "cuissons"        : [3]
     },
     {"id"              : 9,
     "nom_id"          : [9],
@@ -88,7 +89,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos ragoûts évitez les vins trop tanniques et préférez des rouges légers comme un Saint-Nicolas de Bourgueil.",
-    "cuissons"        : ["braiser","griller"]
+    "cuissons"        : [4,2]
     },
     {"id"              : 10,
     "nom_id"          : [10],
@@ -101,7 +102,7 @@
     "conseils"        : "Les plats mijotés sont toujours meilleurs le lendemain N’hésitez pas à préparer votre plat la veille pour le réchauffer au moment voulu. Vous verrez il n’en sera que plus savoureux.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Vacqueyras ou Gigondas feront honneur aux Epigrammes d’agneau à la Michelet.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 11,
     "nom_id"          : [11,12],
@@ -114,6 +115,6 @@
     "conseils"        : "Pour choisir votre épaule d’agneau, un conseil : comme pour le gigot, une épaule courte et ronde sera meilleure qu'une longue et fine.",
     "conservation"    : "A conserver 2 jours maximum dans la partie la plus froide de votre réfrigérateur.",
     "accords_mets_et_vins"  : "Nous vous conseillons un rouge puissant et épicé, tel un Côtes du Rhône pour sublimer une épaule d’agneau cuite au four.",
-    "cuissons"        : ["rôtir","braiser"]
+    "cuissons"        : [3,4]
     }
 ]

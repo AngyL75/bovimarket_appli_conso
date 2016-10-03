@@ -9,7 +9,7 @@
     "conseils"        : "Qu’elle soit rôtie ou braisée, il faut privilégier une cuisson lente pour une viande des plus moelleuse. Jamais plus de 160° et comptez 1h30 par kilo.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Brouilly du Beaujolais sublimera votre rôti de porc à l’ail.",
-    "cuissons"        : ["rotir"]
+    "cuissons"        : [3]
     },
     {"id"              : 2,
     "nom_id"          : [2],
@@ -22,7 +22,7 @@
     "conseils"        : "Qu’elle soit rôtie ou braisée, il faut privilégier une cuisson lente pour une viande des plus moelleuse. Jamais plus de 160° et comptez 1h30 par kilo.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour une palette à la diable, on fait honneur à l’Alsace et on sert un Pinot Gris ou un Sylvaner!",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 3,
     "nom_id"          : [3],
@@ -35,7 +35,7 @@
     "conseils"        : "Pour une viande fondante qui se détache à la cuillère, faites cuire votre épaule de porc dans un plat fermé hermétiquement allant au four pendant au moins 3 heures à 150 degrés maximum.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge du Languedoc comme un Corbières puissant sera idéal pour votre épaule braisée. Pour l’été préférez lui un petit rosé de Provence!",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 4,
     "nom_id"          : [4],
@@ -48,7 +48,7 @@
     "conseils"        : "Le jarret peut supporter deux cuissons. Une première en bouillon puis au four pour une viande tendre et savoureuse.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour accompagner un jarret de porc à la bavaroise, quoi de mieux qu’une bonne bière bien fraîche.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 5,
     "nom_id"          : [5],
@@ -61,7 +61,7 @@
     "conseils"        : "Le jambonneau avant peut supporter deux cuissons. Une première en bouillon puis au four pour une viande tendre et savoureuse.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur",
     "accords_mets_et_vins"  : "Pour accompagner un jambonneau à la bavaroise, quoi de mieux qu’une bonne bière bien fraîche.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 6,
     "nom_id"          : [6],
@@ -74,7 +74,7 @@
     "conseils"        : "Lorsque vous souhaitez rôtir ou braiser un morceau de porc, achetez le 24 heures à l’avance, frotté le au gros sel et gardez le au frais.\nAvant cuisson, dessalez-le soigneusement, votre viande n’en sera que plus savoureuse et prendra une belle couleur légèrement rosée.",
     "conservation"    : "8 à 10 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Fleurie ou un Côtes d’Auvergne rouge éveillera vos papilles en compagnie d’une bonne terrine de porc artisanale.",
-    "cuissons"        : ["rotir","griller"]
+    "cuissons"        : [3,2]
     },
     {"id"              : 7,
     "nom_id"          : [7],
@@ -87,7 +87,7 @@
     "conseils"        : "Pour faciliter la découpe après la cuisson, nous vous conseillons de garder les os. Demandez à votre boucher de fendre les os des vertèbres.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Brouilly rouge léger sera un compagnon de choix pour vos côtes de porc avec ou sans moutarde !",
-    "cuissons"        : ["rotir","griller","poêler"]
+    "cuissons"        : [3,2,1]
     },
     {"id"              : 8,
     "nom_id"          : [8],
@@ -100,7 +100,7 @@
     "conseils"        : "Pour réussir vos travers de porc marinés et grillés, il faut laisser reposer la viande dans la marinade au moins deux heures !",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Côtes du Rhône rouge puissant et épicé, sublimera des travers de porc grillés à la sauce barbecue.",
-    "cuissons"        : ["griller"]
+    "cuissons"        : [2]
     },
     {"id"              : 9,
     "nom_id"          : [9],
@@ -113,7 +113,7 @@
     "conseils"        : "Pour blanchir les viandes demi-sel, mettez les dans un faitout et couvrez d’eau froide. Faites chauffer à feu très doux pour que le sel ait le temps de se dissoudre sans cuire la viande. Lorsque l’eau frémit, comptez trois minutes pour les petits morceaux (100g)  et dix minutes pour la palette ou le jambonneau. Ecumez au fur et à mesure. Egouttez et passez sous l’eau froide.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Crozes-Hermitage aux notes puissantes et fumés est nécessaire face à un petit salé aux lentilles plein de saveurs !",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 10,
     "nom_id"          : [10],
@@ -126,7 +126,7 @@
     "conseils"        : "Pour ce morceau fin et délicat, privilégiez une cuisson à la poêle ou au grill toujours à feu moyen pour ne pas durcir la viande.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Saint-Joseph rouge accompagnera élégamment ce morceau d’exception.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 11,
     "nom_id"          : [11],
@@ -139,7 +139,7 @@
     "conseils"        : "Pour éviter de le dessécher le rôti de porc doit cuire au four en cocotte, faites le revenir dans de la matière grasse à feu vif pour le colorer, fermez la cocotte, mettez la dans le four et laissez cuire 2h00 à 180 degrés. Fondant garanti !",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge comme le Saint-Amour est idéal sur un rôti de porc cuit dans du lait.",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 12,
     "nom_id"          : [12],
@@ -152,7 +152,7 @@
     "conseils"        : "En médaillon, le filet se cuit à feu vif (4 minutes de chaque côté). Entier, le rôti braisé se fait cuire dans un four chaud (200 degrés) pendant 30 minutes.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un filet mignon de porc aux abricots sera l’occasion de déguster un petit Marsannay rosé qui vous ravira les papilles.",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 13,
     "nom_id"          : [13],
@@ -165,7 +165,7 @@
     "conseils"        : "Si vous utilisez des lardons et que vous souhaitiez alléger leur teneur en sel, nous vous conseillons de les blanchir quelques minutes.\nPlongez-les dans une casserole d’eau froide, portez à ébullition et laissez cuire quelques minutes.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Côte d’Auvergne Châteaugay rouge pour accompagner les plats à base de lard fumé.",
-    "cuissons"        : ["griller","poêler"]
+    "cuissons"        : [2,1]
     },
     {"id"              : 14,
     "nom_id"          : [14],
@@ -178,7 +178,7 @@
     "conseils"        : "Pour éviter de le dessécher le rôti de porc doit cuire au four en cocotte, faites le revenir dans de la matière grasse à feu vif pour le colorer, fermez la cocotte, mettez la dans le four et laissez cuire 2h00 à 180 degrés. Fondant garanti !",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un vin rouge comme le Saint-Amour est idéal sur un rôti de porc cuit dans du lait.",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 15,
     "nom_id"          : [15],
@@ -191,7 +191,7 @@
     "conseils"        : "Acheté frais il se prépare comme un gigot d’agneau, piqué de gousses d’ails, agrémenté d’herbes aromatiques, et cuit au moins 3 heures dans une cocotte à 160 degrés.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Pinot Noir d’Alsace accompagnera élégamment votre jambon grillé.",
-    "cuissons"        : ["rotir","braiser"]
+    "cuissons"        : [3,4]
     },
     {"id"              : 16,
     "nom_id"          : [16],
@@ -204,7 +204,7 @@
     "conseils"        : "Le jarret peut supporter deux cuissons. Une première en bouillon puis au four pour une viande tendre et savoureuse.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour accompagner un jarret de porc à la bavaroise, quoi de mieux qu’une bonne bière bien fraîche.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     },
     {"id"              : 17,
     "nom_id"          : [17],
@@ -217,6 +217,6 @@
     "conseils"        : "Le jarret ou jambonneau peut supporter deux cuissons. Une première en bouillon puis au four pour une viande tendre et savoureuse.",
     "conservation"    : "A conserver 2 à 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour accompagner un jarret de porc à la bavaroise, quoi de mieux qu’une bonne bière bien fraîche.",
-    "cuissons"        : ["braiser"]
+    "cuissons"        : [4]
     }
 ]

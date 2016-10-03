@@ -6,9 +6,11 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '195.6.182.200', user: 'bovimarket_overscan_biz', roles: %w{app web}
+server 'd.rimbault@185.30.92.167:823', roles: %w{app db web}
+set :deploy_to, '/var/www/domains/nginx/appli.bovimarket.com/overscan'
 
-set :branch, 'Demo'
+set :branch, 'master'
+SSHKit.config.umask = 002
 
 
 # role-based syntax
@@ -43,11 +45,10 @@ set :branch, 'Demo'
 #
 # Global options
 # --------------
-set :ssh_options, {
-   keys: %w(/Users/david/.ssh/d.rimbault),
-   user: 'bovimarket_overscan_biz',
+ set :ssh_options, {
+   keys: %w(~/.ssh/d.rimbault),
    forward_agent: true,
-   auth_methods: %w(publickey password)
+   auth_methods: %w(publickey)
  }
 #
 # The server-based syntax can be used to override options:
@@ -62,3 +63,33 @@ set :ssh_options, {
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+namespace :deploy do
+    before :updated, :change_ownership do
+        on roles(:web) do
+            execute :chgrp, "-R" , fetch(:group), fetch(:release_path)
+        end
+    end
+    namespace :symlink do
+        desc "Symlink release to current"
+        Rake::Task["release"].clear_actions
+        task :release do
+          on release_roles :all do
+            tmp_current_path = release_path.parent.join(current_path.basename)
+            relative_path  = Pathname.new("releases/").join(release_path.basename)
+            execute :ln, "-s", relative_path, tmp_current_path
+            execute :mv, tmp_current_path, current_path.parent
+            #execute :ln, "-s", relative_path, current_path
+          end
+        end
+    end
+end
+
+namespace :composer do
+  before :run, :change_path do
+    on roles(:web) do
+      SSHKit.config.command_map[:composer] = "php70 #{release_path.join("composer.phar")}"
+    end
+  end
+
+end
