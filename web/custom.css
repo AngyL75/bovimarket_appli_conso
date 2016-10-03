@@ -186,16 +186,17 @@
 .Supprimer a  {height: 75px;width: auto !important;background: url(images/Sup.png) no-repeat center #fff;display: block;}
 
 .btn-primary{
-    background: #5d3043;
-    border: none;
+    background: #FFFFFF;
+    border: solid 1px #cccccc;
 }
 
 .btn-primary:hover{
-    background: #8cae08;
+    background: #FFFFFF;
+    border: solid 1px #555555;
 }
 
 .btn-primary i{
-    color: #ffffff;
+    color: #5d3043;
 }
 
 .Entete{
