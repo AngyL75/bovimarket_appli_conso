@@ -11,7 +11,7 @@
 server 'd.rimbault@185.30.92.167:823', roles: %w{app db web}
 set :deploy_to, '/var/www/domains/nginx/boviweb.cloud-sak.com/overscan'
 
-set :branch, "SlimFramework"
+set :branch, "Dev"
 
 SSHKit.config.umask = 002
 
