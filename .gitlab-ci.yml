@@ -25,9 +25,16 @@ before_script:
 stages:
     - deploy
 
-deploy to nolimit:
+Deploy PreProd:
     stage: deploy
-    script: bundle exec cap nolimit deploy
+    script: bundle exec cap dev deploy
     environment: nolimit
     only:
-        - SlimFramework
+        - Dev
+
+Deploy Prod:
+    stage: deploy
+    script: bundle exec cap production deploy
+    environment: nolimit
+    only:
+        - Prod
