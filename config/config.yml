@@ -1,15 +1,13 @@
 settings:
     session:
-        lifetime: 3600
-    debug: true
+        lifetime: 7200
+    debug: false
     api:
         oauthLogin: "mobile"
         oauthSecret: "7d5cc9b6-1ed8-49e0-a56a-ecfb0a2f5f69"
-        baseURI: "http://185.30.92.167:8081/bovimarket/api/"
+        baseURI: "http://pro.bovimarket.com:8080/bovimarket/api/"
         token: "1e8aed3e-9b5e-4c22-8971-dd3b57b5b6ba"
-        #baseURI: "http://51.254.44.168:8080/bovimarket/api/"
-        #token: "52a453ac-70e0-43ee-a59d-9af10eed4a9f"
-    displayErrorDetails: true
+    displayErrorDetails: false
     logger:
         name: "slim-app"
         path: "app.log"
