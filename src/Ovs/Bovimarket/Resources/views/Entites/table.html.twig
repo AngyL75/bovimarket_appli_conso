@@ -1,0 +1,43 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>
+                    Réserver une table
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <form action="{{ path_for("app.entite.reservation_success") }}">
+                    <div class="btn-group dropdown">
+                        <div class="clearfix">
+                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <var>Jour</var>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="btn-group dropdown">
+                        <div class="clearfix">
+                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <var>Heure</var>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="btn-group dropdown">
+                        <div class="clearfix">
+                            <button type="button" class="btn dropdown-toggle choice-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <var>Nombre de personne</var>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-vert">Réserver</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top:50px;"><img src="/web/images/troupeau.png" alt="" /></div>
+    </div>
+{% endblock %}

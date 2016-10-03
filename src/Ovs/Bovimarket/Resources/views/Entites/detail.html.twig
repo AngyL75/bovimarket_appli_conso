@@ -37,12 +37,14 @@
                 </li>
             </ul>
             {% if entite.hasVenteDirecte %}
-                <div class="col-xs-8">
-                    <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
-                       href="{{ path_for("app.entite.produits",{"id":entite.id}) }}">
-                        Vente Directe
-                    </a>
-                </div>
+                {% block venteDirecte %}
+                    <div class="col-xs-8">
+                        <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
+                           href="{{ path_for("app.entite.produits",{"id":entite.id}) }}">
+                            Vente Directe
+                        </a>
+                    </div>
+                {% endblock %}
             {% endif %}
         </div>
     </div>

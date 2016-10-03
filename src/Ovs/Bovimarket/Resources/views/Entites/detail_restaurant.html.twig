@@ -1,58 +1,11 @@
 {% extends "Entites/detail.html.twig" %}
 
-
-{% block menu %}
-    {% if entite.activite == "RESTAURATION_COLLECTIVE" %}
-        <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
-                <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10">
-                </p>
-                <div id="calendarMain2"></div>
-            </div>
-        </div>
-    {% else %}
-        <div class="col-xs-12">
-            <h3 class="text-center" style="padding:30px 0">Menu</h3>
-        </div>
-    {% endif %}
-
-    <div class="row" id="menuTable">
-
+{% block venteDirecte %}
+    <div class="col-xs-8">
+        <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
+           href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}">
+            Réserver une table
+        </a>
     </div>
 {% endblock %}
 
-
-{% block javascripts %}
-    {% set date="now"|localizeddate("medium","none","fr_FR") %}
-    {{ parent() }}
-    <script src="/web/js/jsSimpleDatePickr.js"></script>
-    <script src="/web/js/jsSimpleDatePickrInit.js"></script>
-    <script type="text/javascript">
-        calInit("calendarMain2", "{{ date }}", "champ_date2", "jsCalendar", "day", "selectedDay");
-    </script>
-    <script>
-        dateChanged("{{ "now"|date("d-m-Y") }}");
-
-        function displayMenu(html, status, xhr) {
-            $("#menuTable").html(html);
-        }
-
-        function dateChanged(date) {
-            var link = "{{ path_for("app.entite.menu",{"id":entite.id,"date":"__date__"}) }}";
-            link = link.replace(/__date__/, date);
-
-            $.ajax(link, {
-                success: displayMenu
-            })
-        }
-
-        var dateTrigger = document.querySelector("#calendarMain2>input");
-        if(dateTrigger) {
-            dateTrigger.addEventListener("date-changed", function (e) {
-                var date = e.detail.date;
-                date = date.join("-");
-                dateChanged(date);
-            });
-        }
-    </script>
-{% endblock %}

@@ -90,8 +90,10 @@ class EntiteController extends BaseController
         $menus = $menuFetcher->findAll();
 
         $template = 'Entites/detail.html.twig';
-        if ($entite->getActivite() == 'RESTAURANT' || $entite->getActivite() == 'RESTAURATION_COLLECTIVE') {
+        if ($entite->getActivite() == 'RESTAURANT'){
             $template = 'Entites/detail_restaurant.html.twig';
+        }elseif ($entite->getActivite() == 'RESTAURATION_COLLECTIVE'){
+	        $template = 'Entites/detail_restaurant_collectif.html.twig';
         }
         $certifs = $this->getCertifications($entite);
 
@@ -212,5 +214,13 @@ class EntiteController extends BaseController
         return $this->render($response, 'Block/certifications.html.twig', array(
             'certifications' => $certifications,
         ));
+    }
+
+	public function reserverTableAction( Request $request, Response $response, $args ) {
+		return $this->render($response,"Entites/table.html.twig");
+    }
+
+	public function reservationSuccessAction( Request $request, Response $response, $args ) {
+		return $this->render($response,"Entites/reservation_ok.html.twig");
     }
 }
