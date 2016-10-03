@@ -9,7 +9,7 @@
 server 'd.rimbault@185.30.92.167:823', roles: %w{app db web}
 set :deploy_to, '/var/www/domains/nginx/appli.bovimarket.com/overscan'
 
-set :branch, 'master'
+set :branch, 'Prod'
 SSHKit.config.umask = 002
 
 
