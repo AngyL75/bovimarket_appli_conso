@@ -58,14 +58,16 @@
         </div>
     </div>
 
+    {% set textBtn = "Valider ma commande" %}
     <form method="post" action="{{ path_for("app.commande.save_commande") }}">
         {% if panier.paiement == "carte" %}
             {% include "Block/paiement_carte.html.twig" %}
+            {% set textBtn = "Payer ma commande" %}
         {% endif %}
 
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">Payer ma commande</button>
+                <button class="btn btn-vert" id="Rechercher" type="submit" style="margin:30px 0">{{ textBtn }}</button>
             </div>
         </div>
     </form>
