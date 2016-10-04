@@ -63,11 +63,9 @@
             <div id="certifs" class="row">
                 <div class="col-xs-12">
                     <div class="row Entete">
-                        <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
-                            <img src="/web/images/qualite.svg" alt="" class="img-responsive">
-                        </div>
-                        <div class="col-xs-12">
-                            <h3 class="text-center">Labels qualité</h3>
+                        <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                            <img src="/web/images/qualite.svg" alt="" class="img-responsive" style="max-width: 20%;display: inline-block;margin-bottom: 8px;">
+                            <h3 class="text-center" style="display: inline-block">Labels qualité</h3>
                         </div>
                     </div>
                     <div class="row Recommande">
@@ -129,11 +127,9 @@
     {% block blog %}
         {% if blog|length >0 %}
             <div class="row Entete">
-                <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
-                    <img src="/web/images/blog.svg" alt="" class="img-responsive">
-                </div>
-                <div class="col-xs-12" style="margin-top: -20px">
-                    <h3 class="text-center">Le blog</h3>
+                <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 text-center">
+                    <img src="/web/images/blog.svg" alt="" class="img-responsive" style="max-width: 20%;display: inline-block;">
+                    <h3 class="text-center" style="display: inline-block">Le blog</h3>
                 </div>
             </div>
             <div class="row">
@@ -153,11 +149,10 @@
     {% block presse %}
         {% if presse|length >0 %}
             <div class="row Entete">
-                <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
-                    <img src="/web/images/news.svg" alt="" class="img-responsive">
+                <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 text-center">
+                    <img src="/web/images/news.svg" alt="" class="img-responsive" style="max-width: 20%;display: inline-block;">
+                    <h3 class="text-center" style="display: inline-block">La presse</h3>
                 </div>
-                <div class="col-xs-12" style="margin-top: -40px">
-                    <h3 class="text-center">La presse</h3></div>
             </div>
             <div class="row">
                 {% for billet in presse %}
