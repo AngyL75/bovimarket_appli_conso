@@ -1027,27 +1027,34 @@
     "morceaux_alternatifs"    : [15,1,5,17,3]
     },
     {
-    "id"                : 38,
-    "titre"             : "Jambon laqué à la bière brune et aux épices",
-    "type_viande"       : "porc",
-    "cuisson"           : 3,
-    "photo"             : "recette_JambonLaqueBiereBruneEpices.jpg",
-    "temps_preparation" : "15 minutes",
-    "temps_cuisson"     : "2 à 3 heures",
-    "difficulte"        : 3,
-    "difficulte_nom"    : "L’originale",
-    "descriptif_introduction": "",
-    "portion"           : "10 personnes",
-    "ingredients"       : [
-        "Jambon entier",
-        "750 ml de bière brune, type Guinness (50 ml pour la sauce)",
-        "4 clous de girofle",
-        "250 g de sucre",
-        "10 g de moutarde en poudre (en épicerie fine)",
-        "10 g cardamome moulue",
-        "10 g de gingembre moulu"
-    ],       
-    "instructions_preparation": "<ol><li>Préchauffez le four à 150° (th.5)</li><li>Entaillez le jambon en faisant des losanges.</li><li>Dans un grand plat, placez le jambon et arrosez de 250 ml de Guinness. Couvrez avec du papier aluminium.</li><li>Enfournez à 150°C pendant 2 heures, (ou lorsque les entailles dans le gras commencent à s’élargir). Arrosez le jambon avec la bière au fond du plat toutes les 30 min.</li><li>Sortez du four, puis augmentez jusqu’à 200°C (th6.7).</li><li>Mélangez le sucre, la moutarde en poudre, le gingembre moulu et la cardamome moulue. Ajoutez le demi-litre de bière et mélangez bien tous les ingrédients.</li><li>Piquez les clous de girofle dans les entailles.</li><li>Badigeonnez la sauce sur le jambon de manière à laquer le jambon.</li><li>Enfournez de nouveau. C’est prêt quand la laque est croustillante et foncée.</li></ol>",
-    "instructions_service"    : "Servez avec des pommes de terre. Se déguste aussi très bien froid, pour un pique-nique, en tranches.",
-    "morceaux_alternatifs"    : [15,1,5,17,3]
-    },
+        "id": 38,
+        "titre": "Jambon laqué à la bière brune et aux épices",
+        "type_viande": "porc",
+        "cuisson": 3,
+        "photo": "recette_JambonLaqueBiereBruneEpices.jpg",
+        "temps_preparation": "15 minutes",
+        "temps_cuisson": "2 à 3 heures",
+        "difficulte": 3,
+        "difficulte_nom": "L’originale",
+        "descriptif_introduction": "",
+        "portion": "10 personnes",
+        "ingredients": [
+            "Jambon entier",
+            "750 ml de bière brune, type Guinness (50 ml pour la sauce)",
+            "4 clous de girofle",
+            "250 g de sucre",
+            "10 g de moutarde en poudre (en épicerie fine)",
+            "10 g cardamome moulue",
+            "10 g de gingembre moulu"
+        ],
+        "instructions_preparation": "<ol><li>Préchauffez le four à 150° (th.5)</li><li>Entaillez le jambon en faisant des losanges.</li><li>Dans un grand plat, placez le jambon et arrosez de 250 ml de Guinness. Couvrez avec du papier aluminium.</li><li>Enfournez à 150°C pendant 2 heures, (ou lorsque les entailles dans le gras commencent à s’élargir). Arrosez le jambon avec la bière au fond du plat toutes les 30 min.</li><li>Sortez du four, puis augmentez jusqu’à 200°C (th6.7).</li><li>Mélangez le sucre, la moutarde en poudre, le gingembre moulu et la cardamome moulue. Ajoutez le demi-litre de bière et mélangez bien tous les ingrédients.</li><li>Piquez les clous de girofle dans les entailles.</li><li>Badigeonnez la sauce sur le jambon de manière à laquer le jambon.</li><li>Enfournez de nouveau. C’est prêt quand la laque est croustillante et foncée.</li></ol>",
+        "instructions_service": "Servez avec des pommes de terre. Se déguste aussi très bien froid, pour un pique-nique, en tranches.",
+        "morceaux_alternatifs": [
+            15,
+            1,
+            5,
+            17,
+            3
+        ]
+    }
+    ]
