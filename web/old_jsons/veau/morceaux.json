@@ -48,7 +48,7 @@
     "conseils"        : "Il vaut mieux acheter un gros rôti de veau. Les petits sont souvent trop secs après cuisson. Vous pourrez réutiliser la viande de multiples façons.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Les bouchées à la Reine s’accommodent très bien d’un Bourgogne, tels le Pouilly Fuissée ou le Meursault. De grands vins pour ce plat royal.",
-    "cuissons"        : [2,1,3,4,7]
+    "cuissons"        : [2,1,3]
     },
     {"id"              : 5,
     "nom_id"          : [5],
@@ -113,7 +113,7 @@
     "conseils"        : "Cuisez ces morceaux sans les dégraisser, vos plats n’en seront que plus savoureux.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Avec le veau Marengo, un Saint-Joseph ou un Crozes-Hermitage remportent la bataille !",
-    "cuissons"        : [4,2]
+    "cuissons"        : [4]
     },
     {"id"              : 10,
     "nom_id"          : [10],
@@ -126,7 +126,7 @@
     "conseils"        : "La côte filet est excellente poêlée. Veillez à la saisir à feu vif, puis à feu modéré en l’arrosant régulièrement de son jus de cuisson pour éviter qu’elle se dessèche.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Un Pouilly-Fuissé ou un Saint-Véran en blanc. En rouge, on préférera un rouge léger comme un Beaujolais.",
-    "cuissons"        : [2,1,4]
+    "cuissons"        : [2,1]
     },
     {"id"              : 11,
     "nom_id"          : [11],
@@ -139,7 +139,7 @@
     "conseils"        : "Quelle que soit sa cuisson, rôti ou poêlé, on le déguste rosé ou à point pour garder son moelleux.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour le veau Orloff un Pinot Gris d’Alsace en blanc. Pour les amateurs de vin rouge, nous vous conseillons un bon Bourgogne comme un Mercurey.",
-    "cuissons"        : [1,3,4]
+    "cuissons"        : [1,3]
     },
     {"id"              : 12,
     "nom_id"          : [12],
@@ -165,7 +165,7 @@
     "conseils"        : "N’oubliez pas que le veau se mange rosé. Il doit rester tendre et moelleux, donc pensez bien à l’arroser tout au long de la cuisson.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "On peut cuisiner le quasi de veau à la moutarde. Pour tous les plats moutardés optez pour un vin blanc sec et floral comme le Saint-Peray ou le Saint-Joseph en vallée du Rhône.",
-    "cuissons"        : [3,1]
+    "cuissons"        : [3]
     },
     {"id"              : 14,
     "nom_id"          : [14],
@@ -178,7 +178,7 @@
     "conseils"        : "Si vous choisissez ce morceau pour le braiser ou le rôtir, demandez à votre boucher de le barder de lard.",
     "conservation"    : "A conserver 3 jours dans la partie la plus froide du réfrigérateur.",
     "accords_mets_et_vins"  : "Pour vos paupiettes nous vous recommandons un vin rouge sec et puissant comme un Moulin-a-Vent ou un Bordeaux type Saint-Emilion.",
-    "cuissons"        : [1,3,4]
+    "cuissons"        : [1,3]
     },
     {"id"              : 15,
     "nom_id"          : [15],
