@@ -26,15 +26,15 @@ class FlashController extends BaseController {
 	public function qrCodeAction( Request $request, Response $response, $args ) {
 
 		$paths = array(
-			TypeViande::AGNEAU => "/web/images/barquette1.jpg",
-			TypeViande::PORC   => "/web/images/barquette2.jpg",
-			TypeViande::VEAU   => "/web/images/barquette3.jpg",
-			TypeViande::BOEUF  => "/web/images/barquette4.jpg"
+			TypeViande::BOEUF  => "5613bb825c8bc97055715635",
+			TypeViande::VEAU   => "5613bb825c8bc97055715635",
+			TypeViande::AGNEAU => "57f2b778e4b0a5c3f540ea5f",
+			TypeViande::PORC   => false,
 		);
 
 		return $this->render( $response, "QRCode/categories.html.twig", array(
 			"paths" => $paths,
-			"live"  => true
+			"live"  => false
 		) );
 	}
 

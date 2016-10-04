@@ -9,11 +9,16 @@
     {% else %}
         <div class="row">
             {% for categ,photo in paths %}
-                <div class="col-xs-6">
-                    <a href="{{ path_for("flash.categorie",{"categ":categ,"id":1}) }}"><img class="Photo"
-                                                                                            src="{{ photo }}"
-                                                                                            alt="..."/></a>
-                </div>
+                {% if photo %}
+                    {% set url =path_for("flash.categorie",{"categ":categ,"id":1,"idProducteur":photo}) %}
+                {% else %}
+                    {% set url =path_for("flash.categorie",{"categ":categ,"id":1}) %}
+                {% endif %}
+                <a href="{{ url }}">
+                    <div class="col-xs-6" style="height:50vh;">
+                        <!--<img class="Photo" src="{{ photo }}" alt="..."/>-->
+                    </div>
+                </a>
             {% endfor %}
         </div>
     {% endif %}
