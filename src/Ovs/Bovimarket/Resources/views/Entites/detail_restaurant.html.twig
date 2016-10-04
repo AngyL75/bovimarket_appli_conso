@@ -1,11 +1,13 @@
 {% extends "Entites/detail.html.twig" %}
 
-{% block venteDirecte %}
-    <div class="col-xs-8">
-        <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
-           href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}">
-            Réserver une table
-        </a>
+{% block menu %}
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
+               href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}">
+                Réserver une table
+            </a>
+        </div>
     </div>
 {% endblock %}
 
