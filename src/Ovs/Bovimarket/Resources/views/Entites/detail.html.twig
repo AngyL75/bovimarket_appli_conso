@@ -128,7 +128,7 @@
         {% if blog|length >0 %}
             <div class="row Entete">
                 <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 text-center">
-                    <img src="/web/images/blog.svg" alt="" class="img-responsive" style="max-width: 20%;display: inline-block;">
+                    <img src="/web/images/blog.svg" alt="" class="img-responsive" style="max-width: 20%;display: inline-block;margin-bottom: 13px;">
                     <h3 class="text-center" style="display: inline-block">Le blog</h3>
                 </div>
             </div>
@@ -136,8 +136,11 @@
                 {% for billet in blog %}
                     <div class="col-xs-10 col-xs-offset-1 ListeStyle3">
                         <div class="post">
-                            <p class="titre">{{ billet.titre }}</p>
-                            <p class="date">{{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
+                            <p class="date">Publié le {{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
+                            {% if billet.type == "evenement" %}
+                                <p class="titre">{{ billet.titre }}</p>
+                                <p class="date">Du {{ (billet.debut/1000)|round(0)|date("d/m/Y H:i") }} au {{ (billet.fin/1000)|round(0)|date("d/m/Y H:i") }}</p>
+                            {% endif %}
                             <p class="texte">{{ billet.contenu|raw }}</p>
                         </div>
                     </div>
@@ -158,7 +161,7 @@
                 {% for billet in presse %}
                     <div class="col-xs-10 col-xs-offset-1 ListeStyle3">
                         <div class="post">
-                            <p class="titre">{{ billet.titre }}</p>
+                            <!--<p class="titre">{{ billet.titre }}</p>-->
                             <p class="date">{{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
                             <p class="texte">{{ billet.contenu|raw }}</p>
                         </div>
