@@ -2,18 +2,18 @@
     {% if loop.first %}
         <div class="row" style="margin-top: 30px;">
             <div class="col-xs-12 text-center">
-                <h5>{{ title }}</h5>
+                <h3>{{ title }}</h3>
             </div>
         </div>
     {% endif %}
     <div class="row ListeStyle">
         <a href="{{ path_for("app.entite.detail",{"id":membre.id}) }}" style="color: #ffffff">
-            <div class="col-xs-4">
+            <div class="col-xs-4 col-sm-2">
                 <div class="Tof">
                     <img src="{{ apiImagePath(membre.logo) }}" class="img-responsive">
                 </div>
             </div>
-            <div class="col-xs-8 Description">
+            <div class="col-xs-8 Description col-sm-10">
                 <p class="Nom">{{ membre.name }}</p>
             </div>
         </a>

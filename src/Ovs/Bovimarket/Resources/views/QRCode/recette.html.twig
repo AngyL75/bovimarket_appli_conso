@@ -88,10 +88,10 @@
             <p>
                 {{ recette.instructionsPreparation|raw|nl2br }}
             </p>
-            {% if recette.instructionsDressage is defined %}
-                <p><strong>Dressage</strong></p>
+            {% if recette.instructionDressage is defined %}
+                <h3 style="padding:30px 0">Dressage</h3>
                 <p>
-                    {{ recette.instructionsDressage|raw|nl2br }}
+                    {{ recette.instructionDressage|raw|nl2br }}
                 </p>
             {% endif %}
         </div>

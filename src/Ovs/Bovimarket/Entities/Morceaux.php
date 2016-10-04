@@ -57,20 +57,30 @@ class Morceaux
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("conseils")
      */
     protected $conseilsCuisson;
 
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("le_saviez_vous")
      */
-    protected $conseilsAchat;
+    protected $saviezVous;
 
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("conservation")
      */
     protected $conseilsConservation;
+
+	/**
+	 * @var
+	 * @Serializer\Type("string")
+	 * @Serializer\SerializedName("accords_mets_et_vins")
+	 */
+	protected $accordVin;
 
     /**
      * @var
@@ -213,18 +223,19 @@ class Morceaux
     /**
      * @return mixed
      */
-    public function getConseilsAchat()
+    public function getSaviezVous()
     {
-        return $this->conseilsAchat;
+        return $this->saviezVous;
     }
 
     /**
-     * @param mixed $conseilsAchat
-     * @return Morceaux
+     * @param mixed $saviezVous
+     *
+*@return Morceaux
      */
-    public function setConseilsAchat($conseilsAchat)
+    public function setSaviezVous( $saviezVous)
     {
-        $this->conseilsAchat = $conseilsAchat;
+        $this->saviezVous = $saviezVous;
         return $this;
     }
 
@@ -317,5 +328,22 @@ class Morceaux
                 break;
         }
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getAccordVin() {
+		return $this->accordVin;
+	}
+
+	/**
+	 * @param mixed $accordVin
+	 */
+	public function setAccordVin( $accordVin ) {
+		$this->accordVin = $accordVin;
+	}
+
+
+
 
 }

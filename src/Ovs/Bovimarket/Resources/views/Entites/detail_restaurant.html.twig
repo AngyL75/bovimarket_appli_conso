@@ -1,58 +1,127 @@
 {% extends "Entites/detail.html.twig" %}
 
-
 {% block menu %}
-    {% if entite.activite == "RESTAURATION_COLLECTIVE" %}
-        <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
-                <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10">
-                </p>
-                <div id="calendarMain2"></div>
-            </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
+               href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}">
+                Réserver une table
+            </a>
         </div>
-    {% else %}
-        <div class="col-xs-12">
-            <h3 class="text-center" style="padding:30px 0">Menu</h3>
-        </div>
-    {% endif %}
-
-    <div class="row" id="menuTable">
-
     </div>
 {% endblock %}
 
+{% block membres %}
+    <div class="row Entete">
+        <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
+        </div>
+        <div class="col-xs-12">
+            <h3 class="text-center">Ils travaillent avec nous</h3>
+        </div>
+    </div>
 
-{% block javascripts %}
-    {% set date="now"|localizeddate("medium","none","fr_FR") %}
-    {{ parent() }}
-    <script src="/web/js/jsSimpleDatePickr.js"></script>
-    <script src="/web/js/jsSimpleDatePickrInit.js"></script>
-    <script type="text/javascript">
-        calInit("calendarMain2", "{{ date }}", "champ_date2", "jsCalendar", "day", "selectedDay");
-    </script>
-    <script>
-        dateChanged("{{ "now"|date("d-m-Y") }}");
 
-        function displayMenu(html, status, xhr) {
-            $("#menuTable").html(html);
-        }
+    <div class="row Recommande">
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+                <img src="/web/images/legumes_bio.png" class="img-circle img-responsive">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Les Légumes bio :</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Alain Vidal à Chaudeyrolles</li>
+                    <li>David Chalendard</li>
+                    <li>Renaud à Retournac</li>
+                    <li>J-Michel Brunel à Solignac</li>
+                    <li>Cornut et Oubrier à Yssingeaux</li>
+                </ul>
+                </p>
+            </div>
+        </div>
 
-        function dateChanged(date) {
-            var link = "{{ path_for("app.entite.menu",{"id":entite.id,"date":"__date__"}) }}";
-            link = link.replace(/__date__/, date);
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+                <img src="/web/images/porc_hl.jpeg" class="img-circle img-responsive">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Porc de Haute Loire :</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Chalendard Dominique et bonnefoy damien à Araules</li>
+                </ul>
+                </p>
+            </div>
+        </div>
 
-            $.ajax(link, {
-                success: displayMenu
-            })
-        }
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+                <img src="/web/images/fin_gras.jpeg" class="img-circle img-responsive">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Boeuf fin gras du Mézenc :</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Vigouroux Alain abattoir Le Puy pour le veau des monts du Velay</li>
+                    <li>Paillet Souvignet Abattoir Yssingeaux</li>
+                    <li>Bayle André à Grand Croix</li>
+                    <li>Collard Christophe à Bourg Argental</li>
+                </ul>
+                </p>
+            </div>
+        </div>
 
-        var dateTrigger = document.querySelector("#calendarMain2>input");
-        if(dateTrigger) {
-            dateTrigger.addEventListener("date-changed", function (e) {
-                var date = e.detail.date;
-                date = date.join("-");
-                dateChanged(date);
-            });
-        }
-    </script>
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Veaux de boucheries :</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Boucheries Mejean Patrice à costaros pour les voeux</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Le cochon de lait :</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Dominique Chalendard à St Julien Chapteuil</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-3 col-sm-1">
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-9 col-sm-9">
+                <h4>Le porc de ferme</h4>
+                <p class="Prix text-left" style="color: #ffffff">
+                <ul class="list-unstyled">
+                    <li>Damien Bonnefoy à Araules et Fay/ Lignon.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
+

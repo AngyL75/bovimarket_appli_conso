@@ -110,6 +110,7 @@ class Recettes {
 	/**
 	 * @var
 	 * @Serializer\Type("string")
+	 * @Serializer\SerializedName("instructions_service")
 	 */
 	protected $instructionDressage;
 	/**

@@ -75,6 +75,19 @@ app.entite.del_to_cart:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:delToCart"
     path: "/produits/{idEntite}/delToCart/{idProduit}"
 
+app.entite.reserve_table:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:reserverTable"
+    path: "/entite/{idEntite}/reserver"
+
+app.entite.process_reserve_table:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:doReserverTable"
+    path: "/entite/{idEntite}/reserver/process"
+
+app.entite.reservation_success:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:reservationSuccess"
+    path: "/entite/reservation/success"
+
+
 app.commande.show_cart:
     action: "Ovs\\Bovimarket\\Controller\\ProduitController:showCart"
     path: "/panier"

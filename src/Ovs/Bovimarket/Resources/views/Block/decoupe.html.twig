@@ -13,9 +13,9 @@
             </p>
         </div>
         <div class="col-xs-12">
-            <h3 class="text-center" style="padding:20px 0">Conseil Achat</h3>
+            <h3 class="text-center" style="padding:20px 0">Le saviez-vous</h3>
             <p>
-                {{ morceau.conseilsAchat|nl2br }}
+                {{ morceau.saviezVous|nl2br }}
             </p>
         </div>
         <div class="col-xs-12">
@@ -29,6 +29,12 @@
         <h3 class="text-center" style="padding:20px 0">Conseil cuisson</h3>
         <p>
             {{ morceau.conseilsCuisson|nl2br }}
+        </p>
+    </div>
+    <div class="col-xs-12">
+        <h3 class="text-center" style="padding:20px 0">Accords mets et vins</h3>
+        <p>
+            {{ morceau.accordVin|nl2br }}
         </p>
     </div>
 </div>
