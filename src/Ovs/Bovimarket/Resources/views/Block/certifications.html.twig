@@ -5,13 +5,7 @@
     </button>
     <ul class="dropdown-menu">
         {% for certif in certifications %}
-            <li class="clearfix" data-val="{{ certif.id }}">{{certif.nom}} <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
+            <li class="clearfix" data-val="{{ certif.id }}">{{certif.nom}} <a href="{{ path_for("app.entite.detail",{ "id":certif.entiteId}) }}" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
         {% endfor %}
-        <!--<li class="clearfix">Agneau de Lozère <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-        <li class="clearfix">Boeuf Fin Gras de Mézenc <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-        <li class="clearfix">Boeuf Salers LR <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-        <li class="clearfix">Boeuf Bio de Haut-Marne <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-        <li class="clearfix">Boeuf Blonde des Combrailles <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>
-        <li class="clearfix">Porc de Haute-Loire  <a href="label.php" class="btn btn-white pull-right"><i class="fa fa-info-circle"></i></a></li>-->
     </ul>
 </div>

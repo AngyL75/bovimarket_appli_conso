@@ -4,11 +4,14 @@
 <body class="page" id="holder" style="color: #ffffff;">
 {% endblock %}
 {% block bodyContent %}
-        <div id="close"><a href="{{ path_for("map.homepage") }}">x</a></div>
-        <div class="container">
-            {% block page_content %}
-            {% endblock %}
-        </div>
+{% block prev %}
+    <div id="return"><a href="javascript:history.back()">&lt;</a></div>
+{% endblock %}
+<div id="close"><a href="{{ path_for("map.homepage") }}">x</a></div>
+<div class="container">
+    {% block page_content %}
+    {% endblock %}
+</div>
 
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

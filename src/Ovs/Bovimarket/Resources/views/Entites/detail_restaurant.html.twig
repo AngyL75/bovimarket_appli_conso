@@ -1,5 +1,12 @@
 {% extends "Entites/detail.html.twig" %}
 
+{% block lien_fournisseurs %}
+    <p class="text-center">
+        <a href="#fournisseurs">Nos fournisseurs</a>
+    </p>
+{% endblock %}
+
+
 {% block menu %}
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -12,7 +19,7 @@
 {% endblock %}
 
 {% block membres %}
-    <div class="row Entete">
+    <div class="row Entete" id="fournisseurs">
         <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
         </div>
         <div class="col-xs-12">
@@ -28,9 +35,9 @@
                 <img src="/web/images/legumes_bio.png" class="img-circle img-responsive">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
-                <h4>Les Légumes bio :</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+            <div class="col-xs-8 col-sm-9">
+                <h4 style="">Les Légumes bio</h4>
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Alain Vidal à Chaudeyrolles</li>
                     <li>David Chalendard</li>
@@ -48,9 +55,9 @@
                 <img src="/web/images/porc_hl.jpeg" class="img-circle img-responsive">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
-                <h4>Porc de Haute Loire :</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+            <div class="col-xs-8 col-sm-9">
+                <h4>Porc de Haute Loire</h4>
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Chalendard Dominique et bonnefoy damien à Araules</li>
                 </ul>
@@ -64,9 +71,9 @@
                 <img src="/web/images/fin_gras.jpeg" class="img-circle img-responsive">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
-                <h4>Boeuf fin gras du Mézenc :</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+            <div class="col-xs-8 col-sm-9">
+                <h4>Boeuf fin gras du Mézenc</h4>
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Vigouroux Alain abattoir Le Puy pour le veau des monts du Velay</li>
                     <li>Paillet Souvignet Abattoir Yssingeaux</li>
@@ -82,9 +89,9 @@
             <div class="col-xs-3 col-sm-1">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
-                <h4>Veaux de boucheries :</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+            <div class="col-xs-8 col-sm-9">
+                <h4>Veaux de boucheries</h4>
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Boucheries Mejean Patrice à costaros pour les voeux</li>
                 </ul>
@@ -97,9 +104,9 @@
             <div class="col-xs-3 col-sm-1">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
-                <h4>Le cochon de lait :</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+            <div class="col-xs-8 col-sm-9">
+                <h4>Le cochon de lait</h4>
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Dominique Chalendard à St Julien Chapteuil</li>
                 </ul>
@@ -112,9 +119,9 @@
             <div class="col-xs-3 col-sm-1">
             </div>
             <div class="col-xs-1"></div>
-            <div class="col-xs-9 col-sm-9">
+            <div class="col-xs-8 col-sm-9">
                 <h4>Le porc de ferme</h4>
-                <p class="Prix text-left" style="color: #ffffff">
+                <p class="text-left" style="color: #ffffff">
                 <ul class="list-unstyled">
                     <li>Damien Bonnefoy à Araules et Fay/ Lignon.</li>
                 </ul>

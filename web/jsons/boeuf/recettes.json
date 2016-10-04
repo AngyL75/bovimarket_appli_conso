@@ -4,7 +4,7 @@
     "titre"             : "Collier de boeuf poché-grillé",
     "cuisson"           : 2,
     "type_viande"       : "boeuf",
-    "photo"             : "XXX",
+    "photo"             : "recette_CollierBoeufPochegrille.jpg",
     "temps_preparation" : "25 minutes",
     "temps_cuisson"     : "3 heures",
     "difficulte"        : 1,
@@ -155,7 +155,7 @@
     "difficulte"        : 4,
     "difficulte_nom"    : "L’originale",
     "descriptif_introduction": "",
-    "portion"           : "XXX personnes",
+    "portion"           : "8 personnes",
     "ingredients"       : [
         "1 pointe de poitrine de boeuf de 2,5 kg",
         "5 ml de cumin moulu",
@@ -190,7 +190,7 @@
     "photo"             : "recette_Bassecotedeboeufaufour.jpg",
     "temps_preparation" : "5 minutes",
     "temps_cuisson"     : "3 heures",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "La facile",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -299,37 +299,6 @@
     },
     {
     "id"                : 11,
-    "titre"             : "Pot-au-feu",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 5,
-    "photo"             : "recette_Potaufeu.jpg",
-    "temps_preparation" : "20 minute",
-    "temps_cuisson"     : "3 heures",
-    "difficulte"        : 2,
-    "difficulte_nom"    : "La classique",
-    "descriptif_introduction": "",
-    "portion"           : "6 personnes",
-    "ingredients"       : [
-        "500g Boeuf à braiser (jumeau, collier, macreuse, poitrine, plat de côtes,)",
-        "1 Joue de Boeuf",
-        "500g de paleron de boeuf", 
-        "6 Os à moelle", 
-        "6 pommes de terre", 
-        "1 tête d'ail", 
-        "1 Oignon",
-        "3 Carottes",
-        "3 Navets",
-        "3 Poireaux",
-        "20g Gros sel", 
-        "5g de poivre noir", 
-        "2 clous de girofle", 
-        "1 Bouquet garni"
-    ],
-    "instructions_preparation": "Idéalement, préparez ce plat la veille. Un mijoté est toujours meilleur réchauffé.<ol><li>Ôtez le gras ou les parties nerveuses des viandes, puis ficelez les.  Ficelez également les os afin qu'ils ne se vident pas pendant la cuisson.</li><li>Épluchez les carottes puis taillez les en grosses rondelles. Épluchez les navets et les pommes de terre, puis coupez les en 2. Lavez les poireaux et coupez le haut du vert.</li><li>Épluchez l'oignon et coupez le en 2, puis laissez le colorer, face plate dans une poêle chaude (il doit être bien bruni). Piquez ensuite 1 clou de girofle dedans.</li><li>Coupez la tête d'ail en 2.</li><li>Dans une cocotte, mettez la viande, la couvrir d'eau à hauteur et portez à ébullition rapidement.\nÉcumez régulièrement pendant 5 min, puis baissez à feu doux. \n6 Ajoutez le gros sel, les grains de poivre, l'oignon, la tête d'ail et le bouquet garni. Laissez cuire pendant 1 h 30.</li><li>Ajoutez ensuite les légumes sauf les pommes de terre, ainsi que les os à moelle et poursuivre la cuisson durant 1 h.</li><li>Terminez en ajoutant les pommes de terre et laissez cuire 30 minutes supplémentaires.</li><li>Si le jus est trop liquide, faites le réduire de moitié.</li></ol>",
-    "morceaux_alternatifs"    : [1,2,5,7,11]
-    },
-    {
-    "id"                : 12,
     "titre"             : "Carbonades flamandes traditionnelles",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -357,11 +326,11 @@
     "morceaux_alternatifs"    : [5,34,18]
     },
     {
-    "id"                : 13,
+    "id"                : 12,
     "titre"             : "Le bifteck parfait et son beurre maître d’hôtel",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
-    "photo"             : "XXX",
+    "photo"             : "recette_BifteckAuBeurMaitreHotel.jpg",
     "temps_preparation" : "5 minutes",
     "temps_cuisson"     : "10 minutes",
     "difficulte"        : 1,
@@ -369,7 +338,7 @@
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
     "ingredients"       : [
-        "XXX viande",
+        "4 bifteck",
         "75 g de beurre",
         "1/2 échalote",
         "1 cuillère à soupe de persil",
@@ -381,7 +350,7 @@
     "morceaux_alternatifs"    : [6,3,10,19]
     },
     {
-    "id"                : 14,
+    "id"                : 13,
     "titre"             : "Jumeau de bœuf braisé façon Osso Bucco",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -407,7 +376,7 @@
     "morceaux_alternatifs"    : [6,34,12,13]
     },
     {
-    "id"                : 15,
+    "id"                : 14,
     "titre"             : "Oiseaux sans tête",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -434,7 +403,7 @@
     "morceaux_alternatifs"    : [6,25,29,5]
     },    
     {
-    "id"                : 16,
+    "id"                : 15,
     "titre"             : "Bouillon de légumes au bœuf",
     "type_viande"       : "boeuf",
     "cuisson"           : 5,
@@ -466,7 +435,7 @@
     "morceaux_alternatifs"    : [7,8,2,5,34]
     },
     {
-    "id"                : 17,
+    "id"                : 16,
     "titre"             : "Goulash",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -494,7 +463,7 @@
     "morceaux_alternatifs"    : [7,8,3,5]
     },
     {
-    "id"                : 18,
+    "id"                : 17,
     "titre"             : "Bortsch à la Russe",
     "type_viande"       : "boeuf",
     "cuisson"           : 5,
@@ -535,7 +504,7 @@
     "morceaux_alternatifs"    : [7,8,3,5,34]
     },
     {
-    "id"                : 19,
+    "id"                : 18,
     "titre"             : "La côte de boeuf au four",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
@@ -556,7 +525,7 @@
     "morceaux_alternatifs"    : [9,10]
     },
     {
-    "id"                : 20,
+    "id"                : 19,
     "titre"             : "Côte de boeuf sur lit de gros sel à la poêle",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
@@ -578,7 +547,7 @@
     "morceaux_alternatifs"    : [9,10,14]
     },
     {
-    "id"                : 21,
+    "id"                : 20,
     "titre"             : "Côte de boeuf à l'échalote cuisson basse température",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -600,7 +569,7 @@
     "morceaux_alternatifs"    : [9,10,14]
     },
     {
-    "id"                : 22,
+    "id"                : 21,
     "titre"             : "Plat de côtes de boeuf braisé au vin rouge",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -626,7 +595,7 @@
     "morceaux_alternatifs"    : [11,34]
     },
     {
-    "id"                : 23,
+    "id"                : 22,
     "titre"             : "Plat de Côte de Porc au Miel et au Barbecue",
     "type_viande"       : "boeuf",
     "cuisson"           : 7,
@@ -653,7 +622,7 @@
     "morceaux_alternatifs"    : [11,10]
     },
     {
-    "id"                : 24,
+    "id"                : 23,
     "titre"             : "Tendron de boeuf façon barbecue",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -678,7 +647,7 @@
     "morceaux_alternatifs"    : [2,12,13]
     },
     {
-    "id"                : 25,
+    "id"                : 24,
     "titre"             : "Tendron de boeuf laqué et poivrons",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -707,13 +676,13 @@
     "morceaux_alternatifs"    : [12,13]
     },
     {
-    "id"                : 26,
+    "id"                : 25,
     "titre"             : "Faux-filet de boeuf et fondue d'oignons à la bière",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
     "photo"             : "recette_RecetteFauxfiletdeboeufetfonduedoignonsalabiere.jpg",
-    "temps_preparation" : "XXX",
-    "temps_cuisson"     : "XXX",
+    "temps_preparation" : "5 minutes",
+    "temps_cuisson"     : "20 minutes",
     "difficulte"        : 1,
     "difficulte_nom"    : "La facile",
     "descriptif_introduction": "",
@@ -731,14 +700,14 @@
     "morceaux_alternatifs"    : [14,9,10]
     },
     {
-    "id"                : 27,
+    "id"                : 26,
     "titre"             : "Faux-filet sauce bordelaise",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
     "photo"             : "recette_FauxFiletSauceBordelaise.jpg",
     "temps_preparation" : "10 minutes",
     "temps_cuisson"     : "15 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "La classique",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -757,10 +726,10 @@
     "morceaux_alternatifs"    : [14,9,10,30]
     },
     {
-    "id"                : 28,
+    "id"                : 27,
     "titre"             : "Faux-Filet à l'échalote cuisson basse température",
     "type_viande"       : "boeuf",
-    "cuisson"           : 4,
+    "cuisson"           : "braiser",
     "photo"             : "recette_FauxFiletEchaloteCuissonBasseTemp.jpg",
     "temps_preparation" : "15 minutes",
     "temps_cuisson"     : "2 heures",
@@ -774,19 +743,19 @@
         "Huile d'olive",
         "Sel, poivre"
     ],
-    "instructions_preparation": "<ol><li>Dans une poêle faites chauffer un peu d'huile d'olive. Déposez les faux-filets et saisissez là à feu très vif  pendant 2 min de chaque côté jusqu’à former une belle croûte.</li><li>Dans un plat allant au four déposez la viande. Assaisonnez de sel et de poivre.</li><li>Epluchez et découpez les échalotes en rondelles. Dans un bol, mélangez les avec de l’huile d’olive.</li><li>Déposez les échalotes sur les faux-filets.</li><li>Enfournez à froid, allumez votre four à 60° soit (Th2) et laissez cuire 2 heures.</li><li>10 minutes avant de servir, montez le four à 180 degrés  (th6) et faites cuire 5 minutes. Laissez ensuite reposer la viande 5 minutes dans une feuille de papier aluminium.</li></ol>",
+    "instructions_preparation": "<ol><li>1 Dans une poêle faites chauffer un peu d'huile d'olive. Déposez les faux-filets et saisissez là à feu très vif  pendant 2 min de chaque côté jusqu’à former une belle croûte.</li><li>2 Dans un plat allant au four déposez la viande. Assaisonnez de sel et de poivre.</li><li>3 Epluchez et découpez les échalotes en rondelles. Dans un bol, mélangez les avec de l’huile d’olive.</li><li>4 Déposez les échalotes sur les faux-filets.</li><li>5 Enfournez à froid, allumez votre four à 60° soit (Th2) et laissez cuire 2 heures.</li><li>6 10 minutes avant de servir, montez le four à 180 degrés  (th6) et faites cuire 5 minutes. Laissez ensuite reposer la viande 5 minutes dans une feuille de papier aluminium.</li></ol>",
     "instructions_service"    : "Se déguste, accompagné de pommes de terre rôties.",
-    "morceaux_alternatifs"    : [9,10,14]
+    "morceaux_alternatifs"    : ["faux-filet","entrecôte","côte de boeuf"]
     },
     {
-    "id"                : 29,
+    "id"                : 28,
     "titre"             : "Filet de bœuf rôti en persillade",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
     "photo"             : "recette_Filetdeboeufrotienpersillade.jpg",
     "temps_preparation" : "25 minutes",
     "temps_cuisson"     : "25 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "La facile",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -808,14 +777,14 @@
     "morceaux_alternatifs"    : [15,16]
     },
     {
-    "id"                : 30,
+    "id"                : 29,
     "titre"             : "Filet de bœuf à la crème et aux champignons",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
     "photo"             : "recette_Filetdeboeufalacremeetauxchampignons.jpg",
     "temps_preparation" : "10 minutes",
     "temps_cuisson"     : "20 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "La classique",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -834,14 +803,14 @@
     "morceaux_alternatifs"    : [15,16]
     },
     {
-    "id"                : 31,
+    "id"                : 30,
     "titre"             : "Filet de bœuf cuisson basse température",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
     "photo"             : "recette_FiletDeBoeufCuissonBasseTemp.jpg",
     "temps_preparation" : "15 minutes",
     "temps_cuisson"     : "2h30",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "L'originale",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -859,7 +828,7 @@
     "morceaux_alternatifs"    : [15]
     },
     {
-    "id"                : 32,
+    "id"                : 31,
     "titre"             : "Aiguillette de boeuf en cocotte",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -883,7 +852,7 @@
     "morceaux_alternatifs"    : [16,23,15]
     },
     {
-    "id"                : 33,
+    "id"                : 32,
     "titre"             : "Rôti de boeuf de rumsteck et ses petites pommes de terres",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
@@ -907,7 +876,7 @@
     "morceaux_alternatifs"    : [16,23,15]
     },
     {
-    "id"                : 34,
+    "id"                : 33,
     "titre"             : "Pavé de boeuf aux champignons, sauce whisky",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
@@ -932,14 +901,14 @@
     "morceaux_alternatifs"    : [16,23,15]
     },
     {
-    "id"                : 35,
+    "id"                : 34,
     "titre"             : "Hampe ou onglet à l’échalote",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
     "photo"             : "recette_HampeOuOngletAlEchalote.jpg",
     "temps_preparation" : "15 minutes",
     "temps_cuisson"     : "15 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 1,
     "difficulte_nom"    : "La facile",
     "descriptif_introduction": "",
     "portion"           : "6 personnes",
@@ -957,11 +926,11 @@
     "morceaux_alternatifs"    : [17,18,19]
     },
     {
-    "id"                : 36,
+    "id"                : 35,
     "titre"             : "Onglet au poivre et purée de topinambours à l'ail",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
-    "photo"             : "recette_OngletAuPoivreEtPureeDeTopinamboursAlAail.jpg",
+    "photo"             : "recette_OngletAuPoivreEtPureeDeTopinamboursAlail.jpg",
     "temps_preparation" : "20 minutes",
     "temps_cuisson"     : "35 minutes",
     "difficulte"        : 2,
@@ -983,7 +952,7 @@
     "morceaux_alternatifs"    : [17,18,19]
     },
     {
-    "id"                : 37,
+    "id"                : 36,
     "titre"             : "Onglet de boeuf rôti aux condiments, croquant de courgettes et jus au romarin",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
@@ -1020,147 +989,7 @@
     "morceaux_alternatifs"    : [17,18,19]
     },
     {
-    "id"                : 38,
-    "titre"             : "Bavette à l’échalote",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 1,
-    "photo"             : "recette_BavetteEchalote.jpg",
-    "temps_preparation" : "15 minutes",
-    "temps_cuisson"     : "15 minutes",
-    "difficulte"        : 0,
-    "difficulte_nom"    : "La facile",
-    "descriptif_introduction": "",
-    "portion"           : "6 personnes",
-    "ingredients"       : [
-        "1,2 kg de bavette",
-        "100 g beurre",
-        "3 cl huile olive",
-        "100 g échalotes",
-        "3 cl de Cognac",
-        "30 cl fond brun lié",
-        "1 verre de vin rouge"
-    ],
-    "instructions_preparation": "<ol><li>Pelez et ciselez finement les échalotes.\nDans une sauteuse,  faites fondre le beurre à feu doux, ajoutez les échalotes.</li><li>Couvrez et laissez cuire et réduire pendant 12 minutes.</li><li>Déglacez avec le Cognac et le vin rouge en frottant avec une spatule en bois.</li><li>Laissez réduire au maximum, remuez bien régulièrement pendant la cuisson.</li><li>Ajoutez le fond brun lié (existe en bocal dans les grandes surfaces) et faites réduire jusqu'à consistance désirée.\nAssaisonnez.</li><li>Pendant ce temps, faites cuire les  6 morceaux de bavette e flanchet dans l'huile très chaude jusqu'au degré de cuisson désiré.</li></ol>",
-    "instructions_service"    : "Quand les steaks sont cuits, salez et poivrez, ensuite nappez de sauce et servir bien chaud.",
-    "morceaux_alternatifs"    : [17,18]
-    },
-    {
-    "id"                : 38,
-    "titre"             : "Bavette de flanchet au poivre et purée de topinambours à l'ail",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 1,
-    "photo"             : "recette_BavetteEchalote.jpg",
-    "temps_preparation" : "20 minutes",
-    "temps_cuisson"     : "35 minutes",
-    "difficulte"        : 2,
-    "difficulte_nom"    : "La classique",
-    "descriptif_introduction": "",
-    "portion"           : "4 personnes",
-    "ingredients"       : [
-        "800 g de bavette", 
-        "2 cuil. à soupe de poivre",
-        "Poivre blanc",
-        "fleur de sel", 
-        "1 cuil. à soupe d'huile de tournesol", 
-        "600 g de topinambours", 
-        "1 de lait + 1 d'eau", 
-        "4 gousses d'ail", 
-        "4 cuil. à café d'huile d'olive parfumée à la truffe"
-    ],
-    "instructions_preparation": "<ol><li>Pelez puis coupez les topinambours et les gousses d'ail en morceaux.</li><li>Portez à ébullition le lait et l'eau avec un peu de gros sel. Plongez-y les topinambours et laissez cuire à frémissement 25 à 30 min, en écumant de temps en temps.</li><li>Écrasez au mortier le poivre avec quelques tours de poivre blanc du moulin. Répartissez ce mélange sur une planche, avec un peu de fleur de sel. Passez l'onglet dedans afin d'y faire adhérer l'assaisonnement de tous côtés.</li><li>Faites chauffer l'huile de tournesol dans une poêle et saisissez la viande 3 min sur chaque face, selon l'épaisseur et la cuisson voulue. Réservez-la, recouvert de papier aluminium.</li><li>Égouttez puis mixez les topinambours avec un peu de liquide de cuisson si nécessaire. Salez très légèrement et poivrez.</li></ol>",
-    "instructions_service"    : "Découpez la bavette en lanières et servez-le accompagné de la purée de topinambours, rehaussée d'un trait d'huile d'olive à la truffe et décorée d'une feuille de persil plat éventuellement.",
-    "morceaux_alternatifs"    : [17,18,19]
-    },
-    {
-    "id"                : 39,
-    "titre"             : "Bavette de boeuf rôti aux condiments, croquant de courgettes et jus au romarin",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 3,
-    "photo"             : "recette_BavetteDeBoeufRotiAuxCondiments.jpg",
-    "temps_preparation" : "20 minutes",
-    "temps_cuisson"     : "-",
-    "difficulte"        : 3,
-    "difficulte_nom"    : "L'originale",
-    "descriptif_introduction": "",
-    "portion"           : "4 personnes",
-    "ingredients"       : [
-        "4 bavettes de boeuf", 
-        "Huile d'olive", 
-        "10 cl eau",
-        "1 Branche de romarin",
-        "4 Courgettes",
-        "4 pincées Piment d'Espelette", 
-        "2 Tomates",
-        "4 Oignons nouveaux",
-        "35 g Câpres",
-        "35 g Olives noires dénoyautées", 
-        "1/2 botte Basilic", 
-        "sel et poivre"
-    ],
-    "instructions_preparation": "<ol><li>Préchauffez le four à 210°C (th. 7).</li><li>Taillez les courgettes en petits dés.</li><li>Ciselez la partie oignon blanc de l'oignon nouveau, gardez le vert de côté.</li><li>Dans une poêle chaude avec de l'huile d'olive, suer la moitié des oignons blancs, puis ajoutez les dés de courgettes et assaisonnez de sel.</li><li>En fin de cuisson, ajoutez la cive puis rectifiez l'assaisonnement en sel fin et piment d'Espelette (les courgettes doivent rester croquantes).</li><li>Pendant ce temps, épluchez les tomates, épépinez et taillez en petits dés. Effeuillez puis ciselez le basilic. Concassez les câpres et les olives noires.\nDans un bol, mélangez la brunoise de tomates, l'autre moitié des oignons blancs, les câpres, les olives et le basilic. Assaisonnez de sel fin et de piment d'Espelette, puis liez le tout avec un trait d'huile d'olive.</li><li>Dans une poêle chaude avec un trait d'huile d'olive, faites dorer les bavettes de boeuf. Sur chaque face.</li><li>Mettez dans un plat allant au four, et enfournez 4-5 minutes en fonction de la cuisson.</li><li>Déglacez la poêle avec l'eau et une spatule en bois, puis ajoutez la branche de romarin et laissez réduire de moitié. Ajoutez le jus aux courgettes.</li></ol>",
-    "instructions_service"    : "Dressez les courgettes et disposez une bavette à côté. Servez avec un peu de condiment.",
-    "morceaux_alternatifs"    : [17,18]
-    },
-    {
-    "id"                : 40,
-    "titre"             : "Flanchet de boeuf à la mode juive",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 4,
-    "photo"             : "recette_FlanchetDeBoeufALaModeJuive.jpg",
-    "temps_preparation" : "15 minutes",
-    "temps_cuisson"     : "3 heures",
-    "temps_repos"       : "12 heures",
-    "difficulte"        : 1,
-    "difficulte_nom"    : "La facile",
-    "descriptif_introduction": "",
-    "portion"           : "4 personnes",
-    "ingredients"       : [
-        "1 kg de de flanchet",
-        "25 cl d'eau",
-        "25 cl de ketchup",
-        "12 cl de vinaigre de vin blanc",
-        "2 oignons émincés",
-        "1 gousse d'ail écrasée",
-        "165 g de sucre roux",
-        "1 cuillère à soupe de sel"
-    ],
-    "instructions_preparation": "<ol><li>Faites dorer  sur toutes les faces le flanchet de bœuf, dans une cocotte en fonte, sur feu vif.</li><li>Ajoutez l'eau, le ketchup, le vinaigre, les oignons, l'ail, le sucre roux et le sel.</li><li>Portez à ébullition, puis couvrez et réduisez à feu doux.</li><li>Laissez mijoter jusqu'à ce que la viande soit tendre, en la retournant de temps en temps, pendant au moins 3 heures.</li><li>Retirez le flanchet de bœuf de la cocotte, et laissez refroidir.</li><li>Coupez en tranches, dans le sens contraire de la fibre.</li><li>Placez les tranches de bœuf dans un grand plat et verser la sauce dessus.</li><li>Couvrez et réfrigérez toute la nuit. Retirez l'excès de gras et réchauffer avant de servir.</li></ol>",
-    "instructions_service"    : "",
-    "morceaux_alternatifs"    : [1,11]
-    },
-    {
-    "id"                : 41,
-    "titre"             : "Pot-au-feu",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 5,
-    "photo"             : "recette_Potaufeu.jpg",
-    "temps_preparation" : "20 minute",
-    "temps_cuisson"     : "3 heures",
-    "difficulte"        : 2,
-    "difficulte_nom"    : "La classique",
-    "descriptif_introduction": "",
-    "portion"           : "6 personnes",
-    "ingredients"       : [
-        "500g Boeuf à braiser (jumeau, collier, macreuse, poitrine, plat de côtes,)",
-        "1 Joue de Boeuf",
-        "500g de paleron de boeuf", 
-        "6 Os à moelle", 
-        "6 pommes de terre", 
-        "1 tête d'ail", 
-        "1 Oignon",
-        "3 Carottes",
-        "3 Navets",
-        "3 Poireaux",
-        "20g Gros sel", 
-        "5g de poivre noir", 
-        "2 clous de girofle", 
-        "1 Bouquet garni"
-    ],
-    "instructions_preparation": "Idéalement, préparez ce plat la veille. Un mijoté est toujours meilleur réchauffé.<ol><li>Ôtez le gras ou les parties nerveuses des viandes, puis ficelez les. Ficelez également les os afin qu'ils ne se vident pas pendant la cuisson.</li><li>Épluchez les carottes puis taillez les en grosses rondelles. Épluchez les navets et les pommes de terre, puis coupez les en 2. Lavez les poireaux et coupez le haut du vert.</li><li>Épluchez l'oignon et coupez le en 2, puis laissez le colorer, face plate dans une poêle chaude (il doit être bien bruni). Piquez ensuite 1 clou de girofle dedans.</li><li>Coupez la tête d'ail en 2.</li><li>Dans une cocotte, mettez la viande, la couvrir d'eau à hauteur et portez à ébullition rapidement.\nÉcumez régulièrement pendant 5 min, puis baissez à feu doux.</li><li>Ajoutez le gros sel, les grains de poivre, l'oignon, la tête d'ail et le bouquet garni. Laissez cuire pendant 1 h 30.</li><li>Ajoutez ensuite les légumes sauf les pommes de terre, ainsi que les os à moelle et poursuivre la cuisson durant 1 h.</li><li>Terminez en ajoutant les pommes de terre et laissez cuire 30 minutes supplémentaires.</li><li>Si le jus est trop liquide, faites le réduire de moitié.</li></ol>",
-    "morceaux_alternatifs"    : [1,2,5,7,11]
-    },
-    {
-    "id"                : 42,
+    "id"                : 37,
     "titre"             : "Flanchet de bœuf au basilic",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
@@ -1187,7 +1016,7 @@
     "morceaux_alternatifs"    : [20]
     },
     {
-    "id"                : 43,
+    "id"                : 38,
     "titre"             : "Mijoté de queue de boeuf et carottes",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -1217,7 +1046,7 @@
     "morceaux_alternatifs"    : [24,7,5]
     },
     {
-    "id"                : 44,
+    "id"                : 39,
     "titre"             : "Oxtail soupe",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -1227,7 +1056,7 @@
     "difficulte"        : 2,
     "difficulte_nom"    : "La classique",
     "descriptif_introduction": "",
-    "portion"           : "XXX personnes",
+    "portion"           : "4 personnes",
     "ingredients"       : [
         "3 kg de morceaux de queue de bœuf",
         "50 cl de vin rouge",
@@ -1251,7 +1080,7 @@
     "morceaux_alternatifs"    : [24,7,5]
     },
     {
-    "id"                : 45,
+    "id"                : 40,
     "titre"             : "Queue de boeuf grillée",
     "type_viande"       : "boeuf",
     "cuisson"           : 5,
@@ -1279,7 +1108,7 @@
     "morceaux_alternatifs"    : [24,7,5]
     },
     {
-    "id"                : 46,
+    "id"                : 41,
     "titre"             : "Planche de poire de boeuf et légumes au parmesan",
     "type_viande"       : "boeuf",
     "cuisson"           : 2,
@@ -1307,14 +1136,14 @@
     "morceaux_alternatifs"    : [25,26,27,30]
     },
     {
-    "id"                : 47,
+    "id"                : 42,
     "titre"             : "Rôti de Poire de Boeuf cuit au four",
     "type_viande"       : "boeuf",
     "cuisson"           : 3,
     "photo"             : "recette_RotiDePoireDeBoeufCuitAuFour.jpg",
     "temps_preparation" : "5 minutes",
     "temps_cuisson"     : "20 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "La classique",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -1330,14 +1159,14 @@
     "morceaux_alternatifs"    : [25,26,27,30]
     },
     {
-    "id"                : 48,
+    "id"                : 43,
     "titre"             : "Steaks d'araignée sauce sorcière",
     "type_viande"       : "boeuf",
     "cuisson"           : 1,
     "photo"             : "recette_SteaksDaraigneeSauceSorciere.jpg",
     "temps_preparation" : "15 minutes",
     "temps_cuisson"     : "15 minutes",
-    "difficulte"        : 0,
+    "difficulte"        : 2,
     "difficulte_nom"    : "L'originale",
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
@@ -1361,7 +1190,7 @@
     "morceaux_alternatifs"    : [25,26,27,30]
     },
     {
-    "id"                : 49,
+    "id"                : 44,
     "titre"             : "Carpaccio de bœuf",
     "type_viande"       : "boeuf",
     "cuisson"           : 12,
@@ -1386,7 +1215,7 @@
     "morceaux_alternatifs"    : [28,29]
     },
     {
-    "id"                : 50,
+    "id"                : 45,
     "titre"             : "Rond de gîte grillé, sauce à la moutarde",
     "type_viande"       : "boeuf",
     "cuisson"           : 2,
@@ -1420,7 +1249,7 @@
     "morceaux_alternatifs"    : [28,29]
     },
     {
-    "id"                : 51,
+    "id"                : 46,
     "titre"             : "Tartare de boeuf fermier",
     "type_viande"       : "boeuf",
     "cuisson"           : 12,
@@ -1450,7 +1279,7 @@
     "morceaux_alternatifs"    : [28,29]
     },
     {
-    "id"                : 52,
+    "id"                : 47,
     "titre"             : "Fajitas de bœuf",
     "type_viande"       : "boeuf",
     "cuisson"           : 12,
@@ -1463,7 +1292,7 @@
     "descriptif_introduction": "",
     "portion"           : "4 personnes",
     "ingredients"       : [
-        "500 g (plat de tranche, ronde tranche, mouvant)",
+        "500 g (Gîte, ronde tranche, mouvant)",
         "8 tortillas",
         "2 poivrons",
         "2 oignons",
@@ -1473,10 +1302,10 @@
     ],
     "instructions_preparation": "<ol><li>Dans un bol, délayez le contenu du sachet d'épices dans la bière et le jus de citron.</li><li>Mettez le boeuf à mariner dans ce mélange.  Laissez mariner au réfrigérateur une nuit.</li><li>Egouttez la viande et la couper en petits cubes.</li><li>Emincez les poivrons et les oignons, les faire revenir ensemble dans un peu d'huile d'olive avec un tout petit peu de sel.</li><li>Lorsque les légumes sont cuits, ajoutez la viande et faire revenir 1 à 2 min. Ne salez pas la viande.</li><li>Faites chauffer les tortillas 1 min au micro-ondes (dans un torchon humide, pour qu'elles ne sèchent pas).</li></ol>",
     "instructions_service"    : "A table, garnir les tortillas avec la préparation.",
-    "morceaux_alternatifs"    : [31,32,33]
+    "morceaux_alternatifs"    : [31,32,33,34]
     },
     {
-    "id"                : 53,
+    "id"                : 48,
     "titre"             : "Brochettes de bœuf au barbecue",
     "type_viande"       : "boeuf",
     "cuisson"           : 7,
@@ -1506,17 +1335,17 @@
     "morceaux_alternatifs"    : [31,32,33]
     },
     {
-    "id"                : 54,
+    "id"                : 49,
     "titre"             : "Boeuf Thaï",
     "type_viande"       : "boeuf",
     "cuisson"           : 2,
     "photo"             : "recette_BoeufThai.jpg",
-    "temps_preparation" : "XXX",
-    "temps_cuisson"     : "XXX",
+    "temps_preparation" : "40 minutes",
+    "temps_cuisson"     : "30 minutes",
     "difficulte"        : 3,
     "difficulte_nom"    : "L'originale",
     "descriptif_introduction": "",
-    "portion"           : "XXX personnes",
+    "portion"           : "4 personnes",
     "ingredients"       : [
         "4 pavés (plat de tranche, ronde tranche, mouvant)",
         "2 c. à soupe de sauce soja",
@@ -1538,39 +1367,7 @@
     "morceaux_alternatifs"    : [31,32,33]
     },
     {
-    "id"                : 55,
-    "titre"             : "Bouillon de légumes au bœuf",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 5,
-    "photo"             : "recette_Bouillondelegumesauboeuf.jpg",
-    "temps_preparation" : "20 minutes",
-    "temps_cuisson"     : "3 heures",
-    "difficulte"        : 1,
-    "difficulte_nom"    : "La facile",
-    "descriptif_introduction": "",
-    "portion"           : "4 personnes",
-    "ingredients"       : [
-        "230 g de plat-de-côtes de boeuf",
-        "130 g de macreuse de bœuf",
-        "1 os à moelle",
-        "3 l d’eau",
-        "4 carottes",
-        "3 poireaux",
-        "2 navets",
-        "1 pied de céleri",
-        "1 quartier de céleri rave",
-        "3 oignons",
-        "3 ou 4 clous de girofle",
-        "1 petite brindille de thym",
-        "1 feuille de laurier",
-        "2 gousses d'ail"
-    ],
-    "instructions_preparation": "<ol><li>Dans une casserole, mettez les plat-de-côtes et l'eau froide à bouillir, puis ajoutez la macreuse de bœuf portez une nouvelle fois à ébullition.  Ajoutez l’os à moelle et remettez à bouillir.</li><li>Découpez les légumes en julienne et incorporez es au bouillon. Assaisonnez, portez à ébullition. Baissez le feu à feu doux et laissez mijoter pendant 3 h.</li></ol>",
-    "instructions_service"    : "Ôtez la graisse du bouillon et servez avec des croûtons de pain.",
-    "morceaux_alternatifs"    : [7,8,2,5,34]
-    },
-    {
-    "id"                : 56,
+    "id"                : 50,
     "titre"             : "Goulash",
     "type_viande"       : "boeuf",
     "cuisson"           : 4,
@@ -1596,46 +1393,5 @@
     "instructions_preparation": "Préparez ce plat la veille.<ol><li>Les ragoûts sont toujours meilleurs réchauffés.</li><li>Coupez la viande en gros cubes de 3 cm.</li><li>Épluchez les oignons et les légumes.</li><li>Faites revenir les oignons coupés en 4 et la viande à feu moyen dans une cocotte avec un peu d’huile d’olive.</li><li>Ajoutez le paprika et mélangez bien.</li><li>Quand la viande est bien dorée et colorée par le paprika, ajoutez le double-concentré et les tomates coupées en 4.</li><li>Remuez sans cesse l’ensemble avec une spatule en bois pendant 4 minutes.</li><li>Ajoutez les carottes coupées en rondelles.</li><li>Mouillez avec le vin.</li><li>Laissez mijoter 3 minutes, puis ajoutez 25 cl d’eau. Assaisonnez.</li><li>Fermez la cocotte et faites cuire à feu doux pendant 3 heures.</li><li>Au bout de 3 heures placez les pommes de terre coupées en morceaux.</li><li>Laissez cuire 30 minutes supplémentaires.</li></ol>",
     "instructions_service"    : "Servez directement dans la cocotte sur la table avec une louche.",
     "morceaux_alternatifs"    : [7,8,3,5]
-    },
-    {
-    "id"                : 57,
-    "titre"             : "Bortsch à la Russe",
-    "type_viande"       : "boeuf",
-    "cuisson"           : 5,
-    "photo"             : "recette_BortschalaRusse.jpg",
-    "temps_preparation" : "50 minutes",
-    "temps_cuisson"     : "3 heures",
-    "difficulte"        : 4,
-    "difficulte_nom"    : "L’originale",
-    "descriptif_introduction": "",
-    "portion"           : "4 personnes",
-    "ingredients"       : [
-        "500 g de gîte à pot au feu de boeuf",
-        "1 os à moelle",
-        "2,5 l d'eau",
-        "1 bouquet garni (1 branche de thym, 1 feuille de laurier, 1 branche de persil)",
-        "2 oignons",
-        "2 carottes",
-        "1 coeur de céleri",
-        "2 tomates",
-        "Sel"
-    ],
-    "potage"       : [ 
-        "4 c. à soupe de crème épaisse",
-        "2 tomates",
-        "500 g de betteraves",
-        "1 navet",
-        "2 pommes de terre",
-        "2 poireaux",
-        "2 gousses d'ail",
-        "2 c. à soupe de beurre",
-        "2 c. à soupe de vinaigre",
-        "1/2 c. à café de sucre",
-        "1 citron",
-        "Sel, poivre"
-    ],
-    "instructions_preparation": "Pour le bouillon<ol><li>Epluchez les carottes et les tomates (les faire blanchir pour plus de facilité).</li><li>Dans une cocotte mettez la viande, l’os à moelle, les 2,5 l d’eau froide. Portez à ébullition. Ecumez pour enlever le gras.</li><li>Ajoutez les oignons coupés en 4, les légumes en morceaux et le bouquet garni. Salez et poivrez.</li><li>Laissez cuire 1h30 environ à feu doux (jusqu'à ce que la viande soit tendre). Réservez dans un saladier.</li></ol>Pour le potage<ol><li>Ebouillantez les tomates pour les éplucher. Coupez-les en 2. Epluchez les betteraves, le navet, et les pommes de terre.</li><li>Coupez les en gros morceaux.</li><li>Coupez de fines rondelles de poireaux.</li><li>Dans la cocotte, faites revenir l’ail écrasé avec du beurre. Ajoutez les betteraves, le navet les tomates.  Ajoutez le vinaigre et le sucre.</li><li>Mouillez avec la moitié du bouillon. Couvrez et laissez mijoter 1 heure.</li><li>Dans une autre cocotte, portez le bouillon à ébullition et ajoutez les pommes de terre. Faites cuire à découvert jusqu’à ce que les pommes de terre soient tendres.</li><li>Ajoutez le tout à la soupe de betteraves.</li><li>Dans le reste du bouillon porte à ébullition, ajoutez le chou et les pommes de terre. Faites cuire à découvert jusqu'à ce que les pommes de terre soient tendres. Ajoutez ces légumes et le bouillon à la soupe de betteraves. Ajoutez la viande. Assaisonnez.</li></ol>",
-    "instructions_service"    : "Servez la soupe dans un bol. Proposez de la crème fraiche additionnée d’un peu de jus de citron séparément.",
-    "morceaux_alternatifs"    : [7,8,3,5,34]
     }
 ]

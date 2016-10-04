@@ -26,7 +26,7 @@ class EntiteFetcherService extends ApiFetcher
 
     public function findAll()
     {
-        return parent::findBy(array("activites"=>"ELEVEUR,BOUCHER,RESTAURANT,RESTAURATION_COLLECTIVE,ABATTOIR,NEGOCIANT,FILIERE"));
+        return parent::findBy(array("activites"=>"ELEVEUR,BOUCHER,RESTAURANT,RESTAURATION_COLLECTIVE,ABATTOIR,NEGOCIANT,FILIERE,GROSSISTE,ASSOCIATION,DISTRIBUTEUR"));
     }
 
 
