@@ -168,7 +168,7 @@ class EntiteController extends BaseController
         }
 
         if ($region) {
-            $region = Region::CODE[$region];
+            $region = Region::$CODE[$region];
         }
 
         if (!$region) {

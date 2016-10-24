@@ -11,7 +11,7 @@ namespace Ovs\Bovimarket\Utils;
 
 class Region
 {
-    const CODE = array(
+    public static $CODE = array(
         "FR-C"  => "Auvergne",
         "FR-B"  => "Aquitaine",
         "FR-A"  => "Alsace",

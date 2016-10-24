@@ -19,7 +19,7 @@ use Ovs\Bovimarket\Services\API\BilletFetcherService;
 use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\CommandeFetcherService;
-use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
+use Ovs\Bovimarket\Services\API\EntiteFetcherService;
 use Ovs\Bovimarket\Services\API\MenuFetcherService;
 use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\Bovimarket\Services\API\UtilisateurFetcherService;
