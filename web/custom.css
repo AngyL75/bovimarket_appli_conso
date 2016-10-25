@@ -227,3 +227,13 @@
 #chefRecette_chef{
     margin-top:20px;
 }
+
+.pageblanche #close,.pageblanche #return{
+    z-index: 999;
+    background: #ffffff;
+    text-align: center;
+}
+
+.pageblanche #close a,.pageblanche #return a{
+    line-height:50px;
+}
