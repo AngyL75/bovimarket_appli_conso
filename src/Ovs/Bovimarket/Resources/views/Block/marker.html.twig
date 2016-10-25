@@ -2,10 +2,22 @@ var marker{{ entite.id }} = new google.maps.Marker({
 position: new google.maps.LatLng({{ entite.lat }},{{ entite.lng }}),
 map: map,
 url: "{{ path_for("app.entite.detail",{"id":entite.id}) }}",
-title: '{{ entite.name }}',
+//title: '{{ entite.name }}',
 icon: "{{ entite.getIcon(isFavorite(entite.id)) }}"
+});
+
+var infowindow{{ entite.id }} = new google.maps.InfoWindow({
+content: '<h3>{{ entite.name }}</h3>'
 });
 
 google.maps.event.addListener(marker{{ entite.id }}, 'click', function() {
     window.location.href = this.url;
+});
+
+google.maps.event.addListener(marker{{ entite.id }},'mouseover',function(){
+    infowindow{{ entite.id }}.open(map,marker{{ entite.id }})
+});
+
+google.maps.event.addListener(marker{{ entite.id }},'mouseout',function(){
+    infowindow{{ entite.id }}.close()
 });
