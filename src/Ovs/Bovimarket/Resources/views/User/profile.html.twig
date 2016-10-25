@@ -9,7 +9,9 @@
     <div class="row">
         <div class="col-xs-12">
             <form action="{{ path_for("app.update_profile") }}" method="post">
-                <input type="hidden" name="profile[id]" value="{{ user.id }}" />
+                <fieldset>
+                <legend><h4>Mes Informations</h4></legend>
+                <input type="hidden" name="profile[id]" value="{{ user.id }}"/>
                 <div class="form-group">
                     <label for="username">E-Mail</label>
                     <input type="text" class="form-control" name="profile[email]" value="{{ user.email }}">
@@ -24,27 +26,129 @@
                 </div>
                 <div class="form-group">
                     <label for="adresse">Adresse</label>
-                    <input type="text" class="form-control" name="profile[adresse][adresse]" value="{{ user.adresse.adresse }}">
+                    <input type="text" class="form-control" name="profile[adresse][adresse]"
+                           value="{{ user.adresse.adresse }}">
                 </div>
                 <div class="form-group">
                     <label for="adresse">Code Postal</label>
-                    <input type="text" class="form-control" name="profile[adresse][code_postal]" value="{{ user.adresse.codePostal }}">
+                    <input type="text" class="form-control" name="profile[adresse][code_postal]"
+                           value="{{ user.adresse.codePostal }}">
                 </div>
                 <div class="form-group">
                     <label for="adresse">Ville</label>
-                    <input type="text" class="form-control" name="profile[adresse][ville]" value="{{ user.adresse.ville }}">
+                    <input type="text" class="form-control" name="profile[adresse][ville]"
+                           value="{{ user.adresse.ville }}">
                 </div>
                 <div class="form-group">
                     <label for="tel">Téléphone</label>
                     <input type="text" class="form-control" name="profile[telephone]" value="{{ user.telephone }}">
                 </div>
                 <div class="form-group">
-                        <label for="hideTel">Afficher le Téléphone</label>
-                        <input type="checkbox" class="form-control" name="profile[displayTelephone]" {% if not user.hideTelephone %}checked{% endif %}>
+                    <label for="hideTel">
+                        <input type="checkbox" name="profile[displayTelephone]"
+                               {% if not user.hideTelephone %}checked{% endif %}>
+                        Afficher le Téléphone
+                    </label>
 
                 </div>
-
-                <button class="btn btn-vert" type="submit">Valider</button>
+                </fieldset>
+                <fieldset>
+                <div class="form-group row">
+                    <div class="col-xs-12">
+                        <legend><h4>Allergènes</h4></legend>
+                    </div>
+                    <div class="col-xs-12">
+                        <label for="allergene_oui">
+                            <input type="checkbox" name="allergene_oui" id="allergene_oui" />
+                            Avez-vous une allergie?
+                        </label>
+                        <p>Si oui, cochez les cases en dessous</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="allergene_cereale">
+                            <input type="checkbox" value="cereales" name="allergene" id="allergene_cereale"/>
+                            Céréales contenant du gluten
+                            <br>(blé, seigle, orge, avoine, épeautre, kamut ou leurs souches hybridées) et produits à
+                            base de ces céréales
+                        </label>
+                        <br/>
+                        <label for="allergene_crustaces">
+                            <input type="checkbox" value="crustaces" name="allergene" id="allergene_crustaces"/>
+                            Crustacés et produits à base de crustacés
+                        </label>
+                        <br/>
+                        <label for="allergene_oeuf">
+                            <input type="checkbox" value="oeuf" name="allergene" id="allergene_oeuf"/>
+                            Oeufs et produits à base d'oeufs
+                        </label>
+                        <br/>
+                        <label for="allergene_poisson">
+                            <input type="checkbox" value="poisson" name="allergene" id="allergene_poisson"/>
+                            Poissons et produits à base de poissons
+                        </label>
+                        <br/>
+                        <label for="allergene_arachide">
+                            <input type="checkbox" value="arachide" name="allergene" id="allergene_arachide"/>
+                            Arachides et produits à base d'arachides
+                        </label>
+                        <br/>
+                        <label for="allergene_soja">
+                            <input type="checkbox" value="soja" name="allergene" id="allergene_soja"/>
+                            Soja et produits à base de soja
+                        </label>
+                        <br/>
+                        <label for="allergene_lait">
+                            <input type="checkbox" value="lait" name="allergene" id="allergene_lait"/>
+                            Lait et produits à base de lait
+                            <br>(y compris de lactose)
+                        </label>
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="allergene_coque">
+                            <input type="checkbox" value="coque" name="allergene" id="allergene_coque"/>
+                            Fruits à coques
+                            <br>(amandes, noisettes, noix, noix de : cajou, pécan, macadamia, du Brésil, du Queensland,
+                            pistaches)
+                            <br>et produits à base de ces fruits
+                        </label>
+                        <br/>
+                        <label for="allergene_celeri">
+                            <input type="checkbox" value="celeri" name="allergene" id="allergene_celeri"/>
+                            Céleri et produits à base de céleri
+                        </label>
+                        <br/>
+                        <label for="allergene_moutarde">
+                            <input type="checkbox" value="moutarde" name="allergene" id="allergene_moutarde"/>
+                            Moutarde et produits à base de moutarde
+                        </label>
+                        <br/>
+                        <label for="allergene_sesame">
+                            <input type="checkbox" value="sesame" name="allergene" id="allergene_sesame"/>
+                            Graines de sésame et produits à base de graines de sésame
+                        </label>
+                        <br/>
+                        <label for="allergene_sulfite">
+                            <input type="checkbox" value="sulfite" name="allergene" id="allergene_sulfite"/>
+                            Anhydride sulfureux et sulfites en concentration de plus de
+                            10mg/kg ou 10 mg/l
+                            (exprimés en SO2)
+                        </label>
+                        <br/>
+                        <label for="allergene_lupin">
+                            <input type="checkbox" value="lupin" name="allergene" id="allergene_lupin"/>
+                            Lupin et produits à base de lupin
+                        </label>
+                        <br/>
+                        <label for="allergene_mollusque">
+                            <input type="checkbox" value="mollusque" name="allergene" id="allergene_mollusque"/>
+                            Mollusques et produits à base de mollusques
+                        </label>
+                    </div>
+                </div>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-vert" type="submit">Valider</button>
+                </div>
             </form>
         </div>
     </div>
