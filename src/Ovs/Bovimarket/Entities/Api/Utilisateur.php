@@ -58,7 +58,7 @@ class Utilisateur
     protected $adresse;
     /**
      * @var
-     * @Serializer\Type("string")
+     * @Serializer\Type("ArrayCollection")
      * @Serializer\SerializedName("entiteFavoris")
      */
     protected $entiteFavoris;

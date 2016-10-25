@@ -10,7 +10,7 @@
         <h1>{{ recette.titre }}
             {% set imgSrc = "/web/images/favoris1.png" %}
             {% if recetteFav %}
-                {% set imgSrc = "/web/images/favoris.png" %}
+                {% set imgSrc = "/web/images/favoris1_select_fonce.png" %}
             {% endif %}
             <a href="{{ path_for("flash.recettes_toggle_fav",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idRecette":recette.id}) }}"><span><img src="{{ imgSrc }}" alt=""></span></a>
         </h1>
