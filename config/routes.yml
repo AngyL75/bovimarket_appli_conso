@@ -15,6 +15,10 @@ flash.recettes_detail:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:detailRecette"
     path: "/viande/{categ}/{idMorceau}/recette/{idRecette}"
 
+flash.recettes_toggle_fav:
+    action: "Ovs\\Bovimarket\\Controller\\FlashController:addRecetteToFavorites"
+    path: "/viande/{categ}/{idMorceau}/recette/{idRecette}/favoris"
+
 flash.morceau:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:detailMorceau"
     path: "/viande/{categ}/morceau/{idMorceau}"

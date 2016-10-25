@@ -8,17 +8,14 @@
 <nav id="menu">
     <ul>
         <li><h2>Menu</h2></li>
-        <li>
-            <a class="link" href="carte.php" data-color="#fff">
-                <span class="Chiffre">01</span>
-                <p>Bouchers</p>
-            </a>
-        </li>
-        <li>
-            <a class="link" href="carte2.php" data-color="#fff">
-                <span class="Chiffre">02</span>
-                <p>Mes restaurants</p></a>
-        </li>
+        {% for recette in getRecettesFav() %}
+            {% set morceau = recette.morceaux|first %}
+            <li>
+                <a class="link" href="{{ path_for("flash.recettes_detail",{"categ":recette.typeViande,"idMorceau":morceau,"idRecette":recette.id}) }}" data-color="#fff">
+                    <p>{{ recette.titre }}</p>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </nav>
 

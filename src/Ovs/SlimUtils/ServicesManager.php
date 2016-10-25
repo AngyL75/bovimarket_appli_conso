@@ -10,6 +10,11 @@ namespace Ovs\SlimUtils;
 
 
 use DebugBar\StandardDebugBar;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use Doctrine\Common\EventManager;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Doctrine\ORM\Tools\Setup;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ovs\Bovimarket\Api\Api;
@@ -35,6 +40,7 @@ class ServicesManager {
 	 * @param Container $container
 	 */
 	public static function registerServices( &$container ) {
+
 		$configApi = $container->settings["api"];
 		$configLog = $container->settings["logger"];
 
@@ -86,6 +92,21 @@ class ServicesManager {
 		$view->addExtension( new \Twig_Extensions_Extension_Intl() );
 
 		$container['view'] = $view;
+
+		$container['em'] = function($c){
+			$settings = $c->get('settings');
+			$config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
+				$settings['doctrine']['meta']['entity_path'],
+				$settings['doctrine']['meta']['auto_generate_proxies'],
+				__DIR__ . "/../../../".$settings['doctrine']['meta']['proxy_dir'],
+				$settings['doctrine']['meta']['cache'],
+				false
+			);
+
+			AnnotationRegistry::loadAnnotationClass("Annotation");
+
+			return \Doctrine\ORM\EntityManager::create($settings['doctrine']['connection'], $config);
+		};
 	}
 
 

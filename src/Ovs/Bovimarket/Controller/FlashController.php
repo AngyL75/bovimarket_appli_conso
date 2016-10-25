@@ -9,15 +9,14 @@
 namespace Ovs\Bovimarket\Controller;
 
 
-use Ovs\Bovimarket\Entities\Cuisson;
+use Doctrine\ORM\EntityManager;
 use Ovs\Bovimarket\Entities\Interfaces\Collection;
-use Ovs\Bovimarket\Entities\Morceaux;
+use Ovs\Bovimarket\Entity\RecetteFavoris;
 use Ovs\Bovimarket\Services\CuissonsFetcherService;
 use Ovs\Bovimarket\Services\MorceauxFetcherService;
 use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Utils\Session;
 use Ovs\Bovimarket\Utils\TypeViande;
-use Ovs\Bovimarket\Utils\Utils;
 use Ovs\SlimUtils\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -106,12 +105,16 @@ class FlashController extends BaseController {
 		$recetteFetcher = $this->get( "recettes" );
 		$recette        = $recetteFetcher->getRecetteForMorceau( $morceau, $idRecette );
 
+		$recetteFav = $this->get("em")->getRepository(RecetteFavoris::class)->findOneBy(array("recetteId"=>$idRecette,"recetteType"=>$typeViande,"userId"=>$this->getUser($request)->getId()));
+		$recetteFav = $recetteFav != null;
+
 		$morceauxRecommandes = $morceauxFetcher->getMorceauxForRecette( $recette );
 
 		return $this->render( $response, "QRCode/recette.html.twig", array(
 				"morceau"  => $morceau,
 				"recette"  => $recette,
-				"morceaux" => $morceauxRecommandes
+				"morceaux" => $morceauxRecommandes,
+				"recetteFav"=>$recetteFav
 			)
 		);
 
@@ -173,5 +176,36 @@ class FlashController extends BaseController {
 			"morceauxRecommandes" => $morceauRecommande
 		) );
 
+	}
+
+	public function addRecetteToFavoritesAction( Request $request, Response $response, $args ) {
+		$typeViande = $args["categ"];
+		$idMorceau=$args["idMorceau"];
+		$recetteId=$args["idRecette"];
+		$user = $this->getUser($request);
+
+		/** @var EntityManager $em */
+		$em =$this->get("em");
+		$recetteRepo=$em->getRepository(RecetteFavoris::class);
+
+		$recetteJSON = $this->get("recettes")->getRecettesForViande($typeViande)->find($recetteId);
+
+		$recette = $recetteRepo->findOneBy(array("recetteId"=>$recetteId,"recetteType"=>$typeViande,"userId"=>$user->getId()));
+		if(!$recette){
+			$recette=new RecetteFavoris();
+			$recette->setRecetteId($recetteId);
+			$recette->setRecetteType($typeViande);
+			$recette->setUserId($user->getId());
+			$em->persist($recette);
+		}else{
+			$em->remove($recette);
+		}
+		$em->flush();
+
+		return $this->redirectToRoute($response,"flash.recettes_detail",array(
+			"categ"=>$typeViande,
+			"idRecette"=>$recetteId,
+			"idMorceau"=>$idMorceau
+		));
 	}
 }

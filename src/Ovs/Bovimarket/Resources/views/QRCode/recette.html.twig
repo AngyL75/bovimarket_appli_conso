@@ -7,23 +7,30 @@
     </div>
 
     <div class="col-xs-12">
-        <h1>{{ recette.titre }}</h1>
+        <h1>{{ recette.titre }}
+            {% set imgSrc = "/web/images/favoris1.png" %}
+            {% if recetteFav %}
+                {% set imgSrc = "/web/images/favoris.png" %}
+            {% endif %}
+            <a href="{{ path_for("flash.recettes_toggle_fav",{"categ":morceau.typeViande,"idMorceau":morceau.id,"idRecette":recette.id}) }}"><span><img src="{{ imgSrc }}" alt=""></span></a>
+        </h1>
         <p>{{ recette.descriptifIntroduction }}</p>
     </div>
 </div>
-<div class="row" style="padding:20px 0">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+<div class="row" style="padding:20px 0" id="infosRecette">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <div class="col-xs-4">
             <span class="sablier">{{ recette.tempsPreparation }}</span>
         </div>
         <div class="col-xs-4">
             <span class="cuisson">{{ recette.tempsCuisson }}</span>
         </div>
-        <div class="col-xs-4 difficulte {{ recette.difficulteClass }}"></div>
+        <div class="col-xs-4">
+            <span class="difficulte {{ recette.difficulteClass }}">{{ recette.difficulteNom }}</span></div>
     </div>
 </div>
 <div class="row" style="padding:20px 0">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         {% if recette.tempsMarinade %}
             <div class="col-xs-4">
             <span class="marinade">
@@ -50,6 +57,22 @@
         {% endif %}
     </div>
 </div>
+
+<div class="row" style="padding: 20px 0px;">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="row">
+            <div class="col-xs-6" id="ChefRecette">
+                <p class="text-center" id="chefRecette_title">Recette proposée par</p>
+            <a href="{{ path_for("app.entite.detail",{"id":"5612d9fe1c393c858ae71a63"}) }}" class="text-center">
+                    <img src="{{ apiImagePath("entites/5612d9fe1c393c858ae71a63-logo.png") }}" alt=""
+                         class="img-responsive img-circle" />
+                    <p class="text-center" id="chefRecette_chef">Chef Vidal</p>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
         <h3 style="padding:30px 0">Ingrédients ({{ recette.portion }})</h3>

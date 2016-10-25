@@ -9,25 +9,36 @@
 namespace Ovs\Bovimarket\Twig;
 
 
+use Doctrine\ORM\EntityManager;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Api\Creneau;
 use Ovs\Bovimarket\Entities\Api\Produit;
 use Ovs\Bovimarket\Entities\Morceaux;
 use Ovs\Bovimarket\Entities\Panier;
+use Ovs\Bovimarket\Entity\RecetteFavoris;
+use Ovs\Bovimarket\Services\RecettesFetcherService;
 use Ovs\Bovimarket\Utils\Session;
 use Ovs\Bovimarket\Utils\Utils;
 
 class BoviExtension extends \Twig_Extension
 {
     protected $api;
+	protected $session;
+	/** @var  EntityManager */
+	protected $em;
+
+	/** @var  RecettesFetcherService */
+	protected $recetteFetcher;
 
     /**
      * MapMarkerExtension constructor.
      */
-    public function __construct(Api $api,$session)
+    public function __construct(Api $api,$session,$em,$recetteFetcher)
     {
         $this->api = $api;
 	    $this->session = $session;
+	    $this->em = $em;
+	    $this->recetteFetcher = $recetteFetcher;
     }
 
 
@@ -65,6 +76,9 @@ class BoviExtension extends \Twig_Extension
 	        	"is_safe"=>array("html")
 	        )),
 	        new \Twig_SimpleFunction("getFavorites",array($this,"getFavoris"),array(
+	        	"is_safe"=>array("html")
+	        )),
+	        new \Twig_SimpleFunction("getRecettesFav",array($this,"getRecetteFavoris"),array(
 	        	"is_safe"=>array("html")
 	        ))
         );
@@ -155,6 +169,21 @@ class BoviExtension extends \Twig_Extension
 
 	public function getFavoris() {
 		return $this->session->get(Session::favoris,array());
+    }
+
+	public function getRecetteFavoris() {
+		$recettesFav = $this->em->getRepository(RecetteFavoris::class)->findForUser($this->session->get(Session::loggedUserSessionKey));
+		$recettes = array();
+
+		/** @var RecetteFavoris $rec */
+		foreach ($recettesFav as $rec){
+			$recs=$this->recetteFetcher->getRecettesForViande($rec->getRecetteType());
+			$recette = $recs->find($rec->getRecetteId());
+			if($recette) {
+				$recettes[] = $recette;
+			}
+		}
+		return $recettes;
     }
 
 

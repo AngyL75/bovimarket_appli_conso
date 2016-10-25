@@ -1,4 +1,17 @@
 settings:
+    doctrine:
+        meta:
+            entity_path:
+                - 'src/Ovs/Bovimarket/Entity/'
+            auto_generate_proxies: false
+            proxy_dir: "cache/proxies"
+            cache: ~
+        connection:
+            driver: "pdo_mysql"
+            host: 'localhost'
+            dbname: 'bovimarket'
+            user: root
+            password: lol
     session:
         lifetime: 3600
     debug: true

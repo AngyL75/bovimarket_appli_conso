@@ -15,31 +15,47 @@ use Ovs\SlimUtils\Configuration;
 
 require "vendor/autoload.php";
 
-setlocale(LC_ALL,"fr_FR");
+setlocale( LC_ALL, "fr_FR" );
 
-AnnotationRegistry::registerLoader(function($class){
-    $file = explode("\\",$class);
-    $file = array_pop($file);
-    require __DIR__. "/vendor/jms-serializer/serializer/src/Annotation/".$file.".php";
-    return true;
-});
+$config      = new Configuration();
+$configArray = $config->getConfig();
 
-$config=new Configuration();
-$configArray=$config->getConfig();
-
-if($configArray["settings"]["debug"]){
-    ini_set("display_errors",1);
-}else{
-    ini_set("display_errors",0);
+if ( $configArray["settings"]["debug"] ) {
+	ini_set( "display_errors", 1 );
+} else {
+	ini_set( "display_errors", 0 );
 }
 
 
-$container = new Container($configArray);
-$container["configService"]=$config;
-ServicesManager::registerServices($container);
+$container = new Container( $configArray );
+$container["configService"] = $config;
 
-$app = new App($container);
-ServicesManager::registerMiddlewares($app);
-Router::registerRoutes($app);
+
+AnnotationRegistry::registerLoader(function($class){
+	$file     = explode( "\\", $class );
+	$file     = array_pop( $file );
+	$filePath = __DIR__ . "/vendor/doctrine/orm/lib/Doctrine/Common/" . $file . ".php";
+	if ( file_exists( $filePath ) ) {
+		require_once $filePath;
+		return true;
+	}
+	return false;
+});
+AnnotationRegistry::registerLoader( function ( $class ) {
+	$file     = explode( "\\", $class );
+	$file     = array_pop( $file );
+	$filePath = __DIR__ . "/vendor/jms-serializer/serializer/src/Annotation/" . $file . ".php";
+	if ( file_exists( $filePath ) ) {
+		require_once $filePath;
+		return true;
+	}
+	return false;
+} );
+
+ServicesManager::registerServices( $container );
+
+$app = new App( $container );
+ServicesManager::registerMiddlewares( $app );
+Router::registerRoutes( $app );
 
 $app->run();
