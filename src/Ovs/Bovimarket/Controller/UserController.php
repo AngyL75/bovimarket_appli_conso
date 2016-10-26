@@ -129,16 +129,20 @@ class UserController extends BaseController
     public function profileAction(Request $request, Response $response, $args)
     {
         $user = $this->get("utilisateurs")->me();
+	    $allergenes = $this->get("allergenes")->findAll();
         return  $this->render($response,"User/profile.html.twig",array(
-            "user"=>$user
+            "user"=>$user,
+	        "allergenes"=>$allergenes
         ));
     }
 
     public function updateProfileAction(Request $request,Response $response,$args)
     {
-        $userValues = $request->getParsedBodyParam("profile");
+	    $allergenes = $request->getParsedBodyParam("allergene");
+    	$userValues = $request->getParsedBodyParam("profile");
         $user = Utilisateur::fromForm($userValues);
         $this->get("utilisateurs")->updateUser($user);
+	    $this->get("allergenes")->updateAllergenes($allergenes);
 
         $this->addFlash("success","Profil mis à jour");
         return $this->redirectToRoute($response,"app.profile");

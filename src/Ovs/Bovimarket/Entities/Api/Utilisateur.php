@@ -9,7 +9,9 @@
 namespace Ovs\Bovimarket\Entities\Api;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
+use Ovs\Bovimarket\Entities\Interfaces\Collection;
 
 class Utilisateur
 {
@@ -79,6 +81,12 @@ class Utilisateur
      * @Serializer\Type("string")
      */
     protected $password;
+
+	/**
+	 * @var
+	 * @Serializer\Type("ArrayCollection<Ovs\Bovimarket\Entities\Api\Allergene>")
+	 */
+	protected $allergies;
 
     /**
      * Utilisateur constructor.
@@ -304,6 +312,19 @@ class Utilisateur
         $this->password = $password;
     }
 
+	/**
+	 * @return Collection
+	 */
+	public function getAllergies() {
+		return $this->allergies;
+	}
+
+	/**
+	 * @param mixed $allergies
+	 */
+	public function setAllergies( $allergies ) {
+		$this->allergies = $allergies;
+	}
 
 
     public static function fromForm($formValues)
@@ -333,6 +354,14 @@ class Utilisateur
             $user->setAdresse($adresse);
         }
         return $user;
+    }
+
+	public function getAllergiesIds() {
+		$ids=array();
+		foreach ( $this->getAllergies()->toArray() as $allergie ) {
+			$ids[]=$allergie->getId();
+		}
+		return $ids;
     }
 
 }

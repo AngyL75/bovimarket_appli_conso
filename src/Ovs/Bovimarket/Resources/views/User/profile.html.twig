@@ -64,7 +64,23 @@
                         </label>
                         <p>Si oui, cochez les cases en dessous</p>
                     </div>
-                    <div class="col-xs-6">
+                    {% for allergene in allergenes %}
+                        {% set nbAllergenes = allergenes|length %}
+                        {% if loop.index0 == 0 or loop.index0 == nbAllergenes/2|round(0) %}
+                            <div class="col-xs-6">
+                        {% endif %}
+
+                                <label for="allergene_{{ allergene.id }}">
+                                <input type="checkbox" name="allergene[]" value="{{ allergene.id }}##{{ allergene.nom }}" id="allergene_{{ allergene.id }}"
+                                {% if allergene.id in user.allergiesIds %}checked{% endif %}/>
+                                    {{ allergene.nom }}
+                                </label>
+                        {% if loop.index == nbAllergenes/2|round(0) or loop.last %}
+                            </div>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+                    <!--<div class="col-xs-6">
                         <label for="allergene_cereale">
                             <input type="checkbox" value="cereales" name="allergene" id="allergene_cereale"/>
                             Céréales contenant du gluten
@@ -143,7 +159,7 @@
                             <input type="checkbox" value="mollusque" name="allergene" id="allergene_mollusque"/>
                             Mollusques et produits à base de mollusques
                         </label>
-                    </div>
+                    </div>-->
                 </div>
                 </fieldset>
                 <div class="form-group">
