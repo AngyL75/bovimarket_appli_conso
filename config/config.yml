@@ -9,9 +9,9 @@ settings:
         connection:
             driver: "pdo_mysql"
             host: 'localhost'
-            dbname: 'bovimarket'
-            user: root
-            password: lol
+            dbname: 'bovimarket_preprod'
+            user: bv_preprod
+            password: TadBasht
     session:
         lifetime: 3600
     debug: true
