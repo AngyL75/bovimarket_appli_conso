@@ -3,10 +3,20 @@
 
 {% block menu %}
     {% if entite.activite == "RESTAURATION_COLLECTIVE" %}
-        <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
-                <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10">
-                </p>
+        <div id="menu-jour" class="row rowBar">
+            <div class="icon">
+            	<i class="fa fa-calendar-o" aria-hidden="true"></i>
+            </div>
+            <div class="text">
+            	<b>Menu du jour</b>
+            	<span>{{ "now"|date("l d/m/y", "Europe/Paris") }}</span>
+            </div>
+            <div class="actions">
+            	<a id="btn-presence" href="" class="button"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>JE SERAI PRESENT AUJOURD'HUI</span></a>
+            </div>
+            
+            <div class="col-xs-6 col-xs-offset-3 hidden">
+                <p id="Date">Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10"></p>
                 <div id="calendarMain2"></div>
             </div>
         </div>
@@ -18,6 +28,38 @@
 
     <div class="row" id="menuTable">
 
+    </div>
+    
+    <div class="row-bloc">
+    	<div class="presences">
+    		 <div class="presences_days">
+	    		 <a href="#">&lt; SEMAINE<br/>PRECEDENTE</a>
+	    		 {% for day in presence %}
+	    		 	<div class="{{day.today == true ? 'day-today' : ''}}">
+	    		 		{{ day.label | raw }}
+	    		 	</div>
+	    		 {% endfor %}
+	    		 <a href="#">&gt;</a>
+    		 </div>
+    		 <div class="presences_values">
+	    		 <div>Serez-vous la ?</div>
+	    		 {% for day in presence %}
+	    		 	{% set icon = "fa-question" %}
+	                {% if day.presence == 1 %}
+	                    {% set icon = "fa-calendar-check-o" %}
+	                {% endif %}
+	                {% if day.presence == 2 %}
+	                    {% set icon = "fa-calendar-times-o" %}
+	                {% endif %}
+	    		 	<a href="#" class="presence-state{{day.presence}}{{day.today == true ? ' presence-today' : ''}}" data-day="{{day.day}}" data-state="{{day.presence}}"><i class="fa {{icon}}" aria-hidden="true"></i></a>
+	    		 {% endfor %}
+	    		 <div></div>
+    		 </div>
+    	</div>
+    </div>
+    
+    <div class="row-bloc">
+		<a href="#" class="button button-large button-center button-green"><i class="fa fa-envelope" aria-hidden="true"></i><span>JE RECOIS AUTOMATIQUEMENT PAR EMAIL LE MENU DE LA SEMAINE</span></a>
     </div>
 {% endblock %}
 
@@ -54,5 +96,47 @@
                 dateChanged(date);
             });
         }
+        
+        $('#btn-presence').click(function()
+        {
+        	$('.presence-today').click() ;
+        	
+        	return false ;
+        });
+        
+        if($('.presence-today').attr('data-state') == 1)
+        {
+        	$('#btn-presence').html('<i class="fa fa-calendar-times-o" aria-hidden="true"></i><span>JE NE SERAI PAS PRESENT AUJOURD\'HUI</span>') ;
+        }
+        
+        $('.presences_values a').click(function()
+        {
+        	var state = $(this).attr('data-state') ;
+        	
+        	$(this).removeClass('presence-state0 presence-state1 presence-state2') ;
+        	$('i', this).removeClass('fa-question fa-calendar-check-o fa-calendar-times-o') ;
+        	
+        	if(state == 0) state = 1 ;
+        	else if(state == 1) state = 2 ;
+        	else state = 1 ;
+        	
+        	if(state == 1) $('i', this).addClass('fa-calendar-check-o') ;
+        	else $('i', this).addClass('fa-calendar-times-o') ;
+        	
+        	$(this).attr('data-state', state) ;
+        	$(this).addClass('presence-state' + state) ;
+        	
+        	if($(this).hasClass('presence-today'))
+        	{
+        		if(state == 1)
+        		{
+        			$('#btn-presence').html('<i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>JE SERAI PRESENT AUJOURD\'HUI</span>') ;
+        		}else{
+        			$('#btn-presence').html('<i class="fa fa-calendar-times-o" aria-hidden="true"></i><span>JE NE SERAI PAS PRESENT AUJOURD\'HUI</span>') ;
+        		}
+        	}
+        	
+        	return false ;
+        }) ;
     </script>
 {% endblock %}

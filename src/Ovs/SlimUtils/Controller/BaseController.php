@@ -133,4 +133,25 @@ class BaseController
     {
         return $this->getSession($request)->set(Session::cartSessionKey,null);
     }
+    
+    public function formatDate($sDate, $format = '%d %b %Y')
+	{
+		setlocale(LC_ALL, 'fr_FR');
+		return utf8_encode(strftime(utf8_decode($format), is_numeric($sDate) ? $sDate : $this->_mktime($sDate))) ;
+	}
+	
+	protected function _mktime($date)
+	{
+		if(!$date) return time() ;
+	
+		$h	= substr($date, 11, 2) ;
+		$mn	= substr($date, 14, 2) ;
+		$s	= substr($date, 17, 2) ;
+	
+		$d = substr($date, 8, 2) ;
+		$m = substr($date, 5, 2) ;
+		$y = substr($date, 0, 4) ;
+	
+		return mktime($h, $mn, $s, $m, $d, $y) ;
+	}
 }

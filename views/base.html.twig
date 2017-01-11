@@ -14,11 +14,12 @@
             <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'
                   type='text/css'>
             <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
                   media="all">
             <link href="/web/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
             <link rel="stylesheet" type="text/css" href="/web/style.css"/>
             <link rel="stylesheet" href="/web/custom.css">
+            <link rel="stylesheet" href="/web/css/slick.css">
         {% endblock %}
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -43,31 +44,37 @@
 
 
     <div id="page" style="overflow:hidden;">
-        <div class="header" id="Menu1">
+        <div class="header hidden" id="Menu1">
             <a href="#menu"></a>
         </div>
 
-        <div class="header" id="Menu2">
+        <div class="header hidden" id="Menu2">
             <a href="#favoris"></a>
         </div>
 
-        <div class="header" id="Menu3">
+        <div class="header hidden" id="Menu3">
             <a href="#amis"></a>
         </div>
 
         {% if isLogged %}
-        <div class="header" id="Menu4">
+        <div class="header hidden" id="Menu4">
             <a href="#mon-compte"></a>
         </div>
         {% endif %}
+        
+        <div class="header" id="qrcode">
+        	<a class="link" href="{{ path_for("flash.qrcode") }}" data-color="#ffffff"></a>
+        </div>
 
         {% include("Blocks/nav.html.twig") %}
 
         <div id="content">
-            <div id="Choix">
+            <div id="Choix" class="hidden">
                 <div id="Carte" class="Choix select"><a href="#">Carte</a></div>
                 <div id="Liste" class="Choix"><a href="#">Liste</a></div>
             </div>
+            
+            {% include("Blocks/filters.html.twig") %}
 
             <div id="map"></div>
         </div>
@@ -78,6 +85,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/web/js/bootstrap.js"></script>
+    <script src="/web/js/slick.min.js"></script>
 
     <script type="text/javascript">
         /*alsolike(
@@ -126,7 +134,7 @@
         });
     </script>
     <script type="text/javascript">
-        (function () {
+        /*(function () {
             var ul = $("#navs"), li = $("#navs li"), i = li.length, n = i - 1, r = 140;
             ul.click(function () {
                 $(this).toggleClass('active');
@@ -143,10 +151,13 @@
                     li.removeAttr('style');
                 }
             });
-        })($);
+        })($);*/
     </script>
     <script src="/web/js/main.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDo4E92LZc9OiUsQFIi4wtyHeay-Y0KQ7c"></script>
+    <script type="text/javascript">
+	jQuery('.nav3').click(showFilters) ;
+	</script>
     <script type="text/javascript">
         var center = new google.maps.LatLng(45.7833, 3.0833);
         var mapElement = document.getElementById('map');

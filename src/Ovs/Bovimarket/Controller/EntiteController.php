@@ -97,8 +97,24 @@ class EntiteController extends BaseController
         }
         $certifs = $this->getCertifications($entite);
 
-
-        if($entite->getActivite() == "FILIERE"){
+        $presence = array() ;
+        
+        $day = date('w');
+		$time = strtotime('-'.$day.' days');
+		
+		for($d = 0 ; $d < 7 ; $d++)
+		{
+			$r = mt_rand (0, 2) ;
+			
+			$day = substr($this->formatDate($time, '%A'), 0, 1) ;
+			array_push($presence, array('time' => $time, 'day' => date('Y-m-d', $time), 'today' => date('Y-m-d') == date('Y-m-d', $time), 'label' => $day . '<br/>' . date('j/m', $time), 'presence' => $r)) ;
+			
+			$time += (3600 * 26) ;
+		}
+		
+		
+        if($entite->getActivite() == "FILIERE")
+        {
         	$membres=$this->getMembres($entite);
         }
 
@@ -112,6 +128,7 @@ class EntiteController extends BaseController
         return $this->render($response, $template, array(
             'entite' => $entite,
             'menus' => $menus,
+        	'presence' => $presence,
             'certifs' => $certifs,
             'blog' => $billets,
             'presse' => $presse,

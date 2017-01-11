@@ -757,7 +757,7 @@ class Entite
 
     public function getIcon($isFav)
     {
-        return Utils::getIconForActivite($this->activite,$isFav);
+        return str_replace('\\', '/', Utils::getIconForActivite($this->activite,$isFav));
     }
 
     public function getAdresseComplete()
