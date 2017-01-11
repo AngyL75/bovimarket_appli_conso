@@ -9,7 +9,7 @@
             </div>
             <div class="text">
             	<b>Menu du jour</b>
-            	<span>{{ "now"|date("l d/m/y", "Europe/Paris") }}</span>
+            	<span>{{ "now"|localizeddate('none', 'none', 'fr_FR', null, "cccc d/m/Y") }}</span>
             </div>
             <div class="actions">
             	<a id="btn-presence" href="" class="button"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>JE SERAI PRESENT AUJOURD'HUI</span></a>
@@ -30,7 +30,7 @@
 
     </div>
     
-    <div class="row-bloc">
+    <div class="row-bloc row-bloc-nopaddingtop">
     	<div class="presences">
     		 <div class="presences_days">
 	    		 <a href="#">&lt; SEMAINE<br/>PRECEDENTE</a>
@@ -58,8 +58,8 @@
     	</div>
     </div>
     
-    <div class="row-bloc">
-		<a href="#" class="button button-large button-center button-green"><i class="fa fa-envelope" aria-hidden="true"></i><span>JE RECOIS AUTOMATIQUEMENT PAR EMAIL LE MENU DE LA SEMAINE</span></a>
+    <div class="row-bloc row-bloc-nopaddingtop">
+		<a href="#" id="btn-send-menu" class="button button-large button-center button-green"><i class="fa fa-envelope" aria-hidden="true"></i><span>JE RECOIS AUTOMATIQUEMENT PAR EMAIL LE MENU DE LA SEMAINE</span></a>
     </div>
 {% endblock %}
 

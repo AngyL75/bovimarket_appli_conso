@@ -27,6 +27,7 @@ ul, li {padding:0;margin:0;}
 .homeliste {background-color: #fff !important;}
 .homeliste .mm-opened .mm-page {background-color: #fff !important;}
 .pageblanche {background: #fff;padding:50px 0;}
+.page-entite{padding:0;}
 .pageblanche #close a {color:#5d3043;}
 .pageblanche #return a {color:#5d3043;}
 .pageblanche h1, .pageblanche h2, .pageblanche h3 {color:#5d3043;}
@@ -445,12 +446,12 @@ h1 {text-align: center;padding:20px 0 20px;}
 #close {right:10px !important;top:10px !important;position: absolute;height: 50px;width: 50px;display:none;}
 #close a, #return a {font-size:45px; font-weight:400;color:#fff;}
 #close:hover, #return:hover {color:#fff;opacity: 0.6}
-#return {left:50px !important;top:10px !important;position: absolute;height: 50px;width: 50px;}
+#return {left:50px !important;top:10px !important;position: absolute;height: 50px;width: 50px;z-index: 100}
 
 /* Boucher */
 .IconAction {margin:30px 0;}
 .IconAction ul, .IconAction li {list-style: none;}
-.IconAction li a {height:80px;width:100%;display: block;}
+.IconAction li a {width:100%;display: block;}
 .IconAction .IconAppeler {background: url(images/telephone.png) no-repeat center;}
 .IconAction .IconAppeler:hover {background: url(images/telephone_hover.png) no-repeat center;}
 .IconAction .IconItineraire {background: url(images/itineraire.png) no-repeat center;}
@@ -907,7 +908,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 .rowInfos
 {
 	position:relative;
-	padding:15px;
+	padding:15px 0;
 	color:#fff;
 	background-color: #381b26;
 }
@@ -918,6 +919,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 	margin:0 0 5px;
 	text-align:left;
 	padding:0;
+	color:#fff;
 }
 
 .rowInfos h1 a
@@ -1001,7 +1003,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 
 .rowDescription
 {
-	padding:15px;
+	padding:15px 0;
 }
 
 .rowDescription #Description *
@@ -1027,6 +1029,11 @@ h1 {text-align: center;padding:20px 0 20px;}
 	width:100%;
 	clear: both;
 	font-weight:normal;
+}
+
+#menu-jour .text span
+{
+	text-transform:capitalize;
 }
 
 .rowBar .text b, .date
@@ -1055,11 +1062,6 @@ h1 {text-align: center;padding:20px 0 20px;}
 {
 	border-bottom:0;
 }
- 
-#menuTable
-{
-	padding:0 15px;
-}
 
 .line-menu
 {
@@ -1068,8 +1070,8 @@ h1 {text-align: center;padding:20px 0 20px;}
 
 .line-menu .Tof, .line-menu .Tof a
 {
-	width: 25px;
-    height: 25px;
+	width:30px;
+    height:30px;
 }
 
 .line-menu p, .rowList .post p
@@ -1157,6 +1159,11 @@ h1 {text-align: center;padding:20px 0 20px;}
 	padding:15px;
 }
 
+.row-bloc-nopaddingtop
+{
+	padding-top:0;
+}
+
 .presences, .presences > div
 {
 	float:left;
@@ -1178,13 +1185,14 @@ h1 {text-align: center;padding:20px 0 20px;}
 {
 	float:left;
 	width:10%;
-	padding:15px;
+	padding:15px 0;
 	text-align:center;
 }
 
 .presences_days > div, .presences_days > a
 {
 	color:#fff;
+	text-transform:uppercase;
 }
 
 .presences_values > div
@@ -1231,6 +1239,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 .button-large
 {
 	width:100%;
+	margin:0;
 }
 
 .button-center
@@ -1258,16 +1267,6 @@ h1 {text-align: center;padding:20px 0 20px;}
 	color:#381b26;
 }
 
-.button:first-child
-{
-	margin-right:0;
-}
-
-.button:last-child
-{
-	margin-left:0;
-}
-
 .button i, .button span
 {
 	float:left;
@@ -1289,5 +1288,98 @@ h1 {text-align: center;padding:20px 0 20px;}
 	#filters
 	{
 		width:33%;
+	}
+}
+
+@media (max-width: 382px)
+{
+	#filters
+	{
+		width:33%;
+	}
+	
+	#return
+	{
+		left:30px !important
+	}
+	
+	#close a, #return a
+	{
+		line-height:50%;
+	}
+	
+	.button
+	{
+		padding:10px;
+	}
+	
+	#navs
+	{
+		height:80px;
+		line-height:80px;
+		font-size:40px;
+	}
+	
+	.rowHeader
+	{
+		height:120px;
+	}
+	
+	.avatar
+	{
+		width:75px;
+		height:75px;
+		top:-75px;
+	}
+	
+	.rowInfos h1
+	{
+		font-size:200%;
+	}
+	
+	.rowActions li
+	{
+		font-size:100%;
+	}
+	
+	.rowBar .actions
+	{
+		clear:both;
+		margin-top:5px;
+	}
+	
+	.rowBar .actions .button
+	{
+		margin:0;
+	}
+	
+	.presences
+	{
+		font-size:70%;
+	}
+	
+	.presences_days > a:last-child
+	{
+		padding-top:10px;
+	}
+	
+	.presences_days > div, .presences_days > a, .presences_values > div, .presences_values > a
+	{
+		padding:5px 0;
+	}
+	
+	#btn-send-menu
+	{
+		font-size:66%;
+	}
+	
+	/*#btn-send-menu .fa
+	{
+		display:none;
+	}*/
+	
+	#btn-send-menu span
+	{
+		line-height:200%;
 	}
 }
