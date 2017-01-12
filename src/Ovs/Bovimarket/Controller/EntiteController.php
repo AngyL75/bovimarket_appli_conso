@@ -109,9 +109,8 @@ class EntiteController extends BaseController
 			$day = substr($this->formatDate($time, '%A'), 0, 1) ;
 			array_push($presence, array('time' => $time, 'day' => date('Y-m-d', $time), 'today' => date('Y-m-d') == date('Y-m-d', $time), 'label' => $day . '<br/>' . date('j/m', $time), 'presence' => $r)) ;
 			
-			$time += (3600 * 26) ;
+			$time += (3600 * 25) ;
 		}
-		
 		
         if($entite->getActivite() == "FILIERE")
         {
