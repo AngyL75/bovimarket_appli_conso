@@ -1,14 +1,15 @@
 {% extends "base_blanche.html.twig" %}
 
 {% block bodyOpenTag %}
-    <body class="pageblanche" id="holder" style="width:769px;max-width:769px;">
+    <body class="pageblanche page-detail" id="holder">
 {% endblock %}
 
 
 {% block page_content %}
+<div class="content-detail">
     <div class="row">
         <div class="col-xs-12">
-            <h1 class="IconeMorceau">Le morceau</h1>
+            <h1 class="IconeMorceau title">Le morceau</h1>
         </div>
     </div>
     <div class="row">
@@ -54,6 +55,7 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 

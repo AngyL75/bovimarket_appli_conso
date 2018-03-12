@@ -1,71 +1,43 @@
 {% extends "base_blanche.html.twig" %}
 
-{% block page_content %}
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>Mon profil</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="row">
-                <div class="col-xs-6">
-            <h3>Commande N°{{ commande.numeroCommande }}</h3>
-            <p class="Qte">Le {{ (commande.dateCommande/1000)|round(0)|date("d/m/Y") }}</p>
-                </div>
-                <div class="col-xs-6">
-                    <p class="Prix">
-                        <a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}">{{ entite.name }}</a>
-                    </p>
-                    <p class="Qte">
-                        {{ entite.adresse.adresse }}
-                        {{ entite.adresse.codePostal }}
-                        {{ entite.adresse.ville }}
-                    </p>
-                </div>
-            </div>
+{% block bodyOpenTag %}
+<body class="pageblanche page-detail" id="holder">
+{% endblock %}
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <p class="text-center Prix">Détail de la commande</p>
-                </div>
-            </div>
-            {% for ligne in produits %}
-                {% set produit = ligne.produitObj %}
-                <div class="row ListeStyle2">
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <div class="Tof"><img src="{{ apiImagePath(produit.photo) }}" alt="..." /></div>
-                            </div>
-                            <div class="col-xs-5">
-                                <div class="Description" style="width:auto;">
-                                    <p class="Nom">{{ produit.nom }}</p>
-                                    <p class="Desc">{{ produit.accroche }}</p>
-                                </div>
-                            </div>
-                            <div class="col-xs-1">
-                                <p class="Qte">x {{ ligne.quantite }}</p>
-                            </div>
-                            <div class="col-xs-2 text-right">
-                                <p class="Prix">{{ ligne.prixUnitaire }} €</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-            <div class="row ListeStyle2">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-2 col-xs-offset-6">
-                            <h3>Total</h3>
-                        </div>
-                        <div class="col-xs-2 text-right">
-                            <p class="Prix">{{ commande.total }} €</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% block prev %}
+{% endblock %}
+{% block close %}
+{% endblock %}
+
+{% block page_content %}
+    <div class="content-detail">
+        <div class="row rowList">
+        	<div class="list_header">
+       			<a href="{{ path_for("app.commande.list") }}"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;Commande {{commande.numeroCommande}}</a>
+       		</div>
+       		<div class="list_container">
+		   		<div class="cart_date">
+	       			{{ (commande.dateCommande/1000)|round(0)|date("d F Y") }}
+	       		</div>
+		   		<div class="row rowTotal">
+			        <div class="col-xs-12">
+			        	<b>Total</b>
+			        	<span class="qty">Qte : {{commande.quantiteTotal}}</span>
+			        	<span class="price">{{ commande.total }} €</span>
+			        </div>
+			    </div>    
+			    <div class="cart_items">
+			   		{% for entite in entites %}
+			   		{% include "Commande/panier_entite.html.twig" with {'entiteInfos' : entite} %}
+				    {% else %}
+				        <h3 class="text-center">Pas de produits dans la commande</h3>
+				    {% endfor %}
+				</div>
+			</div>
+	    </div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 {% endblock %}

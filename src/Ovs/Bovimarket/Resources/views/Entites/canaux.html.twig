@@ -1,0 +1,56 @@
+<div id="produits" class="row">
+		<div class="row rowBar">
+            <div class="icon">
+            	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="text text-toggle text-toggleButton">
+            	<b>Où acheter ?</b>
+            	<span>Sélectionnez l'endroit de collecte</span>
+            </div>
+            <div class="toggle toggleButton hidden">
+            	<div>
+            		<b>Sur place</b><br/>
+            		<span>Chez le producteur</span>
+            	</div>
+            	<i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </div>
+        </div>
+     </div>
+     <div class="row rowEntiteCanaux">
+	     <div class="rowInformations col-xs-12">
+        	<i class="fa fa-question-circle" aria-hidden="true"></i>
+        	<div>
+        		<h3>Choisissez votre mode de collecte, et découvrez les produits et leurs prix qui peuvent varier en fonction du mode de collecte</h3>
+        		Un seul point de collecte pour votre commande pour cet établissement pour plus de simplicité.
+        	</div>
+        </div>
+	     {% for canal in canaux %}
+	     <div class="row rowCanal">
+            <div class="photo">
+            	<img src="https://maps.googleapis.com/maps/api/staticmap?markers={{ canal.entite.lat }},{{ canal.entite.lng }}&zoom=15&size=600x600&key=AIzaSyDB9Yn2WgZHDESQdomUfpHQK3WpU5Zj2FQ" class="img-responsive">
+            </div>
+            <div class="infos">
+            	<p><span class="km">à 58 km</span> - <span class="emplacement">{{canal.name}}</span></p>
+            	<h3>{{canal.entite.name}}</h3>
+                <p class="address">{{ canal.entite.adresseComplete }}</p>
+                <p>Lundi mardi : 14h 19h<br/>
+				Mercredi Vendredi : 14h 19h</p>
+            </div>
+            <div class="picking">
+            	<p class="timing">Immédiat</p>
+            	<p class="days">Tous les jours</p>
+            	<p class="emplacement">{{canal.name}}</p>
+            	{% if canal.entite.id == entite.id %}
+            	<a href="#" id="btn-show-products" class="button button-center"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></a>
+            	{%else %}
+            	<a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}" class="button button-center"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></a>
+            	{%endif %}
+            </div>
+	     </div>
+	    {% endfor %}
+	</div>
+	<div class="row rowEntiteProduits hidden">
+        {% for produit in produits %}
+        {% include "Entites/produit.html.twig" with {'entiteId':entite.id ,'produit' : produit, 'hasVenteDirecte': true} %}
+        {% endfor %}
+    </div>

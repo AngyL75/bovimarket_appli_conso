@@ -1,70 +1,79 @@
 {% extends "base_blanche.html.twig" %}
 
+{% block bodyOpenTag %}
+<body class="pageblanche page-detail" id="holder">
+{% endblock %}
+
 {% block prev %}
-    <div id="return"><a href="javascript:history.back()">&lt;</a></div>
+{% endblock %}
+{% block close %}
 {% endblock %}
 
 {% block page_content %}
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>Mon panier</h1>
-        </div>
-    </div>
-
-    <div class="row ListeStyle2">
-        <div class="col-xs-4">
-            <a href="#" class="IconPanierSelect">Panier</a>
-        </div>
-        <div class="col-xs-4">
-            <a href="#" class="IconRecup">Livraison</a>
-        </div>
-        <div class="col-xs-4">
-            <a href="#" class="IconPaiement">Paiement</a>
-        </div>
-    </div>
-
-    {% for ligne in panier.lignes %}
-        {% set produit = ligne.produit %}
-        <div class="row ListeStyle">
-            <div class="col-xs-4 col-sm-2">
-                <div class="Tof"><img src="{{ apiImagePath(produit.photo) }}" alt="..."/></div>
-            </div>
-            <div class="col-xs-6 col-sm-4">
-                <div class="Description" style="padding: 0px">
-                    <p class="Nom">{{ produit.nom }}</p>
-                    <p class="Desc">{{ produit.accroche }}</p>
-                </div>
-            </div>
-            <div class="col-xs-6 col-xs-offset-2 col-sm-3 col-sm-offset-0 text-right">
-                <a href="{{ path_for("app.entite.del_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}" class="btn btn-primary"><i class="glyphicon glyphicon-minus"></i></a>
-                <span class="Qte">&nbsp;&nbsp;x {{ ligne.qte }}&nbsp;&nbsp;</span>
-                <a href="{{ path_for("app.entite.add_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
-            </div>
-            <div class="col-xs-4 col-sm-2 text-right">
-                <p class="Prix">{{ ligne.prix }} €</p>
-            </div>
-            <div class="col-xs-2 col-xs-offset-2 col-sm-offset-0 col-sm-1">
-                <div class="Supprimer">
-                    <a href="{{ path_for("app.commande.remove_from_cart",{"idProduit":produit.id}) }}"></a>
-                </div>
-            </div>
-        </div>
-    {% else %}
-        <h3>Pas de produits au panier</h3>
-    {% endfor %}
-
-    <div class="row">
-        <div class="col-xs-12">
-                <p class="Prix text-right">Total {{ panier|total }} &euro;</p>
-        </div>
-    </div>
-
-    {% if panier.lignes|length >0 %}
-        <div class="row">
-            <div class="col-xs-12">
-                <a href="{{ path_for("app.commande.select_livraison") }}" class="btn btn-vert" id="Rechercher"
-                   type="submit" style="margin:30px 0;padding-top: 10px;">Valider mon panier</a>
-            </div>
-        </div>
-    {% endif %}
+    <div class="content-detail">
+        <div class="row rowList">
+        	<div class="list_header">
+       			<a href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;&nbsp;Panier {{ panier|total }} €</a>
+       			<a href="{{ path_for("app.commande.select_livraison") }}" class="next-screen"><i class="fa fa-check-circle" aria-hidden="true"></i><span><b>Récupérer</b><br/>{{panier.quantiteTotal}} produit{{panier.quantiteTotal > 1 ? 's' : ''}}<span></a>
+       		</div>
+       		<div class="list_container">
+		   		<div id="slider-panier" class="slider slider-tunnel">
+		    		<div class="slide text-center">
+		    			<span class="iconmoon icon-shopping-color_bag-09"><span class="path1"></span><span class="path2"></span></span>
+		    			<h3>Votre panier</h3>
+		    			<span>Vous pouvez commander à plusieurs endroits et tout payer en 1 fois.</span>
+		    			<span>En payant en ligne, vous allez récupérer et tout sera prêt</span>
+						<a href="#" class="next">Lire la suite...</a>
+		    		</div>
+		    		<div class="slide text-center">
+		    			<span class="iconmoon icon-maincartedecredit"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span></span>
+		    			<h3>Payez en ligne</h3>
+		    			<span>Payez en 1 fois tout le monde, dès que vous arrivez avec votre numéro de commande. Votre sac est prêt.</span>
+						<span>Les commandes payés sont préparés à l'avance au petit matin.</span>
+						<a href="#" class="next">Lire la suite...</a>
+		    		</div>
+		    	</div>
+		   		<div class="cart_items">
+			   		{% for entite in entites %}
+			   		{% include "Commande/panier_entite.html.twig" with {'entiteInfos' : entite} %}
+				    {% else %}
+				        <h3 class="text-center">Pas de produits au panier</h3>
+				    {% endfor %}
+				</div>
+				
+				{% if panier.lignes|length >0 %}
+			        <div class="row">
+			            <a href="{{ path_for("app.commande.select_livraison") }}" class="button button-green button-large button-center button-square" id="button-validate"
+			                   type="submit">Valider mon panier</a>
+			        </div>
+			    {% endif %}
+			
+			    <div class="row rowTotal">
+			        <div class="col-xs-12">
+			        	<b>Total</b>
+			        	<span class="qty">Qte : {{panier.quantiteTotal}}</span>
+			        	<span class="price">{{ panier|total }} €</span>
+			        </div>
+			    </div>    
+			</div>
+	    </div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/web/js/slick.min.js"></script>
+	<script>
+	    $('.slider').slick({slide:'.slide', dots: true, arrows: false}) ;
+	    $('.next').click(function()
+	    {
+	    	$('.slider').slick('slickNext') ;
+	    	return false ;
+	    }) ;
+	    $('.close-slider').click(function()
+	    {
+	    	$('#' + $(this).attr('data-slider')).hide() ;
+	    	return false ;
+	    }) ;
+	</script>
 {% endblock %}

@@ -1,51 +1,60 @@
 {% extends "base_blanche.html.twig" %}
 
+{% block bodyOpenTag %}
+<body class="pageblanche page-detail" id="holder">
+{% endblock %}
+
 {% block page_content %}
-    <div class="row">
+<div class="content-detail">
+    <div class="row rowHeader">
+    	
+    </div>
+    <div class="row rowInfos">
+        <div class="rowIcons">
+	        <div class="avatar">
+	            <div style="background-image:url({{ apiImagePath(user.logo) }});"></div>
+	        </div>
+	    </div>
         <div class="col-xs-12">
-            <h1>Mon profil</h1>
+        	<div class="row">
+	        	<div class="col-xs-12 col-sm-7">
+		            <h1 class="title">{{ user.firstName ~ " " ~ user.lastName }}</h1>
+	    	        <p>
+	        	        {{user.entiteFavoris|length}} favori{{user.entiteFavoris|length > 1 ? 's' : ''}} - 2 Commandes - 4 Amis
+	            	</p>
+	            </div>
+	        </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <form action="{{ path_for("app.update_profile") }}" method="post">
-                <input type="hidden" name="profile[id]" value="{{ user.id }}" />
-                <div class="form-group">
-                    <label for="username">E-Mail</label>
-                    <input type="text" class="form-control" name="profile[email]" value="{{ user.email }}">
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Nom</label>
-                    <input type="text" class="form-control" name="profile[nom]" value="{{ user.lastName }}">
-                </div>
-                <div class="form-group">
-                    <label for="firstname">Prénom</label>
-                    <input type="text" class="form-control" name="profile[prenom]" value="{{ user.firstName }}">
-                </div>
-                <div class="form-group">
-                    <label for="adresse">Adresse</label>
-                    <input type="text" class="form-control" name="profile[adresse][adresse]" value="{{ user.adresse.adresse }}">
-                </div>
-                <div class="form-group">
-                    <label for="adresse">Code Postal</label>
-                    <input type="text" class="form-control" name="profile[adresse][code_postal]" value="{{ user.adresse.codePostal }}">
-                </div>
-                <div class="form-group">
-                    <label for="adresse">Ville</label>
-                    <input type="text" class="form-control" name="profile[adresse][ville]" value="{{ user.adresse.ville }}">
-                </div>
-                <div class="form-group">
-                    <label for="tel">Téléphone</label>
-                    <input type="text" class="form-control" name="profile[telephone]" value="{{ user.telephone }}">
-                </div>
-                <div class="form-group">
-                        <label for="hideTel">Afficher le Téléphone</label>
-                        <input type="checkbox" class="form-control" name="profile[displayTelephone]" {% if not user.hideTelephone %}checked{% endif %}>
-
-                </div>
-
-                <button class="btn btn-vert" type="submit">Valider</button>
-            </form>
+    {% if morceaux|length %}
+    <div class="row rowBar">
+        <div class="icon">
+        	<i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="text text-toggle">
+        	<b>Morceau favoris</b>
+        	<span>{{morceaux|length}} morceau{{morceaux|length > 1 ? 's' : ''}}</span>
+        </div>
+        <div class="toggle" data-toggle="userInfos">
+        	<i class="fa fa-chevron-up" aria-hidden="true"></i>
         </div>
     </div>
+    <div class="row rowList">
+		{% set i = 0 %}
+		{% for morceauRec in morceaux %}
+		<div class="col-xs-6 morceau col{{ i % 2}}">
+            <a class="" href="{{ path_for("flash.categorie",{"categ":morceauRec.typeViande,"id":morceauRec.id}) }}" data-color="#ffffff">
+                <div>
+                	<img src="{{ morceauRec.photoPath }}" alt="..." />
+                </div>
+                <div>
+                    <h3>{{ morceauRec.nom }}</h3>
+                </div>
+            </a>
+        </div>
+        {% set i = i + 1 %}
+		{% endfor %}
+	</div>
+	{% endif %}
+</div>
 {% endblock %}

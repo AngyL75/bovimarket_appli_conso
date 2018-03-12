@@ -195,6 +195,17 @@ class Commande
         $this->canal = $canal;
         return $this;
     }
+    
+    public function getQuantiteTotal()
+    {
+    	$qty = 0;
+    	foreach ($this->listeProduits as $produit)
+    	{
+    		$qty += intval($produit->getQuantite()) ;
+    	}
+    	 
+    	return $qty;
+    }
 
     /**
      * @return mixed

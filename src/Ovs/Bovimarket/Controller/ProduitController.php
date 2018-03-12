@@ -65,23 +65,47 @@ class ProduitController extends BaseController
         $produit = $produitsFetcher->find($id);
 
         $panier = $this->getPanier($request);
-        $panier->add($produit);
-        $panier->setVendeur($idEntite);
+        $panier->add($produit, 1, $idEntite);
         $this->savePanier($request,$panier);
+        
+        if($request->getParam('ajax')) return 'OK' ;
 
-	    $referer = $request->getServerParams()["HTTP_REFERER"];
+	    $redirect = $request->getServerParams()["HTTP_REFERER"];
+	    
+	    $redirect = $this->get('router')->pathFor('app.commande.show_cart') ;
 
-	    return $response->withRedirect($referer);
+	    return $response->withRedirect($redirect);
     }
 
     public function showCartAction(Request $request, Response $response, $args)
     {
-        $panier = $this->getPanier($request);
+    	$entiteFetcher = $this->get('entites');
+    	$panier = $this->getPanier($request);
 
+        $produits = $panier->getLignes() ;
+        
+        $aProduitsEntities = array() ;
+        foreach($produits as $p)
+        {
+        	$entite_id = $p['id_entite'] ;
+        	
+        	if(!array_key_exists($entite_id, $aProduitsEntities))
+        	{
+        		$aProduitsEntities[$entite_id] = array() ;
+        		
+        		$aProduitsEntities[$entite_id]['infos'] = $entiteFetcher->find($entite_id); ;
+        		$aProduitsEntities[$entite_id]['items'] = array() ;
+        	}
+        	
+        	array_push($aProduitsEntities[$entite_id]['items'], $p['produit']) ;
+        }
+        
+        //var_dump($aProduitsEntities) ;
+        
         return $this->render($response,"Commande/panier.html.twig",array(
-            "panier"=>$panier,
-	        "entiteId"=>$panier->getVendeur()
-        ));
+            "panier" => $panier,
+	        "entites" => $aProduitsEntities
+        )); 
     }
 
     public function removeFromCartAction(Request $request, Response $response, $args)

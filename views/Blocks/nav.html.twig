@@ -1,27 +1,10 @@
 <ul id="navs">
     <li class="nav1"><a class="fa fa-heart" href="#favoris"></a></li>
-    <li class="nav2"><a class="fa fa-newspaper-o" href="autour.php"></a></li>
-    <li class="nav3"><a class="fa fa-search" href="#" data-color="#ffffff"></a></li>
-    <li class="nav4"><a class="fa fa-shopping-cart" href="{{ path_for("app.commande.list") }}" data-color="#ffffff"></a></li>
-    <li class="nav5"><a class="fa fa-user" href="{{ path_for("app.profile") }}" data-color="#ffffff"></a></li>
+    <li class="nav2"><a class="fa fa-comments" href="{{ path_for("app.billets.list") }}"></a></li>
+    <li class="nav3"><a class="fa fa-search" href="#recherche"></a></li>
+    <li class="nav4"><a class="fa fa-shopping-cart" href="{{ path_for("app.commande.show_cart") }}"></a></li>
+    <li class="nav5"><a class="fa fa-user" href="#compte"></a></li>
 </ul>
-
-<nav id="menu">
-    <ul>
-        <li><h2>Menu</h2></li>
-        <li>
-            <a class="link" href="carte.php" data-color="#fff">
-                <span class="Chiffre">01</span>
-                <p>Bouchers</p>
-            </a>
-        </li>
-        <li>
-            <a class="link" href="carte2.php" data-color="#fff">
-                <span class="Chiffre">02</span>
-                <p>Mes restaurants</p></a>
-        </li>
-    </ul>
-</nav>
 
 <nav class="favoris" id="favoris">
     <ul>
@@ -41,28 +24,28 @@
     </ul>
 </nav>
 
-<nav id="amis">
-    <ul>
-        <li><h2>Amis</h2></li>
-        <li>
-            <a class="link" href="ami.php" data-color="#381b26">
-                <div class="Tof"><img src="/web/images/perso1.png" alt="..." /></div>
-                <div class="Description">
-                    <p class="Nom" style="color:#fff !important;">Jean Bidule</p>
-                </div>
-            </a>
-        </li>
-    </ul>
-    <button class="btn btn-vert" id="Ajouter">Ajouter un ami</button>
-</nav>
-
 {% if isLogged %}
-<nav id="mon-compte">
-    <ul>
-        <li><h2>Mon Compte</h2></li>
-        <li><a class="link" href="{{ path_for("app.commande.list") }}" data-color="#381b26">Mes Commandes</a></li>
-        <li><a class="link" href="{{ path_for("app.profile") }}" data-color="#381b26">Mon profil</a></li>
-        <li><a class="link" href="{{ path_for("app.logout") }}" data-color="#381b26">Se déconnecter</a></li>
+<div id="menu-compte" class="sub-menu">
+	<div class="list_header">
+		<a href="#" id="back-menu-compte"><i class="fa fa-chevron-left" aria-hidden="true"></i> Mon compte</a>
+	</div>
+    <ul class="liste_menu">
+        <li>
+        <a class="link" href="{{ path_for("app.commande.recup") }}">
+        	8 produits a récupérer<br/>
+        	<span>chez 4 professionnels</span>
+        </a>
+        </li>
+        <li>
+        <a class="link" href="{{ path_for("app.commande.list") }}">
+        	Mes Commandes<br/>
+        	<span>3 commandes</span>
+        </a>
+        </li>
+        <li><a class="link" href="{{ path_for("app.user.profile", {"idUser":"me"}) }}">Mon profil</a></li>
+        <li><a class="link" href="{{ path_for("app.profile") }}">Mes informations</a></li>
+        <li><a class="link" href="{{ path_for("app.user.friends") }}">Mes amis</a></li>
+        <li><a class="link" href="{{ path_for("app.logout") }}">Se déconnecter</a></li>
     </ul>
-</nav>
+</div>
 {% endif %}

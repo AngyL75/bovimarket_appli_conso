@@ -87,7 +87,7 @@ class EntiteController extends BaseController
         /** @var MenuFetcherService $menuFetcher */
         $menuFetcher = $this->get('menus');
         $menuFetcher->setEndpointParams(array('entiteId' => $args['id']));
-        $menus = $menuFetcher->findAll();
+        //$menus = $menuFetcher->findAll();
 
         $template = 'Entites/detail.html.twig';
         if ($entite->getActivite() == 'RESTAURANT'){
@@ -95,8 +95,56 @@ class EntiteController extends BaseController
         }elseif ($entite->getActivite() == 'RESTAURATION_COLLECTIVE'){
 	        $template = 'Entites/detail_restaurant_collectif.html.twig';
         }
-        $certifs = $this->getCertifications($entite);
+        
+        
+        $aFiltersMap = array() ;
+        
+        $certifs = array() ;
+        $logos = array() ;
+        
+        if($entite->getActivite() == 'RESTAURATION_COLLECTIVE')
+        {
+        	array_push($logos, array('url' => '/entite/region', 'img' => '/web/images/certif_03.png')) ;
+        	array_push($logos, array('url' => '', 'img' => '/web/images/RegionAssiete.png')) ;
+        	array_push($logos, array('url' => '', 'img' => '/web/images/restoCollective.png')) ;
+        }
+        
+        if($entite->getActivite() == 'FILIERE')
+        {
+        	array_push($logos, array('url' => '/entite/570f67c5e4b046571041e3ba', 'img' => '/web/images/certif_01.png')) ;
+        	array_push($logos, array('url' => '/entite/570f67c5e4b046571041e3ba', 'img' => '/web/images/certif_02.png')) ;
+        	array_push($logos, array('url' => '/entite/region', 'img' => '/web/images/certif_03.png')) ;
+        	
+        	if($entite->getId() == "588b46d1e4b0f47eccd6a6af")
+        	{
+        		array_push($aFiltersMap, array('name' => 'Producteurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+        		array_push($aFiltersMap, array('name' => 'Coopérative', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+        		array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
+        		array_push($aFiltersMap, array('name' => 'Primeurs', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
+        		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
+        	}else{
+	        	if($entite->getId() == "588b46d1e4b0f47eccd6a6af")
+	        	{
+	        		array_push($aFiltersMap, array('name' => 'Eleveurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+	        		array_push($aFiltersMap, array('name' => 'Laitiers/Affineurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+	        		array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
+	        		array_push($aFiltersMap, array('name' => 'Fromagers', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
+	        		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
+	        	}else{
+	        		array_push($aFiltersMap, array('name' => 'Eleveurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+	        		array_push($aFiltersMap, array('name' => 'Abattoir', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ABATTOIR')) ;
+	        		array_push($aFiltersMap, array('name' => 'Négociant', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'NEGOCIANT')) ;
+	        		array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
+	        		array_push($aFiltersMap, array('name' => 'Bouchers', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'BOUCHER')) ;
+	        		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
+	        	}
+        	}
+        }else{
+        	$certifs = $this->getCertifications($entite);
+        }
 
+        
+        //Presence
         $presence = array() ;
         
         $day = date('w');
@@ -116,7 +164,48 @@ class EntiteController extends BaseController
         {
         	$membres=$this->getMembres($entite);
         }
-
+        
+        // Produits
+        $produits = array() ;
+        $canaux = array() ;
+        
+        if($entite->getActivite() == 'BOUCHER' || $entite->getActivite() == 'RESTAURANT')
+        {
+        	$produitsFetcher = $this->get("produits");
+        	$produitsFetcher->setEndpointParams(array("entiteId" => $args["id"]));
+        
+        	$produits = $produitsFetcher->findAll();
+        }
+        
+        if($entite->getActivite() == 'ELEVEUR')
+        {
+        	$canauxFetch = $this->get("canaux");
+        	$aCanaux = $canauxFetch->findBy(array("entiteId"=>  $args["id"]));
+        	
+        	/*var_dump($aCanaux) ;
+        	exit ;
+        	*/
+        	
+        	foreach($aCanaux as $c)
+        	{
+        		$entite_id = $c->getEntiteId() ;
+        		$type = $c->getTypeCanal() ;
+        		if($entite_id != $args["id"])
+        		{
+        			$entite_data = $entiteFetcher->find($entite_id);
+        		}else{
+        			$entite_data = $entite ;
+        		}
+        		
+        		array_push($canaux, array('code' => $type['code'], 'name' => $type['libelle'], 'entite' => $entite_data)) ;
+        	}
+        	
+        	$produitsFetcher = $this->get("produits");
+        	$produitsFetcher->setEndpointParams(array("entiteId" => $args["id"]));
+        	
+        	$produits = $produitsFetcher->findAll();
+        }
+        
         /** @var BilletFetcherService $billetFetcher */
         $billetFetcher = $this->get('billets');
         $billetFetcher->setEndpointParams(array('idEntite' => $args['id']));
@@ -129,10 +218,21 @@ class EntiteController extends BaseController
             'menus' => $menus,
         	'presence' => $presence,
             'certifs' => $certifs,
+        	'canaux' => $canaux,
+            'produits' => $produits,
             'blog' => $billets,
             'presse' => $presse,
-	        'membres'=>$membres
+	        'membres'=>$membres,
+        	'logos' => $logos,
+        	'filters_map' => $aFiltersMap
         ));
+    }
+    
+    public function showDetailRegionAction(Request $request, Response $response, $args)
+    {
+    	$template = 'Entites/detail_region.html.twig';
+    	
+    	return $this->render($response, $template, array());
     }
 
     public function getMenuAction(Request $request, Response $response, $args)
@@ -150,7 +250,7 @@ class EntiteController extends BaseController
         $menus = array();
 
         if ($entite->getActivite() == 'RESTAURATION_COLLECTIVE') {
-            $menus = $menuFetcher->getPlanning($idEntite, $date);
+            //$menus = $menuFetcher->getPlanning($idEntite, $date);
         } elseif ($entite->getActivite() == 'RESTAURANT') {
             $menuFetcher->setEndpointParams(array('entiteId' => $idEntite));
             $menus = $menuFetcher->findAll();

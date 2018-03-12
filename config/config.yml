@@ -1,11 +1,12 @@
 settings:
     session:
         lifetime: 7200
-    debug: false
+    debug: true
+    displayErrorDetails: true
     api:
         oauthLogin: "mobile"
         oauthSecret: "7d5cc9b6-1ed8-49e0-a56a-ecfb0a2f5f69"
-        baseURI: "http://pro.bovimarket.com:8080/bovimarket/api/"
+        baseURI: "https://pro.bovimarket.com/bovimarket/api/"
         token: "1e8aed3e-9b5e-4c22-8971-dd3b57b5b6ba"
     displayErrorDetails: false
     logger:

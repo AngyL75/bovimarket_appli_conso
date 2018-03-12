@@ -139,8 +139,8 @@ class CommandeProduit
     {
         return $this->prixUnitaire;
     }
-
-    /**
+    
+     /**
      * @param mixed $prixUnitaire
      * @return CommandeProduit
      */
@@ -150,5 +150,18 @@ class CommandeProduit
         return $this;
     }
 
-
+    public function getPrix()
+    {
+    	return $this->prixUnitaire;
+    }
+    
+    public function getPhoto()
+    {
+    	 return $this->getProduitObj()->getPhoto() ;
+    }
+    
+    public function getAccroche()
+    {
+    	return $this->getProduitObj()->getAccroche() ;
+    }
 }

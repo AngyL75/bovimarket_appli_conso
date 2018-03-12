@@ -63,6 +63,7 @@ class Api extends Client {
 
 		$this->logger->addDebug( "REQ : [" . $method . "] " . $baseURI . $uri . " - " . json_encode( $options ) );
 		$this->logger->addDebug( "Headers : " . $headers );
+		$res = null ;
 		try {
 			$res = parent::request( $method, $uri, $options );
 		} catch ( RequestException $ex ) {
@@ -78,7 +79,7 @@ class Api extends Client {
 				$this->logger->addDebug( (string) $ex->getResponse()->getBody() );
 			}
 			$this->logger->addError( "Error : " . $ex->getMessage() . "\r\n" . $ex->getTraceAsString() );
-			throw $ex;
+			//throw $ex;
 		}
 
 		return $res;

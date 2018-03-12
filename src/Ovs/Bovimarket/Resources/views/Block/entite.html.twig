@@ -1,0 +1,18 @@
+<div class="row rowHeader">
+	<a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}">
+	{% if entite.photoEquipe %}
+    	<img src="{{ apiImagePath(entite.photoEquipe) }}" />
+    {% else %}
+		<img src="https://maps.googleapis.com/maps/api/staticmap?markers={{ entite.lat }},{{ entite.lng }}&zoom=15&size=640x200&key=AIzaSyDB9Yn2WgZHDESQdomUfpHQK3WpU5Zj2FQ" />
+	{% endif %}
+	</a>
+</div>
+
+<div class="row rowInfos">
+    <div class="rowIcons">
+	    <div class="avatar">
+	       <div style="background-image:url({{ apiImagePath(entite.logo) }});"></div>
+	    </div>
+	</div>
+    {% include "Block/entite_infos.html.twig" with {'entite' : entite} %}
+</div>

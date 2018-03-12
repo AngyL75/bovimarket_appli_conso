@@ -19,10 +19,13 @@ use Ovs\Bovimarket\Services\API\BilletFetcherService;
 use Ovs\Bovimarket\Services\API\CanauxFetcherService;
 use Ovs\Bovimarket\Services\API\CertificationFetcherService;
 use Ovs\Bovimarket\Services\API\CommandeFetcherService;
-use Ovs\Bovimarket\Services\Api\EntiteFetcherService;
-use Ovs\Bovimarket\Services\API\MenuFetcherService;
 use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\Bovimarket\Services\API\UtilisateurFetcherService;
+use Ovs\Bovimarket\Services\API\CommonFetcherService;
+use Aura\Session\Exception;
+use Ovs\Bovimarket\Services\API\MenuFetcherService;
+use Ovs\Bovimarket\Services\API\EntiteFetcherService;
+use Ovs\Bovimarket\Services\API\ActivitesFetcherService;
 
 class UserManager
 {
@@ -54,12 +57,17 @@ class UserManager
             /** @var Utilisateur $loggedUser */
             $loggedUser = $session->get(Session::loggedUserSessionKey);
             $login = $loggedUser->getEmail();
-            $password= $loggedUser->getPassword();
+            if($loggedUser->getPassword()) $password= $loggedUser->getPassword();
         }elseif($login == null || $password == null){
-            $login = "mobile";
-            $password="mobile";
+            /*$login = "mobile";
+            $password="mobile";*/
         }
 
+        if(!$login || !$password) return false ;
+        
+        /*debug_print_backtrace() ;
+        exit ;
+        */
         $auth = base64_encode($this->oauthClientLogin . ":" . $this->oauthClientSecret);
 
         try {
@@ -113,6 +121,7 @@ class UserManager
             $container["logger"],
             $container["debugBar"]
         );
+        $container["activites"] = new ActivitesFetcherService($container["api"], $logger);
         $container["entites"] = new EntiteFetcherService($container["api"], $logger);
         $container["menus"] = new MenuFetcherService($container["api"], $logger);
         $container["produits"] = new ProduitFetcherService($container["api"], $logger);
@@ -121,7 +130,8 @@ class UserManager
         $container["utilisateurs"] = new UtilisateurFetcherService($container["api"], $logger);
         $container["commandes"] = new CommandeFetcherService($container["api"], $logger);
 	    $container["billets"] = new BilletFetcherService($container["api"],$logger);
-
+	    $container["common"] = new CommonFetcherService($container["api"],$logger);
+	    
 	    $this->container = $container;
 	    $this->api = $container["api"];
     }

@@ -1,0 +1,24 @@
+<div class="row rowProduit">
+	<div class="photo">
+	   <img src="{{ apiImagePath(produit.photo) }}" class="img-responsive" />
+	</div>
+	 <div class="infos">
+	    <h3>{{ produit.nom }}</h3>
+		<p>{{ produit.accroche }}</p>
+	</div>
+	<div class="col-xs-6 col-xs-offset-2 col-sm-3 col-sm-offset-0 text-right  hidden">
+	    <a href="{{ path_for("app.entite.del_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}" class="btn btn-primary"><i class="glyphicon glyphicon-minus"></i></a>
+	    <span class="Qte">&nbsp;&nbsp;x {{ ligne.qte }}&nbsp;&nbsp;</span>
+	    <a href="{{ path_for("app.entite.add_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
+	</div>
+	<div class="pricing">
+	    <p class="qty"><span>Qte</span><span>{{ produit.quantite }}</span></p>
+	    <p class="price">{{ produit.prix }} €</p>
+	    <p class="pricekg">4,5€ / kg</p>
+	</div>
+	<div class="col-xs-2 col-xs-offset-2 col-sm-offset-0 col-sm-1 hidden">
+	    <div class="Supprimer">
+	        <a href="{{ path_for("app.commande.remove_from_cart",{"idProduit":produit.id}) }}"></a>
+	    </div>
+	</div>
+</div>

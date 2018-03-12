@@ -1,0 +1,76 @@
+{% extends "base_blanche.html.twig" %}
+
+{% block bodyOpenTag %}
+<body class="pageblanche page-detail" id="holder">
+{% endblock %}
+
+{% block prev %}
+{% endblock %}
+{% block close %}
+{% endblock %}
+
+{% block page_content %}
+<div class="content-detail">
+    <div class="row rowList">
+    	<div class="list_header">
+   			<a href="{{ path_for("app.commande.list") }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> A récupérer</a>
+   		</div>
+   		<div class="list_container">
+	   		<div id="slider-livraison" class="slider slider-tunnel">
+	    		<div class="slide text-center">
+	    			<span class="iconmoon icon-shopping-color_bag-09"><span class="path1"></span><span class="path2"></span></span>
+	    			<h3>A récupérer</h3>
+	    			<span><b>Votre planning de récupération de toutes vos commandes</b> pour vous organiser facilement.</span>
+	    			<span>Vous pouvez voir toutes les récupérations passés en remontant</span>
+					<a href="#" class="next close-slider" data-slider="slider-livraison">Merci, j'ai compris</a>
+	    		</div>
+	    	</div>
+	   		<div class="cart_items">
+		   		{% for date in dates %}
+		   		<div class="row rowBar rowDateProduits">
+					<div class="icon">
+						 <span class="fa-stack">
+						  <i class="fa fa-calendar-o fa-stack-2x"></i>
+						  <i class="fa fa-flash fa-stack-1x"></i>
+						</span>
+					</div>
+					<div class="text text-toggle">
+					    <b>{{date.label}}</b>
+		            	<span>{{ date.entites|length }} produits{{ date.entites|length > 1 ? 's' : ''}}</span>
+					</div>
+					<div class="toggle" data-toggle="rowDateProduit{{date.id}}">
+				    	<i class="fa fa-chevron-up" aria-hidden="true"></i>
+				    </div>
+				</div>
+				<div id="rowDateProduit{{date.id}}">
+		   		{% for entite in date.entites %}
+		   		{% include "Commande/panier_entite_date.html.twig" with {'entiteInfos' : entite} %}
+		   		{% endfor %}
+		   		</div>
+			    {% else %}
+			        <h3 class="text-center">Pas de produits au panier</h3>
+			    {% endfor %}
+			</div>
+		</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/web/js/slick.min.js"></script>
+	<script>
+	    $('.slider').slick({slide:'.slide', dots: true, arrows: false}) ;
+	    $('.next').click(function()
+	    {
+	    	$('.slider').slick('slickNext') ;
+	    	return false ;
+	    }) ;
+	    $('.close-slider').click(function()
+	    {
+	    	$('#' + $(this).attr('data-slider')).hide() ;
+	    	return false ;
+	    }) ;
+	</script>
+{% endblock %}

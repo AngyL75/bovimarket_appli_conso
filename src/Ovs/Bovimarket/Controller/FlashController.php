@@ -56,18 +56,28 @@ class FlashController extends BaseController {
 
 		$idCss= "morceau" . $morceau->getId();
 
-		if ( isset( $args["idProducteur"] ) && $args["idProducteur"] ) {
+		if ( isset( $args["idProducteur"] ) && $args["idProducteur"] )
+		{
 			$idProducteur = $args["idProducteur"];
 			$this->getSession( $request )->set( Session::idProducteur, $idProducteur );
 		} else {
 			$idProducteur = $this->getSession( $request )->get( Session::idProducteur, false );
 		}
-
+		
+		$entite = null ;
+		if($idProducteur)
+		{
+			$entiteFetcher = $this->get('entites');
+			/** @var Entite $entite */
+			$entite = $entiteFetcher->find($idProducteur);
+		}
+		
 		return $this->render( $response, "QRCode/viande.html.twig", array(
 				"morceau"      => $morceau,
 				"cuissons"     => $cuissons,
 				"recettes"     => $recettes,
 				"idProducteur" => $idProducteur,
+				"fournisseur"  => $entite,
 				"idCss" => $idCss
 			)
 		);
@@ -117,7 +127,8 @@ class FlashController extends BaseController {
 
 	}
 
-	public function detailMorceauAction( Request $request, Response $response, $args ) {
+	public function detailMorceauAction( Request $request, Response $response, $args )
+	{
 		$typeViande = $args["categ"];
 		$idMorceau  = $args["idMorceau"];
 		$morceauStr = false;

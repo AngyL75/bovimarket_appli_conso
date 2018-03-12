@@ -25,39 +25,78 @@ use Ovs\Bovimarket\Services\API\ProduitFetcherService;
 use Ovs\SlimUtils\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Ovs\Bovimarket\Entities\Api\Ovs\Bovimarket\Entities\Api;
 
 class ConsoController extends BaseController
 {
     public function selectLivraisonAction(Request $request,Response $response, $args)
     {
-        if($this->getPanier($request)->isEmpty()){
+        if($this->getPanier($request)->isEmpty())
+        {
             return $this->redirectToRoute($response,"app.commande.show_cart");
         }
         /** @var CanauxFetcherService $canauxFetch */
         $canauxFetch = $this->get("canaux");
-
-        $canaux = $canauxFetch->findBy(array("entiteId"=>$this->getPanier($request)->getVendeur()));
-
-        return $this->render($response,"Commande/livraison.html.twig",array("canaux"=>$canaux));
+        $entiteFetcher = $this->get('entites');
+        
+        $panier = $this->getPanier($request) ;
+        $produits = $panier->getLignes() ;
+        
+        $aCanaux = array() ;
+        foreach($produits as $p)
+        {
+        	$entite_id = $p['id_entite'] ;
+        
+        	$canaux = $canauxFetch->findBy(array("entiteId"=> $entite_id));
+        	
+        	array_push($aCanaux, $canaux) ;
+        }
+        
+        $produits = $panier->getLignes() ;
+        
+        $aProduitsEntities = array() ;
+        foreach($produits as $p)
+        {
+        	$entite_id = $p['id_entite'] ;
+        	 
+        	if(!array_key_exists($entite_id, $aProduitsEntities))
+        	{
+        		$aProduitsEntities[$entite_id] = array() ;
+        
+        		$aProduitsEntities[$entite_id]['infos'] = $entiteFetcher->find($entite_id); ;
+        		$aProduitsEntities[$entite_id]['items'] = array() ;
+        	}
+        	 
+        	array_push($aProduitsEntities[$entite_id]['items'], $p['produit']) ;
+        }
+        
+        $aDates = array() ;
+        $aDates[0] = array('id' => 1, 'label' => 'Dès maintenant', 'entites' => $aProduitsEntities) ;
+        
+        /*var_dump($aCanaux) ;
+        exit ;
+*/
+        return $this->render($response,"Commande/livraison.html.twig", array("panier" => $panier, "dates" => $aDates));
     }
 
     public function saveCanalAction(Request $request, Response $response,$args)
     {
-        if(!$request->isMethod("POST")){
+        if(!$request->isMethod("POST"))
+        {
             return $this->redirectToRoute($response,"app.commande.show_cart");
         }
 
-
-        $canalChoisi = $request->getParsedBodyParam("canal");
-        if($canalChoisi == null){
+        /*$canalChoisi = $request->getParsedBodyParam("canal");
+        if($canalChoisi == null)
+        {
             return $this->redirectToRoute($response,"app.commande.select_livraison");
-        }
+        }*/
 
         $panier = $this->getPanier($request);
-        $panier->setCanal($canalChoisi);
+        //$panier->setCanal($canalChoisi);
         $this->savePanier($request,$panier);
 
-        return $this->redirectToRoute($response,"app.commande.select_paiement");
+        return $this->redirectToRoute($response, "app.commande.do_paiement");
     }
 
     public function choixPaiementAction(Request $request, Response $response, $args)
@@ -113,11 +152,13 @@ class ConsoController extends BaseController
 
     public function saveCommandeAction(Request $request, Response $response, $args)
     {
-        if($retour = $this->isSecure($request,$response)){
+        if($retour = $this->isSecure($request,$response))
+        {
             return $retour;
         }
 
-        if($request->isPost()) {
+        if($request->isPost())
+        {
             $panier = $this->getPanier($request);
             $cmd = $this->panierToCommande($panier, $this->getUser($request));
 
@@ -157,7 +198,7 @@ class ConsoController extends BaseController
         $canalCmd->setLieuCollecte($canal->getLieu());
 
         $cmd = new Commande();
-        $cmd->setEntiteId($panier->getVendeur());
+        //$cmd->setEntiteId($panier->getVendeur());
         $cmd->setCanal($canalCmd);
         $cmd->setClientId($user->getId());
         $cmd->setDateCommande(date("Y-m-d"));
@@ -174,7 +215,7 @@ class ConsoController extends BaseController
             $produit->setPrixUnitaire($prod->getPrix());
             $produit->setQuantite($ligne["qte"]);
             $produit->setTva(0);
-             $listProduits->add($produit);
+            $listProduits->add($produit);
         }
 
 
@@ -195,10 +236,45 @@ class ConsoController extends BaseController
         $json= (string)$json->getBody();
         /** @var Collection $commandes */
         $commandes = $commandeApi->unserialize($json);
-
+        
+        $aCommandes = $commandes->toArray() ;
+        
+        $aCommandes = array_reverse($aCommandes) ;
+        
+        /*array_unshift($aCommandes, array('id' => -1, 'numeroCommande' => '123AB', 'dateCommande' => 1487688792000, 'total' => 16)) ;
+        array_unshift($aCommandes, array('id' => -2, 'numeroCommande' => '457XV', 'dateCommande' => 1485655792000, 'total' => 140)) ;
+        */
         return $this->render($response,"User/commandes.html.twig",array(
-            "commandes"=>$commandes->toArray()
+            "commandes"=> $aCommandes
         ));
+    }
+    
+    public function recupCommandesAction(Request $request, Response $response, $args)
+    {
+    	$entiteFetcher = $this->get('entites');
+    	
+    	$panier = $this->getPanier($request);
+    	$produits = $panier->getLignes() ;
+        
+        $aProduitsEntities = array() ;
+        foreach($produits as $p)
+        {
+        	$entite_id = $p['id_entite'] ;
+        	 
+        	if(!array_key_exists($entite_id, $aProduitsEntities))
+        	{
+        		$aProduitsEntities[$entite_id] = array() ;
+        
+        		$aProduitsEntities[$entite_id]['infos'] = $entiteFetcher->find($entite_id); ;
+        		$aProduitsEntities[$entite_id]['items'] = array() ;
+        	}
+        	 
+        	array_push($aProduitsEntities[$entite_id]['items'], $p['produit']) ;
+        }
+        
+        $aDates = array() ;
+        $aDates[0] = array('id' => 1, 'label' => 'Dès maintenant', 'entites' => $aProduitsEntities) ;
+    	return $this->render($response,"Commande/recuperation.html.twig", array("panier" => $panier, "dates" => $aDates));
     }
 
     public function showCommandeAction(Request $request, Response $response, $args)
@@ -209,28 +285,44 @@ class ConsoController extends BaseController
         $entiteApi = $this->get("entites");
         /** @var ProduitFetcherService $produitApi */
         $produitApi=$this->get("produits");
-
+        
+        $commande = new Commande() ;
+        //$commande->setNumeroCommande($args["id"] == -1 ? '123AB' : '457XV') ;
+        //$commande->setDateCommande($args["id"] == -1 ? 1487688792000 : 1485655792000) ;
 
         $commande = $commandeApi->getApi()->get("commandes/".$args["id"]);
         $commande = (string)$commande->getBody();
-        /** @var Commande $commande */
         $commande = $commandeApi->unserialize($commande);
-        $entiteId = $commande->getEntiteId();
-        $entite = $entiteApi->find($entiteId);
-
-        $produitApi->setEndpointParams(array("entiteId"=>$entiteId));
+        $entite_id = $commande->getEntiteId();
+        //$entite = $entiteApi->find($entiteId);
+        
+        $produitApi->setEndpointParams(array("entiteId"=>$entite_id));
         $produitsEntite = $produitApi->findAll();
         $produits = $commande->getListeProduits();
-        /** @var CommandeProduit $prod */
-        foreach($produits as $prod){
+        
+        foreach($produits as $prod)
+        {
             $produit = $produitsEntite->find($prod->getId());
             $prod->setProduitObj($produit);
         }
-
+        
+        $aProduitsEntities = array() ;
+        foreach($produits as $p)
+        {
+        	if(!array_key_exists($entite_id, $aProduitsEntities))
+        	{
+        		$aProduitsEntities[$entite_id] = array() ;
+        
+        		$aProduitsEntities[$entite_id]['infos'] = $entiteApi->find($entite_id); ;
+        		$aProduitsEntities[$entite_id]['items'] = array() ;
+        	}
+        
+        	array_push($aProduitsEntities[$entite_id]['items'], $p) ;
+        }
+        
         return $this->render($response,"Commande/detail.html.twig",array(
             "commande"=>$commande,
-            "entite"=>$entite,
-            "produits"=>$produits
+        	"entites"=>$aProduitsEntities
         ));
     }
 }

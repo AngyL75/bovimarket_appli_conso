@@ -6,7 +6,7 @@
  * Time: 12:25
  */
 
-namespace Ovs\Bovimarket\Services\Api;
+namespace Ovs\Bovimarket\Services\API;
 
 
 use Ovs\Bovimarket\Entities\Api\Entite;
@@ -18,6 +18,14 @@ class EntiteFetcherService extends ApiFetcher
     {
         return "entites/";
     }
+    
+    public function find($id)
+    {
+    	$res = $this->api->get('entites/' . $id) ;
+    	$body = (string)$res->getBody();
+    	
+    	return $this->unserialize($body);
+    }
 
     public function getClass()
     {
@@ -26,7 +34,12 @@ class EntiteFetcherService extends ApiFetcher
 
     public function findAll()
     {
-        return parent::findBy(array("activites"=>"ELEVEUR,BOUCHER,RESTAURANT,RESTAURATION_COLLECTIVE,ABATTOIR,NEGOCIANT,FILIERE,GROSSISTE,ASSOCIATION,DISTRIBUTEUR"));
+    	$res = $this->api->get('entites?codePostal=\\\\*') ;
+    	$body = (string)$res->getBody();
+    	
+    	return $this->unserialize($body);
+    	
+    	//return parent::findBy(array("activites"=>"ELEVEUR,BOUCHER,RESTAURANT,RESTAURATION_COLLECTIVE,ABATTOIR,NEGOCIANT,FILIERE,GROSSISTE,ASSOCIATION,DISTRIBUTEUR"));
     }
 
 

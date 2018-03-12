@@ -58,7 +58,7 @@ class Utilisateur
     protected $adresse;
     /**
      * @var
-     * @Serializer\Type("string")
+     * @Serializer\Type("array")
      * @Serializer\SerializedName("entiteFavoris")
      */
     protected $entiteFavoris;
@@ -79,6 +79,12 @@ class Utilisateur
      * @Serializer\Type("string")
      */
     protected $password;
+    /**
+     * @var
+     * @Serializer\Type("array")
+     * @Serializer\SerializedName("allergies")
+     */
+    protected $allergies;
 
     /**
      * Utilisateur constructor.
@@ -304,6 +310,36 @@ class Utilisateur
         $this->password = $password;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAllergies()
+    {
+    	return $this->allergies;
+    }
+    
+    public function getAllergiesId()
+    {
+    	$aIds = array() ;
+    	
+    	if(count($this->allergies))
+    	{
+    		foreach($this->allergies as $a)
+    		{
+    			array_push($aIds, $a['id']) ;
+    		}
+    	}
+    	
+    	return $aIds ;
+    }
+    
+    /**
+     * @param mixed $allergies
+     */
+    public function setAllergies($allergies)
+    {
+    	$this->allergies = $allergies;
+    }
 
 
     public static function fromForm($formValues)
@@ -312,7 +348,10 @@ class Utilisateur
         $user->setFirstName($formValues["prenom"]);
         $user->setLastName($formValues["nom"]);
         $user->setEmail($formValues["email"]);
-        $user->setPassword($formValues["password"]);
+        if(array_key_exists('password', $formValues) && $formValues["password"])
+        {
+        	$user->setPassword($formValues["password"]);
+        }
 
         if(isset($formValues["id"])){
             $user->setId($formValues["id"]);
@@ -323,8 +362,14 @@ class Utilisateur
         }else{
             $user->setHideTelephone(true);
         }
-
-        if(isset($formValues["adresse"])) {
+        
+        /*if(isset($formValues['allergies']))
+        {
+        	$user->setAllergies($formValues['allergies']) ;
+        }*/
+        
+        if(isset($formValues["adresse"]))
+        {
             $formValues=$formValues["adresse"];
             $adresse = new Adresse();
             $adresse->setAdresse($formValues["adresse"]);
@@ -332,7 +377,7 @@ class Utilisateur
             $adresse->setVille($formValues["ville"]);
             $user->setAdresse($adresse);
         }
+        
         return $user;
     }
-
 }

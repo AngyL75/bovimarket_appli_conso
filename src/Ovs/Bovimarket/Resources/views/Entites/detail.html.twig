@@ -5,27 +5,30 @@
     <div class="content-detail">
     <div class="row rowHeader">
     	<div class="slider">
-    		{% if entite.id == "56a750a01efa456c7c7c5c2c" %}
-	        <div class="slide">
-	        	<img src="/web/images/lafayette_large.jpg" />
-	        </div>
+    		{% if entite.photoEquipe %}
+	        <div class="slide" style="background-image:url({{ apiImagePath(entite.photoEquipe) }});"></div>
 	        {% endif %}
-	        <div class="slide">
-    			<img src="https://maps.googleapis.com/maps/api/staticmap?markers={{ entite.lat }},{{ entite.lng }}&zoom=15&size=640x200&key=AIzaSyDB9Yn2WgZHDESQdomUfpHQK3WpU5Zj2FQ" />
-    		</div>
+	        <div class="slide" style="background-image:url('https://maps.googleapis.com/maps/api/staticmap?markers={{ entite.lat }},{{ entite.lng }}&zoom=15&size=640x200&key=AIzaSyDB9Yn2WgZHDESQdomUfpHQK3WpU5Zj2FQ');"></div>
     	</div>
     </div>
     
     <div class="row rowInfos">
-        <div class="avatar">
-            <div>
-            	<img src="{{ apiImagePath(entite.logo) }}" alt="..." style="background: white;"/>
-            </div>
-        </div>
+        <div class="rowIcons">
+	        <div class="avatar">
+	            <div style="background-image:url({{ apiImagePath(entite.logo) }});"></div>
+	        </div>
+	        <div class="iconType">
+	            <img src="{{ entite.getIcon(false) }}" />
+	        </div>
+	    </div>
         <div class="col-xs-12">
         	<div class="row">
 	        	<div class="col-xs-12 col-sm-7">
-		            <h1>{{ entite.name }} <a href="#certifs" class="fa fa-certificate"><span>{{ certifs|length }}</span></a></h1>
+		            <h1 class="title">{{ entite.name }} 
+		            {% if certifs|length %}
+		            <a href="#certifs" class="fa fa-certificate"><span>{{ certifs|length }}</span></a>
+		            {% endif %}
+		            </h1>
 	    	        <p>
 	        	        <a style="color: #ffffff"
 	            	       href="{{ path_for("map.homepage") }}?center={{ entite.lat }},{{ entite.lng }}">{{ entite.adresseComplete }}</a>
@@ -35,10 +38,13 @@
 	            	</p>
 	            </div>
 	            <div class="col-xs-12 col-sm-5">
-	            	<a href="#blog" class="button button-green"><i class="fa fa-comment" aria-hidden="true"></i></a>
 	            	{% if entite.activite == "RESTAURATION_COLLECTIVE" %}
 	            	<a href="#menu-jour" class="button button-green"><i class="fa fa-calendar-o" aria-hidden="true"></i><span>Voir Menu</span></a>
 	            	{% endif %}
+	            	{% if entite.activite == "RESTAURANT" %}
+	            	<a href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}" class="button button-green"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Réserver</span></a>
+	            	{% endif %}
+	            	<a href="#blog" class="button button-green"><i class="fa fa-comments" aria-hidden="true"></i></a>
 	            </div>
 	        </div>
             {% block lien_fournisseurs %}
@@ -50,7 +56,7 @@
             <ul>
                 {% if entite.telephoneContact or 1 %}
                 <li>
-                    <a class="" href="tel:{{ entite.telephoneContact }},">
+                    <a class="" href="tel:{{ entite.telephoneContact }}">
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <span>Appeler</span>
                     </a>
@@ -59,12 +65,14 @@
                 <li>
                     {% set text = "Ajouter" %}
                     {% set icon = "fa-heart" %}
+                    {% set color = "#381b26" %}
                     {% if isFavorite(entite.id) %}
                         {% set action = "delete" %}
+                        {% set color = "#8cae08" %}
                         {% set text = "Supprimer" %}
                     {% endif %}
                     <a href="{{ path_for("app.change.favorite",{"idEntite":entite.id,"action":action}) }}">
-                         <i class="fa {{icon}}" aria-hidden="true"></i>
+                         <i class="fa {{icon}}" style="color:{{color}}" aria-hidden="true"></i>
                          <span>{{text}}</span>
                     </a>
                 </li>
@@ -84,25 +92,141 @@
                     </a>
                 </li>
                 {% endif %}
+                {% if entite.activite == "RESTAURANT" %}
+                <li>
+                    <a href="#menu-du-jour">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        <span>MENU</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if entite.activite == "ELEVEUR" and entite.hasVenteDirecte and produits|length%}
+				<li>
+                    <a type="submit" href="#produits">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <span>Où acheter ?</span>
+                    </a>
+                </li>
+	            {% endif %}
+	            {% if entite.id in ['57f2b966e4b0a5c3f540ea61', '57f2bba0e4b0a5c3f540ea63', '57f2b778e4b0a5c3f540ea5f'] %}
+				<li>
+                    <a type="submit" href="/entite/57f3957de4b0a5c3f540ea75">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        <span>Où acheter ?</span>
+                    </a>
+                </li>
+	            {% endif %}
             </ul>
-            {% if entite.hasVenteDirecte %}
-                {% block venteDirecte %}
-                    <div class="col-xs-8">
-                        <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
-                           href="{{ path_for("app.entite.produits",{"id":entite.id}) }}">
-                            Vente Directe
-                        </a>
-                    </div>
-                {% endblock %}
-            {% endif %}
         </div>
     </div>
     <div class="row rowDescription">
-        <div class="col-xs-12" id="Description">
+        <div class="col-xs-12 col-sm-{{entite.activite == "RESTAURANT" or entite.activite == "RESTAURATION_COLLECTIVE" or entite.activite == "FILIERE" ? 6 : 12}}" id="Description">
             <p>
                 {{ entite.description|raw }}
             </p>
         </div>
+        {% if entite.activite == "RESTAURANT" or entite.activite == "RESTAURATION_COLLECTIVE" or entite.activite == "FILIERE" %}
+	    <div class="col-xs-12 col-sm-6">
+		    {% if entite.activite == "FILIERE" or entite.activite == "RESTAURATION_COLLECTIVE" %}
+			<ul class="logos">
+			{% for logo in logos %}
+			<li>
+                <a href="{{logo.url}}"><img src="{{logo.img}}"></a>
+            </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+		    
+		    {% if entite.telephoneContact %}
+		    <b>Téléphone:</b><br/>
+			{{entite.telephoneContact}}<br/>
+			<br/>
+			{% endif %}
+			
+			{% if entite.activite == "RESTAURANT" %}
+			<b>Moyen de paiment:</b><br/>
+			CB, chèque, liquide, ticket resto<br/>
+			<br/>
+			{% endif %}
+			
+			{% if entite.activite == "FILIERE" %}
+			<b>Vous voulez rejoindre l'association ?</b><br/>
+			<a href="mailto:{{entite.nomContact}}">{{entite.nomContact}}</a><br/>
+			<br/>
+			{% endif %}
+			
+			{% if entite.activite == "RESTAURANT" or entite.activite == "FILIERE" %}
+			<b>Horaires:</b><br/>
+			Lundi mardi : 9h-18h<br/>
+			Mercredi à Samedi : 9h10h 14h-17h<br/>
+			<br/>
+			{% endif %}
+			
+			{% if entite.activite == "RESTAURATION_COLLECTIVE" %}
+			<div class="stats_rc">
+				<b>Statistiques sur le lycée:</b><br/>
+				<span class="number">1200</span><span>Nombre de repas servi par jour</span>
+				<div class="stats_rc_list">
+					<div class="logo">
+						<img src="/web/images/plan_alimentaire.png" />
+					</div>
+					<div class="note">
+						<b>4,5</b>/5
+					</div>
+					<div class="mention">
+						EQUILIBRE ALIMENTAIRE
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			
+			{% if entite.hasVenteDirecte %}
+			<a class="button button-large button-center" id="Reserver" type="submit" href="#produits">
+				COMMANDER<br/>A EMPORTER
+            </a>
+            {% endif %}
+            
+            {% if entite.activite == "RESTAURANT" %}
+            <div id="menu-du-jour" class="row rowBar">
+                <div class="icon">
+	            	<span class="fa-stack">
+					  <i class="fa fa-calendar-o fa-stack-2x"></i>
+					  <i class="fa fa-book fa-stack-1x"></i>
+					</span>
+	            </div>
+	            <div class="text">
+	            	<b>Menu du jour</b>
+	            	<span>{{ "now"|date("m/d/Y") }}</span>
+	            </div>
+            </div>
+            <img src="/web/images/menu-jour.png" class="img-responsive" />
+            {% endif %}
+            
+            {% if entite.activite == "FILIERE" %}
+			{% if entite.id == "59d377b8e4b06861bd6de7aa" %}
+			<a id="btn_map" class="button button-large button-center" href="/?label=59d37947e4b06861bd6dec6e">
+				VOIR LA CARTE
+            </a>
+            {% else %}
+            <a id="btn_map" class="button button-large button-center" href="/?label=5672cd8c3584ba1cdcdcf89b">
+				VOIR LA CARTE
+            </a>
+			{% endif %}
+			{% if filters_map|length %}
+			<ul class="chiffres">
+			{% set i = 1 %}
+			{% for filter in filters_map %}
+			<li data-who="{{filter.filter_who}}">
+                <input type="checkbox" id="filter_map_{{i}}" class="form-control" value="1" checked>
+                <label for="filter_map_{{i}}"><b>{{filter.nb}}</b> {{filter.name}}</span>
+            </li>
+            {% set i = i + 1 %}
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endif %}
+	    </div>
+		{% endif %}
     </div>
 
     {% block menu %}{% endblock %}
@@ -126,7 +250,7 @@
                         {% else %}
                             {% set link="" %}
                         {% endif %}
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6 item">
                             <div class="col-xs-4 colImg">
                                 <a href="{{ link }}"><img src="{{ apiImagePath(certif.logo) }}" class="img-responsive"></a>
                             </div>
@@ -142,9 +266,51 @@
             </div>
         {% endif %}
     {% endblock %}
+    
+    {% if entite.activite == "RESTAURANT" and produits|length%}
+     <div id="produits" class="row">
+		<div class="row rowBar">
+            <div class="icon">
+            	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="text">
+            	<b>Commande à emporter</b>
+            	<span>Sélectionnez vos produits</span>
+            </div>
+        </div>
+     </div>
+     <div class="row rowEntiteProduits">
+        {% for produit in produits %}
+        {% include "Entites/produit.html.twig" with {'entiteId':entite.id ,'produit' : produit, 'hasVenteDirecte': true} %}
+        {% endfor %}
+    </div>
+    {%endif %} 
+    
+    {% if entite.activite == "BOUCHER" and produits|length%}
+     <div id="produits" class="row">
+		<div class="row rowBar">
+            <div class="icon">
+            	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="text">
+            	<b>Vente direct</b>
+            	<span>Sélectionnez vos produits</span>
+            </div>
+        </div>
+     </div>
+     <div class="row rowEntiteProduits">
+        {% for produit in produits %}
+        {% include "Entites/produit.html.twig" with {'entiteId':entite.id ,'produit' : produit, 'hasVenteDirecte': false} %}
+        {% endfor %}
+    </div>
+    {%endif %} 
+    
+    {% if entite.activite == "ELEVEUR" and entite.hasVenteDirecte and produits|length%}
+    {% include "Entites/canaux.html.twig" with {'entiteId':entite.id , 'canaux':canaux, 'produits':produits} %}
+	{%endif %} 
 
     {% block membres %}
-        {% if entite.activite == "FILIERE" and membres|length>0 %}
+        {% if entite.activite == "FILIERE" and membres|length>0 and 0 %}
             <div class="row">
                 <div class="col-xs-12">
                     <h3 style="text-align:center;padding:20px 0">Ils en font partie</h3>
@@ -180,7 +346,7 @@
         {% if blog|length >0 %}
            <div id="blog" class="row rowBar">
                 <div class="icon">
-	            	<i class="fa  fa-comment" aria-hidden="true"></i>
+	            	<i class="fa  fa-comments" aria-hidden="true"></i>
 	            </div>
 	            <div class="text">
 	            	<b>Blog et actualités</b>
@@ -189,14 +355,7 @@
             </div>
             <div class="row rowList">
                 {% for billet in blog %}
-                   <div class="post">
-                        <p class="date">le {{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
-                        {% if billet.type == "evenement" %}
-                            <p class="titre">{{ billet.titre }}</p>
-                            <p class="date hidden">Du {{ (billet.debut/1000)|round(0)|date("d/m/Y H:i") }} au {{ (billet.fin/1000)|round(0)|date("d/m/Y H:i") }}</p>
-                        {% endif %}
-                        <div class="content">{{ billet.contenu|raw }}</div>
-                    </div>
+                {% include "Block/billet.html.twig" with {'billet' : billet} %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -206,7 +365,7 @@
         {% if presse|length >0 %}
             <div id="presse" class="row rowBar">
                 <div class="icon">
-	            	<i class="fa  fa-comment" aria-hidden="true"></i>
+	            	<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 	            </div>
 	            <div class="text">
 	            	<b>La presse</b>
@@ -215,11 +374,7 @@
             </div>
             <div class="row rowList">
                 {% for billet in presse %}
-                    <div class="post">
-                        <!--<p class="titre">{{ billet.titre }}</p>-->
-                        <p class="date">{{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
-                        <p class="texte">{{ billet.contenu|raw }}</p>
-                    </div>
+                {% include "Block/billet.html.twig" with {'billet' : billet} %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -241,5 +396,51 @@
 {{ parent() }}
 <script type="text/javascript">
 $('.slider').slick({slide:'.slide', swipe:true, swipeToSlide:true, touchMove:true, arrows: false}) ;
+
+if($('#btn_map').length)
+{
+	var btn_map_url = $('#btn_map').attr('href') ;
+	
+	$('.chiffres input').change(function()
+	{
+		var aFiltersWho = [] ;
+		$('.chiffres li').each(function()
+		{
+			if($('input', $(this)).is(':checked'))
+			{
+				aFiltersWho.push($(this).attr('data-who')) ;
+			}
+		}) ;
+		
+		var url = btn_map_url ;
+		
+		if(aFiltersWho.length)
+		{
+			url = btn_map_url + '&who=' + aFiltersWho.join(',') ;
+		}
+		
+		$('#btn_map').attr('href', url) ;
+	}) ;
+}
+
+$('#btn-show-products').click(function()
+{
+	$('.rowEntiteCanaux').addClass('hidden') ;
+	
+	$('.toggleButton').removeClass('hidden') ;
+	$('.rowEntiteProduits').removeClass('hidden') ;
+	
+	return false ;
+}) ;
+
+$('.toggleButton').click(function()
+{
+	$('.rowEntiteCanaux').removeClass('hidden') ;
+	
+	$('.toggleButton').addClass('hidden') ;
+	$('.rowEntiteProduits').addClass('hidden') ;
+	
+	return false ;
+}) ;
 </script>
 {% endblock %}

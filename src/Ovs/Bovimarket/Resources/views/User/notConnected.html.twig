@@ -1,23 +1,59 @@
 {% extends "base_login.html.twig" %}
 
 {% block page_content %}
-    <div class="row" id="presentation">
-        <div class="col-xs-12 text-important" >
-            <div class="text-center">
-                <h1>Envie de saveurs authentiques ?</h1>
-                L'application qui vous permet de trouver les produits régionaux de qualité et de terroir près de chez vous.
-                <br/>
-                Découvrez, sélectionnez, commandez, réservez, mémorisez vos préférences et partager-les avec vos amis.
-            </div>
+    <div class="slider" id="presentation">
+	    <div class="slide text-center">
+	        <img src="/web/images/LogoBovi.png" alt="" style="display: inline">
+	        <div class="col-xs-12" >
+                <h2>Trouvez les aliments de qualité</h2>
+                <h3>près de chez vous</h3>
+	        </div>
+	    </div>
+	    <div class="slide text-center">
+	        <img src="/web/images/LogoBovi.png" alt="" style="display: inline">
+	        <div class="col-xs-12" >
+                <h2>Découvrez ce que vous mangez vraiment</h2>
+                <h3>toute la chaine joue le jeu de la transparence</h3>
+	        </div>
+	    </div>
+	    <div class="slide text-center">
+	        <img src="/web/images/LogoBovi.png" alt="" style="display: inline">
+	        <div class="col-xs-12" >
+                <h2>Soyez certain de la qualité</h2>
+                <h3>labels certifiés et réseau du producteur pour attester</h3>
+	        </div>
+	    </div>
+	    <div class="slide text-center">
+	        <img src="/web/images/LogoBovi.png" alt="" style="display: inline">
+	        <div class="col-xs-12" >
+                <h2>Commandez où vous voulez</h2>
+                <h3>chez les producteurs ou les distributeurs</h3>
+	        </div>
+	    </div>
+	    <div class="slide text-center">
+	        <img src="/web/images/LogoBovi.png" alt="" style="display: inline">
+	        <div class="col-xs-12" >
+                <h2>Suivez et partagez</h2>
+                <h3>vos professionels favoris</h3>
+	        </div>
+	    </div>
+	</div>
+	
+    <div id="inscript">
+		<div class="col-xs-12">
+        	<a href="#facebook" class="button button-green button-large button-center button-rounded">COMMENCER AVEC FACEBOOK</a>
+	    </div>    	
+        <div class="col-xs-12 double-link">
+            <a href="{{ path_for("app.login.form") }}" class="button">Connexion</a>
+            <a href="{{ path_for("app.register.form") }}" class="button">Inscription</a>
         </div>
     </div>
 
-    <div class="row" id="inscript">
-        <div class="col-xs-6">
-            <a href="{{ path_for("app.register.form") }}" class="btn btn-violet">Inscription</a>
-        </div>
-        <div class="col-xs-6">
-            <a href="{{ path_for("app.login.form") }}" class="btn btn-vert">Connexion</a>
-        </div>
-    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/web/js/slick.min.js"></script>
+<script>
+    $('#presentation').slick({slide:'.slide', dots: true, arrows: false}) ;
+</script>
 {% endblock %}
+

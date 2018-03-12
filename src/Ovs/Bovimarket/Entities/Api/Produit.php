@@ -60,6 +60,8 @@ class Produit
      * @Serializer\SerializedName("prixCanalList")
      */
     protected $prixCanaux;
+    
+    protected $quantite ;
 
     /**
      * @return mixed
@@ -77,6 +79,24 @@ class Produit
     {
         $this->id = $id;
         return $this;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getQuantite()
+    {
+    	return $this->quantite;
+    }
+    
+    /**
+     * @param mixed $quantite
+     * @return Produit
+     */
+    public function setQuantite($q)
+    {
+    	$this->quantite = $q;
+    	return $this;
     }
 
     /**

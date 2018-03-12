@@ -39,12 +39,13 @@ class AuthMiddleware {
 		);
 	}
 
-	function __invoke(Request $request, Response $response,$next) {
-
+	function __invoke(Request $request, Response $response,$next)
+	{
 		$session = Middleware\AuraSession::getSession( $request );
 		$segment = $session->getSegment( "overscan" );
 		$isLogged = $segment->get( Session::loggedSessionKey, false );
-		if(!$isLogged && !in_array($request->getRequestTarget(),$this->notSecuredPath)){
+		if(!$isLogged && !in_array($request->getRequestTarget(),$this->notSecuredPath))
+		{
 			$response = $response->withRedirect($this->router->pathFor("app.not_connected"),403);
 			$_SERVER["HTTP_REFERER"]=$request->getRequestTarget();
 		}

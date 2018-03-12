@@ -1,11 +1,22 @@
+var icon = {
+    url: "{{ entite.getIcon(isFavorite(entite.id)) }}", // url
+    scaledSize: new google.maps.Size(window.outerWidth > 768 ? 75 : 50, window.outerWidth > 768 ? 75 : 50), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
+
 var marker{{ entite.id }} = new google.maps.Marker({
 position: new google.maps.LatLng({{ entite.lat }},{{ entite.lng }}),
 map: map,
 url: "{{ path_for("app.entite.detail",{"id":entite.id}) }}",
 title: '{{ entite.name }}',
-icon: "{{ entite.getIcon(isFavorite(entite.id)) }}"
+icon: icon,
+zIndex:{{ entite.getZIndex() }}
 });
 
 google.maps.event.addListener(marker{{ entite.id }}, 'click', function() {
     window.location.href = this.url;
 });
+
+aMarkers.push(marker{{ entite.id }}) ;
+aMarkersInfos.push({id:'{{entite.id}}', index:aMarkers.length - 1, km:0, name:'{{entite.name}}', address:'{{entite.adresseComplete}}', departement:'{{entite.departement}}', vente_directe:{{entite.hasVenteDirecte ? 'true' : 'false'}}, activite:'{{entite.activite}}', certifications:Array("{{entite.getCertificationsIds|join('","')|raw}}"), produits:'{{entite.produits}}'}) ;

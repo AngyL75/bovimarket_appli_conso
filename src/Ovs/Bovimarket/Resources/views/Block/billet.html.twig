@@ -1,0 +1,9 @@
+<div class="post">
+    <p class="date">le {{ (billet.publication/1000)|round(0)|date("d/m/Y H:i") }}</p>
+    {% if billet.type == "evenement" %}
+        <p class="titre">{{ billet.titre }}</p>
+        <p class="date hidden">Du {{ (billet.debut/1000)|round(0)|date("d/m/Y H:i") }} au {{ (billet.fin/1000)|round(0)|date("d/m/Y H:i") }}</p>
+    {% endif %}
+    <div class="extrait">{{ billet.extrait }}</div>
+    <div class="content">{{ billet.contenu|raw }}</div>
+</div>

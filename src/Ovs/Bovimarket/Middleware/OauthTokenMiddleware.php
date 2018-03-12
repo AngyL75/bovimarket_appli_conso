@@ -22,9 +22,18 @@ class OauthTokenMiddleware {
 
 	/** @var  App */
 	protected $app;
+	protected $notSecuredPath;
 
 	public function __construct( $app ) {
 		$this->app = $app;
+		
+		$this->notSecuredPath = array(
+				"/login",
+				"/login/process",
+				"/register",
+				"/presentation",
+				"/register/process"
+		);
 	}
 
 
@@ -37,21 +46,37 @@ class OauthTokenMiddleware {
 		$session = $auraSess->getSegment( "overscan" );
 
 		//Token en session
+		$bLoggued = false ;
 		if ( $session->get( Session::oauthToken, false ) ) {
 			/** @var OauthToken $token */
 			$token = $session->get( Session::oauthToken );
 			//Expiré?
 			if ( $token->isExpired() ) {
-				$oauth->logUser( $session );
+				$bLoggued = $oauth->logUser( $session );
 			} else {
 				$tokenValue = $token->getToken();
 				$oauth->refreshApiToken( $tokenValue );
+				$bLoggued = true ;
 			}
 		} else {
-			$oauth->logUser( $session );
+			$bLoggued = $oauth->logUser( $session );
 		}
-		$api = $app->getContainer()->get( "api" );
-		$app->getContainer()->get( "view" )->addExtension( new BoviExtension( $api,$session ) );
+		
+		if(!$bLoggued && !in_array($request->getRequestTarget(), $this->notSecuredPath))
+		{
+			$url = $app->getContainer()->get("router")->pathFor("app.not_connected") ;
+			$response = $response->withRedirect($url,403);
+			$_SERVER["HTTP_REFERER"]=$request->getRequestTarget();
+			
+			header('Location:' . $url) ;
+			exit ;
+		}else{
+			if(!in_array($request->getRequestTarget(),$this->notSecuredPath))
+			{
+				$api = $app->getContainer()->get( "api" );
+				$app->getContainer()->get( "view" )->addExtension( new BoviExtension( $api, $session ) );
+			}
+		}
 
 		return $next( $request, $response );
 	}

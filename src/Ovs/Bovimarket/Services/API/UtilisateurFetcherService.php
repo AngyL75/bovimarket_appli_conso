@@ -77,8 +77,28 @@ class UtilisateurFetcherService extends ApiFetcher
         $body = (string)$response->getBody();
         return $serial->deserialize($body,$this->getClass(),"json");
     }
+    
+    public function updateAllergies($allergies)
+    {
+    	$serial=SerializerBuilder::create()->build();
+    	$json = $serial->serialize($allergies, "json");
+    	
+    	$response = $this->api->post($this->getEndpoint() . 'current/allergies',array(
+    			"body"=>$json,
+    			"headers"=>array(
+    					"Content-Type"=>"application/json"
+    			)
+    	));
+    	
+    	if(!$response) return null ;
+    
+    	$body = (string)$response->getBody();
+    	
+    	return true ;
+    }
 
-	public function getFavoris() {
+	public function getFavoris()
+	{
 		$serializer = SerializerBuilder::create()->build();
 		$response = $this->api->get("utilisateurs/current/favoris");
 		$json = (string)$response->getBody();
@@ -99,4 +119,16 @@ class UtilisateurFetcherService extends ApiFetcher
 		$this->api->delete("utilisateurs/current/favoris/".$entite);
 	}
 
+	public function setAllergies($aAllergies)
+	{
+		$serial = SerializerBuilder::create()->build();
+		$json = $serial->serialize($aAllergies, "json");
+		
+		$this->api->post("utilisateurs/current/allergies/", array(
+            "body"=> $json,
+            "headers"=>array(
+                "Content-Type"=>"application/json"
+            )
+        ));
+	}
 }

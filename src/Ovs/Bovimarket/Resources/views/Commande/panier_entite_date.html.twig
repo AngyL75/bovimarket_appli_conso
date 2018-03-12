@@ -1,0 +1,31 @@
+{% set entite = entiteInfos.infos %}
+<div class="row rowBar rowEntiteProduit rowEntiteProduitDate">
+	<div class="icon">
+		 <img src="{{ entite.getIcon(false) }}" />
+	</div>
+	<div class="text text-hours">
+	    <h2 class="title"><a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}">{{ entite.name }}</a> 
+	    {% if entite.getCertificationsLength() %}
+	    <a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}#certifs" class="fa fa-certificate fa-num"><span>{{ entite.getCertificationsLength() }}</span></a>
+	    {% endif %}
+	    </h2>
+	    <p>
+	        <a href="{{ path_for("map.homepage") }}?center={{ entite.lat }},{{ entite.lng }}">{{ entite.adresseComplete }}</a>
+		</p>
+	</div>
+	<div class="hours" >
+    	18:00 - 19:00
+    </div>
+</div>
+<div id="rowEntiteProduit{{entite.id}}">
+	<div class="row rowEntiteProduits">
+		{% set qty = 0 %}
+		{% set total = 0 %}
+		{% for produit in entiteInfos.items %}
+		{% include "Commande/panier_entite_date_produit.html.twig" with {'produit' : produit} %}
+		{% set qty = qty + produit.quantite %}
+		{% set total = total + produit.prix %}
+		{% endfor %}
+		</div>
+	</div>
+</div>

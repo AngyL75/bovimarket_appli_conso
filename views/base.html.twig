@@ -19,7 +19,9 @@
             <link href="/web/css/jquery.mmenu.all.css" type="text/css" rel="stylesheet"/>
             <link rel="stylesheet" type="text/css" href="/web/style.css"/>
             <link rel="stylesheet" href="/web/custom.css">
+            <link rel="stylesheet" href="/web/icomoon.css">
             <link rel="stylesheet" href="/web/css/slick.css">
+            <link rel="stylesheet" href="/web/css/jquery-jvectormap-2.0.3.css">
         {% endblock %}
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -62,21 +64,29 @@
         </div>
         {% endif %}
         
-        <div class="header" id="qrcode">
-        	<a class="link" href="{{ path_for("flash.qrcode") }}" data-color="#ffffff"></a>
-        </div>
-
         {% include("Blocks/nav.html.twig") %}
 
         <div id="content">
-            <div id="Choix" class="hidden">
-                <div id="Carte" class="Choix select"><a href="#">Carte</a></div>
-                <div id="Liste" class="Choix"><a href="#">Liste</a></div>
-            </div>
-            
+            <div class="header" id="qrcode">
+	        	<a class="link" href="{{ path_for("flash.qrcode") }}" data-color="#ffffff"></a>
+	        </div>
             {% include("Blocks/filters.html.twig") %}
 
-            <div id="map"></div>
+           	<div id="map"></div>
+           	<div id="list">
+           		<div class="list_header">
+           			<a href="#" id="back-list"><i class="fa fa-chevron-left" aria-hidden="true"></i> Retour à la carte</a>
+           		</div>
+           		<div class="list_filter">
+           			<i class="fa fa-search" aria-hidden="true"></i>
+           			<input id="filter_search" type="text" value="" placeholder="Filtrer la liste paysage" />
+           		</div>
+           		<div class="list_container">
+           		
+           		</div>
+           	</div>
+            
+           	<a href="#list" id="switch-list" class="fa fa-list-ol"></a>
         </div>
     </div>
 
@@ -109,30 +119,18 @@
             });
         });
     </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $("nav#amis").mmenu({
-                "extensions": [
-                    "effect-menu-zoom"
-                ],
-                "offCanvas": {
-                    "position": "right"
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $("nav#mon-compte").mmenu({
-                "extensions": [
-                    "effect-menu-zoom"
-                ],
-                "offCanvas": {
-                    "position": "right"
-                }
-            });
-        });
-    </script>
+	<script type="text/javascript">
+	    jQuery(document).ready(function ($) {
+	        $("nav#favoris").mmenu({
+	            "extensions": [
+	                "effect-menu-zoom"
+	            ]
+	        });
+			$(".nav3 a").click(showFilters) ;
+	        $(".nav5 a").click(showAccountMenu) ;
+	        $('#back-menu-compte').click(showAccountMenu) ;
+	    });
+	</script>
     <script type="text/javascript">
         /*(function () {
             var ul = $("#navs"), li = $("#navs li"), i = li.length, n = i - 1, r = 140;
@@ -155,9 +153,6 @@
     </script>
     <script src="/web/js/main.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDo4E92LZc9OiUsQFIi4wtyHeay-Y0KQ7c"></script>
-    <script type="text/javascript">
-	//jQuery('.nav3').click(showFilters) ;
-	</script>
     <script type="text/javascript">
         var center = new google.maps.LatLng(45.7833, 3.0833);
         var mapElement = document.getElementById('map');
@@ -217,13 +212,43 @@
             }]
         };
         var map;
+        var current_position ;
+        var aMarkers = [] ;
+        var aMarkersInfos = [] ;
         google.maps.event.addDomListener(window, 'load', init);
-        function init() {
+        
+        function maPosition(position)
+	    {
+			lat = position.coords.latitude;
+			lon = position.coords.longitude;
+			
+			current_position = new google.maps.LatLng(lat, lon) ;
+			
+			map.setCenter(current_position);
+		}
+		
+		function erreurPosition(error)
+		{
+		
+		}
+        
+        function init()
+        {
             map = new google.maps.Map(mapElement, mapOptions);
             {% block afterMapInit %}
             {% endblock %}
+            
+            var geocoder = new google.maps.Geocoder();
+			if (navigator.geolocation)
+			{
+				navigator.geolocation.getCurrentPosition(maPosition, erreurPosition,{timeout:10000,maximumAge:600000});
+	    	}
+	    	
+	    	MapFilters.init() ;
         }
     </script>
+    <script src="/web/js/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="/web/js/jquery_map-fr_merc.js"></script>
 {% endblock javascripts %}
 {% endblock %}
 </body>

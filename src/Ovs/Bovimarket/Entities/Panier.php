@@ -102,22 +102,6 @@ class Panier
     /**
      * @return mixed
      */
-    public function getVendeur()
-    {
-        return $this->vendeur;
-    }
-
-    /**
-     * @param mixed $vendeur
-     */
-    public function setVendeur($vendeur)
-    {
-        $this->vendeur = $vendeur;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getCanal()
     {
         return $this->canal;
@@ -141,7 +125,7 @@ class Panier
     }
 
 
-    public function add(Produit $produit, $qte = 1)
+    public function add(Produit $produit, $qte = 1, $idEntite = 0)
     {
         if ($ligne=$this->getLigneProduit($produit->getId())) {
             $ligne["qte"] += $qte;
@@ -154,8 +138,12 @@ class Panier
                 "qte" => 1,
             );
         }
+        
+        $produit->setQuantite($ligne["qte"]) ;
+        
         $ligne["prix"] = $produit->getPrix();
         $ligne["produit"] = $produit;
+        $ligne["id_entite"] = $idEntite;
         $this->lignes[$produit->getId()] = $ligne;
         $this->calculTotal();
     }
@@ -197,6 +185,17 @@ class Panier
         }
         $this->total = $total;
         return $total;
+    }
+    
+    public function getQuantiteTotal()
+    {
+    	$qty = 0;
+    	foreach ($this->getLignes() as $produit)
+    	{
+    		$qty += intval($produit["qte"]) ;
+    	}
+    	
+    	return $qty;
     }
 
     /**

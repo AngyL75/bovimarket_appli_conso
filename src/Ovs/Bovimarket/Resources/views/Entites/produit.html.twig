@@ -1,0 +1,20 @@
+<div class="item rowProduit">
+    <div class="photo">
+	   <img src="{{ apiImagePath(produit.photo) }}" class="img-responsive" />
+	</div>
+	 <div class="infos">
+	    <p class="informations">
+	    	<span class="emplacement">Sur place</span> - <span class="remaining">plus que 2 restants</span> - <span class="labels">2 labels qualité</span>
+	    </p>
+	    <h3>{{ produit.nom }}</h3>
+		<p>{{ produit.accroche }}</p>
+	</div>
+	<div class="pricing">
+	    <p class="stock"><span class="instock">Disponible</span></p>
+	    <p class="price">{{ produit.prix }} €</p>
+	    <p class="pricekg">4,5€ / kg</p>
+	    {% if hasVenteDirecte %}
+	    <a href="{{ path_for("app.entite.add_to_cart",{"idEntite":entiteId,"idProduit":produit.id}) }}" class="button button-add-cart button-center"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+	    {%endif %}
+	</div>
+</div>

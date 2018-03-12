@@ -1,0 +1,24 @@
+{% extends "base_entite.html.twig" %}
+
+{% block prev %}
+{% endblock %}
+{% block close %}
+{% endblock %}
+
+{% block page_content %}
+    <div class="content-detail">
+        <div class="row rowList">
+        	<div class="list_header">
+       			<a href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i> Blog et Actualités</a>
+       		</div>
+            {% for entite in entites %}
+            	<div class="row rowInfos">
+            		{% include "Block/entite_infos.html.twig" with {'entite' : entite.infos} %}
+            	</div>
+            	{% for billet in entite.billets %}
+            	{% include "Block/billet.html.twig" with {'billet' : billet} %}
+            	{% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,10 @@
 @import "custom.css";
 body {padding:0;margin:0;/*width:100%;*/font-family: 'Roboto', sans-serif;background: #381b26;font-weight: 300 !important;}
-.container {width:100%;}
+.container
+{
+	width:100%;
+	overflow:hidden;
+}
 h1, h2, h3 {font-family:'Roboto Slab', serif;}
 a, a:focus, a:hover {color:#8cae08;}
 a:hover, a:focus {text-decoration: none;}
@@ -11,12 +15,12 @@ ul, li {padding:0;margin:0;}
 #Choix .Choix.select {background:#5d3043;}
 #Choix .Choix.select a {color:#fff;}
 /* Style page */
-#holder {
+/*#holder {
   opacity: 0;
   transition: opacity .125s ease-in-out;
   -moz-transition: opacity .125s ease-in-out;
   -webkit-transition: opacity .125s ease-in-out;
-}
+}*/
 #holder.visible {
   opacity: 1;
   transition: opacity .25s ease-in-out;
@@ -26,8 +30,8 @@ ul, li {padding:0;margin:0;}
 .home {background-color: #381b26;}
 .homeliste {background-color: #fff !important;}
 .homeliste .mm-opened .mm-page {background-color: #fff !important;}
-.pageblanche {background: #fff;padding:50px 0;}
-.page-entite{padding:0;}
+.pageblanche {background: #fff;}
+.page-entite, .page-detail{padding:0;}
 .pageblanche #close a {color:#5d3043;}
 .pageblanche #return a {color:#5d3043;}
 .pageblanche h1, .pageblanche h2, .pageblanche h3 {color:#5d3043;}
@@ -50,7 +54,153 @@ nav:not(.mm-menu) {display:none;}
 }
 .header.fixed {position: fixed;top: 0;left: 0;}
 .header a {background: center center no-repeat transparent;background-image: url(images/menu_hamburger.png);display:block;width:90px;height:75px;}
-#content {width:100% !important;}
+#page, .mm-page, #holder, #list, .list_container, .liste_menu
+{
+	float:left;
+	width:100%;
+	height:100%;
+}
+
+.padding_top
+{
+	padding-top:15px !important;
+}
+
+.list_header
+{
+	float:left;
+	width:100%;
+	position:relative;
+	height:50px;
+	color:#fff;
+	padding:15px;
+	font-size:120%;
+	background-color: #5d3043;
+}
+
+.list_header a.next-screen
+{
+	position:absolute;
+	height:100%;
+	top:0;
+	right:0;
+	padding:0 15px;
+	background: #8cae08;
+}
+
+.list_header a.next-screen .fa
+{
+	float:left;
+	font-size:200%;
+	margin-right:15px;
+	line-height:50px;
+}
+
+.list_header a.next-screen span
+{
+	float:left;
+	padding:5px 0 0;
+	font-size:90%;
+	line-height:120%;
+}
+
+.list_header a.next-screen span b
+{
+	font-weight:normal;
+	font-size:120%;
+}
+
+.list_filter
+{
+	float:left;
+	width:100%;
+	height:50px;
+	padding:15px;
+	background:#fff;
+	border-bottom:1px solid #ccc;
+}
+
+.list_filter > .fa
+{
+	float:left;
+	width:50px;
+	height:100%;
+	line-height:20px;
+	font-size:150%;
+}
+
+.list_filter > input
+{
+	float:left;
+	width:calc(100% - 50px);
+	height:100%;
+	padding:10px;
+	border:0;
+	background:none;
+	outline:none;
+}
+
+.list_header a
+{
+	color:#fff;
+}
+
+.list_container, .liste_menu
+{
+	height:calc(100% - 50px);
+	overflow:hidden;
+	overflow-y:auto;
+	background:#fff;
+}
+
+.list_filter + .list_container
+{
+	height:calc(100% - 100px);
+}
+
+.liste_menu li
+{
+	float:left;
+	width:100%;
+	font-size:150%;
+	line-height:110%;
+	border-bottom:1px solid #ccc;
+	list-style:none;
+}
+
+.liste_menu li:last-child
+{
+	border-bottom:0;
+}
+
+.liste_menu li a
+{
+	float:left;
+	width:100%;
+	padding:30px 15px;
+	color:#666;
+}
+
+.liste_menu li span
+{
+	font-size:80%;
+}
+
+#content, .sub-menu
+{
+	float:left;
+	position:relative;
+	width:100% !important;
+	height:100%;
+	height:calc(100% - 100px);
+}
+
+.sub-menu
+{
+	background:#fff;
+	display:none;
+}
+
 .mm-opened .mm-page {background: #000;}
 .mm-opened .mm-page #content {opacity: 0.8;
   -webkit-transition: all .4s ease-in-out;
@@ -72,8 +222,8 @@ nav:not(.mm-menu) {display:none;}
 #Menu2.header a {top:0;background:url(images/favoris.png) no-repeat center;}
 .mm-navbar {display:none !important;}
 .favoris .mm-panels>.mm-panel.mm-hasnavbar {background: #381b26;}
-.Tof {width:75px;height:75px; overflow: hidden;border-radius: 50%;float:left; background:url(images/nophoto-thmb2.png) center no-repeat; background-size: 100%;margin:4px !important;}
-.Tof a {width:75px;height:75px;display:block;}
+.Tof {width:75px; overflow: hidden;border-radius: 50%;float:left; background:url(images/nophoto-thmb2.png) center no-repeat; background-size: 100%;margin:4px !important;}
+.Tof a {width:100%;display:block;}
 .Tof img, .Tof2 img {width:100%;height:100%;}
 .favoris a, .favoris h2 {padding:5px 0;color:#fff !important;}
 .favoris p {padding: 0;}
@@ -114,7 +264,7 @@ nav:not(.mm-menu) {display:none;}
 #amis .Description .Nom {font-weight: 500;float: none;padding: 15px 0;}
 #amis .Description .Fonction {font-size: 18px; font-style: italic;}
 /* Carte */
-#map {width:100%;height:110vh;margin-top:-10vh;}
+#map {width:100%;height:100%;}
 #Adresse1 {position:absolute;top:41%;left:49%;z-index:3;}
 #Adresse2 {position:absolute;top:25%;left:32%;z-index:3;}
 #Adresse3 {position:absolute;top:60%;left:58%;z-index:3;}
@@ -444,7 +594,13 @@ nav:not(.mm-menu) {display:none;}
 .Label {position: absolute;bottom:-30px;margin-left:-37.5px !important; left:50%;}
 h1 {text-align: center;padding:20px 0 20px;}
 #close {right:10px !important;top:10px !important;position: absolute;height: 50px;width: 50px;z-index:100;}
-#close a, #return a {font-size:45px; font-weight:400;color:#fff;}
+#close a, #return a
+{
+	font-size:45px;
+	font-weight:400;
+	color:#fff;
+	text-shadow:0px 2px 0px rgba(255, 255, 255, 0.8);
+}
 #close:hover, #return:hover {color:#fff;opacity: 0.6}
 #return {left:50px !important;top:10px !important;position: absolute;height: 50px;width: 50px;z-index: 100}
 
@@ -519,6 +675,12 @@ h1 {text-align: center;padding:20px 0 20px;}
 {
 	color:#fff;
 }
+
+#navs .selected
+{
+	background: #8cae08;
+}
+
 .IconRecherche {margin-top:40px;}
 .IconRecherche i {font-size: 40px;}
 .IconRecherche p {font-size: 18px;padding:20px;}
@@ -536,13 +698,39 @@ h1 {text-align: center;padding:20px 0 20px;}
 .IconeProducteur {background: url(images/IconeProducteur.svg) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;margin-bottom:20px;}
 .IconeCuisson {background: url(images/IconeCuisson.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;}
 .IconeMorceau {background: url(images/IconeMorceau.png) no-repeat center top; padding:100px 0 20px 0;display: block;color:#5d3043;}
-.sablier {background: url(images/sablier.png) no-repeat center left; padding:15px 15px 15px 40px;font-size:18px;}
-.cuisson {background: url(images/tempcuisson.png) no-repeat center left; padding:15px 15px 15px 40px;font-size:18px;}
-.difficulte {padding:15px 15px 15px 90px;font-size:18px;}
-.difficulte.facile {background: url(images/facile.png) no-repeat center left;}
-.difficulte.moyen {background: url(images/moyen.png) no-repeat center left;}
-.difficulte.difficile {background: url(images/difficile.png) no-repeat center left;}
-.difficulte.expert {background: url(images/expert.png) no-repeat center left;}
+
+.iconIndicateur 
+{
+	float:left;
+	padding:0px 15px 0px 40px;
+	margin-bottom:10px;
+	font-size: 200%;
+}
+
+.sablier {background: url(images/sablier.png) no-repeat center left;    background-size: contain;}
+.cuisson {background: url(images/tempcuisson.png) no-repeat center left;     background-size: contain;}
+.difficulte {}
+.difficulte.facile {background: url(images/facile.png) no-repeat center left;    background-size: contain;}
+.difficulte.moyen {background: url(images/moyen.png) no-repeat center left;    background-size: contain;}
+.difficulte.difficile {background: url(images/difficile.png) no-repeat center left;    background-size: contain;}
+.difficulte.expert {background: url(images/expert.png) no-repeat center left;    background-size: contain;}
+
+
+.marinade {
+    background: url(images/marinade.png) no-repeat center left;
+	background-size: contain;
+}
+
+.repos {
+    background: url(images/repos.png) no-repeat center left;
+	background-size: contain;
+}
+
+.trempage {
+    background: url(images/trempage.png) no-repeat center left;
+    background-size: contain;
+}
+
 .IconBouillir, .IconBouillir:hover {display: block;color:#5d3043; background: url(images/bouillir.png) no-repeat center top;padding:110px 0 20px;margin:20px 0}
 .IconBraise, .IconBraise:hover {display: block;color:#5d3043; background: url(images/braise.png) no-repeat center top;padding:110px 0 20px;margin:20px 0}
 .Supprimer a  {height: 75px;width: 100px;background: url(images/Sup.png) no-repeat center #fff;display: block;}
@@ -674,7 +862,17 @@ h1 {text-align: center;padding:20px 0 20px;}
   display: inline-block;
   vertical-align: top;
   width:100%;
-  padding:0 15px;
+  padding:15px;
+}
+
+.post .content
+{
+	display:none;
+}
+
+.post .content img
+{
+	margin:15px 0;
 }
 
 .photo-miniature > a > img {
@@ -686,6 +884,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 .titre {
   font-weight: 500;
   font-size: 20px;
+  line-height:120%;
 }
 
 .date {
@@ -709,12 +908,112 @@ h1 {text-align: center;padding:20px 0 20px;}
 	top:0;
 	left:0;
 	width:100%;
-	height:calc(100% - 100px);
+	height:100%;
 	background:rgba(0,0,0, 0.7) ;
 	display:none;
 }
 
-#filters, .slick-list, #filters .slick-track
+#filters-results
+{
+	float: left;
+    z-index: 10;
+    position:absolute;
+	bottom:-100px;
+	left:0;
+	width:100%;
+	height:100px;
+	padding:0;
+	background:#8cae08;
+	display:none;
+}
+
+#filters-results .infos
+{
+	float: left;
+	width:calc(100% - 100px);
+	height:100%;
+	padding:10px 15px;
+	
+}
+
+#filters-results .infos h3
+{
+	margin:0;
+	text-align:center;
+	color:#fff;
+	font-size:150%;
+	line-height:100%;
+	padding-left:100px;
+}
+
+#filters-results .infos > div > span, #filters-details .infos > span, #filters-details .infos > b
+{
+	float: left;
+	width:100%;
+	color:#333333;
+}
+
+#filters-details .infos > b
+{
+	margin-top:10px;
+}
+
+#filters-results > .toogle, #filters-details > .toogle
+{
+	float:right;
+	height:100%;
+	width:100px;
+	line-height:100px;
+	text-align:center;
+	font-size:300%;
+	color:#fff;
+}
+
+#filters-details
+{
+	float:left;
+	z-index: 11;
+    position:absolute;
+	top:100%;
+	left:0;
+	width:100%;
+	height:calc(100% + 100px);
+	padding:15px;
+	background:#8cae08;
+	display:none;
+}
+
+#filters-details h2
+{
+	font-size:200%;
+	line-height:100%;
+}
+
+#filters-details h3
+{
+	font-size:150%;
+	line-height:100%;
+}
+
+#filters-details h2, #filters-details h3, #filters-details .infos > b
+{
+	color:#fff;
+}
+
+#filters-details > .toogle
+{
+	position:absolute;
+	top:0;
+	right:0;
+	height:100px;
+}
+
+#filters-details h2, #filters-details h3
+{
+	text-align:center;
+}
+
+.slick-list, #filters .slick-track
 {
 	height:100%;
 }
@@ -722,6 +1021,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 #filters .slide
 {
 	float: left;
+	position:relative;
 	width:100%;
 	height:100%;
 	color:#fff;
@@ -736,7 +1036,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 
 #filters a.selected
 {
-	text-decoration:underline;
+	color:#C4F20B;
 }
 
 #filters .slide .bar
@@ -745,7 +1045,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 	width:100%;
 	height:50px;
 	padding:15px;
-	background:rgb(153, 51, 153);
+	background:#5d3043;
 }
 
 #filters .slide .container_list
@@ -755,6 +1055,51 @@ h1 {text-align: center;padding:20px 0 20px;}
 	height:calc(100% - 100px);
 	overflow:hidden;
 	overflow-y:auto;
+}
+
+#localization_bar
+{
+	float:left;
+	width:calc(100% - 30px);
+	height:50px;
+	padding:2px;
+	margin:15px;
+	background:#cccccc;
+}
+
+#localization_bar > div.left
+{
+	float:left;
+	color:#5d3043;
+	width:10%;
+	text-align:center;
+	font-size: 250%;
+}
+
+#localization_bar input
+{
+	float:left;
+	width:90%;
+	height:100%;
+	background:#fff;
+	border:0;
+	outline:none;
+	color: #333;
+	text-align:center;
+	font-size: 200%;
+	padding:0 15px;
+}
+
+#mapFr
+{
+	width:100%;
+	height:70%;
+	margin:0;
+}
+
+.jvectormap-zoomin, .jvectormap-zoomout
+{
+	display:none;
 }
 
 #filters-nav
@@ -776,6 +1121,24 @@ h1 {text-align: center;padding:20px 0 20px;}
 	text-align:center;
 }
 
+#filters .slide ul.nav-bot-left
+{
+	position:absolute;
+	width:40%;
+	bottom:50px;
+	left:15px;
+	text-align:left;
+}
+
+#filters .slide ul.nav-bot-right
+{
+	position:absolute;
+	width:40%;
+	bottom:50px;
+	right:15px;
+	text-align:right;
+}
+
 #filters-nav a, .nav-bot
 {
 	padding:0 10px;
@@ -783,7 +1146,7 @@ h1 {text-align: center;padding:20px 0 20px;}
 	font-size:150%;
 }
 
-.nav-bot
+#filters-nav a.nav-bot
 {
 	line-height:25px;
 	bottom:10px;
@@ -794,14 +1157,34 @@ h1 {text-align: center;padding:20px 0 20px;}
 	margin:0 10px;
 }
 
+#filters-nav a.nav-bot > span
+{
+	margin:0;
+}
+
 #filters-nav .nav-left
 {
 	float:left;
+	width:40%;
+}
+
+#filters-ok
+{
+	position:absolute;
+	left:40%;
+	bottom:0;
+	width:20%;
+	padding:0;
+	background: #8cae08;
+	font-size:400%;
+	text-align:center;
 }
 
 #filters-nav .nav-right
 {
 	float:right;
+	text-align:right;
+	width:40%;
 }
 
 #filters .slide .bar label, #filters > div .bar a
@@ -872,6 +1255,17 @@ h1 {text-align: center;padding:20px 0 20px;}
 {
 	height:200px;
 	overflow: hidden;
+	background:#8cae08;
+}
+
+.rowHeaderRecette, .rowHeaderMorceau, .rowHeaderCuisson
+{
+	height:400px;
+}
+
+.rowHeader img
+{
+	width:100%;
 }
 
 .rowHeader .slider, .rowHeader .slide, .rowHeader .slide img
@@ -880,16 +1274,32 @@ h1 {text-align: center;padding:20px 0 20px;}
 	width:100%;
 }
 
+.rowHeader .slider, .rowHeader .slide, .rowHeader .slick-track
+{
+	height:100%;
+}
+
+.slide
+{
+	background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.rowIcons
+{
+	position:absolute;
+	top:-100px;
+	left:30px;
+}
+
 .avatar
 {
 	float:left;
 	width:100px;
 	height:100px;
 	padding:5px;
-	position:absolute;
-	top:-100px;
-	left:30px;
-	background:#d8d6d8;
+	background:#fff;
 }
 
 .avatar > div
@@ -898,6 +1308,20 @@ h1 {text-align: center;padding:20px 0 20px;}
 	width:100%;
 	height:100%;
 	overflow:hidden;
+	background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.iconType
+{
+	float:left;
+	margin:25px 10px 0;
+}
+
+.iconType img
+{
+	height:75px;
 }
 
 .avatar img
@@ -913,7 +1337,12 @@ h1 {text-align: center;padding:20px 0 20px;}
 	background-color: #381b26;
 }
 
-.rowInfos h1
+.rowInfos .col-sm-3
+{
+	padding-left:0;
+}
+
+.rowInfos .title 
 {
 	font-size:300%;
 	margin:0 0 5px;
@@ -922,13 +1351,13 @@ h1 {text-align: center;padding:20px 0 20px;}
 	color:#fff;
 }
 
-.rowInfos h1 a
+.rowInfos .title a, .fa-num
 {
 	position:relative;
 	color:#fff;
 }
 
-.rowInfos h1 span
+.rowInfos .title span, .fa-num span
 {
 	position:absolute;
 	top:0;
@@ -941,10 +1370,15 @@ h1 {text-align: center;padding:20px 0 20px;}
 	line-height:180%;
 }
 
-.rowActions, .rowBar
+.rowInfos .button
+{
+	float:right;
+}
+
+.rowActions, .rowBar, .rowEntiteProduit
 {
 	padding:15px 0;
-	margin:0;
+	margin:0 0 5px;
 	background:#efefef;
 	-moz-box-shadow: 0px 5px 5px 0px #ccc;
 	-webkit-box-shadow: 0px 5px 5px 0px #ccc;
@@ -953,49 +1387,218 @@ h1 {text-align: center;padding:20px 0 20px;}
 	filter:progid:DXImageTransform.Microsoft.Shadow(color=#ccc, Direction=180, Strength=5);
 }
 
-.rowActions
+.rowEntiteProduit
+{
+	background:#fff;
+}
+
+.rowDateProduits
+{
+	margin:0;
+	color:#5d3043;
+	background:#faf4ad;
+	-moz-box-shadow:0;
+	-webkit-box-shadow:0;
+	-o-box-shadow:0;
+	box-shadow:0;
+	filter:none;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.rowDateProduits .text span
+{
+	color:#5d3043;
+}
+
+.rowTotal
+{
+	padding:15px 0;
+	margin:0;
+	background:#efefef;
+}
+
+.rowTotal b, .rowTotal .price
+{
+	font-size:150%;
+	line-height:100%;
+	color:#5d3043;
+	font-weight:bold;
+}
+
+.rowTotal b
+{
+	float:left;
+	text-transform:uppercase;
+}
+
+.rowTotal .qty
+{
+	float:left;
+	margin-left:15px;
+	color:#999;
+	font-weight:bold;
+	line-height:160%;
+}
+
+.rowTotal .price
+{
+	float:right;
+}
+
+.rowSocials
+{
+	padding:15px 0;
+	margin:0;
+}
+
+.rowActions, .rowSocials
 {
 	color:#381b26;
 	text-align:center;
 }
 
-.rowActions > div
+.rowActions > div, .rowSocials > div
 {
 	padding:0;
 }
 
 .rowBar
 {
-	color:#666666;
+	position:relative;
+}
+
+.rowBar, .rowInfo
+{
+	float:left;
+    width: 100%;
+    color:#666666;
 	font-size:130%;
+	padding:0;
+	display:table;
+}
+
+.rowDescription .rowBar
+{
+	margin-top:15px;
+	margin-bottom:0;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+
+.rowDescription .rowBar .icon
+{
+	width:20%;
+	max-width: 100px;
+}
+
+.rowDescription .rowBar .text
+{
+	width:80%;
+}
+
+.content-detail > .rowBar
+{
+	margin-bottom:5px;	
+}
+
+.rowInfo
+{
+	margin:0;
+	background:#efefef;
+}
+
+.rowInfo b, .rowInfo .icon
+{
+	color:#3399FF;
+}
+
+.rowInfo span
+{
+	font-size:70%;
+	color:#999999;
+}
+
+.rowSwitch
+{
+	float:left;
+	width:100%;
+	margin:0;
 	padding:15px;
 }
 
-.rowActions li
+.rowSwitch > div
+{
+	background:#efefef;
+	border:1px solid #ccc;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.rowSwitch > div > div
+{
+	padding:15px;
+	text-align:center;
+}
+
+input[type="checkbox"].form-control, input[type="radio"].form-control
+{
+	margin:0 5px;
+	width: 20px;
+    height: 20px;
+    display: inline-block;
+    outline:none;
+}
+
+input[type="checkbox"].form-control + label, input[type="radio"].form-control + label
+{
+	line-height:20px;
+	margin:0;
+	top: -5px;
+    position: relative;
+}
+
+.rowSwitch > div > div:first-child
+{
+	border-right:1px solid #ccc;
+}
+
+.rowMap
+{
+	height:300px;
+}
+
+.rowActions li, .rowSocials li
 {
 	float:left;
 	width:25%;
 	font-size:130%;
 }
 
-.rowActions li a
+.rowSocials li
+{
+	width:20%;
+}
+
+.rowActions li a, .rowSocials li a
 {
 	color:#381b26;
 	text-transform:uppercase;
 }
 
-.rowActions li a i
+.rowActions li a i, .rowSocials li a i
 {
 	font-size:320%;
 }
 
-.rowActions li a span
+.rowActions li a span, .rowSocials li a span
 {
 	font-size:80%;
 	margin:10px 0 0 ;
 }
 
-.rowActions li a i, .rowActions li span
+.rowActions li a i, .rowActions li span, .rowSocials li a i, .rowSocials li span
 {
 	float:left;
 	width:100%;
@@ -1006,29 +1609,205 @@ h1 {text-align: center;padding:20px 0 20px;}
 	padding:15px 0;
 }
 
-.rowDescription #Description *
+.rowDescription #Description, .rowDescription #Description a
 {
-    color: #666666 !important;
+    color: #666666;
 }
 
-.rowBar > div
+.rowDescription #Description a
 {
-	float:left;
-	margin-right:15px;
+	text-decoration:underline;
 }
 
-.rowBar .icon
+.rowDescription ul, ol
 {
+	margin-left:15px;
+	padding:0;
+}
+
+.rowBar > div, .rowInfo > div
+{
+	display:table-cell;
+	vertical-align:top;
+	padding:15px;
+}
+
+.rowBar .icon, .rowInfo .icon, .rowBar .toggle, .rowInfo .toggle
+{
+	vertical-align:middle;
+	width: 10%;
 	font-size:250%;
 	line-height:110%;
+	text-align:center;
 }
 
-.rowBar .text b, .rowBar .text span
+.icon .fa-stack
+{
+	width: 1em;
+    height: 1em;
+    line-height:120%;
+}
+
+.icon .fa-stack-2x
+{
+	font-size:100%;
+}
+
+
+.icon .fa-stack-1x
+{
+	font-size:50%;
+}
+
+.rowBar .toggle, .rowInfo .toggle
+{
+	border-left:1px solid #ccc;
+	padding:15px 0;
+	cursor:pointer;
+}
+
+.rowEntiteProduitDate
+{
+	display: table;
+}
+
+.rowEntiteProduitDate > div
+{
+	float:none;
+	display: table-cell;
+    vertical-align: top;
+}
+
+.rowEntiteProduitDate .hours
+{
+	width: 20%;
+	height:100%;
+	border-left:1px solid #ccc;
+	padding:15px 0;
+	color: #381b26;
+	text-align:center;
+	background: #faf4ad;
+	vertical-align:middle;
+}
+
+.rowBar .toggle:hover, .rowInfo .toggle:hover
+{
+	color:#381b26;
+	background:#ccc;
+}
+
+.rowDateProduits .toggle:hover, .rowEntiteProduitDate .hours:hover
+{
+	background:#f7ed7d;
+}
+
+.rowBar .toggleButton
+{
+	float:right;
+	width:auto;
+	padding-right:15px;
+}
+
+.rowBar .toggleButton > div
+{
+	float:left;
+	padding:0 15px;
+	font-size:50%;
+	line-height:120%;
+}
+
+.rowBar .toggleButton > div b
+{
+	font-weight:normal;
+	color:#000;
+}
+
+.rowBar .toggleButton > div span
+{
+	font-size:80%;
+}
+
+.rowBar .text, .rowInfo .text
+{
+	position:relative;
+	width:90%;
+}
+
+.rowBar .text-toggle, .rowInfo .text-toggle
+{
+	width:80%;
+}
+
+.rowEntiteProduitDate .text-hours
+{
+	width:70%;
+}
+
+.rowBar .text-toggleButton
+{
+	width:auto;
+}
+
+.rowEntiteProduit .icon img
+{
+	max-width:50px;
+	width:100%;
+}
+
+.rowEntiteProduit .text, .rowEntiteProduit .text a
+{
+	color:#666;
+}
+
+.rowEntiteProduit .text h2, .rowEntiteProduit .text h2 a
+{
+	color:#000;
+}
+
+.rowEntiteProduit .text p
+{
+	margin:5px 0 0;
+}
+
+.rowEntiteProduit .fa-num span
+{
+	color:#fff;
+}
+
+.rowEntiteProduit .text img
+{
+	height: 100%;
+    position: absolute;
+    top:0;
+    right: 0;
+}
+
+.rowEntiteProduit .text img
+{
+	height:calc(100% - 10px);
+	top:5px;
+	right:5px;
+}
+
+.rowBar .text b, .rowBar .text span, .rowInfo .text b, .rowInfo .text span, .subtitle
 {
 	float:left;
 	width:100%;
 	clear: both;
 	font-weight:normal;
+	line-height:120%;
+}
+
+.subtitle
+{
+	margin:0;
+	color:#999;
+	font-size: 130%;
+}
+
+.rowBar .text span, .rowInfo .text span
+{
+	margin-top:5px;
 }
 
 #menu-jour .text span
@@ -1045,17 +1824,45 @@ h1 {text-align: center;padding:20px 0 20px;}
 .rowBar .actions
 {
 	font-size:76%;
+	float:right;
 }
 
-.rowList
+#menu-jour .text
+{
+	width:40%;
+}
+
+.rowList, .rowForm
 {
 	margin:0;
-	padding:15px 0;
+	padding:0;
+}
+
+.rowForm
+{
+	padding-top:15px;
+}
+
+.rowSwitch + .rowList
+{
+	padding-top:0;
+}
+
+.rowList > h3
+{
+	margin: 0 15px;
 }
 
 .rowList > div
 {
 	border-bottom:1px solid #cccccc;
+}
+
+.rowList > .row
+{
+	margin:0;
+	float: left;
+    width: 100%;
 }
 
 .rowList > div:last-child
@@ -1068,10 +1875,14 @@ h1 {text-align: center;padding:20px 0 20px;}
 	padding:15px 0;
 }
 
-.line-menu .Tof, .line-menu .Tof a
+.line-menu .Tof, .line-menu .Tof a, .logos li img
 {
-	width:30px;
-    height:30px;
+	width:60px;
+}
+
+.img-responsive
+{
+	width:100%;
 }
 
 .line-menu p, .rowList .post p
@@ -1114,7 +1925,13 @@ h1 {text-align: center;padding:20px 0 20px;}
 
 .rowListCertifs img
 {
-	border:1px solid #cccccc
+	border:1px solid #cccccc;
+	width:100%;
+}
+
+.rowListCertifs.rowList > div
+{
+	border-bottom:0;
 }
 
 .colImg
@@ -1232,8 +2049,14 @@ h1 {text-align: center;padding:20px 0 20px;}
 	padding:15px;
 	background:#5d3043;
 	border-radius:10px;
+	border:0;
 	color:#fff;
 	text-transform:uppercase;
+}
+
+.button-square
+{
+	border-radius:0;
 }
 
 .button-large
@@ -1247,9 +2070,22 @@ h1 {text-align: center;padding:20px 0 20px;}
 	text-align:center;
 }
 
+.button-rounded
+{
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
 .button-green
 {
 	background:#8cae08;
+}
+
+#button-validate
+{
+	font-size:200%;
+	line-height:100%;
 }
 
 .right .button
@@ -1269,11 +2105,17 @@ h1 {text-align: center;padding:20px 0 20px;}
 
 .button i, .button span
 {
-	float:left;
+	/*float:left;*/
+}
+
+.button i
+{
+	margin-right:5px;
 }
 
 .button i + span
 {
+	float:right;
 	margin-left:5px;
 	line-height:28px;
 }
@@ -1283,24 +2125,976 @@ h1 {text-align: center;padding:20px 0 20px;}
 	font-size:200%;
 }
 
+.hide-padding
+{
+	padding-left:0;
+	padding-right:0;
+}
+
+#switch-list
+{
+	position:absolute;
+	left:15px;
+	bottom:15px;
+	font-size:300%;
+	line-height:100%;
+	color:#666;
+}
+
+.chiffres
+{
+	float:left;
+	width:100%;
+	margin:15px 0;
+	padding:0;
+	font-size:200%;
+	list-style:none;
+}
+
+.chiffres > li
+{
+	padding:0;
+	margin:5px 0;
+	width:100%;
+	line-height:120%;
+}
+
+.chiffres > li input[type="checkbox"].form-control + label
+{
+	top:0;
+}
+
+.chiffres > li a
+{
+	color: #666666;
+}
+
+.chiffres b
+{
+	font-size:150%;
+	line-height: 100%;
+}
+
+.map-list #map, #list, .map-list #qrcode, .map-list #switch-list
+{
+	display:none;
+}
+
+.map-list #list
+{
+	display:inline;
+}
+
+.list_container
+{
+	padding:0;
+}
+
+.list_container .item, .rowList .item
+{
+	float:left;
+	width:100%;
+	padding:15px;
+	border-bottom:1px solid #ccc;
+}
+
+.rowListRecettes a
+{
+	color:#666666
+}
+
+.rowListRecettes .item
+{
+	padding:0;
+}
+
+.rowListRecettes .item a > div, .rowListRecettes .item > div
+{
+	padding:0;
+}
+
+ .rowListRecettes .item a > div.RecetteLine
+{
+	padding:15px;
+}
+
+.RecetteLine .iconIndicateur 
+{
+	font-size:100%;
+	padding-left: 25px;
+}
+
+.rowDescription ul.logos
+{
+	float:left;
+	width:100%;
+	margin-left:0;
+	margin-bottom:10px;
+	list-style:none;
+}
+
+.logos li
+{
+	float:left;
+	margin-right:10px;
+}
+
+
+.rowDescription .stats_rc
+{
+	float:left;
+	width:100%;
+	margin-top:20px;
+}
+
+.rowDescription .stats_rc_list
+{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+
+.rowDescription .stats_rc_list > div
+{
+	float:left;
+	line-height:60px;
+	text-align:center;
+}
+
+.rowDescription .stats_rc_list > div img
+{
+	max-width:100%;
+	max-height:60px;
+}
+
+.rowDescription .stats_rc_list .logo
+{
+	width:20%;
+	padding:0 10px;
+}
+
+.rowDescription .stats_rc_list .note
+{
+	width:20%;
+	font-size:150%;
+	color:#fff;
+	background:#9aa606;
+}
+
+.rowDescription .stats_rc_list .mention
+{
+	width:60%;
+	font-size:120%;
+	text-transform:uppercase;
+	background:#efefef;
+}
+
+
+a.item
+{
+	color:#666666;
+}
+
+.list_container .item:last-child, .rowList .item:last-child
+{
+	border-bottom:0;
+}
+
+.list_container .item .img, .rowList .item .img, .rowList .item .marker
+{
+	
+	text-align:center;
+}
+
+.list_container .item .img img, .rowList .item .img img
+{
+	width:100%;
+}
+
+.list_container .item .text, .rowList .item
+{
+	
+}
+
+.list_container .item .text > div, .rowList .item  .text > div
+{
+	float:left;
+	width:100%;
+}
+
+.list_container .item .text .km, .rowList .item .text .km
+{
+	color:#ff0000;
+}
+
+.list_container .item .text .vente, .rowList .item .text .vente
+{
+	color:#009900;
+}
+
+.rowList .item .text .drive
+{
+	color:#999999;
+}
+
+.rowList .item .text .address
+{
+	text-decoration:underline;
+}
+
+.list_container .item .text h3, .rowList .item .text h3
+{
+	font-size: 150%;
+	margin:5px 0;
+}
+
+.list_container .item .text a, .rowList .item .text a
+{
+	color:#666666;
+	text-decoration:underline;
+}
+
+.marker_label
+{
+	position:relative;
+	text-align:center;
+	display: inline-block;
+}
+
+.marker_label span
+{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	color:#fff;
+	font-size:300%;
+	line-height:180%;
+}
+
+.rowListAllergies
+{
+	float: left;
+}
+
+.rowListAllergies .item label, .rowListAllergies .item span
+{
+	display:inline-block;
+	margin:0;
+	width:100%;
+}
+
+.subscribe, .rowInformations
+{
+	padding:15px;
+	margin:0 0 15px;
+	background:#eeeeff;
+}
+
+.rowInformations
+{
+	margin:0;
+}
+
+.rowInformations .fa
+{
+	width:10%;
+	font-size:300%;
+	color:#3399FF;
+}
+
+.rowInformations .fa, .rowInformations > div
+{
+	float:left;
+}
+
+.rowInformations > div
+{
+	width:90%;
+	padding-left:15px;
+}
+
+.subscribe h3, .rowInformations h3
+{
+	margin:0 0 10px;
+	font-size:200%;
+	line-height:120%;
+	color:#3399FF;
+}
+
+.subscribe a, .rowInformations a
+{
+	color:#999999;
+	text-decoration:underline;
+}
+
+.qrCodeContainer
+{
+	background:url(images/qrcode_back.png) no-repeat scroll center center;
+}
+
+.rowList > div.morceau
+{
+	text-align:center;
+	border:0;
+	margin:15px 0;
+}
+
+.rowList > div.col0
+{
+	clear:both;
+}
+
+.morceau img
+{
+	width:100%;
+}
+
+.morceau h3
+{
+	margin:0;
+	font-size:140%;
+	padding:15px 0;
+	background:#F2F2F2;
+}
+
+#presentation .slide
+{
+	padding:0.5% 0;
+}
+
+#presentation .slide h2
+{
+	font-weight:bold;
+	margin:10px;
+}
+
+#presentation .slide h3
+{
+	margin:10px;
+}
+
+#inscript
+{
+	float:left;
+	width:100%;
+	margin-top:50px;
+}
+
+#inscript > div
+{
+	padding:8px 15px;
+}
+
+.double-link > a
+{
+	float:left;
+	width:50%;
+	margin:0;
+	text-align:center;
+}
+
+.double-link > a:first-child
+{
+	-webkit-border-radius: 20px 0 0 20px;
+	-moz-border-radius: 20px 0 0 20px;
+	border-radius: 20px 0 0 20px;
+	border-right:1px solid #fff;
+}
+
+.double-link > a:last-child
+{
+	-webkit-border-radius: 0 20px 20px 0;
+	-moz-border-radius: 0 20px 20px 0;
+	border-radius: 0 20px 20px 0;
+}
+
+.rowEntiteProduit
+{
+	margin-bottom:5px;
+}
+
+.rowEntiteProduitsTotal
+{
+	float:left;
+	width:100%;
+	margin:0;
+	padding:10px 0;
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	background:#efefef;
+}
+
+.rowEntiteProduitsTotal > span
+{
+	float:right;
+	margin:0 5px;
+	font-size:120%;
+	line-height: 100%;
+}
+
+.rowEntiteProduitsTotal > span b
+{
+	color: #381B26;
+}
+
+.rowEntiteProduitsTotal > span.qty
+{
+	color:#999999;
+	font-size:90%;
+	line-height:150%;
+}
+
+.rowEntiteProduitsTotal > span.price
+{
+    color: #381B26;
+}
+
+.itemCommande
+{
+	color:#666;
+}
+
+.itemCommande > div
+{
+	padding-left:0;
+}
+
+.itemCommande b
+{
+	float:left;
+	font-size:200%;
+	line-height:100%;
+}
+
+.itemCommande .date
+{
+	float:left;
+	font-size:120%;
+	color:#666;
+	line-height:200%;
+	margin:0 5px;
+}
+
+.itemCommande .infos
+{
+	float:left;
+	width:100%;
+	clear:both;
+	font-size:100%;
+	margin:5px 0;
+}
+
+.itemCommande .price
+{
+	padding:0;
+	text-align:center;
+	font-size:200%;
+}
+
+.slider-tunnel
+{
+	color:#503C27;
+	font-size:120%;
+	line-height:120%;
+	background:#eeeeff;
+	padding-bottom: 15px;
+}
+
+.slider-tunnel .slick-dots li
+{
+	border:1px solid #8a8aff;
+	background:#ccccff;
+}
+
+.slider-tunnel .slick-dots li.slick-active
+{
+	background:#8a8aff;
+}
+
+.slider-tunnel .slide
+{
+	padding:15px;
+}
+
+.slider-tunnel h3, .slider-tunnel span, .slider-tunnel a
+{
+	float:left;
+	width:100%;
+	margin:15px 0 0;
+}
+
+.iconmoon > span
+{
+	float:none !important;
+	width:auto !important;
+	margin:0 !important;
+}
+
+.slider-tunnel .iconmoon, .slider-tunnel .fa
+{
+	font-size:600%;
+}
+
+.slider-tunnel h3
+{
+	font-size:200%;
+	color:#A67C52;
+	font-weight:bold;
+}
+
+.slider-tunnel a
+{
+	font-size:85%;
+	color:#999999;
+	outline:none;
+	text-decoration:underline;
+}
+
+.slider-tunnel a.button
+{
+	width:50%;
+	margin:15px 25% 0;
+	color:#fff;
+}
+
+.slider-tunnel a.button .fa
+{
+	font-size:100%;
+}
+
+.slider-tunnel a.button span
+{
+	width:auto;
+	text-align:center;
+}
+
+.cart_date
+{
+	width:100%;
+	font-size:200%;
+	padding:15px 0;
+	font-weight:bold;
+	color: #5d3043;
+	text-align:center;
+}
+
+.rowEntiteProduits
+{
+	margin:0;
+}
+
+.rowEntiteCanaux
+{
+	margin:5px 0 0;
+}
+
+.rowEntiteProduits > .rowProduit, .rowEntiteCanaux > .rowCanal
+{
+	border-bottom:1px solid #cccccc;
+}
+
+.rowEntiteProduits > .rowProduit:last-child
+{
+	border-bottom:0;
+}
+
+.rowProduit, .rowCanal
+{
+	display:table;
+	width:100%;
+	margin:0;
+	position:relative;
+	font-size:120%;
+}
+
+.rowProduit > div, .rowCanal > div
+{
+	display: table-cell;
+    vertical-align: top;
+}
+
+.rowProduit .photo, .rowCanal .photo
+{
+	width:25%;
+}
+
+.rowProduit .infos, .rowCanal .infos
+{
+	width:60%;
+	padding:15px;
+}
+
+.rowCanal .infos
+{
+	width:50%;
+}
+
+.rowProduitDate .infos
+{
+	width:70%;
+}
+
+.rowProduitDate .qty
+{
+	position:relative;
+	width:5%;
+	text-align:center;
+	font-size:200%;
+	background:#efefef;
+	vertical-align:middle;
+}
+
+.rowProduit .infos h3, .rowCanal .infos h3
+{
+	margin:10px 0;
+	color:#666;
+	font-size: 140%;
+}
+
+.rowProduit .informations
+{
+	width:100%;
+}
+
+.rowProduit .informations .remaining, .rowCanal .infos .km
+{
+	color: #FF0000;
+}
+
+.rowCanal .infos .emplacement, .rowCanal .picking .timing
+{
+	color: #348000;
+}
+
+.rowCanal .picking .days
+{
+	color: #381B26;
+	font-size:140%;
+}
+
+.rowCanal .picking .emplacement
+{
+	color: #999999;
+}
+
+.rowProduit .informations .label
+{
+	color: #5D3043;
+}
+
+.rowProduit .pricing
+{
+	width:15%;
+}
+
+.rowCanal .picking
+{
+	width:25%;
+}
+
+.rowCanal .picking
+{
+	padding:15px 0;
+	margin:0;
+}
+
+.rowProduit .pricing > p
+{
+	float:right;
+	clear:both;
+	margin:0;
+	padding:10px;
+}
+
+.rowCanal .picking > p
+{
+	text-align:center;
+	margin:0;
+}
+
+.rowCanal .picking .button, .rowProduit .pricing .button
+{
+	clear:both;
+	width:100%;
+	margin:15px 0 0;
+}
+
+.rowProduit .pricing > p.qty
+{
+	padding:0;
+}
+
+.rowProduit .pricing > p.qty span
+{
+	float:left;
+	padding:10px;
+	line-height:100%;
+}
+
+.rowProduit .pricing > p.qty span:first-child
+{
+	color: #999999;
+}
+
+.rowProduit .pricing > p.qty span:last-child
+{	
+	color:#fff;
+	background:#cccccc;	
+}
+
+.rowProduit .pricing > p.price
+{
+	padding:10px;
+	font-size:150%;
+	line-height:100%;
+	color:#381B26;
+}
+
+.rowProduit .pricing > p.stock
+{
+	
+}
+
+.rowProduit .pricing > p.stock .instock, .rowProduit .informations .emplacement
+{
+	color: #008000;
+}
+
+.rowProduit .pricing > p.pricekg
+{
+	color: #999999;
+}
+
+.paiement-secure
+{
+	float:left;
+	width:100%;
+	margin:10px 0 25px;
+	color: #999999;
+}
+
+.number
+{
+	float:left;
+	font-weight:bold;
+	padding:2px 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background:#cdcdcd;
+}
+
+.number + span
+{
+	float:left;
+	line-height:180%;
+	margin-left:5px;
+}
+
 @media (min-width: 768px)
 {
-	#filters
+	#filters, #filters-results, #filters-details
 	{
-		width:33%;
+		width:40%;
+	}
+}
+
+@media (max-width: 768px)
+{
+	.rowInfos .title
+	{
+		font-size:250%;
+	}
+	
+	.rowProduit .pricing > p
+	{
+		padding:5px;
+	}
+	
+	.rowDescription ul.chiffres
+	{
+		margin:15px 0;
+	}
+	
+	.rowInfos .col-sm-3
+	{
+		padding-top:15px;
+		padding-left:15px;
+	}
+	
+	.rowList > div.morceau
+	{
+		margin:0;
+		padding:0;
+	}
+	
+	.iconIndicateur
+	{
+		font-size:120%;
+	}
+}
+
+@media (max-width: 640px)
+{
+	.rowBar .actions
+	{
+		float:left;
+		width:100%;
+		clear:both;
+		padding:0 15px 15px;
+	}
+	
+	.rowBar .icon, .rowInfo .icon, .rowBar .toggle, .rowInfo .toggle
+	{
+		padding:15px 5px;
+		font-size:150%;
+		overflow:hidden;
+	}
+	
+	#filters-results
+	{
+		font-size:80%;
+	}
+	
+	.subscribe h3, .rowInformations h3
+	{
+		font-size:120%;
+	}
+	
+	.rowProduit > div, .rowCanal > div
+	{
+		display:inline-block;
+	}
+	
+	.rowProduitDate > div
+	{
+		display:table-cell;
+	}
+	
+	/*.rowEntiteProduitDate > div
+	{
+		float:left;
+	}*/
+	
+	.rowProduit .photo, .rowCanal .photo
+	{
+		width:40%;
+	}
+	
+	.rowProduit .infos, .rowCanal .infos
+	{
+		width:60%;
+		padding:0 15px;
+		font-size: 80%;
+	}
+	
+	.rowProduit .infos h3, .rowCanal .infos h3, .rowProduit .infos p, .rowCanal .infos p
+	{
+		margin:5px 0;
+	}
+	
+	.rowProduit .pricing, .rowCanal .picking
+	{
+		width:100%;
+		padding:15px;
+	}
+	
+	.rowBar .toggleButton
+	{
+		width:100%;
+		border-top: 1px solid #ccc;
+		border-left:0;
+	}
+	
+	.rowEntiteProduit .text img
+	{
+		display:none;
+	}
+	
+	.rowBar .text, .rowInfo .text, #menu-jour .text
+	{
+		width:85%;
+	}
+	
+	.rowBar .text-toggle, .rowInfo .text-toggle
+	{
+		width:70%;
+	}
+	
+	.rowBar .toggle, .rowInfo .toggle
+	{
+		width:15%;
+	}
+	
+	.rowBar, .rowInfo
+	{
+		font-size:110%;
+	}
+	
+	.line-menu .Description .Nom, .rowList h2
+	{
+		font-size:120%;
+	}
+	
+	.rowEntiteProduit .text-hours
+	{
+		width:60%;
+	}
+	
+	.rowEntiteProduitDate .hours
+	{
+		width:25%;
+	}
+	
+	.rowProduitDate .photo
+	{
+		width:35%;
+	}
+	
+	.rowProduitDate .qty
+	{
+		width:10%;
+	}
+	
+	#menu-jour
+	{
+		display:block;
+	}
+	
+	#menu-jour > div 
+	{
+		float:left;
+		display:inline-block;
 	}
 }
 
 @media (max-width: 382px)
 {
-	#filters
+	#presentation .slide h2
 	{
-		width:33%;
+		font-size:20px;
+	}
+	
+	#presentation .slide h3
+	{
+		font-size:16px;
+	}
+	
+	#inscript
+	{
+	    margin-top:25px;
+	}
+	
+	#return, #close
+	{
+		width:30px;
 	}
 	
 	#return
 	{
-		left:30px !important
+		left:10px !important
 	}
 	
 	#close a, #return a
@@ -1320,9 +3114,49 @@ h1 {text-align: center;padding:20px 0 20px;}
 		font-size:40px;
 	}
 	
+	#filters .slide ul li a
+	{
+		padding:10px;
+	}
+	
+	#content, .sub-menu
+	{
+		height: calc(100% - 80px);
+	}
+	
+	#filters-results, #filters-details > .toogle
+	{
+		height:80px;
+	}
+	
+	#filters-results
+	{
+		bottom:-80px;
+	}
+	
+	#filters-results .infos
+	{
+		width:calc(100% - 80px);
+	}
+	
+	#filters-results > .toogle, #filters-details > .toogle
+	{
+		width:80px;
+	}
+	
+	#filters-results .infos h3
+	{
+		padding-left:80px;
+	}
+	
 	.rowHeader
 	{
 		height:120px;
+	}
+	
+	.rowHeaderRecette, .rowHeaderMorceau, .rowHeaderCuisson
+	{
+		height:250px;
 	}
 	
 	.avatar
@@ -1332,20 +3166,19 @@ h1 {text-align: center;padding:20px 0 20px;}
 		top:-75px;
 	}
 	
-	.rowInfos h1
+	.rowInfos .title
 	{
 		font-size:200%;
 	}
 	
-	.rowActions li
+	.rowBar .icon, .rowInfo .icon
 	{
-		font-size:100%;
+		width:15%;
 	}
 	
-	.rowBar .actions
+	.rowActions li, .rowSocials li
 	{
-		clear:both;
-		margin-top:5px;
+		font-size:100%;
 	}
 	
 	.rowBar .actions .button
@@ -1381,5 +3214,45 @@ h1 {text-align: center;padding:20px 0 20px;}
 	#btn-send-menu span
 	{
 		line-height:200%;
+	}
+	
+	.rowInfos .button
+	{
+		float:left;
+	}
+	
+	.marker_label span
+	{
+		font-size:200%;
+		line-height:180%;
+	}
+	
+	.line-menu .Tof, .line-menu .Tof a, .logos li img
+	{
+	    width: 30px;
+	}
+	
+	.rowInfos .title
+	{
+		font-size:200%;
+	}
+	
+	.liste_menu li a
+	{
+		padding:15px;
+	}
+	
+	.rowDescription .stats_rc_list > div.logo, .rowDescription .stats_rc_list > div.note, .rowDescription .stats_rc_list > div.mention
+	{
+		width:100%;
+		padding:10px 0;
+		font-size:100%;
+		line-height:100%;
+	}
+	
+	.rowDescription .stats_rc_list > div img
+	{
+		width:50%;
+		height:auto;
 	}
 }

@@ -10,6 +10,7 @@ namespace Ovs\Bovimarket\Entities\Api;
 
 
 use JMS\Serializer\Annotation as Serializer;
+use Ovs\Bovimarket\Utils\Utils;
 
 class Billet {
 	/**
@@ -80,6 +81,16 @@ class Billet {
 	 */
 	public function getContenu() {
 		return $this->contenu;
+	}
+	
+	public function getExtrait()
+	{
+		$content = $this->getContenu() ;
+		
+		$content = strip_tags($content) ;
+		$content = Utils::trunc($content, 100) ;
+		
+		return $content ; 
 	}
 
 	/**

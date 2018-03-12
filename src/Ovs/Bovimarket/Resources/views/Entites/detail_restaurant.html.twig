@@ -1,134 +1,143 @@
 {% extends "Entites/detail.html.twig" %}
 
-{% block lien_fournisseurs %}
+{#{% block lien_fournisseurs %}
     <p class="text-center">
         <a href="#fournisseurs">Nos fournisseurs</a>
     </p>
 {% endblock %}
-
-
-{% block menu %}
-    <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <a style="padding-top: 12px" class="btn btn-vert" id="Reserver" type="submit"
-               href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}">
-                Réserver une table
-            </a>
-        </div>
-    </div>
-{% endblock %}
+#}
 
 {% block membres %}
-    <div class="row Entete" id="fournisseurs">
-        <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-5 text-center">
+    <div id="fournisseurs" class="row rowBar">
+        <div class="icon">
+        	<i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </div>
-        <div class="col-xs-12">
-            <h3 class="text-center">Ils travaillent avec nous</h3>
+        <div class="text">
+        	<b>Nos Fournisseurs</b>
+        	<span>4 fournisseurs</span>
         </div>
     </div>
-
-
-    <div class="row Recommande">
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
-                <img src="/web/images/legumes_bio.png" class="img-circle img-responsive">
+    <div class="row rowMap">
+    	<div id="map">
+    	
+    	</div>
+    </div>
+    <div class="row rowList">
+        <div class="col-xs-12 item">
+            <div class="col-xs-3 img hide-padding">
+            	<img src="/web/images/legumes_bio.png" class="img-responsive">
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4 style="">Les Légumes bio</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Alain Vidal à Chaudeyrolles</li>
-                    <li>David Chalendard</li>
-                    <li>Renaud à Retournac</li>
-                    <li>J-Michel Brunel à Solignac</li>
-                    <li>Cornut et Oubrier à Yssingeaux</li>
-                </ul>
-                </p>
+            <div class="text col-xs-7">
+            	<div><span class="km">a 58 km</span> - <span class="vente">Vente directe</span></div>
+            	<div><h3>Les Légumes bio</h3></div>
+                <div>
+                <p class="address">21 Bd Robert Schuman 63000 Clermont-Ferrand</p>
+                <p>Lundi mardi : 14h 19h<br/>
+				Mercredi Vendredi : 14h 19h</p>
+				</div>
             </div>
-        </div>
-
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
-                <img src="/web/images/porc_hl.jpeg" class="img-circle img-responsive">
+            <div class="col-xs-2 marker hide-padding">
+            	<div class="marker_label">
+            		<img class="img-responsive" src="/web/images/marker.png" />
+            		<span>A</span>
+            	</div>
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4>Porc de Haute Loire</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Chalendard Dominique et bonnefoy damien à Araules</li>
-                </ul>
-                </p>
+		</div>
+		<div class="col-xs-12 item">
+            <div class="col-xs-3 img hide-padding">
+            	<img src="/web/images/porc_hl.jpeg" class="img-responsive">
             </div>
-        </div>
-
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
-                <img src="/web/images/fin_gras.jpeg" class="img-circle img-responsive">
+            <div class="text col-xs-7">
+            	<div><span class="km">a 3 km</span></div>
+            	<div><h3>Porc de Haute Loire</h3></div>
+                <div>
+                	<p class="address">16 Bd Bertrand - 43012 Le Puy-en-Velay</p>
+                </div>
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4>Boeuf fin gras du Mézenc</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Vigouroux Alain abattoir Le Puy pour le veau des monts du Velay</li>
-                    <li>Paillet Souvignet Abattoir Yssingeaux</li>
-                    <li>Bayle André à Grand Croix</li>
-                    <li>Collard Christophe à Bourg Argental</li>
-                </ul>
-                </p>
+            <div class="col-xs-2 marker hide-padding">
+            	<div class="marker_label">
+            		<img class="img-responsive" src="/web/images/marker.png" />
+            		<span>B</span>
+            	</div>
             </div>
-        </div>
-
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
+		</div>
+		<div class="col-xs-12 item">
+            <div class="col-xs-3 img hide-padding">
+            	<img src="/web/images/fin_gras.jpeg" class="img-responsive">
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4>Veaux de boucheries</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Boucheries Mejean Patrice à costaros pour les voeux</li>
-                </ul>
-                </p>
+            <div class="text col-xs-7">
+            	<div><span class="km">a 5 km</span> - <span class="Drive">Drive</span></div>
+            	<div><h3>Boeuf fin gras du Mézenc</h3></div>
+                <div>
+                	<p class="address">11 Avenue de Villars, 63400 Chamalières</p>
+                	<p>Lundi mardi : 14h 19h<br/>Mercredi Vendredi : 14h 19h</p>
+                </div>
             </div>
-        </div>
-
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
+            <div class="col-xs-2 marker hide-padding">
+            	<div class="marker_label">
+            		<img class="img-responsive" src="/web/images/marker.png" />
+            		<span>C</span>
+            	</div>
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4>Le cochon de lait</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Dominique Chalendard à St Julien Chapteuil</li>
-                </ul>
-                </p>
+		</div>
+		<div class="col-xs-12 item">
+            <div class="col-xs-3 img hide-padding">
+            	<img src="/web/images/veaux.jpg" class="img-responsive">
             </div>
-        </div>
-
-        <div class="ListeStyle2 row" style="padding-bottom: 10px;margin-top: 10px;">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-3 col-sm-1">
+            <div class="text col-xs-7">
+            	<div><span class="km">a 11 km</span> - <span class="Drive">Drive</span></div>
+            	<div><h3>Veaux de Lozère</h3></div>
+                <div>
+                	<p class="address">11 Avenue de Villars, 63400 Chamalières</p>
+                	<p>Lundi mardi : 14h 19h<br/>Mercredi Vendredi : 14h 19h</p>
+                </div>
             </div>
-            <div class="col-xs-1"></div>
-            <div class="col-xs-8 col-sm-9">
-                <h4>Le porc de ferme</h4>
-                <p class="text-left" style="color: #ffffff">
-                <ul class="list-unstyled">
-                    <li>Damien Bonnefoy à Araules et Fay/ Lignon.</li>
-                </ul>
-                </p>
+            <div class="col-xs-2 marker hide-padding">
+            	<div class="marker_label">
+            		<img class="img-responsive" src="/web/images/marker.png" />
+            		<span>D</span>
+            	</div>
             </div>
-        </div>
+		</div>
     </div>
 
 {% endblock %}
 
+{% block afterMapInit %}
+    var bounds = new google.maps.LatLngBounds();
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	var labelIndex = 0;
+	
+	var marker = new google.maps.Marker({
+		position: new google.maps.LatLng({{ entite.lat }},{{ entite.lng }}),
+		icon:'{{ entite.getIcon(false) }}',
+		map: map
+});
+	
+    var marker_1 = new google.maps.Marker({
+		position: new google.maps.LatLng(45.7626229,3.1315173000000414),
+		label: labels[labelIndex++ % labels.length],
+		map: map
+});
+	bounds.extend(marker_1.getPosition()) ;
+    var marker_2 = new google.maps.Marker({
+		position: new google.maps.LatLng(45.7761918,3.0643410999999787),
+		label: labels[labelIndex++ % labels.length],
+		map: map
+});
+	bounds.extend(marker_2.getPosition()) ;
+	var marker_3 = new google.maps.Marker({
+		position: new google.maps.LatLng(45.0422095,3.8933150999999953),
+		label: labels[labelIndex++ % labels.length],
+		map: map
+});
+	bounds.extend(marker_3.getPosition()) ;
+	var marker_4 = new google.maps.Marker({
+		position: new google.maps.LatLng(45.7626229,3.2315173000000414),
+		label: labels[labelIndex++ % labels.length],
+		map: map
+});
+	bounds.extend(marker_4.getPosition()) ;
+    map.fitBounds(bounds);
+
+{% endblock %}

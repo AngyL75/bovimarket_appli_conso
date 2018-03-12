@@ -1,23 +1,52 @@
 {% extends "base_blanche.html.twig" %}
 
+{% block bodyOpenTag %}
+<body class="pageblanche page-detail" id="holder">
+{% endblock %}
+
+{% block prev %}
+{% endblock %}
+{% block close %}
+{% endblock %}
+
 {% block page_content %}
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>Félicitations et merci !</h1>
-        </div>
+<div class="content-detail">
+    <div class="row rowList">
+    	<div class="list_header">
+   			Confirmation
+   		</div>
+   		<div class="list_container">
+	   		<div id="slider-livraison" class="slider slider-tunnel">
+	    		<div class="slide text-center">
+	    			<i class="fa fa-check-circle" aria-hidden="true" style="color: #32A2E6;"></i>
+	    			<h3>Paiement confirmé</h3>
+	    			<span><b>Votre commande N°123AB a été confirmée</b></span>
+	    			<span>Votre paiement de 140€ s'est bien déroulé. Vous allez recevoir un email avec le récapitulatif de votre commande et des produits à récupérer.</span>
+					<span>Tous les produits à récupérer sont dans votre compte espace 'A récupérer'</span>
+					
+					<a href="/" class="button button-green" type="submit"><i class="fa fa-chevron-left" aria-hidden="true"></i> RETOUR ACCUEIL</a>
+					<a href="{{ path_for("app.commande.list") }}" class="button button-green" type="submit">VOIR MES COMMANDES</a>
+	    	</div>
+		</div>
     </div>
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <img src="/web/images/cde-ok.svg" width="100px"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-            <h2>Votre commande a bien été enregistrée.</h2>
-            <p>Vous allez recevoir un email de votre commande avec le récapitulatif complet sur {{ email }}.
-                <br><br>
-                Si le producteur vous plait pensez à l'ajouter à vos favoris. <br><br>
-                Nous vous souhaitons une délicieuse journée.</p>
-        </div>
-    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/web/js/slick.min.js"></script>
+	<script>
+	    $('.slider').slick({slide:'.slide', dots: true, arrows: false}) ;
+	    $('.next').click(function()
+	    {
+	    	$('.slider').slick('slickNext') ;
+	    	return false ;
+	    }) ;
+	    $('.close-slider').click(function()
+	    {
+	    	$('#' + $(this).attr('data-slider')).hide() ;
+	    	return false ;
+	    }) ;
+	</script>
 {% endblock %}

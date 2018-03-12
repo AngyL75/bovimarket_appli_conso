@@ -21,9 +21,13 @@ class MapController extends BaseController
     {
         $entites = $this->get("entites")->findAll();
 	    $center=$request->getQueryParam("center",false);
+        
+	    $panier = $this->getPanier($request);
+        
         return $this->render($response,"Home/map.html.twig",array(
         	"entites"=>$entites,
-	        "center"=>$center
+	        "center"=>$center,
+        	"panier" => $panier
         ));
     }
 }

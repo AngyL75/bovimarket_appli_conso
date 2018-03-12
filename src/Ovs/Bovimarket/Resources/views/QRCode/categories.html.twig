@@ -7,7 +7,7 @@
             </div>
         </div>
     {% else %}
-        <div class="row">
+        <div class="row qrCodeContainer">
             {% for categ,photo in paths %}
                 {% if photo %}
                     {% set url =path_for("flash.categorie",{"categ":categ,"id":1,"idProducteur":photo}) %}

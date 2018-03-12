@@ -31,11 +31,18 @@ flash.categorie:
     action: "Ovs\\Bovimarket\\Controller\\FlashController:categorieViande"
     path: "/viande/{categ}/{id}[/{idProducteur}]"
 
+app.billets.list:
+    action: "Ovs\\Bovimarket\\Controller\\BilletsController:list"
+    path: "/news"
+
+app.entite.detail_region:
+    action: "Ovs\\Bovimarket\\Controller\\EntiteController:showDetailRegion"
+    path: "/entite/region"
 
 app.entite.detail:
     action: "Ovs\\Bovimarket\\Controller\\EntiteController:showDetail"
     path: "/entite/{id}"
-
+    
 app.entite.menu:
     action: "Ovs\\Bovimarket\\Controller\\EntiteController:getMenu"
     path: "/menu/{id}/{date}"
@@ -123,8 +130,6 @@ app.commande.do_paiement:
 app.commande.save_commande:
     action: "Ovs\\Bovimarket\\Controller\\ConsoController:saveCommande"
     path: "/panier/commande/save"
-    methods:
-        - "POST"
 
 app.login.form:
     action: "Ovs\\Bovimarket\\Controller\\UserController:loginForm"
@@ -159,16 +164,34 @@ app.profile:
     path: "/profile"
     methods:
         - "GET"
+        
+app.user.profile:
+   action: "Ovs\\Bovimarket\\Controller\\UserController:showProfile"
+   path: "/user/{idUser}"
+   methods:
+       - "GET"       
 
 app.update_profile:
     action: "Ovs\\Bovimarket\\Controller\\UserController:updateProfile"
     path: "/profile/update"
     methods:
         - "POST"
+        
+app.user.favoris:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:favoris"
+    path: "/profile/favoris"
+    
+app.user.friends:
+    action: "Ovs\\Bovimarket\\Controller\\UserController:friends"
+    path: "/profile/amis"
 
 app.commande.list:
     action: "Ovs\\Bovimarket\\Controller\\ConsoController:listCommandes"
     path: "/commandes"
+    
+app.commande.recup:
+    action: "Ovs\\Bovimarket\\Controller\\ConsoController:recupCommandes"
+    path: "/commandes/recuperation"
 
 app.commande.detail:
     action: "Ovs\\Bovimarket\\Controller\\ConsoController:showCommande"

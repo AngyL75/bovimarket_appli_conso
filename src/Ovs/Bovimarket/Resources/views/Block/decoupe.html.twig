@@ -1,34 +1,12 @@
-<div style="margin: 0 auto">
-    <div class="row">
-        <div class="col-xs-12">
-            <h2 class="text-center"><i class="IconeMorceau"></i>Le morceau</h2>
-        </div>
+<div class="row rowBar">
+    <div class="icon">
+    	<i class="fa fa-pie-chart " aria-hidden="true"></i>
     </div>
-    <div class="row">
-        {{ mapDecoupe(morceau) }}
-        <div class="col-xs-12">
-            <h3 class="text-center" style="padding:20px 0">{{ morceau.nom }}</h3>
-            <p>
-                {{ morceau.description|nl2br }}
-            </p>
-        </div>
-        <div class="col-xs-12">
-            <h3 class="text-center" style="padding:20px 0">Le saviez-vous</h3>
-            <p>
-                {{ morceau.saviezVous|nl2br }}
-            </p>
-        </div>
-        <div class="col-xs-12">
-            <h3 class="text-center" style="padding:20px 0">Conseil Conservation</h3>
-            <p>
-                {{ morceau.conseilsConservation|nl2br }}
-            </p>
-        </div>
+    <div class="text text-toggle">
+    	<b>Le morceau</b>
+    	<span>dans l'animal</span>
     </div>
-    <div class="col-xs-12">
-        <h3 class="text-center" style="padding:20px 0">Accords mets et vins</h3>
-        <p>
-            {{ morceau.accordVin|nl2br }}
-        </p>
-    </div>
+</div>
+<div class="row">
+    {{ mapDecoupe(morceau) }}
 </div>

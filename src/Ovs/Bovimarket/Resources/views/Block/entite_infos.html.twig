@@ -1,0 +1,23 @@
+<div class="col-xs-12">
+	<div class="row">
+    	<div class="col-xs-12 col-sm-7">
+            <h2 class="title"><a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}">{{ entite.name }}</a> 
+            {% if entite.getCertificationsLength() %}
+            <a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}#certifs" class="fa fa-certificate"><span>{{ entite.getCertificationsLength() }}</span></a>
+            {% endif %}
+            </h2>
+	        <p>
+    	        <a style="color: #ffffff"
+        	       href="{{ path_for("map.homepage") }}?center={{ entite.lat }},{{ entite.lng }}">{{ entite.adresseComplete }}</a>
+        	</p>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+        	{% if entite.activite == "RESTAURATION_COLLECTIVE" %}
+        	<a href="{{ path_for("app.entite.detail",{"id":entite.id}) }}#menu-jour" class="button button-green"><i class="fa fa-calendar-o" aria-hidden="true"></i><span>Voir Menu</span></a>
+        	{% endif %}
+        	{% if entite.activite == "RESTAURANT" %}
+        	<a href="{{ path_for("app.entite.reserve_table",{"idEntite":entite.id}) }}" class="button button-green"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Réserver</span></a>
+        	{% endif %}
+        </div>
+    </div>
+</div>

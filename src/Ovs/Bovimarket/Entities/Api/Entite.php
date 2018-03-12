@@ -14,6 +14,8 @@ use JMS\Serializer\Annotation as Serializer;
 use Ovs\Bovimarket\Api\Api;
 use Ovs\Bovimarket\Entities\Interfaces\Searchable;
 use Ovs\Bovimarket\Utils\Utils;
+use Ovs\Bovimarket\Utils\Constants;
+use Ovs\Bovimarket\Services\API\ActivitesFetcherService;
 
 class Entite
 {
@@ -87,21 +89,25 @@ class Entite
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("nomContact")
      */
     protected $nomContact;
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("telephoneContact")
      */
     protected $telephoneContact;
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("siteWeb")
      */
     protected $siteWeb;
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("numeroTVA")
      */
     protected $numeroTVA;
     /**
@@ -117,6 +123,7 @@ class Entite
     /**
      * @var
      * @Serializer\Type("string")
+     * @Serializer\SerializedName("photoEquipe")
      */
     protected $photoEquipe;
     /**
@@ -124,6 +131,11 @@ class Entite
      * @Serializer\Type("string")
      */
     protected $activite;
+    /**
+     * @var
+     * @Serializer\Type("array")
+     */
+    protected $activites;
     /**
      * @var
      * @Serializer\Type("ArrayCollection")
@@ -164,6 +176,12 @@ class Entite
      * @Serializer\Type("array")
      */
     protected $concours;
+    /**
+     * @var
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("horaires")
+     */
+    protected $horaires;
     //endregion
 
 
@@ -533,7 +551,28 @@ class Entite
      */
     public function getActivite()
     {
-        return $this->activite;
+        $activite = count($this->activites) ? $this->activites[0]['activite'] : '' ;
+        
+        if(strpos($activite, 'Eleveur') !== false) return Constants::ELEVEUR ;
+        if(strpos($activite, 'Négociant') !== false) return Constants::NEGOCIANT ;
+        if(strpos($activite, 'Boucher') !== false) return Constants::ARTISAN ;
+        if(strpos($activite, 'Abattoir') !== false) return Constants::ABATTOIR ;
+        if($activite == 'Charte qualité / filières') return Constants::FILIERE ;
+        if(strpos($activite, 'Restaurant collectif') !== false) return Constants::RESTAURATION_COLLECTIVE ;
+        if(strpos($activite, 'Restaurant') !== false) return Constants::RESTAURANT ;
+        if($activite == 'Distributeur spécialisé alimentaire') return Constants::ARTISAN ;
+        if(strpos($activite, 'AMAP') !== false) return Constants::AMAP ;
+        if(strpos($activite, 'Drive') !== false) return Constants::DRIVE ;
+        if(strpos($activite, 'supermarché') !== false) return Constants::SUPERMARCHE ;
+        
+        return $activite ;
+    }
+    
+    public function getRealActivite()
+    {
+        $activite = count($this->activites) ? $this->activites[0]['activite'] : '' ;
+        
+        return $activite ;
     }
 
     /**
@@ -544,6 +583,39 @@ class Entite
     {
         $this->activite = $activite;
         return $this;
+    }
+    
+	/**
+     * @return mixed
+     */
+    public function getProduits()
+    {
+    	$activite = count($this->activites) ? $this->activites[0]['activite'] : '' ;
+    	
+    	$allActivies = ActivitesFetcherService::$all ;
+    	
+    	$current_activite = null ;
+    	foreach($allActivies as $acti)
+    	{
+    		if($acti->getNom() == $activite)
+    		{
+    			$current_activite = $acti ;
+    			break ;
+    		}
+    	}
+    	
+    	if($current_activite)
+    	{
+    		//var_dump($current_activite) ; 
+    		
+			if(strpos($activite, 'bovin') !== false) return Constants::BOEUF ;
+    		if(strpos($activite, 'ovin') !== false) return Constants::AGNEAU ;
+    		if(strpos($activite, 'porc') !== false) return Constants::PORC ;
+    		if(strpos($current_activite->getProduits(), 'boeuf') !== false) return Constants::BOEUF ;
+    	}
+    	
+    	return Constants::BOEUF ;
+    	return $activite ? $current_activite->getProduits() : '' ;
     }
 
     /**
@@ -661,6 +733,32 @@ class Entite
     {
         return $this->certifications;
     }
+    
+    /**
+     * @return mixed
+     */
+    public function getCertificationsLength()
+    {
+    	return count($this->getCertificationsIds()) ;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getCertificationsIds()
+    {
+    	$idsCertif = array() ;
+    	
+    	foreach ($this->getCertifications() as $certification)
+    	{
+    		if ($certification['valide'])
+    		{
+    			$idsCertif[] = $certification['certificationId'];
+    		}
+    	}
+    	
+    	return $idsCertif ;
+    }
 
     /**
      * @param mixed $certifications
@@ -688,6 +786,14 @@ class Entite
     {
         $this->concours = $concours;
         return $this;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getHoraires()
+    {
+    	return $this->horaires;
     }
     //endregion
 
@@ -757,7 +863,30 @@ class Entite
 
     public function getIcon($isFav)
     {
-        return str_replace('\\', '/', Utils::getIconForActivite($this->activite,$isFav));
+    	$suffix="";
+    	if($isFav)
+    	{
+    		$suffix="_fav";
+    	}	
+    	
+    	//if(in_array($this->id, array('57f2b966e4b0a5c3f540ea61', '57f2bba0e4b0a5c3f540ea63', '57f2b778e4b0a5c3f540ea5f', '57f2bd26e4b0a5c3f540ea65'))) return str_replace('\\', '/', Utils::getWebPathOfDir(Utils::getResourcesDir() . "/images/pictos/agneau$suffix.png")) ;
+    	
+    	return str_replace('\\', '/', Utils::getIconForActivite($this->getActivite(), $this->getRealActivite(), $this->getProduits(), $isFav)) ;
+    }
+    
+    public function getZIndex()
+    {
+    	switch ($this->activite)
+    	{
+    		case "ELEVEUR":
+    			return 3;
+    		case "ABATTOIR":
+    		case "NEGOCIANT":
+    		case "FILIERE":
+    			return 1 ;
+    	}
+    	
+    	return 2 ;
     }
 
     public function getAdresseComplete()
@@ -766,6 +895,13 @@ class Entite
         $adresse = $this->getAdresse();
 
         return $adresse->getAdresse()." ".$adresse->getComplementAdresse()." ".$adresse->getCodePostal()." ".$adresse->getVille();
+    }
+    
+    public function getDepartement()
+    {
+    	$adresse = $this->getAdresse();
+    	
+    	return substr($adresse->getCodePostal(), 0, 2) ;
     }
 
     public function hasVenteDirecte()

@@ -7,7 +7,9 @@
 {% block prev %}
     <div id="return"><a href="javascript:history.back()">&lt;</a></div>
 {% endblock %}
+{% block close %}
 <div id="close"><a href="{{ path_for("map.homepage") }}">x</a></div>
+{% endblock %}
 <div class="container">
         {% block page_content %}
 
