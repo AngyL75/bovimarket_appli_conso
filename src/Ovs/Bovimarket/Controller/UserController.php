@@ -168,7 +168,7 @@ class UserController extends BaseController
     	 
     	return  $this->render($response,"User/profile.html.twig",array(
     			"user" => $user,
-    			"allergies" => $allergies
+    			"allergies" => [] //$allergies
     	));
     }
     
