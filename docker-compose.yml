@@ -1,0 +1,12 @@
+# Docker version
+version: '3'
+
+services:
+  web:
+    container_name: bovimarket_appli_conso_web
+    build: .docker
+    hostname: local.bovimarket-appli-conso
+    ports :
+      - "80:80"
+    volumes:
+      - .:/var/www/html/
