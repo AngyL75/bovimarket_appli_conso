@@ -109,7 +109,7 @@ class UtilisateurFetcherService extends ApiFetcher
 		if(is_a($entite,Entite::class)){
 			$entite=$entite->getId();
 		}
-		$this->api->post("utilisateurs/current/favoris/".$entite);
+		$this->api->put("utilisateurs/current/favoris/".$entite);
     }
 
 	public function removeFavoris($entite) {
