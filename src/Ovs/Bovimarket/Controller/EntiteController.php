@@ -211,7 +211,7 @@ class EntiteController extends BaseController
 
         return $this->render($response, $template, array(
             'entite' => $entite,
-            'menus' => $menus,
+            'menus' => [],//$menus,
         	'presence' => $presence,
             'certifs' => $certifs,
         	'canaux' => $canaux,
