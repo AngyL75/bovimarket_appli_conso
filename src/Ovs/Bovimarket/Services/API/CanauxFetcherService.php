@@ -19,6 +19,14 @@ class CanauxFetcherService extends ApiFetcher
         return "canaux/";
     }
 
+    public function findByEntite($id)
+    {
+        $res = $this->api->get($this->getEndpoint() . 'entiteId/' . $id) ;
+        $body = (string)$res->getBody();
+
+        return $this->unserialize($body);
+    }
+
     public function getClass()
     {
         return Canal::class;

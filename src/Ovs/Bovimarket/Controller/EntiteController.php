@@ -180,11 +180,7 @@ class EntiteController extends BaseController
         if($entite->getActivite() == 'ELEVEUR')
         {
         	$canauxFetch = $this->get("canaux");
-        	$aCanaux = $canauxFetch->findBy(array("entiteId"=>  $args["id"]));
-        	
-        	/*var_dump($aCanaux) ;
-        	exit ;
-        	*/
+        	$aCanaux = $canauxFetch->findByEntite($args["id"]);
         	
         	foreach($aCanaux as $c)
         	{
