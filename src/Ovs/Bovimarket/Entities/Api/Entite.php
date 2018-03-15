@@ -607,16 +607,15 @@ class Entite
     	
     	if($current_activite)
     	{
-    		//var_dump($current_activite) ; 
-    		
 			if(strpos($activite, 'bovin') !== false) return Constants::BOEUF ;
     		if(strpos($activite, 'ovin') !== false) return Constants::AGNEAU ;
     		if(strpos($activite, 'porc') !== false) return Constants::PORC ;
+    		if(strpos($activite, 'Céréalier') !== false) return Constants::CEREALES ;
     		if(strpos($current_activite->getProduits(), 'boeuf') !== false) return Constants::BOEUF ;
     	}
     	
     	return Constants::BOEUF ;
-    	return $activite ? $current_activite->getProduits() : '' ;
+//    	return $activite ? $current_activite->getProduits() : '' ;
     }
 
     /**

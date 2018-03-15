@@ -31,4 +31,5 @@ class Constants
     const PORC = "PORC" ;
     const MOUTON = "MOUTON" ;
     const AGNEAU = "AGNEAU" ;
+    const CEREALES = "CEREALES" ;
 }

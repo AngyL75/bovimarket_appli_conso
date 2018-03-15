@@ -123,21 +123,12 @@ class EntiteController extends BaseController
         		array_push($aFiltersMap, array('name' => 'Primeurs', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
         		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
         	}else{
-	        	if($entite->getId() == "588b46d1e4b0f47eccd6a6af")
-	        	{
-	        		array_push($aFiltersMap, array('name' => 'Eleveurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
-	        		array_push($aFiltersMap, array('name' => 'Laitiers/Affineurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
-	        		array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
-	        		array_push($aFiltersMap, array('name' => 'Fromagers', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
-	        		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
-	        	}else{
-	        		array_push($aFiltersMap, array('name' => 'Eleveurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
-	        		array_push($aFiltersMap, array('name' => 'Abattoir', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ABATTOIR')) ;
-	        		array_push($aFiltersMap, array('name' => 'Négociant', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'NEGOCIANT')) ;
-	        		array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
-	        		array_push($aFiltersMap, array('name' => 'Bouchers', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'BOUCHER')) ;
-	        		array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
-	        	}
+                array_push($aFiltersMap, array('name' => 'Eleveurs', 'nb' => 50, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ELEVEUR')) ;
+                array_push($aFiltersMap, array('name' => 'Abattoir', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'ABATTOIR')) ;
+                array_push($aFiltersMap, array('name' => 'Négociant', 'nb' => 1, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'NEGOCIANT')) ;
+                array_push($aFiltersMap, array('name' => 'Restaurants collectifs', 'nb' => 25, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURATION_COLLECTIVE')) ;
+                array_push($aFiltersMap, array('name' => 'Bouchers', 'nb' => 75, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'BOUCHER')) ;
+                array_push($aFiltersMap, array('name' => 'Restaurants', 'nb' => 100, 'filter_label' => '5672cd8c3584ba1cdcdcf89b', 'filter_who' => 'RESTAURANT')) ;
         	}
         }else{
         	$certifs = $this->getCertifications($entite);
