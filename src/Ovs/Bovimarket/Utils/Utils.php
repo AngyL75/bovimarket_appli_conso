@@ -234,7 +234,8 @@ MARKER;
 		        return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/filiere$suffix.png");
 	        	break;
             default:
-                return "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+                return static::getWebPathOfDir(static::getResourcesDir() . "/images/pictos/abattoir$suffix.png");
+//                return "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 break;
         }
     }
