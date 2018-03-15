@@ -24,7 +24,8 @@ class Constants
     const DRIVE = "DRIVE" ;
     const AMAP = "AMAP" ;
     const SUPERMARCHE = "SUPERMARCHE" ;
-    
+    const CEREALIER = "CEREALIER" ;
+
     const BOEUF = "BOEUF" ;
     const VEAU = "VEAU" ;
     const PORC = "PORC" ;

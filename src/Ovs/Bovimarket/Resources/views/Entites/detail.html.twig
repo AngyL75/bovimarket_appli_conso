@@ -201,17 +201,19 @@
             </div>
             <img src="/web/images/menu-jour.png" class="img-responsive" />
             {% endif %}
-            
+
+            {% if entite.certifications is not empty %}
+                {% set certificationIds = [] %}
+                {% for certification in entite.certifications %}
+                    {% set certificationIds = certificationIds|merge([certification.certificationId]) %}
+                {% endfor %}
+
+                <a id="btn_map" class="button button-large button-center" href="/?label={{ certificationIds|join(', ') }}">
+                    VOIR LA CARTE
+                </a>
+            {% endif %}
+
             {% if entite.activite == "FILIERE" %}
-			{% if entite.id == "59d377b8e4b06861bd6de7aa" %}
-			<a id="btn_map" class="button button-large button-center" href="/?label=59d37947e4b06861bd6dec6e">
-				VOIR LA CARTE
-            </a>
-            {% else %}
-            <a id="btn_map" class="button button-large button-center" href="/?label=5672cd8c3584ba1cdcdcf89b">
-				VOIR LA CARTE
-            </a>
-			{% endif %}
 			{% if filters_map|length %}
 			<ul class="chiffres">
 			{% set i = 1 %}

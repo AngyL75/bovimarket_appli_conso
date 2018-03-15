@@ -564,7 +564,8 @@ class Entite
         if(strpos($activite, 'AMAP') !== false) return Constants::AMAP ;
         if(strpos($activite, 'Drive') !== false) return Constants::DRIVE ;
         if(strpos($activite, 'supermarché') !== false) return Constants::SUPERMARCHE ;
-        
+        if(strpos($activite, 'Céréalier') !== false) return Constants::CEREALIER ;
+
         return $activite ;
     }
     
@@ -863,14 +864,6 @@ class Entite
 
     public function getIcon($isFav)
     {
-    	$suffix="";
-    	if($isFav)
-    	{
-    		$suffix="_fav";
-    	}	
-    	
-    	//if(in_array($this->id, array('57f2b966e4b0a5c3f540ea61', '57f2bba0e4b0a5c3f540ea63', '57f2b778e4b0a5c3f540ea5f', '57f2bd26e4b0a5c3f540ea65'))) return str_replace('\\', '/', Utils::getWebPathOfDir(Utils::getResourcesDir() . "/images/pictos/agneau$suffix.png")) ;
-    	
     	return str_replace('\\', '/', Utils::getIconForActivite($this->getActivite(), $this->getRealActivite(), $this->getProduits(), $isFav)) ;
     }
     
