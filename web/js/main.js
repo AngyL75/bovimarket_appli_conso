@@ -74,7 +74,7 @@ function switchList()
 var MapFilters = 
 	{
 		initFiltersSlideDone:false,
-		filters_value:{label:'',what:'',who:'',where:['03', '15', '43', '63']},
+		filters_value:{label:'',what:'',who:'',where:[]},
 		navs:['Label ?', 'Quoi ?', 'Qui ?', 'Où ?'],
 		regions:{
 			"FR-C":{name:"Auvergne",codes:['03', '15', '43', '63']},
