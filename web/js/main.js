@@ -147,7 +147,6 @@ MapFilters.init = function()
 		if(params.label)
 		{
 			this.filters_value.label = params.label.split(',') ;
-			this.filters_value.where = MapFilters.getAllCodeDepartements() ;
 		}
 		if(params.who) this.filters_value.who = params.who.split(',') ;
 		
@@ -247,8 +246,17 @@ MapFilters.buildResults = function()
 	nb = this.filters_value.label.length ;
 	var aTextsLabelRegion = MapFilters.getResultsRegions() ;
 	var nb2 = aTextsLabelRegion.length ;
-	$('#filters-results .infos > div').append('<span>' + nb + ' label' + (nb > 1 ? 's' : '') + ' - ' + nb2 + ' région' + (nb2 > 1 ? 's' : '') + '</span>') ;
-	
+	if ( nb || nb2 )
+	{
+        $('#filters-results .infos > div').append(
+        	'<span>' +
+			(nb ? (nb + ' label' + (nb > 1 ? 's' : '')) : '') +
+			(nb && nb2 ? ' - ' : '') +
+			(nb2 ? (nb2 + ' région' + (nb2 > 1 ? 's' : '')) : '') +
+			'</span>'
+		) ;
+	}
+
 	aTextsLabel = MapFilters.getResultsLabels('#filters-label .filter_label') ;
 	$('#filters-details .infos').append('<b>Label ?</b>') ; 
 	$('#filters-details .infos').append('<span>' + aTextsLabel.join(', ') + '</span>') ;
@@ -621,6 +629,7 @@ MapFilters.toggleFilters = function(item)
 
 MapFilters.setValues = function(type, value)
 {
+	// Useful for labels
 	if(value == 'all')
 	{
 		var aFilters = [] ;
@@ -655,7 +664,7 @@ MapFilters.canBeDisplayed = function(i)
 {
 	var bDisplay = true ;
 	
-	if(this.filters_value.who.length == 0 && this.filters_value.what.length == 0 && this.filters_value.where.length == 0 && this.filters_value.label.length == 0) return false ;
+	if(this.filters_value.who.length == 0 && this.filters_value.what.length == 0 && this.filters_value.where.length == 0 && this.filters_value.label.length == 0) return true ;
 	
 	if(this.filters_value.who.length) bDisplay = bDisplay && this.filters_value.who.indexOf(aMarkersInfos[i].activite) != -1 ;
 	if(this.filters_value.what.length) bDisplay = bDisplay && this.filters_value.what.indexOf(aMarkersInfos[i].produits) != -1 ;
