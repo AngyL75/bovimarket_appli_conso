@@ -47,7 +47,7 @@ class ConsoController extends BaseController
         {
         	$entite_id = $p['id_entite'] ;
         
-        	$canaux = $canauxFetch->findBy(array("entiteId"=> $entite_id));
+        	$canaux = $canauxFetch->findByEntite($entite_id);
         	
         	array_push($aCanaux, $canaux) ;
         }
